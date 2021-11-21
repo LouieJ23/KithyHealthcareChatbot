@@ -6,7 +6,7 @@ const Event = require('../models/Event');
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
         res.json({
-            "fulfillmentText": events.datePosted,
+            "fulfillmentText": events.eventDetails,
             "outputContexts": []
         });
     })
