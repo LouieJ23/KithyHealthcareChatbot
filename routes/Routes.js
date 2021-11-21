@@ -7,7 +7,7 @@ module.exports = (app) => {
     const apiRoutes = express.Router();
 
     app.get('/', (req,res) => {
-        res.send('We are happy to see you using Chat Bot Webhook');
+        res.sendFile(__dirname + "/homepage.html");
     });
 
     app.post('/', eventDataController.processRequests);
