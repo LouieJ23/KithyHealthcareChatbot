@@ -12,15 +12,16 @@ const config = require('./config');
 const event = require('./routes/event');
 const department = require('./routes/department')
 const routes = require('./routes/Routes');
-const doc = require('./routes/doctorInfo');
+const doctorInfo = require('./routes/doctorInfo');
+const guidelines = require('./routes/guidelines');
 
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
 
 server.use('/event', event);
 server.use('/department', department);
-server.use('/doctorInfo', doc);
-
+server.use('/doctorInfo', doctorInfo);
+server.use('./guidelines', guidelines);
 
 
 
