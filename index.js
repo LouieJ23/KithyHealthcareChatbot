@@ -8,6 +8,7 @@ require('dotenv/config');
 const server = express();
 const config = require('./config');
 const event = require('./routes/event');
+
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
 const routes = require('./routes/Routes');

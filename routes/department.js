@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const Event = require('../models/Events');
+const Dep = require('../models/Departments');
 
 router.get('/', async (req, res) => {
-//     try {
-//         const event = await Event.find();
-//         res.json(event);
-//     }
-//     catch(err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-    res.sendFile(__dirname + "/event.html");
+        try {
+            const dep = await Dep.find();
+            res.json(dep);
+        }
+        catch(err) {
+            res.json({
+                message: err
+            });
+        }
+    // res.sendFile(__dirname + "/department.html");
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -28,23 +28,15 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const event = new Event({
-        eventTitle: req.body.eventTitle,
-        eventLocation: req.body.eventLocation,
-        eventDetails: req.body.eventDetails,
-        eventDate: {
-            startDateTime: req.body.startDateTime,
-            endDateTime: req.body.endDateTime
-        },
-        eventRequire: req.body.eventRequire,
-        eventProcess: req.body.eventProcess,
-        eventParticipant: req.body.eventParticipant,
-        datePosted: req.body.datePosted
+    const dep = new Dep({
+        depName = req.body.depSched,
+        depDetail = req.body.depDetail,
+        depSched = req.body.depSched
     });
 
     try {
-        const savedEvent = await event.save();
-        res.json(savedEvent);
+        const savedDep = await dep.save();
+        res.json(savedDep);
     }
     catch (err) {
         res.json({
@@ -56,10 +48,10 @@ router.post('/', async (req, res) => {
 
 router.delete('/:postID', async (req, res) => {
     try {
-        const removeEvent = await Event.remove({
+        const removeDep = await Dep.remove({
             _id: req.params.post
         });
-        res.json(removeEvent);
+        res.json(removeDep);
     }
     catch (err) {
         res.json({
@@ -70,7 +62,7 @@ router.delete('/:postID', async (req, res) => {
 
 router.patch('/:postID', async (req, res) => {
     try {
-        const updatedEvent = await Event.updateOne(
+        const updatedDep = await Dep.updateOne(
             {
                 _id: req.params.postID,
             },
@@ -82,7 +74,7 @@ router.patch('/:postID', async (req, res) => {
             }
         );
 
-        res.json(updatedEvent);
+        res.json(updatedDep);
     }
     catch (err) {
         res.json({

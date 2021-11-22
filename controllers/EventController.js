@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Event = require('../models/Event');
+const Event = require('../models/Events');
 
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
