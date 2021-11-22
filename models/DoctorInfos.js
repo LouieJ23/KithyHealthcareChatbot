@@ -12,11 +12,11 @@ const doctorInfo = mongoose.Schema({
     contactInfo:{
         cellNumber:{
             type:String,
-            require:false
+            require:true
         },
         email:{
             type: String,
-            require: false
+            require: true
         }
     },
     schedule:{

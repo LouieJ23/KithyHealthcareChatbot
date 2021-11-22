@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const DocInfo = require('../models/DoctorInfos');
+const Guidelines = require('../models/Guidelines');
 
 router.get('/', async (req, res) => {
-    // try {
-    //     const doctor = await DocInfo.find();
-    //     res.json(doctor);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     });
-    // }
-    res.sendFile(__dirname + "/doctorInfo.html");
+//     try {
+//         const event = await Event.find();
+//         res.json(event);
+//     }
+//     catch(err) {
+//         res.json({
+//             message: err
+//         });
+//     }
+    res.sendFile(__dirname + "/guidelines.html");
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -28,23 +28,16 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const doctor = new DocInfo({
-        name:req.body.name,
-        specialization:req.body.specialization,
-        contactInfo:{
-            cellNumber:req.body.cellNumber,
-            email:req.body.email
-        },
-        schedule:{
-            Day:req.body.Day,
-            Time:req.body.Time
-        },
-        datePosted: req.body.datePosted
+    const guidelines = new Guidelines({
+        actNo:req.body.actNo,
+        title:req.body.title,
+        detail:req.body.detail,
+        datePosted:req.body.datePosted
     });
 
     try {
-        const savedDocInfo = await doctor.save();
-        res.json(savedDocInfo);
+        const savedGuidelines = await guidelines.save();
+        res.json(savedGuidelines);
     }
     catch (err) {
         res.json({
@@ -56,10 +49,10 @@ router.post('/', async (req, res) => {
 
 router.delete('/:postID', async (req, res) => {
     try {
-        const removeDocInfo = await DocInfo.remove({
+        const removeGuidelinesEvent = await Guidelines.remove({
             _id: req.params.post
         });
-        res.json(removeDocInfo);
+        res.json(removeGuidelines);
     }
     catch (err) {
         res.json({
@@ -70,7 +63,7 @@ router.delete('/:postID', async (req, res) => {
 
 router.patch('/:postID', async (req, res) => {
     try {
-        const updatedDocInfo = await DocInfo.updateOne(
+        const updatedGuidelines = await Guidelines.updateOne(
             {
                 _id: req.params.postID,
             },
@@ -82,7 +75,7 @@ router.patch('/:postID', async (req, res) => {
             }
         );
 
-        res.json(updatedDocInfo);
+        res.json(updatedGuidelines);
     }
     catch (err) {
         res.json({

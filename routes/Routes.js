@@ -15,6 +15,9 @@ module.exports = (app) => {
     app.get('/docInfo', (req,res) => {
         res.sendFile(__dirname + "/docInfo.html");
     });
+    app.get('/guidelines', (req,res) => {
+        res.sendFile(__dirname + "/guidelines.html");
+    });
     
     app.post('/', controllers.processRequests);
 };

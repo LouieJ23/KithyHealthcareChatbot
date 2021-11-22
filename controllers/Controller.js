@@ -3,7 +3,8 @@
 const mongoose = require('mongoose');
 const Event = require('../models/Events');
 const Department = require('../models/Departments');
-const Doctor = require('../models/DoctorInfos');
+const DoctorInfo = require('../models/DoctorInfos');
+const Guidelines = require('../models/Guidelines');
 
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
@@ -24,7 +25,7 @@ function SampleDepartment(req, res) {
 }
 
 function SampleDoctorInfo(req, res) {
-    Doctor.findOne({}, function (err, doctorInfo) {
+    DoctorInfo.findOne({}, function (err, doctorInfo) {
         res.json({
             "fulfillmentText": doctorInfo.name,
             "outputContexts": []
@@ -32,6 +33,14 @@ function SampleDoctorInfo(req, res) {
     })
 }
 
+function SampleGuidelines(req, res) {
+    Guidelines.findOne({}, function (err, guidelines) {
+        res.json({
+            "fulfillmentText": guidelines.title,
+            "outputContexts": []
+        });
+    })
+}
 exports.processRequests = (req, res) => {
     SampleEvent(req, res);
 };
@@ -42,6 +51,10 @@ exports.processRequests = (req, res) => {
 
 exports.processRequests = (req, res) => {
     SampleDoctorInfo(req, res);
+};
+
+exports.processRequests = (req, res) => {
+    SampleGuidelines(req, res);
 };
 
 
