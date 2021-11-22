@@ -3,13 +3,18 @@
 const express = require('express');
 
 module.exports = (app) => {
-    const eventDataController = require('../controllers/EventController');
+    const controllers = require('../controllers/Controller');
     const apiRoutes = express.Router();
 
     app.get('/', (req,res) => {
         res.sendFile(__dirname + "/homepage.html");
     });
-
-    app.post('/', eventDataController.processRequests);
+    app.get('/department', (req,res) => {
+        res.sendFile(__dirname + "/department.html");
+    });
+    app.get('/docInfo', (req,res) => {
+        res.sendFile(__dirname + "/docInfo.html");
+    });
     
+    app.post('/', controllers.processRequests);
 };

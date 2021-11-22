@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const Dep = require('../models/Departments');
+const DocInfo = require('../models/DocInfo');
 
 router.get('/', async (req, res) => {
         // try {
-        //     const dep = await Dep.find();
-        //     res.json(dep);
+        //     const doc = await DocInfo.find();
+        //     res.json(doc);
         // }
         // catch(err) {
         //     res.json({
         //         message: err
         //     });
         // }
-    res.sendFile(__dirname + "/department.html");
+    res.sendFile(__dirname + "/docInfo.html");
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -28,15 +28,23 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const dep = new Dep({
-        depName: req.body.depName,
-        depDetail: req.body.depDetail,
-        depSched: req.body.depSched
+    const docIn = new DocInfo({
+        name: req.body.name,
+        specialization: req.body.specialization,
+        contactInfo: {
+            cellNumber: req.body.cellNumber,
+            email: req.body.email
+        },
+        schedule: {
+            Day: req.body.schedule,
+            Time: req.body.Time
+        },
+        datePosted: req.body.datePosted
     });
 
     try {
-        const savedDep = await dep.save();
-        res.json(savedDep);
+        const savedDocInfo = await docIn.save();
+        res.json(savedDocInfo);
     }
     catch (err) {
         res.json({
@@ -48,10 +56,10 @@ router.post('/', async (req, res) => {
 
 router.delete('/:postID', async (req, res) => {
     try {
-        const removeDep = await Dep.remove({
+        const removeDocInfo = await DocInfo.remove({
             _id: req.params.post
         });
-        res.json(removeDep);
+        res.json(removeDocInfo);
     }
     catch (err) {
         res.json({
@@ -62,7 +70,7 @@ router.delete('/:postID', async (req, res) => {
 
 router.patch('/:postID', async (req, res) => {
     try {
-        const updatedDep = await Dep.updateOne(
+        const updatedDocInfo = await DocInfo.updateOne(
             {
                 _id: req.params.postID,
             },
@@ -74,7 +82,7 @@ router.patch('/:postID', async (req, res) => {
             }
         );
 
-        res.json(updatedDep);
+        res.json(updatedDocInfo);
     }
     catch (err) {
         res.json({

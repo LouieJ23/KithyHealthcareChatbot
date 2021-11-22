@@ -12,6 +12,10 @@ const departmentInfo = mongoose.Schema({
     depSched: {
         type: String,
         require: true
+    },
+    datePosted:{
+        type: Date,
+        default: Date
     }
 
 })
