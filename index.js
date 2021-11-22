@@ -12,14 +12,13 @@ const config = require('./config');
 const event = require('./routes/event');
 const department = require('./routes/department')
 const routes = require('./routes/Routes');
-const docInfo = require('./routes/docInfo');
 
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
 
 server.use('/event', event);
 server.use('/department', department);
-server.use('/docInfo', docInfo);
+
 
 
 
