@@ -2,16 +2,16 @@ const router = require('express').Router();
 const DocInfo = require('../models/DoctorInfos');
 
 router.get('/', async (req, res) => {
-    // try {
-    //     const doctor = await DocInfo.find();
-    //     res.json(doctor);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     });
-    // }
-    res.sendFile(__dirname + "/doctorInfo.html");
+    try {
+        const doctor = await DocInfo.find();
+        res.json(doctor);
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
+    // res.sendFile(__dirname + "/doctorInfo.html");
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -36,14 +36,8 @@ router.post('/', async (req, res) => {
             email:req.body.email
         },
         schedule:{
-            Day:{
-                type:String,
-                require:true
-            },
-            Time:{
-                type:String,
-                require: true
-            }
+            Day:req.body.Day,
+            Time:req.body.Time
         },
         datePosted: req.body.datePosted
     });
