@@ -2,15 +2,15 @@ const router = require('express').Router();
 const CenterInfo = require('../models/HCenterInfo');
 
 router.get('/', async (req, res) => {
-//     try {
-//         const event = await Event.find();
-//         res.json(event);
-//     }
-//     catch(err) {
-//         res.json({
-//             message: err
-//         });
-//     }
+    // try {
+    //     const info = await CenterInfo.find();
+    //     res.json(event);
+    // }
+    // catch(err) {
+    //     res.json({
+    //         message: err
+    //     });
+    // }
     res.sendFile(__dirname + "/hCenterInfo.html");
 });
 

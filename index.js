@@ -14,6 +14,7 @@ const department = require('./routes/department')
 const routes = require('./routes/Routes');
 const doctorInfo = require('./routes/doctorInfo');
 const guidelines = require('./routes/guidelines');
+const hCenterInfo = require('./routes/hCenterInfo');
 
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
@@ -22,7 +23,7 @@ server.use('/event', event);
 server.use('/department', department);
 server.use('/doctorInfo', doctorInfo);
 server.use('/guidelines', guidelines);
-
+server.use('/hCenterInfo', hCenterInfo);
 
 
 mongoose.Promise = global.Promise;
