@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Event = require('../models/Events');
 const Department = require('../models/Departments');
-const Staff = require('../models/Staffs');
+const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
 const HcenterInfo = require('../models/HCenterInfo');
 
@@ -26,7 +26,7 @@ function SampleDepartment(req, res) {
 }
 
 function SampleStaffInfo(req, res) {
-    DoctorInfo.findOne({}, function (err, staffInfo) {
+    StaffInfo.findOne({}, function (err, staffInfo) {
         res.json({
             "fulfillmentText": staffInfo.name,
             "outputContexts": []
