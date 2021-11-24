@@ -21,7 +21,7 @@ server.use(bodyParser.json());
 server.use('/event', event);
 server.use('/department', department);
 server.use('/doctorInfo', doctorInfo);
-server.use('./guidelines', guidelines);
+server.use('/guidelines', guidelines);
 
 
 

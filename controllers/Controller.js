@@ -5,6 +5,7 @@ const Event = require('../models/Events');
 const Department = require('../models/Departments');
 const DoctorInfo = require('../models/DoctorInfos');
 const Guidelines = require('../models/Guidelines');
+const HcenterInfo = require('../models/HCenterInfo');
 
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
@@ -41,6 +42,15 @@ function SampleGuidelines(req, res) {
         });
     })
 }
+
+function SampleHcenterInfo(req, res) {
+    HcenterInfo.findOne({}, function (err, centerInfo) {
+        res.json({
+            "fulfillmentText": centerInfo.builtDate,
+            "outputContexts": []
+        });
+    })
+}
 exports.processRequests = (req, res) => {
     SampleEvent(req, res);
 };
@@ -57,4 +67,6 @@ exports.processRequests = (req, res) => {
     SampleGuidelines(req, res);
 };
 
-
+exports.processRequests = (req, res) => {
+    SampleHcenterInfo(req, res);
+};

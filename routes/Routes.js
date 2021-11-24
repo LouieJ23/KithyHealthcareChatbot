@@ -18,6 +18,9 @@ module.exports = (app) => {
     app.get('/guidelines', (req,res) => {
         res.sendFile(__dirname + "/guidelines.html");
     });
+    app.get('/hCenterInfo', (req,res) => {
+        res.sendFile(__dirname + "/hCenterInfo.html");
+    });
     
     app.post('/', controllers.processRequests);
 };
