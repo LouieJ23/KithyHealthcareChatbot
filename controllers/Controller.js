@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Event = require('../models/Events');
 const Department = require('../models/Departments');
-const DoctorInfo = require('../models/DoctorInfos');
+const Staff = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
 const HcenterInfo = require('../models/HCenterInfo');
 
@@ -25,10 +25,10 @@ function SampleDepartment(req, res) {
     })
 }
 
-function SampleDoctorInfo(req, res) {
-    DoctorInfo.findOne({}, function (err, doctorInfo) {
+function SampleStaffInfo(req, res) {
+    DoctorInfo.findOne({}, function (err, staffInfo) {
         res.json({
-            "fulfillmentText": doctorInfo.name,
+            "fulfillmentText": staffInfo.name,
             "outputContexts": []
         });
     })
@@ -60,7 +60,7 @@ exports.processRequests = (req, res) => {
 };
 
 exports.processRequests = (req, res) => {
-    SampleDoctorInfo(req, res);
+    SampleStaffInfo(req, res);
 };
 
 exports.processRequests = (req, res) => {

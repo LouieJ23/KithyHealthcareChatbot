@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const doctorInfo = mongoose.Schema({
+const staffInfo = mongoose.Schema({
     name: {
         type: String,
         require: true
@@ -9,14 +9,18 @@ const doctorInfo = mongoose.Schema({
         type: String,
         require: true
     },
+    career:{
+        type: String,
+        require: true
+    },
     specialization: {
         type: String,
         require: true
     },
     department:{
-    type: String,
-    require: true
-},
+        type: String,
+        require: true
+    },
     contactInfo: {
     cellNumber: {
         type: String,
@@ -43,4 +47,4 @@ const doctorInfo = mongoose.Schema({
 }
 
 })
-module.exports = mongoose.model("DoctorInfo", doctorInfo);
+module.exports = mongoose.model("StaffInfo", staffInfo);

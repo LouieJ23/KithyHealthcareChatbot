@@ -12,8 +12,8 @@ module.exports = (app) => {
     app.get('/department', (req,res) => {
         res.sendFile(__dirname + "/department.html");
     });
-    app.get('/docInfo', (req,res) => {
-        res.sendFile(__dirname + "/docInfo.html");
+    app.get('/staffInfo', (req,res) => {
+        res.sendFile(__dirname + "/staff.html");
     });
     app.get('/guidelines', (req,res) => {
         res.sendFile(__dirname + "/guidelines.html");

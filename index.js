@@ -12,7 +12,7 @@ const config = require('./config');
 const event = require('./routes/event');
 const department = require('./routes/department')
 const routes = require('./routes/Routes');
-const doctorInfo = require('./routes/doctorInfo');
+const staffInfo = require('./routes/staff');
 const guidelines = require('./routes/guidelines');
 const hCenterInfo = require('./routes/hCenterInfo');
 
@@ -21,7 +21,7 @@ server.use(bodyParser.json());
 
 server.use('/event', event);
 server.use('/department', department);
-server.use('/doctorInfo', doctorInfo);
+server.use('/staffInfo', staffInfo);
 server.use('/guidelines', guidelines);
 server.use('/hCenterInfo', hCenterInfo);
 

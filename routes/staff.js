@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const DocInfo = require('../models/DoctorInfos');
+const Staff = require('../models/Staffs');
 
 router.get('/', async (req, res) => {
     // try {
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     //         message: err
     //     });
     // }
-    res.sendFile(__dirname + "/doctorInfo.html");
+    res.sendFile(__dirname + "/staff.html");
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -28,14 +28,12 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const doctor = new DocInfo({
+    const staff = new Staff({
         name:req.body.name,
         sex:req.body.sex,
+        career:req.body.career,
         specialization:req.body.specialization,
-        department:{
-            type: String,
-            require: true
-        },
+        department:req.body.department,
         contactInfo:{
             cellNumber:req.body.cellNumber,
             email:req.body.email
@@ -48,8 +46,8 @@ router.post('/', async (req, res) => {
     });
 
     try {
-        const savedDocInfo = await doctor.save();
-        res.json(savedDocInfo);
+        const savedStaff = await staff.save();
+        res.json(savedStaff);
     }
     catch (err) {
         res.json({
@@ -61,10 +59,10 @@ router.post('/', async (req, res) => {
 
 router.delete('/:postID', async (req, res) => {
     try {
-        const removeDocInfo = await DocInfo.remove({
+        const removeStaff = await Staff.remove({
             _id: req.params.post
         });
-        res.json(removeDocInfo);
+        res.json(removeStaff);
     }
     catch (err) {
         res.json({
@@ -75,7 +73,7 @@ router.delete('/:postID', async (req, res) => {
 
 router.patch('/:postID', async (req, res) => {
     try {
-        const updatedDocInfo = await DocInfo.updateOne(
+        const updatedStaff = await Staff.updateOne(
             {
                 _id: req.params.postID,
             },
@@ -87,7 +85,7 @@ router.patch('/:postID', async (req, res) => {
             }
         );
 
-        res.json(updatedDocInfo);
+        res.json(updatedStaff);
     }
     catch (err) {
         res.json({
