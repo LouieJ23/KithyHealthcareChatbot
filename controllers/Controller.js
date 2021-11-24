@@ -6,6 +6,7 @@ const Department = require('../models/Departments');
 const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
 const HcenterInfo = require('../models/HCenterInfo');
+const MildIllness = require('../models/Illness')
 
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
@@ -51,6 +52,17 @@ function SampleHcenterInfo(req, res) {
         });
     })
 }
+
+
+function SampleMildIllness(req, res) {
+    MildIllness.findOne({}, function (err, illness) {
+        res.json({
+            "fulfillmentText": illness.title,
+            "outputContexts": []
+        });
+    })
+}
+
 exports.processRequests = (req, res) => {
     SampleEvent(req, res);
 };
@@ -70,3 +82,8 @@ exports.processRequests = (req, res) => {
 exports.processRequests = (req, res) => {
     SampleHcenterInfo(req, res);
 };
+
+exports.processRequests = (req, res) => {
+    SampleMildIllness(req, res);
+};
+

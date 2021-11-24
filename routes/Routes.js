@@ -21,6 +21,9 @@ module.exports = (app) => {
     app.get('/hCenterInfo', (req,res) => {
         res.sendFile(__dirname + "/hCenterInfo.html");
     });
+    app.get('/mildIllness', (req,res) => {
+        res.sendFile(__dirname + "/illness.html");
+    });
     
     app.post('/', controllers.processRequests);
 };
