@@ -30,7 +30,12 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const doctor = new DocInfo({
         name:req.body.name,
+        sex:req.body.sex,
         specialization:req.body.specialization,
+        department:{
+            type: String,
+            require: true
+        },
         contactInfo:{
             cellNumber:req.body.cellNumber,
             email:req.body.email
