@@ -16,6 +16,7 @@ const staffInfo = require('./routes/staff');
 const guidelines = require('./routes/guidelines');
 const hCenterInfo = require('./routes/hCenterInfo');
 const mildIllness = require('./routes/illness');
+const appointment = require('./routes/appointment');
 
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
@@ -26,6 +27,7 @@ server.use('/staffInfo', staffInfo);
 server.use('/guidelines', guidelines);
 server.use('/hCenterInfo', hCenterInfo);
 server.use('/mildIllness', mildIllness);
+server.use('/appointment', appointment);
 
 
 mongoose.Promise = global.Promise;

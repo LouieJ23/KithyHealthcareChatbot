@@ -7,6 +7,7 @@ const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
 const HcenterInfo = require('../models/HCenterInfo');
 const MildIllness = require('../models/Illness')
+const Appointment = require('../routes/appointment');
 
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
@@ -63,6 +64,15 @@ function SampleMildIllness(req, res) {
     })
 }
 
+function SampleAppointment(req, res) {
+    Appointment.findOne({}, function (err, appointment) {
+        res.json({
+            "fulfillmentText": appointment.category,
+            "outputContexts": []
+        });
+    })
+}
+
 exports.processRequests = (req, res) => {
     SampleEvent(req, res);
 };
@@ -87,3 +97,6 @@ exports.processRequests = (req, res) => {
     SampleMildIllness(req, res);
 };
 
+exports.processRequests = (req, res) => {
+    SampleAppointment(req, res);
+};

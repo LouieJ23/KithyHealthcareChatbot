@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const Appointment = require('../models/Scheduling');
+const Appointment = require('../models/Appointment');
 
 router.get('/', async (req, res) => {
-//     try {
-//         const event = await Event.find();
-//         res.json(event);
-//     }
-//     catch(err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-    res.sendFile(__dirname + "/scheduling.html");
+    // try {
+    //     const event = await Appointment.find();
+    //     res.json(appointment);
+    // }
+    // catch(err) {
+    //     res.json({
+    //         message: err
+    //     });
+    // }
+    res.sendFile(__dirname + "/appointment.html");
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -29,21 +29,19 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const appointment = new Appointment({
-        eventTitle: req.body.eventTitle,
-        eventLocation: req.body.eventLocation,
-        eventDetails: req.body.eventDetails,
-        eventDate: {
-            startDateTime: req.body.startDateTime,
-            endDateTime: req.body.endDateTime
-        },
-        eventRequire: req.body.eventRequire,
-        eventProcess: req.body.eventProcess,
-        eventParticipant: req.body.eventParticipant,
-        datePosted: req.body.datePosted
-    });
-
+        category:req.body.category,
+        docOption:req.body.docOption,
+        dateTime:req.body.dateTime,
+        consultType:req.body.consultType,
+        patientName:req.body.patientName,
+        sex:req.body.sex,
+        address:req.body.address,
+        email:req.body.email,
+        reason:req.body.reason,
+        
+    })
     try {
-        const savedAppointmentvent = await appointment.save();
+        const savedAppointment = await appointment.save();
         res.json(savedAppointment);
     }
     catch (err) {
