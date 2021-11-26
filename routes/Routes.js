@@ -27,6 +27,10 @@ module.exports = (app) => {
     app.get('/appointment', (req,res) => {
         res.sendFile(__dirname + "/appoitment.html");
     });
+
+    app.get('/admin', (req,res) => {
+        res.sendFile(__dirname + "/admin.html");
+    });
     
     app.post('/', controllers.processRequests);
 };
