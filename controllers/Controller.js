@@ -8,7 +8,7 @@ const Guidelines = require('../models/Guidelines');
 const HcenterInfo = require('../models/HCenterInfo');
 const MildIllness = require('../models/Illness')
 const Appointment = require('../routes/appointment');
-
+const Admin = require ('../routes/admin');
 function SampleEvent(req, res) {
     Event.findOne({}, function (err, events) {
         res.json({
