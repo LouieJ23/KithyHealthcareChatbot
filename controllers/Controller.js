@@ -16,7 +16,7 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(location == "location"){
-        Event.find({eventLocation:location}, function (err, events) {
+        Event.findOne({eventLocation:location}, function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
