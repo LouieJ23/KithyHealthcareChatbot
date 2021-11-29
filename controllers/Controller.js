@@ -17,13 +17,13 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(location == "location"){
-        Event.find({}, {eventLocation:"Kitaotao"}).sort({eventLocation: 1}). toArray (function (err, events) {
+        Event.find({}, {eventLocation:"Kitaotao"}), function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
             });
             console.log(events);
-        });
+        };
     };
    
 }
