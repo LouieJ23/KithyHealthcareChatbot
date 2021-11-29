@@ -9,7 +9,11 @@ const HcenterInfo = require('../models/HCenterInfo');
 const MildIllness = require('../models/Illness')
 const Appointment = require('../routes/appointment');
 const Admin = require ('../routes/admin');
+
+
 function SampleEvent(req, res) {
+  
+
     Event.findOne({}, function (err, events) {
         res.json({
             "fulfillmentText": events.eventDetails,
@@ -75,28 +79,6 @@ function SampleAppointment(req, res) {
 
 exports.processRequests = (req, res) => {
     SampleEvent(req, res);
+    
 };
 
-exports.processRequests = (req, res) => {
-    SampleDepartment(req, res);
-};
-
-exports.processRequests = (req, res) => {
-    SampleStaffInfo(req, res);
-};
-
-exports.processRequests = (req, res) => {
-    SampleGuidelines(req, res);
-};
-
-exports.processRequests = (req, res) => {
-    SampleHcenterInfo(req, res);
-};
-
-exports.processRequests = (req, res) => {
-    SampleMildIllness(req, res);
-};
-
-exports.processRequests = (req, res) => {
-    SampleAppointment(req, res);
-};
