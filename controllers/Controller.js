@@ -20,6 +20,7 @@ function SampleEvent(req, res) {
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
             });
+            console.log(events);
         })
     }
    
