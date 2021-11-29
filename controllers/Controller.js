@@ -22,7 +22,7 @@ function SampleEvent(req, res) {
                 "outputContexts": []
             });
             console.log(events);
-        }
+        })
     }
    
 }
