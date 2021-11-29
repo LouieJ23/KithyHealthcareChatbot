@@ -13,16 +13,17 @@ const Admin = require ('../routes/admin');
 
 function SampleEvent(req, res) {
     var location = req.body.queryResult.parameters.event;
+    var mySort = {eventLocation: 1};
     // console.log(location);
     
     if(location == "location"){
-        Event.findOne({eventLocation:"Kitaotao"}, function (err, events) {
+        Event.find({eventLocation:"Kitaotao"}.sort(mySort).toArray (function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
             });
             console.log(events);
-        });
+        }));
     };
    
 }
