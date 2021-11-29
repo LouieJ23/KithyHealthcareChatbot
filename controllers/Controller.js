@@ -16,13 +16,13 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(location == "location"){
-        Event.find({}), function (err, events) {
+        Event.find({eventLocation:location}, function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
             })
             console.log(events);
-        }
+        })
     }
    
 }
