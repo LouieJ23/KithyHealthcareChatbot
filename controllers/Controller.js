@@ -15,10 +15,10 @@ function SampleEvent(req, res) {
     var location = req.body.queryResult.parameters.event;
     // console.log(location);
     if(location == "location"){
-        Event.findOne({eventLocation:location}, function (err, events) {
+        Event.findOne({eventLocation}, function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
-                "outputContexts": []
+                // "outputContexts": []
             });
             console.log(events);
         })
