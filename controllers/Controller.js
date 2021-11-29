@@ -12,8 +12,8 @@ const Admin = require ('../routes/admin');
 
 
 function SampleEvent(req, res) {
-  
-
+    var location = req.body.queryResult.parameters.event;
+    console.log(location);
     Event.findOne({}, function (err, events) {
         res.json({
             "fulfillmentText": events.eventDetails,
@@ -78,7 +78,8 @@ function SampleAppointment(req, res) {
 }
 
 exports.processRequests = (req, res) => {
-    SampleEvent(req, res);
-    
+    if(req.body.queryResult.intent.displayName == "Events") {
+     SampleEvent(req, res);
+    }
 };
 
