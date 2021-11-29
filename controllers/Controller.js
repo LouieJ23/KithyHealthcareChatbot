@@ -14,14 +14,15 @@ const Admin = require ('../routes/admin');
 function SampleEvent(req, res) {
     var location = req.body.queryResult.parameters.event[0];
     // console.log(location);
+    
     if(location == "location"){
-        Event.find({eventLocation:location}, function (err, events) {
+        Event.find({eventLocation:location}).sort({eventLocation:-1}).toArray(function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
             });
             console.log(events);
-        })
+        }
     }
    
 }
