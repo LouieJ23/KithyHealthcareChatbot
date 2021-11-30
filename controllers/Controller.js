@@ -17,17 +17,23 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(event == "details"){
-        // Event.find({eventDetails:event}, function(err, events) {
-            Event.find({eventDetails : {"$regex": eventDetails, "$options": "i"}}).toArray(function(err, events){
-                if(err){
-                    return res.json({
-                        "fulfillment":"Sorry, failed to get event details"
-                    })
-                }else{
-                    res.status(200).json(events);
-                }
+        // // Event.find({eventDetails:event}, function(err, events) {
+        //     Event.find({eventDetails : {"$regex": eventDetails, "$options": "i"}}).toArray(function(err, events){
+        //         if(err){
+        //             return res.json({
+        //                 "fulfillment":"Sorry, failed to get event details"
+        //             })
+        //         }else{
+        //             res.status(200).json(events);
+        //         }
+        //     });
+        // }
+        Event.find({}, function(err, events) {
+            res.json({
+                "fulfillment":"Sorry, failed to get event details"
             });
-        }
+            console.log(events);
+        });
     }
         // else if(req,body.queryResult.parameters.event=="details"){
 
@@ -52,7 +58,7 @@ function SampleEvent(req, res) {
 //             // });
 //     }
    
-// }
+}
 
 function SampleDepartment(req, res) {
     Department.findOne({}, function (err, department) {
@@ -113,5 +119,4 @@ exports.processRequests = (req, res) => {
     if(req.body.queryResult.intent.displayName == "Events") {
      SampleEvent(req, res);
     }
-};
-
+}
