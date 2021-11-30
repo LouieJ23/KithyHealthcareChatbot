@@ -12,12 +12,12 @@ const Admin = require ('../routes/admin');
 
 
 function SampleEvent(req, res) {
-    var location = req.body.queryResult.parameters.event[0];
+    var location = req.body.queryResult.parameters.event;
    
     // console.log(location);
     
     if(location == "location"){
-        Event.find({eventLocation:"Kitaotao"}), function(err, events) {
+        Event.find({}, {eventLocation:"Kitaotao"}), function(err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
