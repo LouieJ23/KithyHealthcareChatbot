@@ -18,6 +18,7 @@ function SampleEvent(req, res) {
     if(location == "details"){
         Event.findOne({eventDetails:"This is the detail for event location 3"}, function(err, events) {
             res.json({
+                "fulfillmentText": events.eventTitle,
                 "fulfillmentText": events.eventDetails,
                 "outputContexts": []
             });
