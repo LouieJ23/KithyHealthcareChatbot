@@ -18,27 +18,41 @@ function SampleEvent(req, res) {
     
     if(event == "details"){
         // Event.find({eventDetails:event}, function(err, events) {
-            Event.find({eventDetails : {$regex: "Details ni" }}).forEach(printjson)
+            Event.find({eventDetails : {"$regex": eventDetails, "$options": "i"}}).toArray(function(err, events){
+                if(err){
+                    return res.json({
+                        "fulfillment":"Sorry, failed to get event details"
+                    })
+                }else{
+                    res.status(200).json(events);
+                }
+            });
+        }
+    }
+        // else if(req,body.queryResult.parameters.event=="details"){
+
+        // }
+   
         //     res.json({
         //         "fulfillmentText": events.eventDetails,
         //         "outputContexts": []
         //     });
-            console.log(eventDetails);
+            // console.log(eventDetails);
         // });
-      
-    }
-    else if (input != location) {
-        const fulfillment = req.body.queryResult.fulfillmentMessages[0].text.text[0];
-        const obj = { fulfillment };
-        console.log("json string is" + JSON.stringify(obj));
-            // return res.json({
-            //     speech: 'Something went wrong!',
-            //     displayText: 'Something went wrong!',
-            //     source: 'game schedule'
-            // });
-    }
+
+
+//     else if (input != location) {
+//         const fulfillment = req.body.queryResult.fulfillmentMessages[0].text.text[0];
+//         const obj = { fulfillment };
+//         console.log("json string is" + JSON.stringify(obj));
+//             // return res.json({
+//             //     speech: 'Something went wrong!',
+//             //     displayText: 'Something went wrong!',
+//             //     source: 'game schedule'
+//             // });
+//     }
    
-}
+// }
 
 function SampleDepartment(req, res) {
     Department.findOne({}, function (err, department) {
