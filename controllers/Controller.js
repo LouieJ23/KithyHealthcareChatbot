@@ -18,7 +18,7 @@ function SampleEvent(req, res) {
     
     if(event == "details"){
         // Event.find({eventDetails:event}, function(err, events) {
-            Event.find({eventDetails : {$regex: "Kitaotao" }} ).forEach(printjson)
+            Event.find({eventDetails : {$regex: "Details ni" }}).forEach(printjson)
         //     res.json({
         //         "fulfillmentText": events.eventDetails,
         //         "outputContexts": []
