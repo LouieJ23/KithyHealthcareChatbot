@@ -17,7 +17,7 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(location == "location"){
-        Event.findOne({}).sort({eventLocation:1}).toArray(function (err, events) {
+        Event.find({}).sort({eventLocation:1}).toArray(function (err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
