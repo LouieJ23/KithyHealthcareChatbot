@@ -13,10 +13,21 @@ const Admin = require ('../routes/admin');
 
 function SampleEvent(req, res) {
     let location = req.body.queryResult.parameters.event;
+    let event = parameters.event;
     // console.log(location);
     
+    if (err) {
+        const fulfillment = req.body.queryResult.fulfillmentMessages[0].text.text[0];
+        const obj = { fulfillment };
+        console.log("json string is" + JSON.stringify(obj));
+            // return res.json({
+            //     speech: 'Something went wrong!',
+            //     displayText: 'Something went wrong!',
+            //     source: 'game schedule'
+            // });
+    }
     if(location == "details"){
-        Event.findOne({eventDetails}, function(err, events) {
+        Event.find({eventDetails:event}, function(err, events) {
             res.json({
                 "fulfillmentText": events.eventDetails,
                 "outputContexts": []
