@@ -17,13 +17,14 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(event == "details"){
-        Event.find({eventDetails:event}, function(err, events) {
-            res.json({
-                "fulfillmentText": events.eventDetails,
-                "outputContexts": []
-            });
-            console.log(events);
-        });
+        // Event.find({eventDetails:event}, function(err, events) {
+            Event.find({eventDetails : {$regex: "Kitaotao" }} ).forEach(printjson)
+        //     res.json({
+        //         "fulfillmentText": events.eventDetails,
+        //         "outputContexts": []
+        //     });
+            console.log(eventDetails);
+        // });
       
     }
     else if (input != location) {
