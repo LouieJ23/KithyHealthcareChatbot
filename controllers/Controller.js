@@ -16,9 +16,9 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(location == "location"){
-        Event.findOne({eventLocation:"Kitaotao"}, function(err, events) {
+        Event.findOne({eventDetails}, function(err, events) {
             res.json({
-                "fulfillmentText": events.eventLocation,
+                "fulfillmentText": events.eventDetails,
                 "outputContexts": []
             });
             console.log(events);
