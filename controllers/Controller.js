@@ -26,7 +26,7 @@ function SampleEvent(req, res) {
         });
       
     }
-    else if (input != event) {
+    else if (input != location) {
         const fulfillment = req.body.queryResult.fulfillmentMessages[0].text.text[0];
         const obj = { fulfillment };
         console.log("json string is" + JSON.stringify(obj));
