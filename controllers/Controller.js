@@ -16,7 +16,7 @@ function SampleEvent(req, res) {
     const input = req.body.queryResult.queryText;
     // console.log(location);
     
-    if(event == "details"){
+    if(event == "location"){
         // // Event.find({eventDetails:event}, function(err, events) {
         //     Event.find({eventDetails : {"$regex": eventDetails, "$options": "i"}}).toArray(function(err, events){
         //         if(err){
@@ -30,7 +30,8 @@ function SampleEvent(req, res) {
         // }
         Event.find({}, function(err, events) {
             res.json({
-                "fulfillment":"Sorry, failed to get event details"
+                "fulfillment":"Sorry, failed to get event details",
+                "outputContexts": []
             });
             console.log(events);
         });
