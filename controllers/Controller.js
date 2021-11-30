@@ -17,13 +17,13 @@ function SampleEvent(req, res) {
     // console.log(location);
     
     if(location == "location"){
-        Event.find({eventLocation:"Event Title 4"}).toArray(function(err, events) {
+        Event.find({eventLocation:"Event Title 4"}), function(err, events) {
             res.json({
                 "fulfillmentText": events.eventLocation,
                 "outputContexts": []
             });
             console.log(events);
-        });
+        };
     };
    
 }
