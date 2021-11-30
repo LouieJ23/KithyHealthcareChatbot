@@ -13,7 +13,7 @@ const Admin = require ('../routes/admin');
 
 function SampleEvent(req, res) {
     var location = req.body.queryResult.parameters.event;
-   var loc = {eventLocation:"Kitaotao"};
+   var loc = {eventLocation:"Event Title 4"};
     // console.log(location);
     
     if(location == "location"){
