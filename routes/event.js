@@ -32,10 +32,7 @@ router.post('/', async (req, res) => {
         eventTitle: req.body.eventTitle,
         eventLocation: req.body.eventLocation,
         eventDescription: req.body.eventDetails,
-        eventDate: {
-            startDateTime: req.body.startDateTime,
-            endDateTime: req.body.endDateTime
-        },
+        dateTime:req.body.dateTime,
         eventRequire: req.body.eventRequire,
         eventProcess: req.body.eventProcess,
         eventParticipant: req.body.eventParticipant,
