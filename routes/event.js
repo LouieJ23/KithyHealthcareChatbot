@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     const event = new Event({
         eventTitle: req.body.eventTitle,
         eventLocation: req.body.eventLocation,
-        eventDetails: req.body.eventDetails,
+        eventDescription: req.body.eventDetails,
         eventDate: {
             startDateTime: req.body.startDateTime,
             endDateTime: req.body.endDateTime
