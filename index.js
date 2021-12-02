@@ -18,6 +18,7 @@ const hCenterInfo = require('./routes/hCenterInfo');
 const mildIllness = require('./routes/illness');
 const appointment = require('./routes/appointment');
 const admin = require('./routes/admin');
+const login = require('./routes/login');
 
 
 
@@ -32,6 +33,7 @@ server.use('/hCenterInfo', hCenterInfo);
 server.use('/mildIllness', mildIllness);
 server.use('/appointment', appointment);
 server.use('/admin', admin);
+server.use('/login', login);
 
 
 

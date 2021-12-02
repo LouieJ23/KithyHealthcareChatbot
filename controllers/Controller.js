@@ -38,7 +38,6 @@ function SampleEvent(req, res) {
 }
 
 
-
     exports.processRequests = (req, res) => {
         if (req.body.queryResult.intent.displayName == "Events") {
             SampleEvent(req, res);

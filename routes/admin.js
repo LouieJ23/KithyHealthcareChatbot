@@ -1,16 +1,18 @@
+'use strict';
 const router = require('express').Router();
-// const Event = require('../models/Events');
+require('dotenv/config');
+let alert = require('alert');
 
 router.get('/', async (req, res) => {
-//     try {
-//         const event = await Event.find();
-//         res.json(event);
-//     }
-//     catch(err) {
-//         res.json({
-//             message: err
-//         });
-//     }
+    //     try {
+    //         const event = await Event.find();
+    //         res.json(event);
+    //     }
+    //     catch(err) {
+    //         res.json({
+    //             message: err
+    //         });
+    //     }
     res.sendFile(__dirname + "/admin.html");
 });
 
@@ -28,67 +30,23 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const event = new Event({
-        eventTitle: req.body.eventTitle,
-        eventLocation: req.body.eventLocation,
-        eventDetails: req.body.eventDetails,
-        eventDate: {
-            startDateTime: req.body.startDateTime,
-            endDateTime: req.body.endDateTime
-        },
-        eventRequire: req.body.eventRequire,
-        eventProcess: req.body.eventProcess,
-        eventParticipant: req.body.eventParticipant,
-        datePosted: req.body.datePosted
-    });
+    let userName = req.body.username;
+    let uName = process.env.USERNAME1;
+    let uPassword = process.env.PASSWORD1;
+    let userPassword = req.body.password;
 
-    try {
-        const savedEvent = await event.save();
-        res.json(savedEvent);
+
+  
+     if (userName == uName && userPassword == uPassword) {
+        alert("Login Successful.");
+        res.sendFile(__dirname + "/admin.html");
     }
-    catch (err) {
-        res.json({
-            message: err
-        });
+  
+     else {
+        res.sendFile(__dirname + "/login.html");
     }
-    // console.log(req.body);
+
 });
 
-router.delete('/:postID', async (req, res) => {
-    try {
-        const removeEvent = await Event.remove({
-            _id: req.params.post
-        });
-        res.json(removeEvent);
-    }
-    catch (err) {
-        res.json({
-            message: err
-        });
-    }
-});
-
-router.patch('/:postID', async (req, res) => {
-    try {
-        const updatedEvent = await Event.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.title
-                }
-            }
-        );
-
-        res.json(updatedEvent);
-    }
-    catch (err) {
-        res.json({
-            message: err
-        });
-    }
-});
 
 module.exports = router;

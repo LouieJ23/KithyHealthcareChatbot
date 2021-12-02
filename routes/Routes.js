@@ -31,6 +31,11 @@ module.exports = (app) => {
     app.get('/admin', (req,res) => {
         res.sendFile(__dirname + "/admin.html");
     });
+
+    app.get('/login', (req,res) => {
+        res.sendFile(__dirname + "/login.html");
+    });
+
     
     app.post('/', controllers.processRequests);
 };
