@@ -38,12 +38,13 @@ router.post('/', async (req, res) => {
 
   
      if (userName == uName && userPassword == uPassword) {
-        alert("Login Successful.");
         res.sendFile(__dirname + "/admin.html");
+        alert("Login Successful.");
     }
   
      else {
         res.sendFile(__dirname + "/login.html");
+        alert("Login Failed.");
     }
 
 });
