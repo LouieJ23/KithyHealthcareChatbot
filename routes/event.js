@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 //             message: err
 //         });
 //     }
-    res.sendFile(__dirname + "/event.html");
+    res.sendFile(__dirname + "/event2.html");
 });
 
 // router.get('/:postID', async (req, res) => {

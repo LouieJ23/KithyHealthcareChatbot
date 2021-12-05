@@ -19,6 +19,7 @@ const mildIllness = require('./routes/illness');
 const appointment = require('./routes/appointment');
 const admin = require('./routes/admin');
 const login = require('./routes/login');
+const event2 = require('./routes/event');
 
 
 
@@ -34,7 +35,7 @@ server.use('/mildIllness', mildIllness);
 server.use('/appointment', appointment);
 server.use('/admin', admin);
 server.use('/login', login);
-
+server.use('/event2', event2);
 
 
 mongoose.Promise = global.Promise;

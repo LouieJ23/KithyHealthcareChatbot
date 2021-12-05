@@ -35,18 +35,16 @@ router.post('/', async (req, res) => {
     let uPassword = process.env.PASSWORD1;
     let userPassword = req.body.password;
 
-
-  
      if (userName == uName && userPassword == uPassword) {
         res.sendFile(__dirname + "/admin.html");
-        alert("Login Successful.");
+        alert("Login Successful.")
+        return true;
     }
-  
      else {
         res.sendFile(__dirname + "/login.html");
-        alert("Login Failed.");
+        alert("Login Failed.")
+        return false;
     }
-
 });
 
 

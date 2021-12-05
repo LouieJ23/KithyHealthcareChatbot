@@ -36,6 +36,10 @@ module.exports = (app) => {
         res.sendFile(__dirname + "/login.html");
     });
 
+    app.get('/event2', (req,res) => {
+        res.sendFile(__dirname + "/event2.html");
+    });
+
     
     app.post('/', controllers.processRequests);
 };
