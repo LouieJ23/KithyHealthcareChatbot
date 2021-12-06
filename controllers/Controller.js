@@ -29,7 +29,7 @@ function SampleEvent(req, res) {
         Event.findOne({}, function(err, events) {
             var result = "The "+events.eventTitle+" will be going to held  in "+events.eventLocation+". So in order to participate to the event, you are required to bring "+events.eventRequire+". The process is to "+events.eventProcess+" and the participants are "+events.eventParticipants;
             res.json({
-                "fulfillmentText": result,
+                "fulfillmentText": "Event ang result sa quick replies!",
                 "outputContexts": []
             });
         }).sort({datePosted:-1});
