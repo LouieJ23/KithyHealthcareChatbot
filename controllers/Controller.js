@@ -36,7 +36,7 @@ function SampleEvent(req, res) {
             });
         }).sort({ datePosted: 1 });
     }
-    // console.log(suggest);
+    console.log(suggest);
 
     // if(suggest == "Events"){
     //     Event.findOne({}, function(err, events) {
