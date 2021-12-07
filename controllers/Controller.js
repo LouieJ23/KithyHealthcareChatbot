@@ -34,27 +34,27 @@ function SampleEvent(req, res) {
             });
         }).sort({datePosted:-1});
     }
-    if(suggest == "previous"){
+    if(event == "previous"){
         Event.findOne({}, function(err, events) {
-            var result = "The "+events.eventTitle+" will be going to held  in "+events.eventLocation+". So in order to participate to the event, you are required to bring "+events.eventRequire+". The process is to "+events.eventProcess+" and the participants are "+events.eventParticipants;
-            res.json({
-                "fulfillmentText": "Event ang result sa quick replies!",
-                "outputContexts": []
-            });
-        }).sort({datePosted:-1});
-    }
-    else {
-        
-        Event.findOne({ eventLocation: { $regex: /Location/ }}, function (err, events) {
             var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
-            // console.log(events);
             res.json({
                 "fulfillmentText": result,
                 "outputContexts": []
             });
-        }).sort({ datePosted: 1 });
+        }).sort({datePosted:-1});
     }
-    // console.log(suggest);
+    // else {
+        
+    //     Event.findOne({ eventLocation: { $regex: /Location/ }}, function (err, events) {
+    //         var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+    //         // console.log(events);
+    //         res.json({
+    //             "fulfillmentText": result,
+    //             "outputContexts": []
+    //         });
+    //     }).sort({ datePosted: 1 });
+    // }
+    // // console.log(suggest);
 
     
 }
