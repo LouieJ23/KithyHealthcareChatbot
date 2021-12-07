@@ -16,7 +16,7 @@ function SampleEvent(req, res) {
     let suggest = req.body.queryResult.queryText;
     // console.log(location);
 
-    if(event.contains("latest")) {
+    if(event == ("latest")) {
         Event.findOne({}, function(err, events) {
             var result = "The "+events.eventTitle+" will be going to held  in "+events.eventLocation+". So in order to participate to the event, you are required to bring "+events.eventRequire+". The process is to "+events.eventProcess+" and the participants are "+events.eventParticipants;
             res.json({
