@@ -14,9 +14,10 @@ const Admin = require('../routes/admin');
 function SampleEvent(req, res) {
     let event = req.body.queryResult.parameters.event;
     let suggest = req.body.queryResult.queryText;
+    let entity = req.body.queryResult.parameters.event.location;
     // console.log(location);
 
-    if (suggest == "latest") {
+    if (event == entity) {
         Event.findOne({}, function (err, events) {
             var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
             res.json({
@@ -26,7 +27,7 @@ function SampleEvent(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (event == "Event Name") {
+    if (suggest == "Event Name") {
         Event.findOne({}, function (err, events) {
             var result = "The Event Name" + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
             res.json({
