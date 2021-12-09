@@ -35,6 +35,19 @@ function SampleEvent(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
+
+    else {
+
+    Event.findOne({ eventLocation: { $regex: /Location/ }}, function (err, events) {
+        var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+        // console.log(events);
+        res.json({
+            "fulfillmentText": result,
+            "outputContexts": []
+        });
+    }).sort({ datePosted: 1 });
+}
+// console.log(suggest);
 }
 //     if (event == "previous") {
 //         Event.findOne({}, function (err, events) {
