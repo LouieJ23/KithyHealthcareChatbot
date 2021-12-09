@@ -25,13 +25,6 @@ function SampleEvent(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    else {
-        return res.json({
-            speech: 'Cant handle the queries with two teams now. I will update myself',
-            displayText: 'Cant handle the queries with two teams now. I will update myself',
-            source: 'game schedule'
-        });
-    }
     
     if (suggest == "Event Name") {
         Event.findOne({}, function (err, events) {
@@ -42,42 +35,43 @@ function SampleEvent(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (event == "previous") {
-        Event.findOne({}, function (err, events) {
-            if (err) {
-                return res.json({
-                    speech: 'Something went wrong!',
-                    displayText: 'Something went wrong!',
-                });
-            }
-
-            if (events) {
-                var requiredEvent;
-                for (var i = 0; i < events.length; i++) {
-                    var event = events[i];
-                    var convertedCurrentDate = new Date();
-                    var convertedEventDate = new Date(event.date);
-
-                    if (convertedEventDate < convertedCurrentDate) {
-                        var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
-                                // console.log(events);
-                                res.json({
-                                    "fulfillmentText": result,
-                                    "outputContexts": []
-                                });
-                    }
-                }
-            }
-        });
-    }
-    else {
-        return res.json({
-            speech: 'Next game schedules will be available soon',
-            displayText: 'Next game schedules will be available soon',
-            source: 'game schedule'
-        });
-    }
 }
+//     if (event == "previous") {
+//         Event.findOne({}, function (err, events) {
+//             if (err) {
+//                 return res.json({
+//                     speech: 'Something went wrong!',
+//                     displayText: 'Something went wrong!',
+//                 });
+//             }
+
+//             if (events) {
+//                 var requiredEvent;
+//                 for (var i = 0; i < events.length; i++) {
+//                     var event = events[i];
+//                     var convertedCurrentDate = new Date();
+//                     var convertedEventDate = new Date(event.date);
+
+//                     if (convertedEventDate < convertedCurrentDate) {
+//                         var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+//                                 // console.log(events);
+//                                 res.json({
+//                                     "fulfillmentText": result,
+//                                     "outputContexts": []
+//                                 });
+//                     }
+//                 }
+//             }
+//         });
+//     }
+//     else {
+//         return res.json({
+//             speech: 'Next game schedules will be available soon',
+//             displayText: 'Next game schedules will be available soon',
+//             source: 'game schedule'
+//         });
+//     }
+// }
 
 
 
