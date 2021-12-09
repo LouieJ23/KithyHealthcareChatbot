@@ -12,9 +12,8 @@ const Admin = require('../routes/admin');
 
 
 function SampleEvent(req, res) {
-    let event = req.body.queryResult.parameters.event.latest;
     let suggest = req.body.queryResult.queryText;
-   
+   let event = req.body.queryResult.parameters.event["latest"];
     // console.log(location);
 
     if (suggest == event) {
