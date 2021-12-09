@@ -13,12 +13,11 @@ const Admin = require('../routes/admin');
 
 function SampleEvent(req, res) {
     let event = req.body.queryResult.parameters.event;
-    let entity = req.body.queryResult.parameters.event[0];
     let suggest = req.body.queryResult.queryText;
    
     // console.log(location);
 
-    if (suggest == entity) {
+    if (suggest == "Event Name") {
         Event.findOne({}, function (err, events) {
             var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
             res.json({
@@ -28,15 +27,15 @@ function SampleEvent(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (suggest == "Event Name") {
-        Event.findOne({}, function (err, events) {
-            var result = "The Event Name" + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
-            res.json({
-                "fulfillmentText": result,
-                "outputContexts": []
-            });
-        }).sort({ datePosted: -1 });
-    }
+    // if (suggest == "Event Name") {
+    //     Event.findOne({}, function (err, events) {
+    //         var result = "The Event Name" + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+    //         res.json({
+    //             "fulfillmentText": result,
+    //             "outputContexts": []
+    //         });
+    //     }).sort({ datePosted: -1 });
+    // }
 }
 
     // else {
