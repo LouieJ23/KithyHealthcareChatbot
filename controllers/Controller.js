@@ -26,11 +26,11 @@ function SampleEvent(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (suggest == "Event Name") {
+    if (suggest == "EventName") {
         Event.findOne({}, function (err, events) {
             var result = "The Event Name" + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
             res.json({
-                "fulfillmentText": "This is the result!",
+                "fulfillmentText": result,
                 "outputContexts": []
             });
         }).sort({ datePosted: -1 });
