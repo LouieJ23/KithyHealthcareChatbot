@@ -30,11 +30,12 @@ function SampleEvent(req, res) {
         Event.findOne({}, function (err, events) {
             var result = "The Event Name" + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
             res.json({
-                "fulfillmentText": result,
+                "fulfillmentText": "This is the result!",
                 "outputContexts": []
             });
         }).sort({ datePosted: -1 });
     }
+}
 
     // else {
     //     Event.findOne({ eventLocation: { $regex: /Location/ } }, function (err, events) {
@@ -47,7 +48,7 @@ function SampleEvent(req, res) {
     //     }).sort({ datePosted: 1 });
     // }
     // console.log(suggest);
-}
+
 //     if (event == "previous") {
 //         Event.findOne({}, function (err, events) {
 //             if (err) {
