@@ -6,6 +6,7 @@ const http = require('http');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const server = express();
+const ejs = require('ejs');
 
 //import routes
 const config = require('./config');
@@ -22,7 +23,7 @@ const login = require('./routes/login');
 const event2 = require('./routes/event');
 
 
-
+server.set('view engine', 'ejs');
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
 
@@ -36,6 +37,7 @@ server.use('/appointment', appointment);
 server.use('/admin', admin);
 server.use('/login', login);
 server.use('/event2', event2);
+
 
 
 mongoose.Promise = global.Promise;

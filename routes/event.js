@@ -2,16 +2,21 @@ const router = require('express').Router();
 const Event = require('../models/Events');
 
 router.get('/', async (req, res) => {
-//     try {
-//         const event = await Event.find();
-//         res.json(event);
-//     }
-//     catch(err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-    res.sendFile(__dirname + "/event2.html");
+    try {
+        const event = await Event.find();
+        res.render('index', {
+            events: event
+        });
+        console.log(event.eventDate);
+        // res.json(event);
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
+
+    
 });
 
 // router.get('/:postID', async (req, res) => {
