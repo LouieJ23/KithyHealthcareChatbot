@@ -13,7 +13,7 @@ const Admin = require('../routes/admin');
 
 function SampleEvent(req, res) {
     let suggest = req.body.queryResult.queryText;
-//    let event = req.body.queryResult.parameters.event;
+    //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
 
     if (suggest == "latest") {
@@ -24,14 +24,14 @@ function SampleEvent(req, res) {
             });
         }
         else {
-        Event.findOne({}, function (err, events) {
-            var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
-            res.json({
-                "fulfillmentText": result,
-                "outputContexts": []
-            });
-        }).sort({ datePosted: -1 });
-    }
+            Event.findOne({}, function (err, events) {
+                var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+                res.json({
+                    "fulfillmentText": result,
+                    "outputContexts": []
+                });
+            }).sort({ datePosted: -1 });
+        }
     }
 
     if (suggest == "Event Name") {
@@ -45,17 +45,17 @@ function SampleEvent(req, res) {
     }
 }
 
-    // else {
-    //     Event.findOne({ eventLocation: { $regex: /Location/ } }, function (err, events) {
-    //         var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
-    //         // console.log(events);
-    //         res.json({
-    //             "fulfillmentText": result,
-    //             "outputContexts": []
-    //         });
-    //     }).sort({ datePosted: 1 });
-    // }
-    // console.log(suggest);
+// else {
+//     Event.findOne({ eventLocation: { $regex: /Location/ } }, function (err, events) {
+//         var result = "The previous event is " + events.eventTitle + " was held in " + events.eventLocation + ". The requirement for this event is/are: " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+//         // console.log(events);
+//         res.json({
+//             "fulfillmentText": result,
+//             "outputContexts": []
+//         });
+//     }).sort({ datePosted: 1 });
+// }
+// console.log(suggest);
 
 //     if (event == "previous") {
 //         Event.findOne({}, function (err, events) {
