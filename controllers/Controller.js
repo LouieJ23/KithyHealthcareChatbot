@@ -11,7 +11,7 @@ const Appointment = require('../routes/appointment');
 const Admin = require('../routes/admin');
 
 
-function SampleEvent(req, res) {
+function _Event(req, res) {
     let suggest = req.body.queryResult.queryText;
     //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
@@ -125,7 +125,7 @@ function SampleEvent(req, res) {
 
 exports.processRequests = (req, res) => {
     if (req.body.queryResult.intent.displayName == "Events") {
-        SampleEvent(req, res);
+        _Event(req, res);
     }
 };
 

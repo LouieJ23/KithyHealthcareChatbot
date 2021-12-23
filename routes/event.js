@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
         res.render('index', {
             events: event
         });
-        console.log(event.eventDate);
+        // console.log(event.eventDate);
         // res.json(event);
     }
     catch(err) {
@@ -36,8 +36,9 @@ router.post('/', async (req, res) => {
     const event = new Event({
         eventTitle: req.body.eventTitle,
         eventLocation: req.body.eventLocation,
-        eventDescription: req.body.eventDetails,
-        dateTime:req.body.dateTime,
+        eventDetails: req.body.eventDetails,
+        startDateTime: req.body.dateTime,
+        endDateTime: req.body.endDateTime,
         eventRequire: req.body.eventRequire,
         eventProcess: req.body.eventProcess,
         eventParticipant: req.body.eventParticipant,
