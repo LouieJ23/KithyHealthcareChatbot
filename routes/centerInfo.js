@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const CenterInfo = require('../models/HCenterInfo');
+const CenterInfo = require('../models/CenterInfo');
 
 router.get('/', async (req, res) => {
     // try {
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     //         message: err
     //     });
     // }
-    res.sendFile(__dirname + "/hCenterInfo.html");
+    res.sendFile(__dirname + "/centerInfo.html");
 });
 
 // router.get('/:postID', async (req, res) => {
