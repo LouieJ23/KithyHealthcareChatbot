@@ -20,7 +20,8 @@ router.get('/', async (req, res) => {
     try {
         const event = await Event.find();
         res.render('event', {
-            events: event
+            events: event,
+            page_name: 'event'
         });
         
     }
@@ -84,7 +85,8 @@ router.get('/:postID', async (req, res) => {
     try {
         const event = await Event.findById(req.params.postID);
         res.render('event', {
-            events: event
+            events: event,
+            page_name: 'event'
         });
     }
     catch(err) {

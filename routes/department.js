@@ -20,7 +20,8 @@ router.get('/', async (req, res) => {
     try {
         const department = await Department.find();
         res.render('department', {
-            departments: department
+            departments: department,
+            page_name: 'department'
         });
 
         
@@ -36,7 +37,8 @@ router.get('/:departmentID', async (req, res) => {
     try {
         const department = await Department.findById(req.params.departmentID);
         res.render('department', {
-            departments: department
+            departments: department,
+            page_name: 'department'
         });
     }
     catch (err) {
