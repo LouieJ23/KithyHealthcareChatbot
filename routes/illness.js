@@ -1,30 +1,47 @@
 const router = require('express').Router();
 const Illness = require('../models/Illness');
 
-router.get('/', async (req, res) => {
-//     try {
-//         const event = await Event.find();
-//         res.json(event);
-//     }
-//     catch(err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-    res.sendFile(__dirname + "/illness.html");
+router.use((req, res, next) => {
+    if(req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+
+    if(req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
+
+    next();
 });
 
-// router.get('/:postID', async (req, res) => {
-//     try {
-//         const post = await Event.findById(req.params.postID);
-//         res.json(post);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
+router.get('/', async (req, res) => {
+    try {
+        const illness = await Illness.find();
+        res.render('illness', {
+            illnesses: illness
+        });
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
+});
+
+router.get('/:illnessID', async (req, res) => {
+    try {
+        const illness = await Illness.findById(req.params.illnessID);
+        res.render('illness', {
+            illnesses: illness
+        });
+    }
+    catch (err) {
+        res.json({
+            message: err
+        });
+    }
+});
 
 
 router.post('/', async (req, res) => {
@@ -38,7 +55,7 @@ router.post('/', async (req, res) => {
     })
     try {
         const savedIllness = await illness.save();
-        res.json(savedIllness);
+        res.redirect(301, '/mildIllness');
     }
     catch (err) {
         res.json({
@@ -48,12 +65,12 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
-router.delete('/:postID', async (req, res) => {
+router.delete('/:illnessID', async (req, res) => {
     try {
         const removeIllness = await Illness.remove({
-            _id: req.params.post
+            _id: req.params.illnessID
         });
-        res.json(removeIllness);
+        res.redirect('/mildIllness');
     }
     catch (err) {
         res.json({
@@ -62,21 +79,14 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-router.patch('/:postID', async (req, res) => {
+router.put('/:illnessID', async (req, res) => {
     try {
-        const updatedIllness = await Illness.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.title
-                }
-            }
-        );
+        const updateIllness = await Illness.findByIdAndUpdate(req.params.illnessID, req.body, {
+            new: true,
+            runValidator: true
+        });
 
-        res.json(updatedIllness);
+        res.redirect('/mildIllness');
     }
     catch (err) {
         res.json({
