@@ -32,14 +32,14 @@ const staffInfo = mongoose.Schema({
     }
 },
     schedule: {
-    Day: {
-        type: String,
-        require: true
-    },
-    Time: {
-        type: String,
-        require: true
-    }
+        Day: {
+            type: String,
+            require: true
+        },
+        Time: {
+            type: String,
+            require: true
+        }
 },
     datePosted: {
     type: Date,
