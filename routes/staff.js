@@ -1,30 +1,49 @@
 const router = require('express').Router();
 const Staff = require('../models/Staffs');
 
-router.get('/', async (req, res) => {
-    // try {
-    //     const doctor = await DocInfo.find();
-    //     res.json(doctor);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     });
-    // }
-    res.sendFile(__dirname + "/staff.html");
+router.use((req, res, next) => {
+    if(req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+
+    if(req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
+
+    next();
 });
 
-// router.get('/:postID', async (req, res) => {
-//     try {
-//         const post = await Event.findById(req.params.postID);
-//         res.json(post);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
+router.get('/', async (req, res) => {
+    try {
+        const staff = await Staff.find();
+        res.render('staff', {
+            staffs: staff
+        });
+
+        
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
+});
+
+router.get('/:staffID', async (req, res) => {
+    try {
+        const staff = await Staff.findById(req.params.staffID);
+        res.render('staff', {
+            staffs: staff
+        });
+    }
+    catch(err) {
+        res.json({
+            message: err
+        })
+    }
+});
 
 
 router.post('/', async (req, res) => {
@@ -34,20 +53,12 @@ router.post('/', async (req, res) => {
         career:req.body.career,
         specialization:req.body.specialization,
         department:req.body.department,
-        contactInfo:{
-            cellNumber:req.body.cellNumber,
-            email:req.body.email
-        },
-        schedule:{
-            Day:req.body.Day,
-            Time:req.body.Time
-        },
         datePosted: req.body.datePosted
     });
 
     try {
         const savedStaff = await staff.save();
-        res.json(savedStaff);
+        res.redirect(301, '/staffInfo');
     }
     catch (err) {
         res.json({
@@ -57,12 +68,12 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
-router.delete('/:postID', async (req, res) => {
+router.delete('/:staffID', async (req, res) => {
     try {
         const removeStaff = await Staff.remove({
-            _id: req.params.post
+            _id: req.params.staffID
         });
-        res.json(removeStaff);
+        res.redirect('/staffInfo');
     }
     catch (err) {
         res.json({
@@ -71,21 +82,14 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-router.patch('/:postID', async (req, res) => {
+router.put('/:staffID', async (req, res) => {
     try {
-        const updatedStaff = await Staff.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.title
-                }
-            }
-        );
+        const updateStaff = await Staff.findByIdAndUpdate(req.params.staffID, req.body, {
+            new: true,
+            runValidator: true
+        });
 
-        res.json(updatedStaff);
+        res.redirect('/staffInfo');
     }
     catch (err) {
         res.json({

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Event = require('../models/Events');
 const Appointment = require('../models/Appointment');
+const Staff = require('../models/Staffs');
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB", () =>{
@@ -15,6 +16,10 @@ var samp = "Location";
 //     console.log(appointment);
 // }).sort({datePosted:-1});
 
-Appointment.find({}, function(err, appointments) {
-    console.log(appointments);
+// Appointment.find({}, function(err, appointments) {
+//     console.log(appointments);
+// });
+
+Staff.find({}, function(err, staffs) {
+    console.log(staffs);
 });
