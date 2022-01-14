@@ -31,9 +31,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:centerInfoID', async (req, res) => {
+router.get('/:postID', async (req, res) => {
     try {
-        const centerInfo = await CenterInfo.findById(req.params.centerInfoID);
+        const centerInfo = await CenterInfo.findById(req.params.postID);
         res.render('centerInfo', {
             centerInfos: centerInfo
         });
@@ -48,7 +48,7 @@ router.get('/:centerInfoID', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const centerInfo = new CenterInfo({
-       dateOfFouding:req.body.dateOfFouding, 
+       dateOfFounding:req.body.dateOfFounding, 
        publishedBy:req.body.publishedBy,
        location:req.body.location,
        phoneNumber:req.body.phoneNumber,
@@ -70,10 +70,10 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
-router.delete('/:centerInfoID', async (req, res) => {
+router.delete('/:postID', async (req, res) => {
     try {
         const removeCenterInfo = await CenterInfo.remove({
-            _id: req.params.centerInfoID
+            _id: req.params.postID
         });
         res.redirect('/centerInfo');
     }
@@ -84,9 +84,9 @@ router.delete('/:centerInfoID', async (req, res) => {
     }
 });
 
-router.put('/:centerInfoID', async (req, res) => {
+router.put('/:postID', async (req, res) => {
     try {
-        const updateCenterINfo = await CenterInfo.findByIdAndUpdate(req.params.centerInfoID, req.body, {
+        const updateCenterINfo = await CenterInfo.findByIdAndUpdate(req.params.postID, req.body, {
             new: true,
             runValidator: true
         });
