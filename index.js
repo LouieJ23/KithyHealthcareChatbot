@@ -16,7 +16,7 @@ const event = require('./routes/event');
 const department = require('./routes/department')
 const staffInfo = require('./routes/staff');
 const guidelines = require('./routes/guidelines');
-const hCenterInfo = require('./routes/hCenterInfo');
+const centerInfo = require('./routes/centerInfo');
 const mildIllness = require('./routes/illness');
 const appointment = require('./routes/appointment');
 const admin = require('./routes/admin');
@@ -40,7 +40,7 @@ server.get('/', (req,res) => {
 server.use('/department', department);
 server.use('/staffInfo', staffInfo);
 server.use('/guidelines', guidelines);
-server.use('/hCenterInfo', hCenterInfo);
+server.use('/centerInfo', centerInfo);
 server.use('/mildIllness', mildIllness);
 server.use('/appointment', appointment);
 // server.use('/admin', admin);
