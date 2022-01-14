@@ -417,7 +417,7 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Health Center's staffInfo</b></h2>
+						<h2>Manage <b>Health Center's Info</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
@@ -445,7 +445,7 @@
 						<th>Location</th>
 						<th>Phone Number</th>
 						<th>Email</th>
-						<th>Mission/s</th>
+						<th>Mission</th>
 						<th>Vision</th>
 						<th>Date Posted</th>
 						
@@ -454,9 +454,9 @@
 				</thead>
 				<tbody>
 					<% 
-					if(events.length > 0)
+					if(centerInfos.length > 0)
 					{
-						for(var i=0; i < events.length; i++) { %>
+						for(var i=0; i < centerInfos.length; i++) { %>
 						<tr>
 							<td>
 								<!-- <span class="custom-checkbox">
@@ -467,35 +467,32 @@
 							</td>
 
 							<td>
-								<%= events[i].eventTitle %>
+								<%= centerInfos[i].dateOfFounding %>
 							</td>
 							<td>
-								<%= events[i].eventLocation %>
+								<%= centerInfos[i].constructedBy %>
 							</td>
 							<td>
-								<%= events[i].eventDetails %>
+								<%= centerInfos[i].location %>
 							</td>
 							<td>
-								<%= events[i].startDateTime %>
+								<%= centerInfos[i].phoneNumber %>
 							</td>
 							<td>
-								<%= events[i].endDateTime %>
+								<%= centerInfos[i].email %>
 							</td>
 							<td>
-								<%= events[i].eventRequire %>
+								<%= centerInfos[i].mission %>
 							</td>
 							<td>
-								<%= events[i].eventProcess %>
+								<%= centerInfos[i].vision %>
 							</td>
 							<td>
-								<%= events[i].eventParticipant %>
-							</td>
-							<td>
-								<%= events[i].datePosted %>
+								<%= centerInfos[i].datePosted %>
 							</td>
 
 							<td>
-								<a href="/event/<%= events[i]._id %>" class="edit"><i class="material-icons"
+								<a href="/centerInfo/<%= centerInfos[i]._id %>" class="edit"><i class="material-icons"
 										 title="Edit" >&#xE254;</i></a>
 									<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
 											class="material-icons"  title="Delete">&#xE872;</i></a>
@@ -511,31 +508,28 @@
 								</td>
 	
 								<td>
-									<%= events.eventTitle %>
+									<%= centerInfos.dateOfFounding %>
 								</td>
 								<td>
-									<%= events.eventLocation %>
+									<%= centerInfos.constructedBy %>
 								</td>
 								<td>
-									<%= events.eventDetails %>
+									<%= centerInfos.location %>
 								</td>
 								<td>
-									<%= events.startDateTime %>
+									<%= centerInfos.phoneNumber %>
 								</td>
 								<td>
-									<%= events.endDateTime %>
+									<%= centerInfos.email %>
 								</td>
 								<td>
-									<%= events.eventRequire %>
+									<%= centerInfos.mission %>
 								</td>
 								<td>
-									<%= events.eventProcess %>
+									<%= centerInfos.vision %>
 								</td>
 								<td>
-									<%= events.eventParticipant %>
-								</td>
-								<td>
-									<%= events.datePosted %>
+									<%= centerInfos.datePosted %>
 								</td>
 	
 								<td>
@@ -570,43 +564,44 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/event" method="post">
+				<form action="/centerInfo" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Add Event</h4>
+						<h4 class="modal-title">Add Health Center Info</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Title</label>
-							<input type="text" name="eventTitle" class="form-control" required>
+							<label>Date of Founding</label>
+							<input type="text" name="dateOfFounding" class="form-control" required>
+							
+						</div>
+						<div class="form-group">
+							<label>published By</label>
+							<input type="text" name="publishedBy" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Location</label>
-							<input type="text" name="eventLocation" class="form-control" required>
+							<textarea class="form-control" name="location" required></textarea>
 						</div>
 						<div class="form-group">
-							<label>Description</label>
-							<textarea class="form-control" name="eventDetails" required></textarea>
+							<label>Phone Number</label>
+							<input type="text" name="phoneNumber" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Start Date & Time</label>
-							<input type="text" name="startDateTime" class="form-control" required>
+							<label>Email</label>
+							<input type="text" name="email" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>End Date & Time</label>
-							<input type="text" name="endDateTime" class="form-control" required>
+							<label>Misson</label>
+							<input type="text" name="mission" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Requirement/s</label>
-							<input type="text" name="eventRequire" class="form-control" required>
+							<label>Vision</label>
+							<input type="text" name="vision" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Process</label>
-							<input type="text" name="eventProcess" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Participants</label>
-							<input type="text" name="eventParticipant" class="form-control" required>
+							<label>Date Posted</label>
+							<input type="text" name="datePosted" class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -621,10 +616,10 @@
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/event/<%= events._id %>?_method=DELETE" method="post">
+				<form action="/centerInfo/<%= centerInfos._id %>?_method=DELETE" method="post">
 					<input type="hidden" name="_method" value="DELETE">
 					<div class="modal-header">
-						<h4 class="modal-title">Delete Event</h4>
+						<h4 class="modal-title">Delete Center Info</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="row my-3">
@@ -643,52 +638,48 @@
 	</div>
 	<!-- Edit Modal HTML -->
 	<%
-		if(! events.length > 0) { %>
+		if(! centerInfos.length > 0) { %>
 			<div id="editEmployeeModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form action="/event/<%= events._id%>?_method=PUT" method="post">
+						<form action="/centerInfo/<%= centerInfos._id%>?_method=PUT" method="post">
 							<input type="hidden" name="_method" value="PUT">
 							<div class="modal-header">
-								<h4 class="modal-title">Edit Events</h4>
+								<h4 class="modal-title">Edit Center Info</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							</div>
 							<div class="modal-body">
 								<div class="form-group">
-									<label>Event Title</label>
-									<input type="text" name="eventTitle" class="form-control" value="<%=events.eventTitle%>" required>
+									<label>Date of Founding</label>
+									<input type="text" name="dateOfFounding" class="form-control" value="<%=centerInfos.dateOfFounding%>" required>
+								</div>
+								<div class="form-group">
+									<label>Published By</label>
+									<input type="text" name="publishedBy" class="form-control" value="<%=centerInfos.publishedBy%>" required>
 								</div>
 								<div class="form-group">
 									<label>Location</label>
-									<input type="text" name="eventLocation" class="form-control" value="<%=events.eventLocation%>" required>
+									<textarea class="form-control" name="location" required><%=centerInfos.location%></textarea>
 								</div>
 								<div class="form-group">
-									<label>Description</label>
-									<textarea class="form-control" name="eventDetails" required><%=events.eventDetails%></textarea>
+									<label>Phone Number</label>
+									<input type="text" class="form-control"  name="phoneNumber" value="<%=centerInfos.phoneNumber%>" required>
 								</div>
 								<div class="form-group">
-									<label>Start Date & Time</label>
-									<input type="text" class="form-control"  name="startDateTime" value="<%=events.startDateTime%>" required>
+									<label>Email</label>
+									<input type="text" class="form-control" name="email"  value="<%=centerInfos.email%>"  required>
 								</div>
 								<div class="form-group">
-									<label>End Date & Time</label>
-									<input type="text" class="form-control" name="endDateTime"  value="<%=events.endDateTime%>"  required>
+									<label>Missio</label>
+									<input type="text" class="form-control" name="mission"  value="<%=centerInfos.mission%>" required>
 								</div>
 								<div class="form-group">
-									<label>Requirements</label>
-									<input type="text" class="form-control" name="eventRequire"  value="<%=events.eventRequire%>" required>
+									<label>Vision</label>
+									<input type="text" class="form-control" name="vision"  value="<%=centerInfos.vision%>" required>
 								</div>
 								<div class="form-group">
-									<label>Process</label>
-									<input type="text" class="form-control" name="eventProcess"  value="<%=events.eventProcess%>" required>
-								</div>
-								<div class="form-group">
-									<label>Participants</label>
-									<input type="text" class="form-control" name="eventParticipant" value="<%=events.eventParticipant%>" required>
-								</div>
-								<div class="form-group">
-									<label>Posted Date</label>
-									<input type="text" class="form-control" name="datePosted" value="<%=events.datePosted%>" required>
+									<label>Date Posted</label>
+									<input type="text" class="form-control" name="datePosted" value="<%=centerInfos.datePosted%>" required>
 								</div>
 							</div>
 							<div class="modal-footer">
