@@ -1,30 +1,51 @@
 const router = require('express').Router();
 const Guidelines = require('../models/Guidelines');
 
+router.use((req, res, next) => {
+    if(req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+
+    if(req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
+
+    next();
+});
+
+
 router.get('/', async (req, res) => {
-    // try {
-    //     const gui = await Guidelines.find();
-    //     res.json(gui);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     });
-    // }
+    try {
+        const guideline = await Guidelines.find();
+        res.render('guidelines', {
+            guidelines: guideline
+        });
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
     res.sendFile(__dirname + "/guidelines.html");
 });
 
-// router.get('/:postID', async (req, res) => {
-//     try {
-//         const post = await Event.findById(req.params.postID);
-//         res.json(post);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
+router.get('/:guidelinesID', async (req, res) => {
+    try {
+        const guideline = await Guidelines.findById(req.params.guidelinesID);
+        res.render('guidelines', {
+            guidelines: guideline
+        });
+
+        console.log(guideline);
+    }
+    catch (err) {
+        res.json({
+            message: err
+        });
+    }
+});
 
 
 router.post('/', async (req, res) => {
@@ -37,7 +58,7 @@ router.post('/', async (req, res) => {
 
     try {
         const savedGuidelines = await guide.save();
-        res.json(savedGuidelines);
+        res.redirect(301, '/guidelines');
     }
     catch (err) {
         res.json({
@@ -47,12 +68,12 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
-router.delete('/:postID', async (req, res) => {
+router.delete('/:guidelineID', async (req, res) => {
     try {
         const removeGuidelines = await Guidelines.remove({
-            _id: req.params.post
+            _id: req.params.guidelineID
         });
-        res.json(removeGuidelines);
+        res.redirect('/guidelines');
     }
     catch (err) {
         res.json({
@@ -61,21 +82,14 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-router.patch('/:postID', async (req, res) => {
+router.put('/:guidelineID', async (req, res) => {
     try {
-        const updatedGuidelines = await Guidelines.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.title
-                }
-            }
-        );
+        const updateGuideline = await Guidelines.findByIdAndUpdate(req.params.guidelineID, req.body, {
+            new: true,
+            runValidator: true
+        });
 
-        res.json(updatedGuidelines);
+        res.redirect('/guidelines');
     }
     catch (err) {
         res.json({

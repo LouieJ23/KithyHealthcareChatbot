@@ -5,6 +5,8 @@ const Event = require('../models/Events');
 const Appointment = require('../models/Appointment');
 const Staff = require('../models/Staffs');
 const Illness = require('../models/Illness');
+const Guidelines = require('../models/Guidelines');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB", () =>{
@@ -25,6 +27,9 @@ var samp = "Location";
 //     console.log(staffs);
 // });
 
-Illness.find({}, function(err, illness) {
-    console.log(illness);
+// Illness.find({}, function(err, illness) {
+//     console.log(illness);
+// });
+Guidelines.find({}, function(err, guidelines) {
+    console.log(guidelines);
 });
