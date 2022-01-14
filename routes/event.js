@@ -7,6 +7,10 @@ router.use((req, res, next) => {
         req.url = req.path
     }
 
+if(req.query._method == 'PUT') {
+    req.method = 'PUT';
+    req.url = req.path
+}
     next();
 });
 
@@ -137,6 +141,7 @@ router.put('/:postID', async (req, res) => {
         const updateEvent = await Event.findByIdAndUpdate(req.params.postID, req.body, {
             new: true,
             runValidator: true
+            
         });
 
         res.redirect('/event');

@@ -39,7 +39,7 @@ const appointment = mongoose.Schema({
     },
     datePosted: {
         type: Date,
-        require: Date.now
+        default: Date.now
     }
 })
 

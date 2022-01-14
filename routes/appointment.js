@@ -3,7 +3,10 @@ const Appointment = require('../models/Appointment');
 
 router.use((req, res, next) => {
     if(req.query._method == 'DELETE') {
-        req.method = 'DELETE';
+    }
+    
+    if(req.query._method == 'PUT') {
+        req.method = 'PUT';
         req.url = req.path
     }
     next();
@@ -46,7 +49,8 @@ router.post('/', async (req, res) => {
         sex:req.body.sex,
         address:req.body.address,
         email:req.body.email,
-        reason:req.body.reason, 
+        reason:req.body.reason,
+        datePosted:req.body.datePosted 
     });
     try {
         const savedAppointment = await appointment.save();

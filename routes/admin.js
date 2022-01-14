@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
      else {
         res.sendFile(__dirname + "/login.html");
         alert("Login Failed.")
-        return false;
+        return false;   
     }
 });
 

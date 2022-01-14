@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Manage Event</title>
+	<title>Manage Health Center's Info</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -417,14 +417,14 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Event</b></h2>
+						<h2>Manage <b>Health Center's staffInfo</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-								class="material-icons">&#xE147;</i> <span>Add New Events</span></a>
+								class="material-icons">&#xE147;</i> <span>Add New Health Center's Info</span></a>
 					
-						<% if(! events.length > 0) {%>
-							<a href="/event" class="btn btn-secondary"> <span>Back</span></a>
+						<% if(! centerInfos.length > 0) {%>
+							<a href="/centerInfo" class="btn btn-secondary"> <span>Back</span></a>
 						<%}
 							else {%>
 								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
@@ -438,22 +438,17 @@
 				<thead>
 					<tr>
 						<th>
-							<!-- <span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span> -->
 							No.
 						</th>
-						<th>Event Title</th>
+						<th>Date of Founding</th>
+						<th>Constructed By</th>
 						<th>Location</th>
-						<th>Description</th>
-						<th>Start Date & Time</th>
-						<th>End Date & Time</th>
-						<th>Requirement/s</th>
-						<th>Process</th>
-						<th>Participants</th>
+						<th>Phone Number</th>
+						<th>Email</th>
+						<th>Mission/s</th>
+						<th>Vision</th>
 						<th>Date Posted</th>
-						<th>Actions</th>
+						
 
 					</tr>
 				</thead>
