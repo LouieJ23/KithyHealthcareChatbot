@@ -1,17 +1,26 @@
 const router = require('express').Router();
 const Appointment = require('../models/Appointment');
 
+router.use((req, res, next) => {
+    if(req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+    next();
+});
+
 router.get('/', async (req, res) => {
-    // try {
-    //     const event = await Appointment.find();
-    //     res.json(appointment);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     });
-    // }
-    res.sendFile(__dirname + "/appointment.html");
+   try {
+       const appointment = await Appointment.find();
+       res.render('appointment', {
+           appointments:appointment
+       });
+   }
+   catch(err) {
+       res.json({
+           message: err
+       });
+   }
 });
 
 // router.get('/:postID', async (req, res) => {
@@ -37,12 +46,12 @@ router.post('/', async (req, res) => {
         sex:req.body.sex,
         address:req.body.address,
         email:req.body.email,
-        reason:req.body.reason,
-        
-    })
+        reason:req.body.reason, 
+    });
     try {
         const savedAppointment = await appointment.save();
-        res.json(savedAppointment);
+        res.redirect(301, '/appointment');
+        // res.json(savedAppointment);
     }
     catch (err) {
         res.json({
@@ -51,13 +60,26 @@ router.post('/', async (req, res) => {
     }
     // console.log(req.body);
 });
-
+router.get('/:postID', async (req, res) => {
+    try {
+        const appointment = await Appointment.findById(req.params.postID);
+        res.render('appointment', {
+            appointments: appointment
+        });
+    }
+    catch(err) {
+        res.json({
+            message: err
+        })
+    }
+})
 router.delete('/:postID', async (req, res) => {
     try {
         const removeAppointment = await Appointment.remove({
-            _id: req.params.post
+            _id: req.params.postID
         });
-        res.json(removeAppointment);
+        res.redirect('/appointment');
+        //res.json(removeAppointment);
     }
     catch (err) {
         res.json({
@@ -66,23 +88,38 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-router.patch('/:postID', async (req, res) => {
-    try {
-        const updatedAppointment = await Appointment.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.title
-                }
-            }
-        );
+// router.patch('/:postID', async (req, res) => {
+//     try {
+//         const updatedAppointment = await Appointment.updateOne(
+//             {
+//                 _id: req.params.postID,
+//             },
+//             {
+//                 $set:
+//                 {
+//                     title: req.body.title
+//                 }
+//             }
+//         );
 
-        res.json(updatedAppointment);
+//         res.json(updatedAppointment);
+//     }
+//     catch (err) {
+//         res.json({
+//             message: err
+//         });
+//     }
+// });
+
+router.put('/:postID', async (req, res) => {
+    try {
+        const updateAppointment = await Appointment.findByIdAndUpdate(req.params.postID, req.body, {
+            new: true,
+            runValidator: true
+        });
+        res.redirect('/appointment');
     }
-    catch (err) {
+    catch(err) {
         res.json({
             message: err
         });

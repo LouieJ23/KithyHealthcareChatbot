@@ -7,12 +7,12 @@ const mongoose = require('mongoose');
 require('dotenv/config');
 const server = express();
 const ejs = require('ejs');
+const methodOverride = require('method-override');
 
 //import routes
 const config = require('./config');
 const event = require('./routes/event');
 const department = require('./routes/department')
-const routes = require('./routes/Routes');
 const staffInfo = require('./routes/staff');
 const guidelines = require('./routes/guidelines');
 const hCenterInfo = require('./routes/hCenterInfo');
@@ -26,8 +26,10 @@ const login = require('./routes/login');
 server.set('view engine', 'ejs');
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
-
 server.use('/event', event);
+server.get('/', (req,res) => {
+    res.sendFile(__dirname+ "/routes/homepage.html");
+});
 server.use('/department', department);
 server.use('/staffInfo', staffInfo);
 server.use('/guidelines', guidelines);
@@ -36,7 +38,7 @@ server.use('/mildIllness', mildIllness);
 server.use('/appointment', appointment);
 server.use('/admin', admin);
 server.use('/login', login);
-
+server.use(express.static(__dirname + '/public'));
 
 
 
@@ -45,7 +47,6 @@ mongoose.connect(config.dbURL, () =>{
     console.log("Connected to DB!");
 });
 
-routes(server);
 const port = process.env.PORT || 8080;
 server.listen(port, () => {
     console.log("Server is up! " + port);

@@ -7,7 +7,7 @@ const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
 const HcenterInfo = require('../models/HCenterInfo');
 const MildIllness = require('../models/Illness')
-const Appointment = require('../routes/appointment');
+const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
 
