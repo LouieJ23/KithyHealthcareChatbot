@@ -1,39 +1,37 @@
 const mongoose = require('mongoose');
 
 const centerInfo = mongoose.Schema({
-    builtDate:{
-        type:String,
-        require:true
-    },
-    builtBy:{
-        type:String,
-        require:true
-    },
-    address:{
-        type:String,
+    dateOfFounding: {
+        type: String,
         require: true
     },
-    contactInfo:{
-        cellNumber:{
-            type:String,
-            require:true
-        },
-        email:{
-            type:String,
-            require:false
-        }
-    },
-    mission:{
-        type:String,
+    publishedBy: {
+        type: String,
         require: true
     },
-    vision:{
-        type:String,
-        require:true
+    location: {
+        type: String,
+        require: true
     },
-    datePosted:{
-        type:Date,
-        default:Date
+    phoneNumber: {
+        type: String,
+        require: false
+    },
+    email: {
+        type: String,
+        require: false
+    },
+    mission: {
+        type: String,
+        require: true
+    },
+    vision: {
+        type: String,
+        require: true
+    },
+    datePosted: {
+        type: Date,
+        default: Date.now
     }
 })
 

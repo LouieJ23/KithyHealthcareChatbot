@@ -1,47 +1,66 @@
 const router = require('express').Router();
 const CenterInfo = require('../models/CenterInfo');
 
-router.get('/', async (req, res) => {
-    // try {
-    //     const info = await CenterInfo.find();
-    //     res.json(event);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     });
-    // }
-    res.sendFile(__dirname + "/centerInfo.html");
+router.use((req, res, next) => {
+    if(req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+
+    if(req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
+
+    next();
 });
 
-// router.get('/:postID', async (req, res) => {
-//     try {
-//         const post = await Event.findById(req.params.postID);
-//         res.json(post);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
+router.get('/', async (req, res) => {
+    try {
+        const centerInfo = await CenterInfo.find();
+        res.render('centerInfo', {
+            centerInfos: centerInfo
+        });
+
+        
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
+});
+
+router.get('/:centerInfoID', async (req, res) => {
+    try {
+        const centerInfo = await CenterInfo.findById(req.params.centerInfoID);
+        res.render('centerInfo', {
+            centerInfos: centerInfo
+        });
+    }
+    catch(err) {
+        res.json({
+            message: err
+        })
+    }
+});
 
 
 router.post('/', async (req, res) => {
-    const info = new CenterInfo({
-       dateOfFounding:req.body.dateOfFounding,
-       constructedBy:req.body.constructedBy,
-       Location:req.body.Location,
-           phoneNumber:req.body.phoneNumber,
-           email:req.body.email,
+    const centerInfo = new CenterInfo({
+       dateOfFouding:req.body.dateOfFouding, 
+       publishedBy:req.body.publishedBy,
+       location:req.body.location,
+       phoneNumber:req.body.phoneNumber,
+       email:req.body.email,
        mission:req.body.mission,
        vision:req.body.vision,
        datePosted:req.body.datePosted
-    })
+    });
 
     try {
-        const savedCenterInfo = await info.save();
-        res.json(savedCenterInfo);
+        const savedCenterInfo = await centerInfo.save();
+        res.redirect(301, '/centerInfo');
     }
     catch (err) {
         res.json({
@@ -51,12 +70,12 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
-router.delete('/:postID', async (req, res) => {
+router.delete('/:centerInfoID', async (req, res) => {
     try {
         const removeCenterInfo = await CenterInfo.remove({
-            _id: req.params.post
+            _id: req.params.centerInfoID
         });
-        res.json(removeCenterInfo);
+        res.redirect('/centerInfo');
     }
     catch (err) {
         res.json({
@@ -65,21 +84,14 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-router.patch('/:postID', async (req, res) => {
+router.put('/:centerInfoID', async (req, res) => {
     try {
-        const updatedCenterInfo = await CenterInfo.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.buitlDate
-                }
-            }
-        );
+        const updateCenterINfo = await CenterInfo.findByIdAndUpdate(req.params.centerInfoID, req.body, {
+            new: true,
+            runValidator: true
+        });
 
-        res.json(updatedCenterInfo);
+        res.redirect('/centerInfo');
     }
     catch (err) {
         res.json({
