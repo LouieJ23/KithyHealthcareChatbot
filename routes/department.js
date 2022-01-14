@@ -1,42 +1,63 @@
 const router = require('express').Router();
-const Dep = require('../models/Departments');
+const Departments = require('../models/Departments');
+const Department = require('../models/Departments');
 
-router.get('/', async (req, res) => {
-        // try {
-        //     const dep = await Dep.find();
-        //     res.json(dep);
-        // }
-        // catch(err) {
-        //     res.json({
-        //         message: err
-        //     });
-        // }
-    res.sendFile(__dirname + "/department.html");
+router.use((req, res, next) => {
+    if(req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+
+    if(req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
+
+    next();
 });
 
-// router.get('/:postID', async (req, res) => {
-//     try {
-//         const post = await Event.findById(req.params.postID);
-//         res.json(post);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
+router.get('/', async (req, res) => {
+    try {
+        const department = await Department.find();
+        res.render('department', {
+            departments: department
+        });
+
+        
+    }
+    catch(err) {
+        res.json({
+            message: err
+        });
+    }
+});
+
+router.get('/:departmentID', async (req, res) => {
+    try {
+        const department = await Department.findById(req.params.departmentID);
+        res.render('department', {
+            departments: department
+        });
+    }
+    catch (err) {
+        res.json({
+            message: err
+        });
+    }
+});
 
 
 router.post('/', async (req, res) => {
-    const dep = new Dep({
+    const department = new Department({
         depName: req.body.depName,
         depDetail: req.body.depDetail,
         depSched: req.body.depSched
     });
 
     try {
-        const savedDep = await dep.save();
-        res.json(savedDep);
+        const savedDep = await department.save();
+        res.redirect(301, '/department');
+
     }
     catch (err) {
         res.json({
@@ -46,12 +67,12 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
-router.delete('/:postID', async (req, res) => {
+router.delete('/:departmentID', async (req, res) => {
     try {
-        const removeDep = await Dep.remove({
-            _id: req.params.post
+        const removeDepartment = await Department.remove({
+            _id: req.params.departmentID
         });
-        res.json(removeDep);
+        res.redirect('/department');
     }
     catch (err) {
         res.json({
@@ -60,21 +81,14 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-router.patch('/:postID', async (req, res) => {
+router.put('/:departmentID', async (req, res) => {
     try {
-        const updatedDep = await Dep.updateOne(
-            {
-                _id: req.params.postID,
-            },
-            {
-                $set:
-                {
-                    title: req.body.title
-                }
-            }
-        );
+        const updateDepartment = await Department.findByIdAndUpdate(req.params.departmentID, req.body, {
+            new: true,
+            runValidator: true
+        });
 
-        res.json(updatedDep);
+        res.redirect('/department');
     }
     catch (err) {
         res.json({
@@ -82,5 +96,6 @@ router.patch('/:postID', async (req, res) => {
         });
     }
 });
+
 
 module.exports = router;

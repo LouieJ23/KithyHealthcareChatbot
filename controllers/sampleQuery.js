@@ -6,6 +6,7 @@ const Appointment = require('../models/Appointment');
 const Staff = require('../models/Staffs');
 const Illness = require('../models/Illness');
 const Guidelines = require('../models/Guidelines');
+const Departments = require('../models/Departments');
 
 
 mongoose.Promise = global.Promise;
@@ -30,6 +31,9 @@ var samp = "Location";
 // Illness.find({}, function(err, illness) {
 //     console.log(illness);
 // });
-Guidelines.find({}, function(err, guidelines) {
-    console.log(guidelines);
+// Guidelines.find({}, function(err, guidelines) {
+//     console.log(guidelines);
+// });
+Departments.find({}, function(err, departments) {
+    console.log(departments);
 });
