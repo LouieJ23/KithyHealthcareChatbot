@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
     try {
         const staff = await Staff.find();
         res.render('staff', {
-            staffs: staff
+            staffs: staff,
+            page_name: 'staff'
         });
 
         
@@ -35,7 +36,8 @@ router.get('/:staffID', async (req, res) => {
     try {
         const staff = await Staff.findById(req.params.staffID);
         res.render('staff', {
-            staffs: staff
+            staffs: staff,
+            page_name: 'staff'
         });
     }
     catch(err) {

@@ -8,6 +8,7 @@ require('dotenv/config');
 const server = express();
 const ejs = require('ejs');
 const methodOverride = require('method-override');
+const expressLayouts = require('express-ejs-layouts');
 
 //import routes
 const config = require('./config');
@@ -22,8 +23,14 @@ const admin = require('./routes/admin');
 const login = require('./routes/login');
 
 
+// Static Files
+server.use(express.static('public'));
+server.use('/css', express.static(__dirname + 'public/css'));
 
+server.use(expressLayouts);
 server.set('view engine', 'ejs');
+
+
 server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json());
 server.use('/event', event);
@@ -36,10 +43,33 @@ server.use('/guidelines', guidelines);
 server.use('/centerInfo', centerInfo);
 server.use('/mildIllness', mildIllness);
 server.use('/appointment', appointment);
-server.use('/admin', admin);
+// server.use('/admin', admin);
 server.use('/login', login);
-server.use(express.static(__dirname + '/public'));
+server.get('/admin', (req, res) => {
+    res.render('admin', {
+        page_name: 'home'
+    });
+});
 
+server.post('/admin', async (req, res) => {
+    let userName = req.body.username;
+    let uName = process.env.USERNAME1;
+    let uPassword = process.env.PASSWORD1;
+    let userPassword = req.body.password;
+
+     if (userName == uName && userPassword == uPassword) {
+        res.render('admin', {
+            page_name: 'home'
+        });
+        alert("Login Successful.")
+        return true;
+    }
+     else {
+        res.sendFile(__dirname + "/login.html");
+        alert("Login Failed.")
+        return false;   
+    }
+});
 
 
 mongoose.Promise = global.Promise;

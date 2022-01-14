@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
     try {
         const illness = await Illness.find();
         res.render('illness', {
-            illnesses: illness
+            illnesses: illness,
+            page_name: 'illness'
         });
     }
     catch(err) {
@@ -33,7 +34,8 @@ router.get('/:illnessID', async (req, res) => {
     try {
         const illness = await Illness.findById(req.params.illnessID);
         res.render('illness', {
-            illnesses: illness
+            illnesses: illness,
+            page_name: 'illness'
         });
     }
     catch (err) {

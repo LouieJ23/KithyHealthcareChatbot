@@ -20,7 +20,8 @@ router.get('/', async (req, res) => {
     try {
         const guideline = await Guidelines.find();
         res.render('guidelines', {
-            guidelines: guideline
+            guidelines: guideline,
+            page_name: 'guideline'
         });
     }
     catch(err) {
@@ -35,7 +36,8 @@ router.get('/:guidelinesID', async (req, res) => {
     try {
         const guideline = await Guidelines.findById(req.params.guidelinesID);
         res.render('guidelines', {
-            guidelines: guideline
+            guidelines: guideline,
+            page_name: 'guideline'
         });
 
         console.log(guideline);

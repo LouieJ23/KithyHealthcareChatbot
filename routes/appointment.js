@@ -18,7 +18,8 @@ router.get('/', async (req, res) => {
    try {
        const appointment = await Appointment.find();
        res.render('appointment', {
-           appointments:appointment
+           appointments:appointment,
+           page_name: 'appointment'
        });
    }
    catch(err) {
@@ -70,7 +71,8 @@ router.get('/:postID', async (req, res) => {
     try {
         const appointment = await Appointment.findById(req.params.postID);
         res.render('appointment', {
-            appointments: appointment
+            appointments: appointment,
+            page_name: 'appointment'
         });
     }
     catch(err) {
