@@ -29,13 +29,11 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const info = new CenterInfo({
-       builtDate:req.body.builtDate,
-       builtBy:req.body.builtBy,
-       address:req.body.address,
-       contactInfo:{
-           cellNumber:req.body.cellNumber,
-           email:req.body.email
-       },
+       dateOfFounding:req.body.dateOfFounding,
+       constructedBy:req.body.constructedBy,
+       Location:req.body.Location,
+           phoneNumber:req.body.phoneNumber,
+           email:req.body.email,
        mission:req.body.mission,
        vision:req.body.vision,
        datePosted:req.body.datePosted

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CenterInfo = mongoose.Schema({
+const centerInfo = mongoose.Schema({
     builtDate:{
         type:String,
         require:true
@@ -37,4 +37,4 @@ const CenterInfo = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('CenterInfo', CenterInfo);
+module.exports = mongoose.model('CenterInfo', centerInfo);

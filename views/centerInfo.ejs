@@ -454,9 +454,9 @@
 				</thead>
 				<tbody>
 					<% 
-					if(events.length > 0)
+					if(ceterInfos.length > 0)
 					{
-						for(var i=0; i < events.length; i++) { %>
+						for(var i=0; i < centerInfos.length; i++) { %>
 						<tr>
 							<td>
 								<!-- <span class="custom-checkbox">
@@ -467,35 +467,32 @@
 							</td>
 
 							<td>
-								<%= events[i].eventTitle %>
+								<%= centerInfos[i].dateOfFounding %>
 							</td>
 							<td>
-								<%= events[i].eventLocation %>
+								<%= centerInfos[i].constructedBy %>
 							</td>
 							<td>
-								<%= events[i].eventDetails %>
+								<%= centerInfos[i].Location %>
 							</td>
 							<td>
-								<%= events[i].startDateTime %>
+								<%= centerInfos[i].phoneNumber %>
 							</td>
 							<td>
-								<%= events[i].endDateTime %>
+								<%= centerInfos[i].email %>
 							</td>
 							<td>
-								<%= events[i].eventRequire %>
+								<%= centerInfos[i].mission %>
 							</td>
 							<td>
-								<%= events[i].eventProcess %>
+								<%= centerInfos[i].vision %>
 							</td>
 							<td>
-								<%= events[i].eventParticipant %>
-							</td>
-							<td>
-								<%= events[i].datePosted %>
+								<%= centerInfos[i].datePosted %>
 							</td>
 
 							<td>
-								<a href="/event/<%= events[i]._id %>" class="edit"><i class="material-icons"
+								<a href="/centerInfo/<%= centerInfos[i]._id %>" class="edit"><i class="material-icons"
 										 title="Edit" >&#xE254;</i></a>
 									<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
 											class="material-icons"  title="Delete">&#xE872;</i></a>
@@ -511,31 +508,28 @@
 								</td>
 	
 								<td>
-									<%= events.eventTitle %>
+									<%= centerInfos.dateOfFounding %>
 								</td>
 								<td>
-									<%= events.eventLocation %>
+									<%= centerInfos.constructedBy %>
 								</td>
 								<td>
-									<%= events.eventDetails %>
+									<%= centerInfos.Location %>
 								</td>
 								<td>
-									<%= events.startDateTime %>
+									<%= centerInfos.phoneNumber %>
 								</td>
 								<td>
-									<%= events.endDateTime %>
+									<%= centerInfos.email %>
 								</td>
 								<td>
-									<%= events.eventRequire %>
+									<%= centerInfos.mission %>
 								</td>
 								<td>
-									<%= events.eventProcess %>
+									<%= centerInfos.vision %>
 								</td>
 								<td>
-									<%= events.eventParticipant %>
-								</td>
-								<td>
-									<%= events.datePosted %>
+									<%= centerInfos.datePosted %>
 								</td>
 	
 								<td>
@@ -570,18 +564,18 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/event" method="post">
+				<form action="/centerInfo" method="post">
 					<div class="modal-header">
-						<h4 class="modal-title">Add Event</h4>
+						<h4 class="modal-title">Add Health Center Info</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Title</label>
-							<input type="text" name="eventTitle" class="form-control" required>
+							<label>Date of Founding</label>
+							<input type="text" name="dateOfFounding" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Location</label>
+							<label>Constructed By</label>
 							<input type="text" name="eventLocation" class="form-control" required>
 						</div>
 						<div class="form-group">
