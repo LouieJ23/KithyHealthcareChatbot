@@ -17,11 +17,17 @@ if(req.query._method == 'PUT') {
 
 
 router.get('/', async (req, res) => {
-    try {
-        const event = await Event.find();
+    try { 
+        const {page = 1, limit = 2} = req.query;
+        const event = await Event.find()
+        .limit(limit * 1)
+       .skip((page - 1) * limit);
         res.render('event', {
             events: event,
-            page_name: 'event'
+            page_name: 'event',
+            next: parseInt(page) + 1,
+           prev: parseInt(page) - 1,
+           isPaginate: true
         });
         
     }
@@ -86,7 +92,8 @@ router.get('/:postID', async (req, res) => {
         const event = await Event.findById(req.params.postID);
         res.render('event', {
             events: event,
-            page_name: 'event'
+            page_name: 'event',
+            isPaginate: false
         });
     }
     catch(err) {

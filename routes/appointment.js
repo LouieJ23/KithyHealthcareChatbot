@@ -16,10 +16,16 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
    try {
-       const appointment = await Appointment.find();
+       const {page = 1, limit = 2} = req.query;
+       const appointment = await Appointment.find()
+       .limit(limit * 1)
+       .skip((page - 1) * limit);
        res.render('appointment', {
            appointments:appointment,
-           page_name: 'appointment'
+           page_name: 'appointment',
+           next: parseInt(page) + 1,
+           prev: parseInt(page) - 1,
+           isPaginate: true
        });
    }
    catch(err) {
@@ -72,7 +78,8 @@ router.get('/:postID', async (req, res) => {
         const appointment = await Appointment.findById(req.params.postID);
         res.render('appointment', {
             appointments: appointment,
-            page_name: 'appointment'
+            page_name: 'appointment',
+            isPaginate: false
         });
     }
     catch(err) {

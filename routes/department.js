@@ -18,10 +18,17 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const department = await Department.find();
+       const {page = 1, limit = 2} = req.query;
+        const department = await Department.find()
+        .limit(limit * 1)
+       .skip((page - 1) * limit);
+
         res.render('department', {
             departments: department,
-            page_name: 'department'
+            page_name: 'department',
+            next: parseInt(page) + 1,
+            prev: parseInt(page) - 1,
+            isPaginate: true
         });
 
         
@@ -38,7 +45,8 @@ router.get('/:departmentID', async (req, res) => {
         const department = await Department.findById(req.params.departmentID);
         res.render('department', {
             departments: department,
-            page_name: 'department'
+            page_name: 'department',
+            isPaginate: false
         });
     }
     catch (err) {
