@@ -24,19 +24,15 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
 						<th>Name</th>
 						<th>Sex</th>
 						<th>Career</th>
 						<th>Specialization</th>
 						<th>Department</th>
 						<th>Date Posted</th>
-						<th>Actions</th>
+						<% if(! staffs.length > 0) {%>
+							<th>Actions</th>
+						<%} %>
 
 					</tr>
 				</thead>
@@ -45,14 +41,7 @@
 					if(staffs.length > 0)
 					{
 						for(var i=0; i < staffs.length; i++) { %>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox1" name="options[]" value="1">
-									<label for="checkbox1"></label>
-								</span>
-							</td>
-
+						<tr onclick="window.location='/staffInfo/<%= staffs[i]._id %>'" style="cursor: pointer;">
 							<td>
 								<%= staffs[i].name %>
 							</td>
@@ -71,24 +60,11 @@
                             <td>
                                 <%= staffs[i].datePosted%>
                             </td>
-							<td>
-								<a href="/staffInfo/<%= staffs[i]._id %>" class="edit"><i class="material-icons"
-										 title="Edit" >&#xE254;</i></a>
-								<a href="/staffInfo/<%= staffs[i]._id %>?_method=DELETE" class="delete"><i
-										class="material-icons"  title="Delete">&#xE872;</i></a>
-							</td>
 						</tr>
 
 						<% }}
 						else { %>
 							<tr>
-								<td>
-									<span class="custom-checkbox">
-										<input type="checkbox" id="checkbox1" name="options[]" value="1">
-										<label for="checkbox1"></label>
-									</span>
-								</td>
-	
 								<td>
 									<%= staffs.name %>
 								</td>
