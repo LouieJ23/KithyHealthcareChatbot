@@ -57,8 +57,8 @@ router.post('/', async (req, res) => {
        email:req.body.email,
        mission:req.body.mission,
        vision:req.body.vision,
-       datePosted:req.body.datePosted
     });
+
 
     try {
         const savedCenterInfo = await centerInfo.save();
