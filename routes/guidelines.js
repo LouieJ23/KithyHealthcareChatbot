@@ -18,10 +18,16 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const guideline = await Guidelines.find();
+       const {page = 1, limit = 2} = req.query;
+        const guideline = await Guidelines.find()
+        .limit(limit * 1)
+       .skip((page - 1) * limit);
         res.render('guidelines', {
             guidelines: guideline,
-            page_name: 'guideline'
+            page_name: 'guideline',
+            next: parseInt(page) + 1,
+            prev: parseInt(page) - 1,
+            isPaginate: true
         });
     }
     catch(err) {
@@ -37,7 +43,8 @@ router.get('/:guidelinesID', async (req, res) => {
         const guideline = await Guidelines.findById(req.params.guidelinesID);
         res.render('guidelines', {
             guidelines: guideline,
-            page_name: 'guideline'
+            page_name: 'guideline',
+            isPaginate: false
         });
 
         console.log(guideline);

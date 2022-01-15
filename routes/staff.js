@@ -17,10 +17,17 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const staff = await Staff.find();
+       const {page = 1, limit = 2} = req.query;
+        const staff = await Staff.find()
+        .limit(limit * 1)
+       .skip((page - 1) * limit);
+
         res.render('staff', {
             staffs: staff,
-            page_name: 'staff'
+            page_name: 'staff',
+            next: parseInt(page) + 1,
+           prev: parseInt(page) - 1,
+           isPaginate: true
         });
 
         
@@ -37,7 +44,8 @@ router.get('/:staffID', async (req, res) => {
         const staff = await Staff.findById(req.params.staffID);
         res.render('staff', {
             staffs: staff,
-            page_name: 'staff'
+            page_name: 'staff',
+            isPaginate: false
         });
     }
     catch(err) {

@@ -17,10 +17,17 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const centerInfo = await CenterInfo.find();
+       const {page = 1, limit = 2} = req.query;
+        const centerInfo = await CenterInfo.find()
+        .limit(limit * 1)
+       .skip((page - 1) * limit);
+
         res.render('centerInfo', {
             centerInfos: centerInfo, 
-            page_name: 'center'
+            page_name: 'center',
+           next: parseInt(page) + 1,
+           prev: parseInt(page) - 1,
+           isPaginate: true
         });
 
         
@@ -37,7 +44,8 @@ router.get('/:postID', async (req, res) => {
         const centerInfo = await CenterInfo.findById(req.params.postID);
         res.render('centerInfo', {
             centerInfos: centerInfo, 
-            page_name: 'center'
+            page_name: 'center',
+            isPaginate: false
         });
     }
     catch(err) {
