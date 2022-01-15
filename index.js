@@ -60,7 +60,9 @@ server.post('/admin', async (req, res) => {
 
      if (userName == uName && userPassword == uPassword) {
         res.render('admin', {
-            page_name: 'home'
+            page_name: 'home',
+            isPaginate:false
+      
         });
         alert("Login Successful.")
         return true;
