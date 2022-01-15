@@ -47,7 +47,8 @@ server.use('/appointment', appointment);
 server.use('/login', login);
 server.get('/admin', (req, res) => {
     res.render('admin', {
-        page_name: 'home'
+        page_name: 'home',
+        isPaginate: false
     });
 });
 

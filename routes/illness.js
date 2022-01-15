@@ -17,10 +17,17 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const illness = await Illness.find();
+       const {page = 1, limit = 2} = req.query;
+        const illness = await Illness.find()
+        .limit(limit * 1)
+       .skip((page - 1) * limit);
+
         res.render('illness', {
             illnesses: illness,
-            page_name: 'illness'
+            page_name: 'illness',
+            next: parseInt(page) + 1,
+            prev: parseInt(page) - 1,
+            isPaginate: true
         });
     }
     catch(err) {
@@ -35,7 +42,8 @@ router.get('/:illnessID', async (req, res) => {
         const illness = await Illness.findById(req.params.illnessID);
         res.render('illness', {
             illnesses: illness,
-            page_name: 'illness'
+            page_name: 'illness',
+            isPaginate: false
         });
     }
     catch (err) {
