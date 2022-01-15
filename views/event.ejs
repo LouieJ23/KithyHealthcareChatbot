@@ -41,7 +41,9 @@
 						<th>Process</th>
 						<th>Participants</th>
 						<th>Date Posted</th>
-						<th>Actions</th>
+						<% if(! events.length > 0) {%>
+							<th>Actions</th>
+						<%} %>
 
 					</tr>
 				</thead>
@@ -50,7 +52,7 @@
 					if(events.length > 0)
 					{
 						for(var i=0; i < events.length; i++) { %>
-						<tr>
+						<tr onclick="window.location='/event/<%= events[i]._id %>'" style="cursor: pointer;">
 							<td>
 								<!-- <span class="custom-checkbox">
 									<input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -85,14 +87,6 @@
 							</td>
 							<td>
 								<%= events[i].datePosted %>
-							</td>
-
-							<td>
-								<a href="/event/<%= events[i]._id %>" class="edit"><i class="material-icons"
-										 title="Edit" >&#xE254;</i></a>
-									<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-											class="material-icons"  title="Delete">&#xE872;</i></a>
-
 							</td>
 						</tr>
 
