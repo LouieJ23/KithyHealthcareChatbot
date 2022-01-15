@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 
         res.render('centerInfo', {
             centerInfos: centerInfo, 
-            page_name: 'center',
+            page_name: 'centerInfo',
            next: parseInt(page) + 1,
            prev: parseInt(page) - 1,
            isPaginate: true
@@ -44,7 +44,7 @@ router.get('/:postID', async (req, res) => {
         const centerInfo = await CenterInfo.findById(req.params.postID);
         res.render('centerInfo', {
             centerInfos: centerInfo, 
-            page_name: 'center',
+            page_name: 'centerInfo',
             isPaginate: false
         });
     }

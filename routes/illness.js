@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 
         res.render('illness', {
             illnesses: illness,
-            page_name: 'illness',
+            page_name: 'mildIllness',
             next: parseInt(page) + 1,
             prev: parseInt(page) - 1,
             isPaginate: true
@@ -42,7 +42,7 @@ router.get('/:illnessID', async (req, res) => {
         const illness = await Illness.findById(req.params.illnessID);
         res.render('illness', {
             illnesses: illness,
-            page_name: 'illness',
+            page_name: 'mildIllness',
             isPaginate: false
         });
     }
