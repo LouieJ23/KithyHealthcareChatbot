@@ -19,7 +19,8 @@ router.get('/', async (req, res) => {
     try {
         const centerInfo = await CenterInfo.find();
         res.render('centerInfo', {
-            centerInfos: centerInfo
+            centerInfos: centerInfo, 
+            page_name: 'center'
         });
 
         
@@ -35,7 +36,8 @@ router.get('/:postID', async (req, res) => {
     try {
         const centerInfo = await CenterInfo.findById(req.params.postID);
         res.render('centerInfo', {
-            centerInfos: centerInfo
+            centerInfos: centerInfo, 
+            page_name: 'center'
         });
     }
     catch(err) {
