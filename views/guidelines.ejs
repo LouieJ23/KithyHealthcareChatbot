@@ -28,7 +28,9 @@
 						<th>Title</th>
 						<th>Detail</th>
 						<th>Date Posted</th>
-						<th>Actions</th>
+						<% if(! guidelines.length > 0) {%>
+							<th>Actions</th>
+						<%} %>
 
 					</tr>
 				</thead>
@@ -37,7 +39,7 @@
 					if(guidelines.length > 0)
 					{
 						for(var i=0; i < guidelines.length; i++) { %>
-						<tr>
+						<tr onclick="window.location='/guidelines/<%= guidelines[i]._id %>'" style="cursor: pointer;">
 							<td>
 								<%= guidelines[i].actNo %>
 							</td>
@@ -50,11 +52,6 @@
                             <td>
                                 <%= guidelines[i].datePosted%>
                             </td>
-							<td>
-								<a href="/guidelines/<%= guidelines[i]._id %>" class="edit"><i class="material-icons"
-										 title="Edit" >&#xE254;</i></a><a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-										class="material-icons"  title="Delete">&#xE872;</i></a>
-							</td>
 						</tr>
 
 						<% }}

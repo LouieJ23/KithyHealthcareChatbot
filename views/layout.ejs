@@ -498,19 +498,19 @@
                         </a>
                       </li>
                       <li>
-                        <a href="/staffInfo" class="nav-link <%= (page_name == 'staff') ? 'active' : 'text-white' %>">
+                        <a href="/staffInfo" class="nav-link <%= (page_name == 'staffInfo') ? 'active' : 'text-white' %>">
                           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                           Staff
                         </a>
                       </li>
                       <li>
-                        <a href="/mildIllness" class="nav-link <%= (page_name == 'illness') ? 'active' : 'text-white' %>">
+                        <a href="/mildIllness" class="nav-link <%= (page_name == 'mildIllness') ? 'active' : 'text-white' %>">
                           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                           Illness
                         </a>
                       </li>
                       <li>
-                        <a href="/guidelines" class="nav-link <%= (page_name == 'guideline') ? 'active' : 'text-white' %>">
+                        <a href="/guidelines" class="nav-link <%= (page_name == 'guidelines') ? 'active' : 'text-white' %>">
                           <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
                           Guidelines
                         </a>
@@ -522,7 +522,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="/centerInfo" class="nav-link <%= (page_name == 'center') ? 'active' : 'text-white' %>">
+                        <a href="/centerInfo" class="nav-link <%= (page_name == 'centerInfo') ? 'active' : 'text-white' %>">
                           <svg class="bi me-2" width="16" height="16" ><use xlink:href="#people-circle"/></svg>
                           Health Center Info
                         </a>
@@ -556,13 +556,13 @@
 								<%}
 								else {
 									%>
-									<li class="page-item"><a class="page-link" href="appointment?page=<%= prev%>&limit=2">Previous</a></li>
+									<li class="page-item"><a class="page-link" href="<%= page_name %>?page=<%= prev%>&limit=2">Previous</a></li>
 									<%}%>
-								<li class="page-item"><a class="page-link" href="appointment?page=1&limit=2">1</a></li>
-								<li class="page-item"><a class="page-link" href="appointment?page=2&limit=2">2</a></li>
-								<li class="page-item"><a class="page-link" href="appointment?page=3&limit=2">3</a></li>
+								<li class="page-item"><a class="page-link" href="<%= page_name %>?page=1&limit=2">1</a></li>
+								<li class="page-item"><a class="page-link" href="<%= page_name %>?page=2&limit=2">2</a></li>
+								<li class="page-item"><a class="page-link" href="<%= page_name %>?page=3&limit=2">3</a></li>
 								<li class="page-item">
-								  <a class="page-link" href="appointment?page=<%= next %>&limit=2">Next</a>
+								  <a class="page-link" href="<%= page_name %>?page=<%= next %>&limit=2">Next</a>
 								</li>
 							  </ul>
 						</div>

@@ -28,7 +28,9 @@
 						<th>Detail</th>
 						<th>Schedule</th>
 						<th>Date Posted</th>
-						<th>Actions</th>
+						<% if(! departments.length > 0) {%>
+							<th>Actions</th>
+						<%} %>
 
 					</tr>
 				</thead>
@@ -37,7 +39,7 @@
 					if(departments.length > 0)
 					{
 						for(var i=0; i < departments.length; i++) { %>
-						<tr>
+						<tr onclick="window.location='/department/<%= departments[i]._id %>'" style="cursor: pointer;">
 							<td>
 								<%= departments[i].depName %>
 							</td>
@@ -50,12 +52,6 @@
                             <td>
                                 <%= departments[i].datePosted%>
                             </td>
-							<td>
-								<a href="/department/<%= departments[i]._id %>" class="edit"><i class="material-icons"
-										 title="Edit" >&#xE254;</i></a>
-                                         <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-											class="material-icons"  title="Delete">&#xE872;</i></a>
-							</td>
 						</tr>
 
 						<% }}

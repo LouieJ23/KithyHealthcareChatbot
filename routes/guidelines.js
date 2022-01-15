@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
        .skip((page - 1) * limit);
         res.render('guidelines', {
             guidelines: guideline,
-            page_name: 'guideline',
+            page_name: 'guidelines',
             next: parseInt(page) + 1,
             prev: parseInt(page) - 1,
             isPaginate: true
@@ -43,7 +43,7 @@ router.get('/:guidelinesID', async (req, res) => {
         const guideline = await Guidelines.findById(req.params.guidelinesID);
         res.render('guidelines', {
             guidelines: guideline,
-            page_name: 'guideline',
+            page_name: 'guidelines',
             isPaginate: false
         });
 
