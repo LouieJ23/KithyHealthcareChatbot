@@ -125,11 +125,13 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    if (req.body.queryResult.intent.displayName == "Events - latest") {
-        _Event(req, res);
-    }
-    if (req.body.queryResult.intent.displayName == "Events - past") {
-        _Event(req, res);
-    }
+    // if (req.body.queryResult.intent.displayName == "Events - latest") {
+    //     _Event(req, res);
+    // }
+    // if (req.body.queryResult.intent.displayName == "Events - past") {
+    //     _Event(req, res);
+    // }
+
+    console.log(req.body);
 };
 
