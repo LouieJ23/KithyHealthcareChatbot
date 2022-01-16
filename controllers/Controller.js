@@ -27,13 +27,23 @@ function _Event(req, res) {
                 res.json({
                     "fulfillmentMessages": [
                         {
-                          "text": {
-                            "text": [
-                              "The Booster Vaccination will be going to held  in Kitaotao National High School. So in order to participate to the event, you are required to bring Bring valid ID and Indigency. The process is to Follow all the steps and the participants are Senior Citizen"
+                          "quickReplies": {
+                            "title": "What would you like to know about Event?",
+                            "quickReplies": [
+                              "Latest",
+                              "Past"
                             ]
+                          },
+                          "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                              "text": [
+                                result
+                              ]
+                            }
                           }
-                        }
-                      ]
+                        ]
                   });
 
                 // res.json({
