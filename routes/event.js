@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
     try { 
         const {page = 1, limit = 2} = req.query;
         const event = await Event.find()
+        .sort({ datePosted: -1 })
         .limit(limit * 1)
        .skip((page - 1) * limit);
         res.render('event', {
@@ -28,7 +29,8 @@ router.get('/', async (req, res) => {
             next: parseInt(page) + 1,
            prev: parseInt(page) - 1,
            isPaginate: true
-        });
+        })
+        
         
     }
     catch(err) {

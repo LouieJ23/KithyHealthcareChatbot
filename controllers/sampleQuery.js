@@ -38,7 +38,7 @@ var samp = "Location";
 //     console.log(departments);
 // });
 
-Event.findOne({}, function (err, events) {
-    var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
-    console.log(result);
+Event.find({}, function (err, events) {
+    // var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+    console.log(events);
 }).sort({ datePosted: -1 });

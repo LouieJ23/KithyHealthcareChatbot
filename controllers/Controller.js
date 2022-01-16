@@ -17,7 +17,8 @@ function _Event(req, res) {
 
     if (suggest === 'latest') {
             Event.findOne({}, function (err, events) {
-                var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+                const event = events[0];
+                var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipants;
                 res.json({
                     "fulfillmentText": result,
                     "outputContexts": []
