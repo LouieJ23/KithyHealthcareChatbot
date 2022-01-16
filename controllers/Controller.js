@@ -13,8 +13,6 @@ const Admin = require('../routes/admin');
 
 function _Event(req, res) {
     let suggest = req.body.queryResult.parameters.event[0];
-    console.log(suggest === 'latest');
-
     if (suggest === 'latest') {
         Event.find({}, function (err, events) {
             const event = events[0];
@@ -70,7 +68,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
   
-    else if(suggest === "Event Name") {
+    else if(suggest === "event") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest event name is " + event.eventTitle;
@@ -107,9 +105,6 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    else if ({
-
-    });
     else {
         res.json({
             "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
