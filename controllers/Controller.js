@@ -30,8 +30,11 @@ function _Event(req, res) {
                           "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                              "Latest",
-                              "Past"
+                              "Event",
+                              "Health Center",
+                              "Illness",
+                              "Set Appointment",
+                              "Visit Site"
                             ]
                           },
                           "platform": "FACEBOOK"
