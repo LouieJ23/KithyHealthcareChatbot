@@ -125,7 +125,7 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    console.log(req.body.queryResult.parameters);
+    console.log(req.body.queryResult.parameters.event[0]);
     if (req.body.queryResult.parameters.event[0] == "latest") {
         _Event(req, res);
     }
