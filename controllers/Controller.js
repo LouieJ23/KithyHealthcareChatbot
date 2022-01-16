@@ -17,7 +17,7 @@ function _Event(req, res) {
     //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
 
-    if (suggest == "Latest" && suggests == "Events - Latest") {
+    if (suggest == "Latest" && suggests == "Events - latest") {
         if (err) {
             return res.json({
                 speech: 'Something went wrong!',
@@ -35,7 +35,7 @@ function _Event(req, res) {
         }
     }
 
-    if (suggest == "Past" && suggests == "Events - Past") {
+    if (suggest == "Past" && suggests == "Events - past") {
         Event.findOne({}, function (err, events) {
             var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
             res.json({
@@ -125,10 +125,10 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    if (req.body.queryResult.intent.displayName == "Events - Latest") {
+    if (req.body.queryResult.intent.displayName == "Events - latest") {
         _Event(req, res);
     }
-    if (req.body.queryResult.intent.displayName == "Events - Past") {
+    if (req.body.queryResult.intent.displayName == "Events - past") {
         _Event(req, res);
     }
 };
