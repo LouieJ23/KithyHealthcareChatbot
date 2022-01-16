@@ -13,7 +13,7 @@ const Admin = require('../routes/admin');
 
 function _Event(req, res) {
     let suggest = req.body.queryResult.parameters.event[0];
-    let intent_name = req.body.queryResult.displayName;
+    let intent_name = req.body.queryResult.intent.displayName;
     console.log(intent_name);
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
