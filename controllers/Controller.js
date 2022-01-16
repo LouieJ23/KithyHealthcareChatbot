@@ -121,7 +121,7 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    console.log(typeof(suggest) === 'string' && suggest === 'latest')
+    console.log(suggest === 'latest')
     if (req.body.queryResult.parameters.event[0] == "latest") {
         _Event(req, res);
     }
