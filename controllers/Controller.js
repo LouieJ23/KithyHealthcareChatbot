@@ -31,7 +31,7 @@ function _Event(req, res) {
                 {
                     "text": {
                         "text": [
-                            result
+                            "result"
                         ]
                     }
                 }
