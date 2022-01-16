@@ -12,42 +12,42 @@ const Admin = require('../routes/admin');
 
 
 function _Event(req, res) {
-    let suggest = req.body.queryResult.parameters.event[0];
+    // let suggest = req.body.queryResult.parameters.event[0];
     let intent_name = req.body.queryResult.intent.displayName;
     console.log(intent_name);
-    if (intent_name == 'Events') {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest event name is " + event.eventTitle;
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": "What would you like to know about Event?",
-                            "quickReplies": [
-                                "Latest",
-                                "Previous"
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                result
-                            ]
-                        }
-                    }
-                ]
-            });
-        });
-    }
-    else {
-        res.json({
-            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
-            "outputContexts": []
-        });
-    }
+    // if (intent_name == 'Events') {
+    //     Event.find({}, function (err, events) {
+    //         const event = events[0];
+    //         var result = "The latest event name is " + event.eventTitle;
+    //         res.json({
+    //             "fulfillmentMessages": [
+    //                 {
+    //                     "quickReplies": {
+    //                         "title": "What would you like to know about Event?",
+    //                         "quickReplies": [
+    //                             "Latest",
+    //                             "Previous"
+    //                         ]
+    //                     },
+    //                     "platform": "FACEBOOK"
+    //                 },
+    //                 {
+    //                     "text": {
+    //                         "text": [
+    //                             result
+    //                         ]
+    //                     }
+    //                 }
+    //             ]
+    //         });
+    //     });
+    // }
+    // else {
+    //     res.json({
+    //         "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+    //         "outputContexts": []
+    //     });
+    // }
 
     // if (suggest === 'latest') {
     //     Event.find({}, function (err, events) {
