@@ -17,7 +17,7 @@ function _Event(req, res) {
     //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
 
-    if (suggest == "Latest" && suggests == "Events - latest") {
+    if (suggest == "Latest" || suggests == "Events - latest") {
         if (err) {
             return res.json({
                 speech: 'Something went wrong!',
@@ -125,7 +125,7 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    console.log(req.body.queryResult.parameters.event[0]);
+    console.log(typeof(req.body.queryResult.parameters.event[0]));
     if (req.body.queryResult.parameters.event[0] == "latest") {
         _Event(req, res);
     }
