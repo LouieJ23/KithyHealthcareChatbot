@@ -16,58 +16,58 @@ function _Event(req, res) {
     console.log(suggest === 'latest');
 
     if (suggest === 'latest') {
-            Event.find({}, function (err, events) {
-                const event = events[0];
-                var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-                // res.json({
-                //     "fulfillmentText": result,
-                //     "outputContexts": []
-                // });
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            // res.json({
+            //     "fulfillmentText": result,
+            //     "outputContexts": []
+            // });
 
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                          "quickReplies": {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                              "Event",
-                              "Health Center",
-                              "Illness",
-                              "Set Appointment",
-                              "Visit Site"
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site"
                             ]
-                          },
-                          "platform": "FACEBOOK"
                         },
-                        {
-                            "text": {
-                              "text": [
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
                                 ""
-                              ]
-                            }
-                          }
-                        ]
-                  });
+                            ]
+                        }
+                    }
+                ]
+            });
 
-                // res.json({
-                //     "fulfillmentMessages": [{
-                //       "payload": {
-                //         "richContent": [
-                //           [
-                //               {
-                //             "text": "Go to google",
-                //             "type": "button",
-                //             "icon":{
-                //                 "type" : "link",
-                //                 "color" : "#fff"
-                //             }
-                //           }]
-                //         ]
-                //       }
-                //     }]
-                  
-                //   });
-            }).sort({ datePosted: -1 });
+            // res.json({
+            //     "fulfillmentMessages": [{
+            //       "payload": {
+            //         "richContent": [
+            //           [
+            //               {
+            //             "text": "Go to google",
+            //             "type": "button",
+            //             "icon":{
+            //                 "type" : "link",
+            //                 "color" : "#fff"
+            //             }
+            //           }]
+            //         ]
+            //       }
+            //     }]
+
+            //   });
+        }).sort({ datePosted: -1 });
     }
     else if (suggest === 'previous') {
         Event.find({}, function (err, events) {
@@ -80,31 +80,32 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     else if(suggest === "Event") {
-            Event.find({}, function (err, events) {
+        Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-        res.json({
-            "fulfillmentMessages": [
-                {
-                  "quickReplies": {
-                    "title": "What would you like to know about Event?", result,
-                    "quickReplies": [
-                      "Latest",
-                      "Previous"
-                    ]
-                  },
-                  "platform": "FACEBOOK"
-                },
-                {
-                    "text": {
-                      "text": [
-                        ""
-                      ]
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "What would you like to know about Event?",
+                            "quickReplies": [
+                                "Latest",
+                                "Previous"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
                     }
-                  }
                 ]
-          });
-        }
+            });
+        });
+    }
     else {
         res.json({
             "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
@@ -112,18 +113,17 @@ function _Event(req, res) {
         });
     }
 
-    
 }
 
-    // if (suggest == "Past" && suggests == "Events - past") {
-    //     Event.findOne({}, function (err, events) {
-    //         var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
-    //         res.json({
-    //             "fulfillmentText": result,
-    //             "outputContexts": []
-    //         });
-    //     }).sort({ datePosted: -1 });
-    // }
+// if (suggest == "Past" && suggests == "Events - past") {
+//     Event.findOne({}, function (err, events) {
+//         var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
+//         res.json({
+//             "fulfillmentText": result,
+//             "outputContexts": []
+//         });
+//     }).sort({ datePosted: -1 });
+// }
 
 // else {
 //     Event.findOne({ eventLocation: { $regex: /Location/ } }, function (err, events) {
@@ -204,7 +204,7 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    
+
     _Event(req, res);
 
     // if (req.body.queryResult.intent.displayName == "Events - past") {
