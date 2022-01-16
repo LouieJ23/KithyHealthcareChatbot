@@ -14,37 +14,38 @@ const Admin = require('../routes/admin');
 function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
 
+    if (intent_name == 'Events') {
+        res.json({
+            "fulfillmentMessages": [
+                {
+                    "quickReplies": {
+                        "title": "What would you like to know about Event?",
+                        "quickReplies": [
+                            "Upcoming",
+                            "Latest",
+                            "Previous"
+                        ]
+                    },
+                    "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                        "text": [
+                            result
+                        ]
+                    }
+                }
+            ]
+        });
+    }
+
     Event.find({}, function (err, events) {
         const event = events[0];
         var result = "The latest event name is " + event.eventTitle;
         let eventDate = event.datePosted;
         let dateToday = Date.now();
 
-        if (intent_name == 'Events') {
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": "What would you like to know about Event?",
-                            "quickReplies": [
-                                "Upcoming",
-                                "Latest",
-                                "Previous"
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                result
-                            ]
-                        }
-                    }
-                ]
-            });
-        }
-        else {
+        
             if(dateToday > eventDate) {
                 if (intent_name === 'Events - latest') {
                     
@@ -119,7 +120,7 @@ function _Event(req, res) {
                     "outputContexts": []
                 });
             }
-        }
+        
     })
     .sort({ datePosted: -1 });
 }
