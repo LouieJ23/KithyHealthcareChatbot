@@ -31,15 +31,15 @@ function _Event(req, res) {
         "outputContexts": []
     });
 
-    if (suggest == "Past" && suggests == "Events - past") {
-        Event.findOne({}, function (err, events) {
-            var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
-            res.json({
-                "fulfillmentText": result,
-                "outputContexts": []
-            });
-        }).sort({ datePosted: -1 });
-    }
+    // if (suggest == "Past" && suggests == "Events - past") {
+    //     Event.findOne({}, function (err, events) {
+    //         var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
+    //         res.json({
+    //             "fulfillmentText": result,
+    //             "outputContexts": []
+    //         });
+    //     }).sort({ datePosted: -1 });
+    // }
 }
 
 // else {

@@ -34,6 +34,11 @@ var samp = "Location";
 // Guidelines.find({}, function(err, guidelines) {
 //     console.log(guidelines);
 // });
-Departments.find({}, function(err, departments) {
-    console.log(departments);
-});
+// Departments.find({}, function(err, departments) {
+//     console.log(departments);
+// });
+
+Event.findOne({}, function (err, events) {
+    var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+    console.log(result);
+}).sort({ datePosted: -1 });
