@@ -128,9 +128,23 @@ exports.processRequests = (req, res) => {
     if (req.body.queryResult.intent.displayName == "Events - latest") {
         _Event(req, res);
     }
+    else {
+        res.json({
+            "fulfillmentText": "Sorry, I don't get that!",
+            "outputContexts": []
+        });
+    }
     if (req.body.queryResult.intent.displayName == "Events - past") {
         _Event(req, res);
     }
+    else {
+        res.json({
+            "fulfillmentText": "Sorry, I don't get that!",
+            "outputContexts": []
+        });
+    }
+
+
 
 };
 
