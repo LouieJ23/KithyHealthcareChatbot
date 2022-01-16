@@ -126,12 +126,12 @@ function _Event(req, res) {
 
 exports.processRequests = (req, res) => {
     console.log(req.body.queryResult.parameters);
-    if (req.body.queryResult.parameters.event == "latest") {
+    if (req.body.queryResult.parameters.event[0] == "latest") {
         _Event(req, res);
     }
     else {
         res.json({
-            "fulfillmentText": "Sorry, I don't get that!",
+            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
             "outputContexts": []
         });
     }
@@ -141,7 +141,7 @@ exports.processRequests = (req, res) => {
     }
     else {
         res.json({
-            "fulfillmentText": "Sorry, I don't get that!",
+            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
             "outputContexts": []
         });
     }
