@@ -13,8 +13,7 @@ const Admin = require('../routes/admin');
 
 function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    console.log(intent_name);
-    
+
     Event.find({}, function (err, events) {
         const event = events[0];
         var result = "The latest event name is " + event.eventTitle;
