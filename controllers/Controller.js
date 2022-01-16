@@ -123,15 +123,22 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    if (req.body.queryResult.parameters.event[0] == "latest") {
-        _Event(req, res);
+    let suggest = req.body.queryResult.parameters.event[0];
+    console.log(suggest === 'latest');
+
+    if (suggest === 'latest') {
+            Event.findOne({}, function (err, events) {
+                var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+                res.json({
+                    "fulfillmentText": result,
+                    "outputContexts": []
+                });
+            }).sort({ datePosted: -1 });
     }
-    else {
-        res.json({
-            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
-            "outputContexts": []
-        });
-    }
+    res.json({
+        "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+        "outputContexts": []
+    });
 
     // if (req.body.queryResult.intent.displayName == "Events - past") {
     //     _Event(req, res);
