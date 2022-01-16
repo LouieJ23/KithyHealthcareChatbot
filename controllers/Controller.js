@@ -86,9 +86,6 @@ function _Event(req, res) {
         });
     }
 
-    
-    }
-
     // if (suggest == "Past" && suggests == "Events - past") {
     //     Event.findOne({}, function (err, events) {
     //         var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
