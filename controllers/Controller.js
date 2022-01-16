@@ -29,6 +29,7 @@ function _Event(req, res) {
                         {
                           "quickReplies": {
                             "title": result,
+                            "title": "Please Select What you would like to do next. ",
                             "quickReplies": [
                               "Event",
                               "Health Center",
