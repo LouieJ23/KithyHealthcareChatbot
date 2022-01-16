@@ -13,11 +13,11 @@ const Admin = require('../routes/admin');
 
 function _Event(req, res) {
     let suggest = req.body.queryResult.queryText;
-    let suggests = req.body.queryResult.action;
+    let suggests = req.body.queryResult.intent.displayName;
     //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
 
-    if (suggest == "Latest" && suggests == "Events.Events-Latest") {
+    if (suggest == "Latest" && suggests == "Events - Latest") {
         if (err) {
             return res.json({
                 speech: 'Something went wrong!',
@@ -35,7 +35,7 @@ function _Event(req, res) {
         }
     }
 
-    if (suggest == "Past") {
+    if (suggest == "Past" && suggests == "Events - Past") {
         Event.findOne({}, function (err, events) {
             var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
             res.json({
