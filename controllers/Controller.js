@@ -78,15 +78,8 @@ function _Event(req, res) {
                 "outputContexts": []
             });
         }).sort({ datePosted: -1 });
-}
-    else {
-        res.json({
-            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
-            "outputContexts": []
-        });
     }
-
-    if(suggest === 'event') {
+    else if(suggest === "event") {
         res.json({
             "fulfillmentMessages": [
                 {
@@ -108,6 +101,15 @@ function _Event(req, res) {
                   }
                 ]
           });
+        }
+    else {
+        res.json({
+            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+            "outputContexts": []
+        });
+    }
+
+    
     }
 
     // if (suggest == "Past" && suggests == "Events - past") {
