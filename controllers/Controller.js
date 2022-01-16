@@ -135,10 +135,13 @@ exports.processRequests = (req, res) => {
                 });
             }).sort({ datePosted: -1 });
     }
-    res.json({
-        "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
-        "outputContexts": []
-    });
+    else {
+        res.json({
+            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+            "outputContexts": []
+        });
+    }
+    
 
     // if (req.body.queryResult.intent.displayName == "Events - past") {
     //     _Event(req, res);
