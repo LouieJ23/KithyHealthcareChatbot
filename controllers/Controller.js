@@ -13,10 +13,11 @@ const Admin = require('../routes/admin');
 
 function _Event(req, res) {
     let suggest = req.body.queryResult.queryText;
+    let suggests = req.body.queryResult.intent.displayName;
     //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
 
-    if (suggest == "latest") {
+    if (suggest == "Latest" && suggests == "Events - Latest") {
         if (err) {
             return res.json({
                 speech: 'Something went wrong!',
@@ -34,9 +35,9 @@ function _Event(req, res) {
         }
     }
 
-    if (suggest == "Event Name") {
+    if (suggest == "Past" && suggests == "Events - Past") {
         Event.findOne({}, function (err, events) {
-            var result = "The Event Name" + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
+            var result = "The Past Event was " + events.eventTitle + " was held  in " + events.eventLocation + ". The participants was required to " + events.eventRequire + ". They were need to follow the steps " + events.eventProcess + " and the participants were " + events.eventParticipants;
             res.json({
                 "fulfillmentText": result,
                 "outputContexts": []
@@ -124,7 +125,10 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    if (req.body.queryResult.intent.displayName == "Events") {
+    if (req.body.queryResult.intent.displayName == "Events - Latest") {
+        _Event(req, res);
+    }
+    if (req.body.queryResult.intent.displayName == "Events - Past") {
         _Event(req, res);
     }
 };
