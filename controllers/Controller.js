@@ -28,7 +28,7 @@ function _Event(req, res) {
                     "fulfillmentMessages": [
                         {
                           "quickReplies": {
-                            "title": "What would you like to know about Event?",
+                            "title": result,
                             "quickReplies": [
                               "Latest",
                               "Past"
@@ -39,7 +39,7 @@ function _Event(req, res) {
                         {
                             "text": {
                               "text": [
-                                result
+                                ""
                               ]
                             }
                           }
