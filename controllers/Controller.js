@@ -19,29 +19,22 @@ function _Event(req, res) {
             Event.find({}, function (err, events) {
                 const event = events[0];
                 var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-                res.json({
-                    "fulfillmentText": result,
-                    "outputContexts": []
-                });
-
                 // res.json({
-                //     "fulfillment_messages": [{
-                //       "payload": {
-                //         "richContent": [
-                //           [
-                //               {
-                //             "text": "Go to google",
-                //             "type": "button",
-                //             "icon":{
-                //                 "type" : "link",
-                //                 "color" : "#fff"
-                //             }
-                //           }]
-                //         ]
-                //       }
-                //     }]
-                  
-                //   });
+                //     "fulfillmentText": result,
+                //     "outputContexts": []
+                // });
+
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                          "text": {
+                            "text": [
+                              "The Booster Vaccination will be going to held  in Kitaotao National High School. So in order to participate to the event, you are required to bring Bring valid ID and Indigency. The process is to Follow all the steps and the participants are Senior Citizen"
+                            ]
+                          }
+                        }
+                      ]
+                  });
             }).sort({ datePosted: -1 });
     }
     else if (suggest === 'previous') {
