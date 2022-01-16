@@ -121,6 +121,7 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
+    console.log(typeof(suggest) === 'string' && suggest === 'latest')
     if (req.body.queryResult.parameters.event[0] == "latest") {
         _Event(req, res);
     }
@@ -131,15 +132,15 @@ exports.processRequests = (req, res) => {
         });
     }
 
-    if (req.body.queryResult.intent.displayName == "Events - past") {
-        _Event(req, res);
-    }
-    else {
-        res.json({
-            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
-            "outputContexts": []
-        });
-    }
+    // if (req.body.queryResult.intent.displayName == "Events - past") {
+    //     _Event(req, res);
+    // }
+    // else {
+    //     res.json({
+    //         "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+    //         "outputContexts": []
+    //     });
+    // }
 
 
 
