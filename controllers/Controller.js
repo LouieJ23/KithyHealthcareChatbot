@@ -79,7 +79,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    else if(suggest.toLowerCase() === "event") {
+    else if(suggest === "event") {
         res.json({
             "fulfillmentMessages": [
                 {
