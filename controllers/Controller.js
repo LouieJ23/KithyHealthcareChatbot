@@ -29,7 +29,6 @@ function _Event(req, res) {
                         {
                           "quickReplies": {
                             "title": result,
-                            "title": "Please Select What you would like to do next. ",
                             "quickReplies": [
                               "Event",
                               "Health Center",
@@ -85,6 +84,30 @@ function _Event(req, res) {
             "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
             "outputContexts": []
         });
+    }
+
+    if(suggest === 'event') {
+        res.json({
+            "fulfillmentMessages": [
+                {
+                  "quickReplies": {
+                    "title": "What would you like to know about Event?",
+                    "quickReplies": [
+                      "Latest",
+                      "Previous"
+                    ]
+                  },
+                  "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                      "text": [
+                        ""
+                      ]
+                    }
+                  }
+                ]
+          });
     }
 
     // if (suggest == "Past" && suggests == "Events - past") {
