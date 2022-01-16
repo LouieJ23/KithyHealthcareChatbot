@@ -79,12 +79,38 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
+    else if(suggest === "event") {
+        res.json({
+            "fulfillmentMessages": [
+                {
+                  "quickReplies": {
+                    "title": "What would you like to know about Event?",
+                    "quickReplies": [
+                      "Latest",
+                      "Previous"
+                    ]
+                  },
+                  "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                      "text": [
+                        ""
+                      ]
+                    }
+                  }
+                ]
+          });
+        }
     else {
         res.json({
             "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
             "outputContexts": []
         });
     }
+
+    
+}
 
     // if (suggest == "Past" && suggests == "Events - past") {
     //     Event.findOne({}, function (err, events) {
@@ -95,7 +121,6 @@ function _Event(req, res) {
     //         });
     //     }).sort({ datePosted: -1 });
     // }
-}
 
 // else {
 //     Event.findOne({ eventLocation: { $regex: /Location/ } }, function (err, events) {
