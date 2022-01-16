@@ -120,7 +120,8 @@ function _Event(req, res) {
                 });
             }
         }
-    });
+    })
+    .sort({ datePosted: -1 });
 }
 
 
