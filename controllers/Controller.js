@@ -28,11 +28,14 @@ function _Event(req, res) {
                     "fulfillment_messages": [{
                       "payload": {
                         "richContent": [
-                          [{
-                            "type": "chips",
-                            "options": [{
-                              "text": "Empezar!"
-                            }]
+                          [
+                              {
+                            "text": "Go to google",
+                            "type": "button",
+                            "icon":{
+                                "type" : "link",
+                                "color" : "#fff"
+                            }
                           }]
                         ]
                       }
