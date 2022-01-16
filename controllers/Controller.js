@@ -13,62 +13,9 @@ const Admin = require('../routes/admin');
 
 function _Event(req, res) {
     let suggest = req.body.queryResult.parameters.event[0];
-    if (suggest === 'latest') {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-            // res.json({
-            //     "fulfillmentText": result,
-            //     "outputContexts": []
-            // });
-
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "Event",
-                                "Health Center",
-                                "Illness",
-                                "Set Appointment",
-                                "Visit Site"
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-
-            // res.json({
-            //     "fulfillmentMessages": [{
-            //       "payload": {
-            //         "richContent": [
-            //           [
-            //               {
-            //             "text": "Go to google",
-            //             "type": "button",
-            //             "icon":{
-            //                 "type" : "link",
-            //                 "color" : "#fff"
-            //             }
-            //           }]
-            //         ]
-            //       }
-            //     }]
-
-            //   });
-        }).sort({ datePosted: -1 });
-    }
-  
-    else if(suggest === "event") {
+    let intent_name = req.body.queryResult.displayName;
+    console.log(intent_name);
+    if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest event name is " + event.eventTitle;
@@ -95,22 +42,111 @@ function _Event(req, res) {
             });
         });
     }
-    else if (suggest === 'previous') {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The recent event is " + event.eventTitle + " was held at " + event.eventLocation + ". The participants were required to  " + event.eventRequire + ". The process is:  " + event.eventProcess + " and the participants are " + event.eventParticipant;
-            res.json({
-                "fulfillmentText": result,
-                "outputContexts": []
-            });
-        }).sort({ datePosted: -1 });
-    }
     else {
         res.json({
             "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
             "outputContexts": []
         });
     }
+
+    // if (suggest === 'latest') {
+    //     Event.find({}, function (err, events) {
+    //         const event = events[0];
+    //         var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+    //         // res.json({
+    //         //     "fulfillmentText": result,
+    //         //     "outputContexts": []
+    //         // });
+
+    //         res.json({
+    //             "fulfillmentMessages": [
+    //                 {
+    //                     "quickReplies": {
+    //                         "title": result,
+    //                         "quickReplies": [
+    //                             "Event",
+    //                             "Health Center",
+    //                             "Illness",
+    //                             "Set Appointment",
+    //                             "Visit Site"
+    //                         ]
+    //                     },
+    //                     "platform": "FACEBOOK"
+    //                 },
+    //                 {
+    //                     "text": {
+    //                         "text": [
+    //                             ""
+    //                         ]
+    //                     }
+    //                 }
+    //             ]
+    //         });
+
+    //         // res.json({
+    //         //     "fulfillmentMessages": [{
+    //         //       "payload": {
+    //         //         "richContent": [
+    //         //           [
+    //         //               {
+    //         //             "text": "Go to google",
+    //         //             "type": "button",
+    //         //             "icon":{
+    //         //                 "type" : "link",
+    //         //                 "color" : "#fff"
+    //         //             }
+    //         //           }]
+    //         //         ]
+    //         //       }
+    //         //     }]
+
+    //         //   });
+    //     }).sort({ datePosted: -1 });
+    // }
+
+    // else if(suggest === "event") {
+    //     Event.find({}, function (err, events) {
+    //         const event = events[0];
+    //         var result = "The latest event name is " + event.eventTitle;
+    //         res.json({
+    //             "fulfillmentMessages": [
+    //                 {
+    //                     "quickReplies": {
+    //                         "title": "What would you like to know about Event?",
+    //                         "quickReplies": [
+    //                             "Latest",
+    //                             "Previous"
+    //                         ]
+    //                     },
+    //                     "platform": "FACEBOOK"
+    //                 },
+    //                 {
+    //                     "text": {
+    //                         "text": [
+    //                             result
+    //                         ]
+    //                     }
+    //                 }
+    //             ]
+    //         });
+    //     });
+    // }
+    // else if (suggest === 'previous') {
+    //     Event.find({}, function (err, events) {
+    //         const event = events[1];
+    //         var result = "The recent event is " + event.eventTitle + " was held at " + event.eventLocation + ". The participants were required to  " + event.eventRequire + ". The process is:  " + event.eventProcess + " and the participants are " + event.eventParticipant;
+    //         res.json({
+    //             "fulfillmentText": result,
+    //             "outputContexts": []
+    //         });
+    //     }).sort({ datePosted: -1 });
+    // }
+    // else {
+    //     res.json({
+    //         "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+    //         "outputContexts": []
+    //     });
+    // }
 
 }
 
