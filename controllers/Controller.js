@@ -12,19 +12,12 @@ const Admin = require('../routes/admin');
 
 
 function _Event(req, res) {
-    let suggest = req.body.queryResult.queryText;
+    let suggest = req.body.queryResult.parameters.event[0];
     let suggests = req.body.queryResult.intent.displayName;
     //    let event = req.body.queryResult.parameters.event;
     // console.log(location);
 
-    if (typeof(suggests) == "string" ) {
-        if (err) {
-            return res.json({
-                speech: 'Something went wrong!',
-                displayText: 'Something went wrong!',
-            });
-        }
-        else {
+    if (typeof(suggest) === 'string' && suggest === 'latest') {
             Event.findOne({}, function (err, events) {
                 var result = "The " + events.eventTitle + " will be going to held  in " + events.eventLocation + ". So in order to participate to the event, you are required to bring " + events.eventRequire + ". The process is to " + events.eventProcess + " and the participants are " + events.eventParticipants;
                 res.json({
@@ -32,8 +25,11 @@ function _Event(req, res) {
                     "outputContexts": []
                 });
             }).sort({ datePosted: -1 });
-        }
     }
+    res.json({
+        "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
+        "outputContexts": []
+    });
 
     if (suggest == "Past" && suggests == "Events - past") {
         Event.findOne({}, function (err, events) {
@@ -125,7 +121,6 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    console.log(typeof(req.body.queryResult.parameters.event[0]) === 'string')
     if (req.body.queryResult.parameters.event[0] == "latest") {
         _Event(req, res);
     }
