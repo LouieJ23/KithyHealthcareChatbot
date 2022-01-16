@@ -18,13 +18,23 @@ function _Event(req, res) {
     if (suggest === 'latest') {
             Event.find({}, function (err, events) {
                 const event = events[0];
-                var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipants;
+                var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
                 res.json({
                     "fulfillmentText": result,
                     "outputContexts": []
                 });
             }).sort({ datePosted: -1 });
     }
+    else if (suggest === 'previous') {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            res.json({
+                "fulfillmentText": result,
+                "outputContexts": []
+            });
+        }).sort({ datePosted: -1 });
+}
     else {
         res.json({
             "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
