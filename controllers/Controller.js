@@ -79,7 +79,7 @@ function _Event(req, res) {
                             ]
                         });
                     
-                }
+                }  
                 else if (intent_name === 'Events - previous') {
                         var result = "The recent event is " + event.eventTitle + " was held at " + event.eventLocation + ". The participants were required to  " + event.eventRequire + ". The process is:  " + event.eventProcess + " and the participants are " + event.eventParticipant;
                         res.json({
