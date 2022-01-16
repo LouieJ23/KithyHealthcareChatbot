@@ -80,11 +80,14 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     else if(suggest === "Event") {
+            Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
         res.json({
             "fulfillmentMessages": [
                 {
                   "quickReplies": {
-                    "title": "What would you like to know about Event?",
+                    "title": "What would you like to know about Event?", result,
                     "quickReplies": [
                       "Latest",
                       "Previous"
