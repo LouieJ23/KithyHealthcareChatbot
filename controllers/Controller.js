@@ -125,7 +125,8 @@ function _Event(req, res) {
 
 
 exports.processRequests = (req, res) => {
-    if (req.body.queryResult.intent.displayName == "Events - latest") {
+    console.log(req.body.queryResult.parameters.event);
+    if (req.body.queryResult.parameters.event == "latest") {
         _Event(req, res);
     }
     else {
@@ -134,6 +135,7 @@ exports.processRequests = (req, res) => {
             "outputContexts": []
         });
     }
+
     if (req.body.queryResult.intent.displayName == "Events - past") {
         _Event(req, res);
     }
