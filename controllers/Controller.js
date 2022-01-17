@@ -46,6 +46,30 @@ async function _Event(req, res) {
         console.log(intent_name);
     }
     else {
+        res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "Else",
+                                "quickReplies": [
+                                    "Event",
+                                    "Health Center",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Visit Site"
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
         if (dateToday > eventDate) {
             // let events = await Event.findOne().sort({ datePosted: -1 });
             // if (intent_name === 'Events - latest') {
