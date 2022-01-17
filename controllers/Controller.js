@@ -43,10 +43,10 @@ function _Event(req, res) {
         });
         
     }
-    else if (intent_name == 'Events - latest') {
+    if (intent_name == 'Events - latest') {
             Event.find({}, function (err, events) {
                 const event = events[0];
-                var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+                var result = "The latest" + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
                 
                 
                 res.json({
@@ -75,7 +75,7 @@ function _Event(req, res) {
                 });
             }).sort({ datePosted: -1 });
         }
-        else if (intent_name == 'Events - previous') {
+        if (intent_name == 'Events - previous') {
                 Event.find({}, function (err, events) {
                     const event = events[1];
                     var result = "The recent event is " + event.eventTitle + " was held at " + event.eventLocation + ". The participants were required to  " + event.eventRequire + ". The process is:  " + event.eventProcess + " and the participants are " + event.eventParticipant;
@@ -83,7 +83,7 @@ function _Event(req, res) {
                         "fulfillmentMessages": [
                             {
                                 "quickReplies": {
-                                    "title": "What would you like to know about Event?",
+                                    "title": result,
                                     "quickReplies": [
                                         "Upcoming",
                                         "Latest",
@@ -103,12 +103,70 @@ function _Event(req, res) {
                     });
                 }).sort({ datePosted: -1 });
             }
-    else {
-        res.json({
-            "fulfillmentText": req.body.queryResult.fulfillmentMessages.text.text[0],
-            "outputContexts": []
-        });
-    }
+            if (intent_name == 'Events - upcoming') {
+                Event.find({}, function (err, events) {
+                    const event = events[0];
+                    let eventDate = event.datePosted;
+                    let dateToday = Date.now();
+
+                    var result = "The upcoming" + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+                    
+                    if(dateToday < eventDate) {
+                        res.json({
+                            "fulfillmentMessages": [
+                                {
+                                    "quickReplies": {
+                                        "title": result,
+                                        "quickReplies": [
+                                            "Event",
+                                            "Health Center",
+                                            "Illness",
+                                            "Set Appointment",
+                                            "Visit Site"
+                                        ]
+                                    },
+                                    "platform": "FACEBOOK"
+                                },
+                                {
+                                    "text": {
+                                        "text": [
+                                            ""
+                                        ]
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                    else {
+                        res.json({
+                            "fulfillmentMessages": [
+                                {
+                                    "quickReplies": {
+                                        "title": "There's no upcoming event.",
+                                        "quickReplies": [
+                                            "Event",
+                                            "Health Center",
+                                            "Illness",
+                                            "Set Appointment",
+                                            "Visit Site"
+                                        ]
+                                    },
+                                    "platform": "FACEBOOK"
+                                },
+                                {
+                                    "text": {
+                                        "text": [
+                                            ""
+                                        ]
+                                    }
+                                }
+                            ]
+                        });
+                    }
+                    
+                    
+                }).sort({ datePosted: -1 });
+            }
 
 }
 
