@@ -313,7 +313,7 @@ function _Event(req, res) {
                 });
                 }).sort({ datePosted: -1 });
             }
-            if (intent_name == '"Events - past - more - name') {
+            if (intent_name == 'Events - past - more - name') {
                 Event.find({}, function (err, events) {
                     const event = events[1];
                     var result = "The previous events' name " + event.eventTitle;
