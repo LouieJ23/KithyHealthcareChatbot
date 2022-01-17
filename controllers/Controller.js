@@ -313,39 +313,6 @@ function _Event(req, res) {
                 });
                 }).sort({ datePosted: -1 });
             }
-            if (intent_name == 'Events - previous') {
-                Event.find({}, function (err, events) {
-                    const event = events[1];
-                    var result = "The previouse events " + event.eventTitle + " was held at " + event.eventLocation + ". So in order to participate to the event, the participants were required to bring " + event.eventRequire + ". And the process is to " + event.eventProcess + " and the participants were " + event.eventParticipant;
-                    
-                    
-                    res.json({
-                        "fulfillmentMessages": [
-                            {
-                                "quickReplies": {
-                                    "title": result,
-                                    "quickReplies": [
-                                        "Event",
-                                        "Health Center",
-                                        "Illness",
-                                        "Set Appointment",
-                                        "Visit Site",
-                                        "More"
-                                    ]
-                                },
-                                "platform": "FACEBOOK"
-                            },
-                            {
-                                "text": {
-                                    "text": [
-                                        ""
-                                    ]
-                                }
-                            }
-                        ]
-                    });
-                    }).sort({ datePosted: -1 });
-                }
                 if (intent_name == 'Events - previous - more - name') {
                     Event.find({}, function (err, events) {
                         const event = events[1];
@@ -379,10 +346,76 @@ function _Event(req, res) {
                         });
                     }).sort({ datePosted: -1 });
                 }
-            if (intent_name == 'Events - past - more - name') {
+            if (intent_name == 'Events - previous - more - details') {
                 Event.find({}, function (err, events) {
                     const event = events[1];
-                    var result = "The previous events' name " + event.eventTitle;
+                    var result = "The previous events' details " + event.eventDetails;
+                    
+                    
+                    res.json({
+                        "fulfillmentMessages": [
+                            {
+                                "quickReplies": {
+                                    "title": result,
+                                    "quickReplies": [
+                                        "Event",
+                                        "Health Center",
+                                        "Illness",
+                                        "Set Appointment",
+                                        "Visit Site",
+                                        "More"
+                                    ]
+                                },
+                                "platform": "FACEBOOK"
+                            },
+                            {
+                                "text": {
+                                    "text": [
+                                        ""
+                                    ]
+                                }
+                            }
+                        ]
+                    });
+                }).sort({ datePosted: -1 });
+            }
+            if (intent_name == 'Events - previous - more - process') {
+                Event.find({}, function (err, events) {
+                    const event = events[1];
+                    var result = "The previous events' process " + event.eventProcess;
+                    
+                    
+                    res.json({
+                        "fulfillmentMessages": [
+                            {
+                                "quickReplies": {
+                                    "title": result,
+                                    "quickReplies": [
+                                        "Event",
+                                        "Health Center",
+                                        "Illness",
+                                        "Set Appointment",
+                                        "Visit Site",
+                                        "More"
+                                    ]
+                                },
+                                "platform": "FACEBOOK"
+                            },
+                            {
+                                "text": {
+                                    "text": [
+                                        ""
+                                    ]
+                                }
+                            }
+                        ]
+                    });
+                }).sort({ datePosted: -1 });
+            }
+            if (intent_name == 'Events - previous - more - participants') {
+                Event.find({}, function (err, events) {
+                    const event = events[1];
+                    var result = "The previous events' participants " + event.eventParticipant;
                     
                     
                     res.json({
