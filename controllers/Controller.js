@@ -313,6 +313,39 @@ function _Event(req, res) {
                 });
                 }).sort({ datePosted: -1 });
             }
+            if (intent_name == '"Events - past - more - name') {
+                Event.find({}, function (err, events) {
+                    const event = events[1];
+                    var result = "The previous events' name " + event.eventTitle;
+                    
+                    
+                    res.json({
+                        "fulfillmentMessages": [
+                            {
+                                "quickReplies": {
+                                    "title": result,
+                                    "quickReplies": [
+                                        "Event",
+                                        "Health Center",
+                                        "Illness",
+                                        "Set Appointment",
+                                        "Visit Site",
+                                        "More"
+                                    ]
+                                },
+                                "platform": "FACEBOOK"
+                            },
+                            {
+                                "text": {
+                                    "text": [
+                                        ""
+                                    ]
+                                }
+                            }
+                        ]
+                    });
+                }).sort({ datePosted: -1 });
+            }
             if (intent_name == 'Events - upcoming') {
                 Event.find({}, function (err, events) {
                     const event = events[0];
