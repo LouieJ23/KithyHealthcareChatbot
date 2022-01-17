@@ -11,7 +11,7 @@ const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
 
-function _Event(req, res) {
+async function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     let events = await Event.find().sort({ datePosted: -1 });
     let eventDate = events[0].datePosted;
