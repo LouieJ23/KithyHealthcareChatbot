@@ -76,6 +76,177 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
+
+    if(intent_name == "Events - latest - more - location") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events location is " + event.eventLocation;
+            
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
+    if(intent_name == "Events - latest - more - details") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events details is " + event.eventDetails;
+            
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
+    if(intent_name == "Events - latest - more - requirements") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events requirements is " + event.eventRequire;
+            
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
+    if(intent_name == "Events - latest - more - process") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events process is " + event.eventProcess;
+            
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
+    if(intent_name == "Events - latest - more - participants") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events participants is " + event.eventParticipant;
+            
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
     if (intent_name == 'Events - latest') {
             Event.find({}, function (err, events) {
                 const event = events[0];
