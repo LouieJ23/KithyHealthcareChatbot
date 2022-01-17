@@ -45,7 +45,7 @@ async function _Event(req, res) {
     }
 
     let events = await Event.findOne().sort({ datePosted: -1 });
-    if (datePosted > eventDate) {
+    if (dateToday > eventDate) {
         if (intent_name === 'Events - latest') {
             let event = events[0];
             var result = "The latest " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
@@ -139,7 +139,7 @@ async function _Event(req, res) {
             });
         }
     }
-
+}
 
     exports.processRequests = (req, res) => {
 
@@ -150,4 +150,3 @@ async function _Event(req, res) {
 
 
     };
-
