@@ -14,61 +14,35 @@ const Admin = require('../routes/admin');
 async function _Event(req, res) {
     const event = await Event.findOne().sort({ datePosted: -1 });
 
-    console.log(event);
     let intent_name = req.body.queryResult.intent.displayName;
-    console.log(intent_name);
-
-    res.json({
-        "fulfillmentMessages": [
-            {
-                "quickReplies": {
-                    "title": "What would you like to know about Event?",
-                    "quickReplies": [
-                        "Upcoming",
-                        "Latest",
-                        "Previous"
-                    ]
-                },
-                "platform": "FACEBOOK"
-            },
-            {
-                "text": {
-                    "text": [
-                        event.eventDetails
-                    ]
-                }
-            }
-        ]
-    });
-
-    // if (intent_name == 'Events') {
-    //     Event.find({}, function (err, events) {
-    //         const event = events[0];
-    //         var result = "The latest event name is " + event.eventTitle;
-    //         res.json({
-    //             "fulfillmentMessages": [
-    //                 {
-    //                     "quickReplies": {
-    //                         "title": "What would you like to know about Event?",
-    //                         "quickReplies": [
-    //                             "Upcoming",
-    //                             "Latest",
-    //                             "Previous"
-    //                         ]
-    //                     },
-    //                     "platform": "FACEBOOK"
-    //                 },
-    //                 {
-    //                     "text": {
-    //                         "text": [
-    //                             result
-    //                         ]
-    //                     }
-    //                 }
-    //             ]
-    //         });
-    //     });
-    // }
+    
+    if (intent_name == 'Events') {
+       
+            var result = "The latest event name is " + event.eventTitle;
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "What would you like to know about Event?",
+                            "quickReplies": [
+                                "Upcoming",
+                                "Latest",
+                                "Previous"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                result
+                            ]
+                        }
+                    }
+                ]
+            });
+    }
+    
     // else if (intent_name === 'Events - latest') {
     //         Event.find({}, function (err, events) {
     //             const event = events[0];
