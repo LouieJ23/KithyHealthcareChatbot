@@ -124,7 +124,8 @@ function _Event(req, res) {
                                             "Health Center",
                                             "Illness",
                                             "Set Appointment",
-                                            "Visit Site"
+                                            "Visit Site",
+                                            "More"
                                         ]
                                     },
                                     "platform": "FACEBOOK"
