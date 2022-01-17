@@ -11,12 +11,36 @@ const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
 
-   async function _Event(req, res) {
+async function _Event(req, res) {
     const event = await Event.findOne().sort({ datePosted: -1 });
 
     console.log(event);
     let intent_name = req.body.queryResult.intent.displayName;
     console.log(intent_name);
+
+    res.json({
+        "fulfillmentMessages": [
+            {
+                "quickReplies": {
+                    "title": "What would you like to know about Event?",
+                    "quickReplies": [
+                        "Upcoming",
+                        "Latest",
+                        "Previous"
+                    ]
+                },
+                "platform": "FACEBOOK"
+            },
+            {
+                "text": {
+                    "text": [
+                        event.eventDetails
+                    ]
+                }
+            }
+        ]
+    });
+
     // if (intent_name == 'Events') {
     //     Event.find({}, function (err, events) {
     //         const event = events[0];
@@ -51,11 +75,11 @@ const Admin = require('../routes/admin');
     //             let eventDate = event.datePosted;
     //             let dateToday = Date.now();
     //             var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-                
+
     //             if(dateToday > eventDate) {
 
     //             }
-                
+
     //             res.json({
     //                 "fulfillmentMessages": [
     //                     {
@@ -126,7 +150,7 @@ exports.processRequests = (req, res) => {
     if (intent_name == 'Events') {
         _Event(req, res);
     }
-    
+
 
 };
 
