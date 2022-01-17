@@ -43,6 +43,39 @@ function _Event(req, res) {
         });
         
     }
+    if(intent_name == "Events - latest - more - name") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events name is " + event.eventTitle;
+            
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
     if (intent_name == 'Events - latest') {
             Event.find({}, function (err, events) {
                 const event = events[0];
