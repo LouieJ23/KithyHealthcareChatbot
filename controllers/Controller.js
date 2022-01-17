@@ -19,6 +19,8 @@ async function _Event(req, res) {
 
     if (intent_name == 'Events') {
 
+        console.log(dateToday > eventDate);
+
         var result = "The latest event name is " + event.eventTitle;
         res.json({
             "fulfillmentMessages": [
@@ -45,12 +47,18 @@ async function _Event(req, res) {
 
         console.log(intent_name);
     }
-    else {
-        res.json({
+
+        if (dateToday > eventDate) {
+            // let events = await Event.findOne().sort({ datePosted: -1 });
+            // if (intent_name === 'Events - latest') {
+            //     let event = events[0];
+            //     var result = "The latest " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+
+                res.json({
                     "fulfillmentMessages": [
                         {
                             "quickReplies": {
-                                "title": "Else",
+                                "title": result,
                                 "quickReplies": [
                                     "Event",
                                     "Health Center",
@@ -70,36 +78,6 @@ async function _Event(req, res) {
                         }
                     ]
                 });
-        if (dateToday > eventDate) {
-            // let events = await Event.findOne().sort({ datePosted: -1 });
-            // if (intent_name === 'Events - latest') {
-            //     let event = events[0];
-            //     var result = "The latest " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-
-            //     res.json({
-            //         "fulfillmentMessages": [
-            //             {
-            //                 "quickReplies": {
-            //                     "title": result,
-            //                     "quickReplies": [
-            //                         "Event",
-            //                         "Health Center",
-            //                         "Illness",
-            //                         "Set Appointment",
-            //                         "Visit Site"
-            //                     ]
-            //                 },
-            //                 "platform": "FACEBOOK"
-            //             },
-            //             {
-            //                 "text": {
-            //                     "text": [
-            //                         ""
-            //                     ]
-            //                 }
-            //             }
-            //         ]
-            //     });
             // }
             // else if (intent_name === 'Events - previous') {
             //     let event = events[1];
@@ -168,7 +146,6 @@ async function _Event(req, res) {
             console.log("Upcoming");
         }
     }
-}
 
 exports.processRequests = (req, res) => {
 
