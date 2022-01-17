@@ -42,6 +42,8 @@ async function _Event(req, res) {
                 }
             ]
         });
+
+        console.log(intent_name);
     }
     else {
         if (dateToday > eventDate) {
