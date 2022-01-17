@@ -11,11 +11,12 @@ const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
 
- _Event = async(req, res) => {
+   async function _Event(req, res) {
     const event = await Event.findOne().sort({ datePosted: -1 });
+
     console.log(event);
-    // let intent_name = req.body.queryResult.intent.displayName;
-    
+    let intent_name = req.body.queryResult.intent.displayName;
+    console.log(intent_name);
     // if (intent_name == 'Events') {
     //     Event.find({}, function (err, events) {
     //         const event = events[0];
