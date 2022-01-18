@@ -7,7 +7,7 @@ const Event = require('../../models/Events');
 // EVENT LATEST FUNCTION
 function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    let intent_parameter = req.body.queryResult.outputContexts.parameters.event;
+    let intent_parameter = req.body.queryResult.outputContexts.parameters.event[0];
     console.log
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
