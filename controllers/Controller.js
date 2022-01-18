@@ -43,7 +43,7 @@ function _Event(req, res) {
         });
 
     }
-    if ((intent_name == "Events - latest - more1 - location") || (intent_name == "Events - latest - more - location")) {
+    if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name")) {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events name is " + event.eventTitle;
