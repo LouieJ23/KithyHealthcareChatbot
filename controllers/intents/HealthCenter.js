@@ -47,6 +47,7 @@ function _HealthCenter(req, res) {
                     "quickReplies": {
                        
                         "quickReplies": [
+                            "Back",
                             "Date of Founding",
                             "Published by",
                             "Location",
