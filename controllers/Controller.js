@@ -715,7 +715,8 @@ function _Event(req, res) {
                     ]
                 });
             }
-        });
+        })
+        .sort({ datePosted: -1 });
     }
 
 if (intent_name == "Events - upcoming - more3 - details") {
