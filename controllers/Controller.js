@@ -43,7 +43,7 @@ function _Event(req, res) {
         });
 
     }
-    if (intent_name == "Events - latest - more1 - name") {
+    if ((intent_name == "Events - latest - more1 - location") || (intent_name == "Events - latest - more - location")) {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events name is " + event.eventTitle;
@@ -78,7 +78,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (intent_name == "Events - latest - more - location") {
+    if ((intent_name == "Events - latest - more1 - location") || (intent_name == "Events - latest - more - location")) {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events location is " + event.eventLocation;
