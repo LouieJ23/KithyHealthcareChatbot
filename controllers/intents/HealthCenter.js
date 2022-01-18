@@ -43,7 +43,40 @@ function _HealthCenter(req, res) {
    
     if (intent_name == "Health Center - date of founding") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao is founded on  " + centerInfo.dateOfFounding;
+            var result = "The health center of Kitaotao was founded on  " + centerInfo.dateOfFounding;
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Date of Founding",
+                                "Published by",
+                                "Location",
+                                "Contact Number",
+                                "Email Address",
+                                "Mission",
+                                "Vision"
+                               
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        })
+    }
+    if (intent_name == "Health Center - published by") {
+        hCenter.findOne({}, function (err, centerInfo) {
+            var result = "The health center of Kitaotao was published by " + centerInfo.publishedBy;
             
             res.json({
                 "fulfillmentMessages": [
