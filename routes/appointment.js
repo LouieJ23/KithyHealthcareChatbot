@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
        const {page = 1, limit = 2} = req.query;
        const appointment = await Appointment.find()
        .limit(limit * 1)
+       .sort({ datePosted: -1 })
        .skip((page - 1) * limit);
        res.render('appointment', {
            appointments:appointment,
