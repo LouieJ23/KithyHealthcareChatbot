@@ -313,7 +313,7 @@ function _Event(req, res) {
                 });
                 }).sort({ datePosted: -1 });
             }
-                if (intent_name == 'Events - previous - more - name') {
+                if (intent_name == 'Events - previous - more1 - name') {
                     Event.find({}, function (err, events) {
                         const event = events[1];
                         var result = "The previous events' name " + event.eventTitle;
@@ -346,7 +346,7 @@ function _Event(req, res) {
                         });
                     }).sort({ datePosted: -1 });
                 }
-            if (intent_name == 'Events - previous - more - details') {
+            if (intent_name == 'Events - previous - more1 - details') {
                 Event.find({}, function (err, events) {
                     const event = events[1];
                     var result = "The previous events' details " + event.eventDetails;
@@ -379,7 +379,7 @@ function _Event(req, res) {
                     });
                 }).sort({ datePosted: -1 });
             }
-            if (intent_name == 'Events - previous - more - process') {
+            if (intent_name == 'Events - previous - more1 - process') {
                 Event.find({}, function (err, events) {
                     const event = events[1];
                     var result = "The previous events' process " + event.eventProcess;
@@ -412,7 +412,7 @@ function _Event(req, res) {
                     });
                 }).sort({ datePosted: -1 });
             }
-            if (intent_name == "Events - past - more - participants") {
+            if (intent_name == "Events - past - more1 - participants") {
                 Event.find({}, function (err, events) {
                     const event = events[1];
                     var result = "The previous events' participants " + event.eventParticipant;
