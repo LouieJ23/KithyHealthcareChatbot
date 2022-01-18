@@ -5,7 +5,7 @@ const hCenter = require('../../models/CenterInfo');
 
 function _HealthCenter(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name")) {
+    if (intent_name == "Health Center") {
         hCenter.find({}, function (err, centerInfos) {
             const centerInfo = centerInfos[0];
             var result = "The health center of Kitaotao is founded on  " + centerInfo.dateOfFounding;
