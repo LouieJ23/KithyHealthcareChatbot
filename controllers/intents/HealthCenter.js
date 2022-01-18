@@ -8,6 +8,41 @@ function _HealthCenter(req, res) {
     console.log(intent_name);
     if (intent_name == "Health Center") {
         hCenter.findOne({}, function (err, centerInfo) {
+            // var result = "The health center of Kitaotao is founded on  " + centerInfo.dateOfFounding;
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "result",
+                            "quickReplies": [
+                                "Date of Founding",
+                                "Published by",
+                                "Location",
+                                "Contact Number",
+                                "Email Address",
+                                "Mission",
+                                "Vision"
+                               
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        })
+    }
+   
+   
+    if (intent_name == "Health Center - date of founding") {
+        hCenter.findOne({}, function (err, centerInfo) {
             var result = "The health center of Kitaotao is founded on  " + centerInfo.dateOfFounding;
             
             res.json({
@@ -39,8 +74,5 @@ function _HealthCenter(req, res) {
             });
         })
     }
-   
-   
-    
 }
 module.exports = _HealthCenter;
