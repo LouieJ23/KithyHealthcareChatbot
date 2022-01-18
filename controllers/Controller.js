@@ -687,10 +687,37 @@ function _Event(req, res) {
                         }
                     ]
                 });
-        };
-    });
+            }
+            else {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "There's no upcoming event.",
+                                "quickReplies": [
+                                    "More",
+                                    "Event",
+                                    "Health Center",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Visit Site"
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
+        });
+    }
 
-}
 if (intent_name == "Events - upcoming - more3 - details") {
     Event.find({}, function (err, events) {
         const event = events[0];
