@@ -10,8 +10,6 @@ const MildIllness = require('../models/Illness')
 const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
-
-
 exports.processRequests = (req, res) => {
 
     _Event(req, res);
