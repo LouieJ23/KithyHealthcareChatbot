@@ -11,7 +11,7 @@ function _Event(req, res) {
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
             const event = events[0];
-            var result = "The latest event name is " + event.eventTitle;
+            // var result = "The latest event name is " + event.eventTitle;
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -28,7 +28,8 @@ function _Event(req, res) {
                     {
                         "text": {
                             "text": [
-                                result
+                                ""
+                                // result
                             ]
                         }
                     }
