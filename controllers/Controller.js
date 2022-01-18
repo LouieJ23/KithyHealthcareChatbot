@@ -55,12 +55,13 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
+                               
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -89,12 +90,13 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
+                                
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -123,12 +125,13 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
+                                
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -157,12 +160,13 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
+                               
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -191,12 +195,13 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
+                             
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -225,12 +230,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -259,12 +264,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -295,12 +300,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -328,12 +333,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -361,12 +366,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -394,12 +399,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -427,12 +432,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -460,12 +465,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -493,12 +498,12 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "More",
                                 "Event",
                                 "Health Center",
                                 "Illness",
                                 "Set Appointment",
                                 "Visit Site",
-                                "More"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -531,12 +536,12 @@ function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
+                                    "More",
                                     "Event",
                                     "Health Center",
                                     "Illness",
                                     "Set Appointment",
                                     "Visit Site",
-                                    "More"
                                 ]
                             },
                             "platform": "FACEBOOK"
