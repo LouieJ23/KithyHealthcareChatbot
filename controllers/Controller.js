@@ -41,14 +41,14 @@ function _Event(req, res) {
                 ]
             });
         });
-        
+
     }
-    if(intent_name == "Events - latest - more1 - name") {
+    if (intent_name == "Events - latest - more1 - name") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events name is " + event.eventTitle;
-            
-            
+
+
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -77,12 +77,12 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if(intent_name == "Events - latest - more1 - location") {
+    if (intent_name == "Events - latest - more1 - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events location is " + event.eventLocation;
-            
-            
+
+
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -111,12 +111,12 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if(intent_name == "Events - latest - more1 - details") {
+    if (intent_name == "Events - latest - more1 - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events details is " + event.eventDetails;
-            
-            
+
+
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -145,12 +145,12 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if(intent_name == "Events - latest - more1 - requirements") {
+    if (intent_name == "Events - latest - more1 - requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
-            
-            
+
+
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -179,12 +179,12 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if(intent_name == "Events - latest - more1 - process") {
+    if (intent_name == "Events - latest - more1 - process") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events process is " + event.eventProcess;
-            
-            
+
+
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -213,12 +213,12 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if(intent_name == "Events - latest - more1 - participants") {
+    if (intent_name == "Events - latest - more1 - participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events participants is " + event.eventParticipant;
-            
-            
+
+
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -248,11 +248,283 @@ function _Event(req, res) {
     }
 
     if (intent_name == 'Events - latest') {
-            Event.find({}, function (err, events) {
-                const event = events[0];
-                var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-                
-                
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
+
+    // EVENT PREVIOUS FUNCTION
+    if (intent_name == 'Events - previous') {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    if (intent_name == 'Events - previous - more1 - name') {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' name " + event.eventTitle;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    if (intent_name == 'Events - previous - more1 - details') {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' details " + event.eventDetails;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    if (intent_name == 'Events - previous - more1 - process') {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' process " + event.eventProcess;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    if (intent_name == "Events - previous - more1 - participants") {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' participants " + event.eventParticipant;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    if (intent_name == "Events - previous - more1 - location") {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' location " + event.eventLocation;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    if (intent_name == "Events - previous - more1 - requirements") {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' requirements " + event.eventRequire;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                                "More"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+
+     // EVENT UPCOMING FUNCTION
+    if (intent_name == 'Events - upcoming') {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            let eventDate = event.datePosted;
+            let dateToday = Date.now();
+
+            var result = "The upcoming" + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+
+            if (dateToday < eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -278,29 +550,19 @@ function _Event(req, res) {
                         }
                     ]
                 });
-            }).sort({ datePosted: -1 });
-        }
-
-        
-         // EVENT PREVIOUS FUNCTION
-        if (intent_name == 'Events - previous') {
-            Event.find({}, function (err, events) {
-                const event = events[1];
-                var result = "The previous events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-                
-                
+            }
+            else {
                 res.json({
                     "fulfillmentMessages": [
                         {
                             "quickReplies": {
-                                "title": result,
+                                "title": "There's no upcoming event.",
                                 "quickReplies": [
                                     "Event",
                                     "Health Center",
                                     "Illness",
                                     "Set Appointment",
-                                    "Visit Site",
-                                    "More"
+                                    "Visit Site"
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -314,205 +576,11 @@ function _Event(req, res) {
                         }
                     ]
                 });
-                }).sort({ datePosted: -1 });
             }
-                if (intent_name == 'Events - previous - more1 - name') {
-                    Event.find({}, function (err, events) {
-                        const event = events[1];
-                        var result = "The previous events' name " + event.eventTitle;
-                        
-                        
-                        res.json({
-                            "fulfillmentMessages": [
-                                {
-                                    "quickReplies": {
-                                        "title": result,
-                                        "quickReplies": [
-                                            "Event",
-                                            "Health Center",
-                                            "Illness",
-                                            "Set Appointment",
-                                            "Visit Site",
-                                            "More"
-                                        ]
-                                    },
-                                    "platform": "FACEBOOK"
-                                },
-                                {
-                                    "text": {
-                                        "text": [
-                                            ""
-                                        ]
-                                    }
-                                }
-                            ]
-                        });
-                    }).sort({ datePosted: -1 });
-                }
-            if (intent_name == 'Events - previous - more1 - details') {
-                Event.find({}, function (err, events) {
-                    const event = events[1];
-                    var result = "The previous events' details " + event.eventDetails;
-                    
-                    
-                    res.json({
-                        "fulfillmentMessages": [
-                            {
-                                "quickReplies": {
-                                    "title": result,
-                                    "quickReplies": [
-                                        "Event",
-                                        "Health Center",
-                                        "Illness",
-                                        "Set Appointment",
-                                        "Visit Site",
-                                        "More"
-                                    ]
-                                },
-                                "platform": "FACEBOOK"
-                            },
-                            {
-                                "text": {
-                                    "text": [
-                                        ""
-                                    ]
-                                }
-                            }
-                        ]
-                    });
-                }).sort({ datePosted: -1 });
-            }
-            if (intent_name == 'Events - previous - more1 - process') {
-                Event.find({}, function (err, events) {
-                    const event = events[1];
-                    var result = "The previous events' process " + event.eventProcess;
-                    
-                    
-                    res.json({
-                        "fulfillmentMessages": [
-                            {
-                                "quickReplies": {
-                                    "title": result,
-                                    "quickReplies": [
-                                        "Event",
-                                        "Health Center",
-                                        "Illness",
-                                        "Set Appointment",
-                                        "Visit Site",
-                                        "More"
-                                    ]
-                                },
-                                "platform": "FACEBOOK"
-                            },
-                            {
-                                "text": {
-                                    "text": [
-                                        ""
-                                    ]
-                                }
-                            }
-                        ]
-                    });
-                }).sort({ datePosted: -1 });
-            }
-            if (intent_name == "Events - previous - more1 - participants") {
-                Event.find({}, function (err, events) {
-                    const event = events[1];
-                    var result = "The previous events' participants " + event.eventParticipant;
-                    
-                    
-                    res.json({
-                        "fulfillmentMessages": [
-                            {
-                                "quickReplies": {
-                                    "title": result,
-                                    "quickReplies": [
-                                        "Event",
-                                        "Health Center",
-                                        "Illness",
-                                        "Set Appointment",
-                                        "Visit Site",
-                                        "More"
-                                    ]
-                                },
-                                "platform": "FACEBOOK"
-                            },
-                            {
-                                "text": {
-                                    "text": [
-                                        ""
-                                    ]
-                                }
-                            }
-                        ]
-                    });
-                }).sort({ datePosted: -1 });
-            }
-            if (intent_name == 'Events - upcoming') {
-                Event.find({}, function (err, events) {
-                    const event = events[0];
-                    let eventDate = event.datePosted;
-                    let dateToday = Date.now();
 
-                    var result = "The upcoming" + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-                    
-                    if(dateToday < eventDate) {
-                        res.json({
-                            "fulfillmentMessages": [
-                                {
-                                    "quickReplies": {
-                                        "title": result,
-                                        "quickReplies": [
-                                            "Event",
-                                            "Health Center",
-                                            "Illness",
-                                            "Set Appointment",
-                                            "Visit Site",
-                                            "More"
-                                        ]
-                                    },
-                                    "platform": "FACEBOOK"
-                                },
-                                {
-                                    "text": {
-                                        "text": [
-                                            ""
-                                        ]
-                                    }
-                                }
-                            ]
-                        });
-                    }
-                    else {
-                        res.json({
-                            "fulfillmentMessages": [
-                                {
-                                    "quickReplies": {
-                                        "title": "There's no upcoming event.",
-                                        "quickReplies": [
-                                            "Event",
-                                            "Health Center",
-                                            "Illness",
-                                            "Set Appointment",
-                                            "Visit Site"
-                                        ]
-                                    },
-                                    "platform": "FACEBOOK"
-                                },
-                                {
-                                    "text": {
-                                        "text": [
-                                            ""
-                                        ]
-                                    }
-                                }
-                            ]
-                        });
-                    }
-                    
-                    
-                }).sort({ datePosted: -1 });
-            }
+
+        }).sort({ datePosted: -1 });
+    }
 
 }
 
