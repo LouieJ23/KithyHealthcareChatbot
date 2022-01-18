@@ -586,6 +586,72 @@ function _Event(req, res) {
 
         }).sort({ datePosted: -1 });
     }
+    if (intent_name == "Events - upcoming - more3 - name") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            let eventDate = event.datePosted;
+            let dateToday = Date.now();
+
+            var result = "The upcoming event name is " + event.eventTitle;
+
+            if (dateToday < eventDate) {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": result,
+                                "quickReplies": [
+                                    "More",
+                                    "Event",
+                                    "Health Center",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Visit Site",
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
+            else {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "There's no upcoming event.",
+                                "quickReplies": [
+                                    "Event",
+                                    "Health Center",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Visit Site"
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
+
+
+        }).sort({ datePosted: -1 });
+    }
+
 
 }
 
