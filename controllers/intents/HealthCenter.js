@@ -7,7 +7,7 @@ function _HealthCenter(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     console.log(intent_name);
     if (intent_name == "Health Center") {
-        hCenter.findOne({}, function (err, centerInfo) {
+        // hCenter.findOne({}, function (err, centerInfo) {
             // var result = "The health center of Kitaotao is founded on  " + centerInfo.dateOfFounding;
             
             res.json({
@@ -37,7 +37,7 @@ function _HealthCenter(req, res) {
                     }
                 ]
             });
-        })
+        // })
     }
    
    
