@@ -5,6 +5,7 @@ const hCenter = require('../../models/CenterInfo');
 
 function _HealthCenter(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
+    console.log
     if (intent_name == "Health Center") {
         hCenter.find({}, function (err, centerInfos) {
             const centerInfo = centerInfos[0];
