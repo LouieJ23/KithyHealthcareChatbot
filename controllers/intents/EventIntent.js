@@ -7,7 +7,6 @@ const Event = require('../../models/Events');
 // EVENT LATEST FUNCTION
 function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    let intent_parameter = req.body.queryResult.outputContexts.parameters.event[0];
     console.log
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
@@ -247,7 +246,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-     if (intent_parameter == 'latest') {
+     if (intent_name == 'latest') {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
