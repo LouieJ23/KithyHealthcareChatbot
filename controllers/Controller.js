@@ -653,8 +653,196 @@ function _Event(req, res) {
 
         }).sort({ datePosted: -1 });
     }
+    if (intent_name == "Events - upcoming - more3 - location") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            let eventDate = event.datePosted;
+            let dateToday = Date.now();
 
+            var result = "The upcoming event location is " + event.eventLocation;
 
+            if (dateToday < eventDate) {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": result,
+                                "quickReplies": [
+                                    "More",
+                                    "Event",
+                                    "Health Center",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Visit Site",
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+        };
+    });
+
+}
+if (intent_name == "Events - upcoming - more3 - details") {
+    Event.find({}, function (err, events) {
+        const event = events[0];
+        let eventDate = event.datePosted;
+        let dateToday = Date.now();
+
+        var result = "The upcoming event details is " + event.eventDetails;
+
+        if (dateToday < eventDate) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+    };
+});
+
+}
+if (intent_name == "Events - upcoming - more3 - process") {
+    Event.find({}, function (err, events) {
+        const event = events[0];
+        let eventDate = event.datePosted;
+        let dateToday = Date.now();
+
+        var result = "The upcoming event location is " + event.eventProcess;
+
+        if (dateToday < eventDate) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+    };
+});
+
+}
+if (intent_name == "Events - upcoming - more3 - participants") {
+    Event.find({}, function (err, events) {
+        const event = events[0];
+        let eventDate = event.datePosted;
+        let dateToday = Date.now();
+
+        var result = "The upcoming event location is " + event.eventParticipant;
+
+        if (dateToday < eventDate) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+    };
+});
+
+}
+if (intent_name == "Events - upcoming - more3 - requirements") {
+    Event.find({}, function (err, events) {
+        const event = events[0];
+        let eventDate = event.datePosted;
+        let dateToday = Date.now();
+
+        var result = "The upcoming event location is " + event.eventRequire;
+
+        if (dateToday < eventDate) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+    };
+});
+
+}
 }
 
 
