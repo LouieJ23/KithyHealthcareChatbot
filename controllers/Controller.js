@@ -2,7 +2,6 @@
 
 const mongoose = require('mongoose');
 const _Event = require('./intents/EventIntent');
-const _SetAppointment = require('./intents/SetAppointment')
 const Department = require('../models/Departments');
 const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');

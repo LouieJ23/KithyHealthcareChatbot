@@ -521,7 +521,7 @@ function _Event(req, res) {
             let eventDate = event.datePosted;
             let dateToday = Date.now();
 
-            var result = "The upcoming" + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
 
             if (dateToday < eventDate) {
                 res.json({
