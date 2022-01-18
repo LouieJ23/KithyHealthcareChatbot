@@ -13,5 +13,5 @@ const Admin = require('../routes/admin');
 
 exports.processRequests = (req, res) => {
     _Event(req, res);
-    _HealthCenter(re, res);
+    _HealthCenter(req, res);
 };
