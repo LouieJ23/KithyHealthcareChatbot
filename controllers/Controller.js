@@ -16,3 +16,7 @@ exports.processRequests = (req, res) => {
     // _HealthCenter(req, res);
 };
 
+exports.processRequests = (req, res) => {
+    // _Event(req, res);
+    _HealthCenter(req, res);
+};
