@@ -14,7 +14,7 @@ function _HealthCenter(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "result",
+                            "title": "",
                             "quickReplies": [
                                 "Date of Founding",
                                 "Published by",
