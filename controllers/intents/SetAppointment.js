@@ -35,10 +35,10 @@ function _SetAppointment(req, res) {
     //     });
 
     // }
-    if (async(intent_name == "Set Appointment")) {
+    if (intent_name == "Set Appointment") {
         const open = require('open')
 
-       await open('https://healthcarechatbotkithy.herokuapp.com');
+    open('https://healthcarechatbotkithy.herokuapp.com');
         // Opens the url in the default browser
 
         // await open('http://sindresorhus.com', { app: 'firefox' }) // Specify the app to open in
