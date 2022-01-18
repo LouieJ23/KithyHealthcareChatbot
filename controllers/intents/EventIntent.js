@@ -247,7 +247,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-     if (intent_parameter == 'previous') {
+     if (intent_parameter == 'latest') {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
