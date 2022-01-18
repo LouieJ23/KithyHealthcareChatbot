@@ -321,7 +321,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == 'Events - previous - more - name') {
+    if (intent_name == 'Events - previous - more2 - name') {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' name " + event.eventTitle;
@@ -354,7 +354,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == 'Events - previous - more - details') {
+    if (intent_name == 'Events - previous - more2 - details') {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' details " + event.eventDetails;
@@ -387,7 +387,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == 'Events - previous - more - process') {
+    if (intent_name == 'Events - previous - more2 - process') {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' process " + event.eventProcess;
@@ -420,7 +420,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == "Events - previous - more - participants") {
+    if (intent_name == "Events - previous - more2 - participants") {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' participants " + event.eventParticipant;
@@ -453,7 +453,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == "Events - previous - more - location") {
+    if (intent_name == "Events - previous - more2 - location") {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' location " + event.eventLocation;
@@ -486,7 +486,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == "Events - previous - more - requirements") {
+    if (intent_name == "Events - previous - more2 - requirements") {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' requirements " + event.eventRequire;
