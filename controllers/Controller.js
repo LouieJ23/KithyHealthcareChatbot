@@ -10,7 +10,7 @@ const MildIllness = require('../models/Illness')
 const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
-
+// EVENT LATEST FUNCTION
 function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     console.log
@@ -479,6 +479,40 @@ function _Event(req, res) {
                                 }
                             ]
                         });
+                    }
+                    // EVENT PREVIOUS FUNCTION
+                    if(intent_name == "Events - previous - more1 - name") {
+                        Event.find({}, function (err, events) {
+                            const event = events[0];
+                            var result = "The previous events name is " + event.eventTitle;
+                            
+                            
+                            res.json({
+                                "fulfillmentMessages": [
+                                    {
+                                        "quickReplies": {
+                                            "title": result,
+                                            "quickReplies": [
+                                                "Event",
+                                                "Health Center",
+                                                "Illness",
+                                                "Set Appointment",
+                                                "Visit Site",
+                                                "More"
+                                            ]
+                                        },
+                                        "platform": "FACEBOOK"
+                                    },
+                                    {
+                                        "text": {
+                                            "text": [
+                                                ""
+                                            ]
+                                        }
+                                    }
+                                ]
+                            });
+                        }).sort({ datePosted: -1 });
                     }
                     else {
                         res.json({
