@@ -73,5 +73,6 @@ module.exports = (server) => {
     });
 
     
-    server.post('/', controllers.processRequests);
+    server.post('/', controllers.processRequests_Event);
+    server.post('/', controllers.processRequests_HealthCenter);
 };
