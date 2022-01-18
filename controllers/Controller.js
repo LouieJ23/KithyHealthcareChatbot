@@ -11,7 +11,6 @@ const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
 exports.processRequests = (req, res) => {
-    _SetAppointment(req, res);
     _Event(req, res);
 };
 
