@@ -8,7 +8,7 @@ const Event = require('../../models/Events');
 function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     console.log
-    if (intent_name == 'Events') {
+    if (intent_name == 'Event') {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest event name is " + event.eventTitle;
