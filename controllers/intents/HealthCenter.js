@@ -107,5 +107,38 @@ function _HealthCenter(req, res) {
             });
         })
     }
+    if (intent_name == "Health Center - location") {
+        hCenter.findOne({}, function (err, centerInfo) {
+            var result = "The health center of Kitaotao is located at " + centerInfo.location;
+            
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "Date of Founding",
+                                "Published by",
+                                "Location",
+                                "Contact Number",
+                                "Email Address",
+                                "Mission",
+                                "Vision"
+                               
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        })
+    }
 }
 module.exports = _HealthCenter;
