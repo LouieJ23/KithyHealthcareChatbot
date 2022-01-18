@@ -563,6 +563,7 @@ function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
+                                    "More",
                                     "Event",
                                     "Health Center",
                                     "Illness",
