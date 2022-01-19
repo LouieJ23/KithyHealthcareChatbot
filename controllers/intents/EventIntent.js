@@ -284,7 +284,7 @@ function _Event(req, res) {
      if (intent_name == 'Events - latest') {
         Event.find({}, function (err, events) {
             const event = events[0];
-            var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The latest event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
 
 
             res.json({
@@ -320,7 +320,7 @@ function _Event(req, res) {
     if (intent_name == 'Events - previous') {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The previous event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
 
 
             res.json({
@@ -353,7 +353,7 @@ function _Event(req, res) {
     if (intent_name == "Previous Event") {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The previous event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
 
 
             res.json({
@@ -558,7 +558,7 @@ function _Event(req, res) {
     if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")){
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' requirements " + event.eventRequire;
+            var result = "The previous events' requirements is " + event.eventRequire;
 
 
             res.json({
