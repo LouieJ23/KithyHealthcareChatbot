@@ -385,7 +385,7 @@ function _Event(req, res) {
     }
     
     
-    if (intent_name == 'Events - previous - more2 - name'){
+    if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' name " + event.eventTitle;
@@ -397,6 +397,7 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "More",
                                 "Event",
                                 "Health Center",
@@ -418,7 +419,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == 'Events - previous - more2 - details') {
+    if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' details " + event.eventDetails;
@@ -430,6 +431,7 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "More",
                                 "Event",
                                 "Health Center",
@@ -451,7 +453,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == 'Events - previous - more2 - process') {
+    if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' process " + event.eventProcess;
@@ -463,6 +465,7 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "More",
                                 "Event",
                                 "Health Center",
@@ -484,7 +487,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == "Events - previous - more2 - participants") {
+    if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' participants " + event.eventParticipant;
@@ -496,6 +499,7 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "More",
                                 "Event",
                                 "Health Center",
@@ -517,7 +521,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == "Events - previous - more2 - location") {
+    if ((intent_name == "Events - previous - more2 - location") || (intent_name == "Previous Event - location")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' location " + event.eventLocation;
@@ -529,6 +533,7 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "More",
                                 "Event",
                                 "Health Center",
@@ -550,7 +555,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == "Events - previous - more2 - requirements") {
+    if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - name")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' requirements " + event.eventRequire;
@@ -562,6 +567,7 @@ function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "More",
                                 "Event",
                                 "Health Center",
