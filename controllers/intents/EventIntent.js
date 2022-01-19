@@ -388,7 +388,7 @@ function _Event(req, res) {
     if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")){
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events name " + event.eventTitle;
+            var result = "The previous events name is " + event.eventTitle;
 
 
             res.json({
