@@ -72,7 +72,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name")) {
+    if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name") || (intent_name == "Latest Event")) {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events name is " + event.eventTitle;
