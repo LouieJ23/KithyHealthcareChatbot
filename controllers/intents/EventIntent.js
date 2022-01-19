@@ -72,7 +72,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name") || (intent_name == "Latest Event")) {
+    if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name") || (intent_name == "Latest Event - name")) {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events name is " + event.eventTitle;
@@ -385,7 +385,7 @@ function _Event(req, res) {
     }
     
     
-    if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event")){
+    if (intent_name == 'Events - previous - more2 - name'){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' name " + event.eventTitle;
