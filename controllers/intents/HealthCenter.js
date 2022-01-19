@@ -109,7 +109,7 @@ function _HealthCenter(req, res) {
             });
         })
     }
-    if (intent_name == "Health Center - location") {
+    if ((intent_name == "Health Center - location") || (intent_name == "Health Center - location")){
         hCenter.findOne({}, function (err, centerInfo) {
             var result = "The health center of Kitaotao is located at " + centerInfo.location;
             
