@@ -351,7 +351,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     
-    if (intent_name == 'Events - previous - more2 - name') {
+    if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' name " + event.eventTitle;
