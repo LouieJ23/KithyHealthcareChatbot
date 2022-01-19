@@ -388,7 +388,7 @@ function _Event(req, res) {
     if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")){
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events name is " + event.eventTitle;
+            var result = "The previous events name " + event.eventTitle;
 
 
             res.json({
@@ -555,7 +555,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - name")){
+    if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")){
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' requirements " + event.eventRequire;
