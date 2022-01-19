@@ -350,7 +350,7 @@ function _Event(req, res) {
             });
         }).sort({ datePosted: -1 });
     }
-    if (intent_name == intent_name == "Previous Event") {
+    if (intent_name == "Previous Event") {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
