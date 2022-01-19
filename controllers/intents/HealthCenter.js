@@ -51,6 +51,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
@@ -84,6 +85,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
@@ -117,6 +119,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
@@ -150,6 +153,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
@@ -183,6 +187,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
@@ -216,6 +221,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
@@ -249,6 +255,7 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
+                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
