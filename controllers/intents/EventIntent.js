@@ -38,6 +38,40 @@ function _Event(req, res) {
         });
 
     }
+    if (intent_name == "Latest Event") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+                               
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
     if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name")) {
         Event.find({}, function (err, events) {
             const event = events[0];
