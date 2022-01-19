@@ -177,7 +177,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (intent_name == "Events - latest - more1 - requirements") {
+    if ((intent_name == "Events - latest - more1 - requirements") || (intent_name == "Latest Event - requirements")){
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
@@ -212,7 +212,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (intent_name == "Events - latest - more1 - process") {
+    if ((intent_name == "Events - latest - more1 - process") || (intent_name == "Latest Event - process")){
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events process is " + event.eventProcess;
@@ -247,7 +247,7 @@ function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    if (intent_name == "Events - latest - more1 - participants") {
+    if ((intent_name == "Events - latest - more1 - participants") || (intent_name == "Latest Event - participants")) {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events participants is " + event.eventParticipant;
