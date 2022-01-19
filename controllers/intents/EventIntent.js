@@ -456,7 +456,7 @@ function _Event(req, res) {
     if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")){
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' process " + event.eventProcess;
+            var result = "The previous events' process is " + event.eventProcess;
 
 
             res.json({
@@ -490,7 +490,7 @@ function _Event(req, res) {
     if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")){
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' participants " + event.eventParticipant;
+            var result = "The previous events' participants is " + event.eventParticipant;
 
 
             res.json({
