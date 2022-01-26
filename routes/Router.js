@@ -71,7 +71,6 @@ module.exports = (server) => {
             return false;   
         }
     });
-
     
     server.post('/', controllers.processRequests);
 };
