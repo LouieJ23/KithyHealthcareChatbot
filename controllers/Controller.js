@@ -3,7 +3,6 @@
 const mongoose = require('mongoose');
 const _Event = require('./intents/EventIntent');
 const _HealthCenter = require('./intents/HealthCenter');
-const _Illness = require('./intents/IllnessAPI');
 const Department = require('../models/Departments');
 const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
