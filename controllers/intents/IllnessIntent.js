@@ -54,7 +54,8 @@ function _Illness(req, res) {
                                 "Details",
                                 "Symptoms",
                                 "Treatment",
-                                "Prevention"
+                                "Prevention",
+                                "Go Back"
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -69,9 +70,81 @@ function _Illness(req, res) {
                     }
                 ]
             });
-
-            console.log(illnesses);
         });
+
+    }
+    if (intent_name == 'Illness - more - Details') {
+        const value = req.body.queryResult.queryText;
+        if(value == "Title") {
+            Illness.find({}, function (err, illness) {
+                const illnesses = [];
+                for(let i in illness){
+                    illnesses.push(illness[i].detail);
+                }
+    
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "Title",
+                                "quickReplies": [
+                                    "Title",
+                                    "Details",
+                                    "Symptoms",
+                                    "Treatment",
+                                    "Prevention",
+                                    "Go Back"
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                    // result
+                                ]
+                            }
+                        }
+                    ]
+                });
+            });
+        }
+        else {
+            Illness.find({}, function (err, illness) {
+                const illnesses = [];
+                for(let i in illness){
+                    illnesses.push(illness[i].detail);
+                }
+    
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "What would you like to know about " + req.body.queryResult.queryText + "?",
+                                "quickReplies": [
+                                    "Title",
+                                    "Details",
+                                    "Symptoms",
+                                    "Treatment",
+                                    "Prevention",
+                                    "Go Back"
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                    // result
+                                ]
+                            }
+                        }
+                    ]
+                });
+            });
+        }
 
     }
 }
