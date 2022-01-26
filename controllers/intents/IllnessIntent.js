@@ -74,77 +74,36 @@ function _Illness(req, res) {
 
     }
     if (intent_name == 'Illness - more - Details') {
-        const value = req.body.queryResult.queryText;
-        if(value == "Title") {
-            Illness.find({}, function (err, illness) {
-                const illnesses = [];
-                for(let i in illness){
-                    illnesses.push(illness[i].detail);
-                }
-    
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "Title",
-                                "quickReplies": [
-                                    "Title",
-                                    "Details",
-                                    "Symptoms",
-                                    "Treatment",
-                                    "Prevention",
-                                    "Go Back"
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        Illness.find({}, function (err, illness) {
+            const value = req.body.queryResult.queryText;
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "What would you like to know about " + value + "?",
+                            "quickReplies": [
+                                value + "Title",
+                                value + "Details",
+                                value + "Symptoms",
+                                value + "Treatment",
+                                value + "Prevention",
+                                value + "Go Back"
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                    // result
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                                // result
+                            ]
                         }
-                    ]
-                });
+                    }
+                ]
             });
-        }
-        else {
-            Illness.find({}, function (err, illness) {
-                const illnesses = [];
-                for(let i in illness){
-                    illnesses.push(illness[i].detail);
-                }
-    
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "What would you like to know about " + req.body.queryResult.queryText + "?",
-                                "quickReplies": [
-                                    "Title",
-                                    "Details",
-                                    "Symptoms",
-                                    "Treatment",
-                                    "Prevention",
-                                    "Go Back"
-                                ]
-                            },
-                            "platform": "FACEBOOK"
-                        },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                    // result
-                                ]
-                            }
-                        }
-                    ]
-                });
-            });
-        }
+        });
 
     }
 }
