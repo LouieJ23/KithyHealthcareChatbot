@@ -4,7 +4,7 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Staff</b></h2>
+						<h2>Manage <b>Illness</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
@@ -29,7 +29,7 @@
                             <h1>Lists of Illnesses</h1>
                             <%
                             for(var i=0; i < illnesses.length; i++) { %>
-                                <div class="col-sm-12">
+                                <div class="col-sm-12 illness-hover">
                                     <ul>
                                         <li onclick="window.location='/mildIllness/<%= illnesses[i]._id %>'" style="cursor: pointer;">
                                             <h2><%= illnesses[i].title %></h2>
@@ -37,6 +37,7 @@
                                         </li>
                                     </ul>
                                 </div>
+								
                             <% }}
                             else { %>
                                 <div class="col-sm-12">
@@ -186,3 +187,27 @@
 	
 	<%	}
 	%>
+
+	<% if(isPaginate) { %>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="pagination justify-content-center">
+					<% if(prev < 1) { %>
+					<li class="page-item disabled"><a class="page-link">Previous</a></li>
+					<%}
+					else {
+						%>
+						<li class="page-item"><a class="page-link" href="<%= page_name %>?page=<%= prev%>&limit=4">Previous</a></li>
+						<%}%>
+					<li class="page-item <%=(page_1.length < 1) ? 'disabled' : '' %>"><a class="page-link" href="<%= page_name %>?page=1&limit=4">1</a></li>
+					<li class="page-item <%=(page_2.length < 1) ? 'disabled' : '' %>"><a class="page-link" href="<%= page_name %>?page=2&limit=4">2</a></li>
+					<li class="page-item <%=(page_3.length < 1) ? 'disabled' : '' %>"><a class="page-link" href="<%= page_name %>?page=3&limit=4">3</a></li>
+					<li class="page-item <%=(next_Page.length < 1) ? 'disabled' : '' %>">
+					  <a class="page-link" href="<%= page_name %>?page=<%= next %>&limit=4">Next</a>
+					</li>
+				  </ul>
+			</div>
+		</div>
+
+	<%} %>

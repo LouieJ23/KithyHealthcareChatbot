@@ -45,6 +45,7 @@ function _HealthCenter(req, res) {
         hCenter.findOne({}, function (err, centerInfo) {
             var result = "The health center of Kitaotao was founded on  " + centerInfo.dateOfFounding;
             
+
             res.json({
                 "fulfillmentMessages": [
                     {

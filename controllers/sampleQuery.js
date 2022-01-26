@@ -29,9 +29,15 @@ var samp = "Location";
 //     console.log(staffs);
 // });
 
-// Illness.find({}, function(err, illness) {
-//     console.log(illness);
-// });
+Illness.find({}, function(err, illness) {
+    const illnesses = [];
+    for(let i in illness){
+        illnesses.push(illness[i].title);
+    }
+
+    console.log(illnesses);
+});
+
 // Guidelines.find({}, function(err, guidelines) {
 //     console.log(guidelines);
 // });
@@ -48,6 +54,9 @@ var samp = "Location";
 //     let dateToday = Date.now();
 //     console.log(dateToday > eventDate ? result1 : result2);
 // }).sort({ datePosted: -1 });
-HCenter.findOne({}, function (err, centerInfos) {
-console.log(centerInfos);
-}).sort({datePosted: -1});
+
+// HCenter.findOne({}, function (err, centerInfos) {
+// console.log(centerInfos);
+// }).sort({datePosted: -1});
+
+

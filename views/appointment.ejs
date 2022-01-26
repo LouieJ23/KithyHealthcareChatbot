@@ -288,3 +288,27 @@
 	
 	<%	}
 	%>
+
+	<% if(isPaginate) { %>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<ul class="pagination justify-content-center">
+					<% if(prev < 1) { %>
+					<li class="page-item disabled"><a class="page-link">Previous</a></li>
+					<%}
+					else {
+						%>
+						<li class="page-item"><a class="page-link" href="<%= page_name %>?page=<%= prev%>&limit=<%=(page_name == 'mildIllness') ? '5' : '2'%>">Previous</a></li>
+						<%}%>
+					<li class="page-item <%=(page_1.length < 1) ? 'disabled' : '' %>"><a class="page-link" href="<%= page_name %>?page=1&limit=<%=(page_name == 'mildIllness') ? '5' : '2'%>">1</a></li>
+					<li class="page-item <%=(page_2.length < 1) ? 'disabled' : '' %>"><a class="page-link" href="<%= page_name %>?page=2&limit=<%=(page_name == 'mildIllness') ? '5' : '2'%>">2</a></li>
+					<li class="page-item <%=(page_3.length < 1) ? 'disabled' : '' %>"><a class="page-link" href="<%= page_name %>?page=3&limit=<%=(page_name == 'mildIllness') ? '5' : '2'%>">3</a></li>
+					<li class="page-item <%=(next_Page.length < 1) ? 'disabled' : '' %>">
+					  <a class="page-link" href="<%= page_name %>?page=<%= next %>&limit=2">Next</a>
+					</li>
+				  </ul>
+			</div>
+		</div>
+
+	<%} %>
