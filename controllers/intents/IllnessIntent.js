@@ -37,6 +37,43 @@ function _Illness(req, res) {
         });
 
     }
+    if (intent_name == 'Illness - more') {
+        Illness.find({}, function (err, illness) {
+            const illnesses = [];
+            for(let i in illness){
+                illnesses.push(illness[i].title);
+            }
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "What would you like to know about " + req.body.queryResult.queryText + "?",
+                            "quickReplies": [
+                                "Title",
+                                "Details",
+                                "Symptoms",
+                                "Treatment",
+                                "Prevention"
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                                // result
+                            ]
+                        }
+                    }
+                ]
+            });
+
+            console.log(illnesses);
+        });
+
+    }
 }
 
 module.exports = _Illness;
