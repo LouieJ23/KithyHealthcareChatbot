@@ -47,12 +47,12 @@ function _Illness(req, res) {
                         "quickReplies": {
                             "title": "What would you like to know about " + value + "?",
                             "quickReplies": [
-                                value + "Title",
-                                value + "Details",
-                                value + "Symptoms",
-                                value + "Treatment",
-                                value + "Prevention",
-                                value + "Go Back"
+                                value + " Title",
+                                value + " Details",
+                                value + " Symptoms",
+                                value + " Treatment",
+                                value + " Prevention",
+                                value + " Go Back"
                             ]
                         },
                         "platform": "FACEBOOK"
