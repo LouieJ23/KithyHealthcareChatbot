@@ -12,7 +12,9 @@ async function _Illness(req, res) {
         for(let i in illness){
             illnesses.push(illness[i].title);
         }
-        
+
+        console.log(illnesses);
+
         res.json({
             "fulfillmentMessages": [
                 {
