@@ -115,7 +115,11 @@ async function _Illness(req, res) {
             });
     }
     else {
-        console.log("OK");
+        const log = new LogQuery({
+            query: value,
+            isAnswered: false,
+        });
+        await log.save();   
     }
 }
 
