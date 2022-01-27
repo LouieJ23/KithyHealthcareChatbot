@@ -8,6 +8,7 @@ const Illness = require('../models/Illness');
 const Guidelines = require('../models/Guidelines');
 const Departments = require('../models/Departments');
 const HCenter = require('../models/CenterInfo');
+const LogQuery = require('../models/Logs');
 
 
 mongoose.Promise = global.Promise;
@@ -29,14 +30,14 @@ var samp = "Location";
 //     console.log(staffs);
 // });
 
-Illness.find({}, function(err, illness) {
-    const illnesses = [];
-    for(let i in illness){
-        illnesses.push(illness[i].title);
-    }
+// Illness.find({}, function(err, illness) {
+//     const illnesses = [];
+//     for(let i in illness){
+//         illnesses.push(illness[i].title);
+//     }
 
-    console.log(illnesses);
-});
+//     console.log(illnesses);
+// });
 
 // Guidelines.find({}, function(err, guidelines) {
 //     console.log(guidelines);
@@ -58,5 +59,34 @@ Illness.find({}, function(err, illness) {
 // HCenter.findOne({}, function (err, centerInfos) {
 // console.log(centerInfos);
 // }).sort({datePosted: -1});
+// async function InsertLog() {
+//     const log = new LogQuery({
+//         query: "Headache",
+//         isAnswered: true,
+       
+//     });
+//     try {
+//         const savedLog = await log.save();
+//         console.log(savedLog);
+        
+//     }
+//     catch (err) {
+//         console.log(err)
+//     }
+// };
 
+// InsertLog();
 
+async function getLogs() {
+   const arr = await LogQuery.find();
+   console.log(arr);
+}
+
+getLogs();
+// LogQuery.findOne({}, (err, logs) => {
+//     const a = logs;
+//     LogQuery.find({}, (err, log) => {
+//         console.log(log);
+//         console.log(a);
+//     });
+// });
