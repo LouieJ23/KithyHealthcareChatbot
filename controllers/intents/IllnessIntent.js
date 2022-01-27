@@ -38,11 +38,11 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        const log = new LogQuery({
+        const log1 = new LogQuery({
             query: value,
             isAnswered: true,
         });
-        await log.save();    
+        await log1.save();    
     }
     else if (intent_name == 'Illness - more') {
             const recentLog = await LogQuery.findOne().sort({datePosted: -1});
@@ -75,11 +75,11 @@ async function _Illness(req, res) {
                 ]
             });
 
-        const log = new LogQuery({
+        const log2 = new LogQuery({
             query: value,
             isAnswered: true,
         });
-        await log.save();   
+        await log2.save();   
 
     }
     else if (intent_name == 'Illness - more - details') {
@@ -113,7 +113,50 @@ async function _Illness(req, res) {
                     }
                 ]
             });
+            const log3 = new LogQuery({
+                query: value,
+                isAnswered: true,
+            });
+            await log3.save();   
     }
+    else if (intent_name == 'Illness - more - symptoms') {
+        const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
+        const query = log.query;
+        console.log(illness[0].symptoms);
+        const illness = await Illness.find({title: query});
+
+        res.json({
+            "fulfillmentMessages": [
+                {
+                    "quickReplies": {
+                        "title": "illness[0].symptoms",
+                        "quickReplies": [
+                            "Title",
+                            "Details",
+                            "Symptoms",
+                            "Treatment",
+                            "Prevention",
+                            "Go Back"
+                        ]
+                    },
+                    "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                        "text": [
+                            ""
+                            // result
+                        ]
+                    }
+                }
+            ]
+        });
+        const log4 = new LogQuery({
+            query: value,
+            isAnswered: true,
+        });
+        await log4.save();  
+}
     else {
         const log = new LogQuery({
             query: value,

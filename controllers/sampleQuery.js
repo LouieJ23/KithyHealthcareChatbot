@@ -79,14 +79,14 @@ var samp = "Location";
 
 async function getLogs() {
     const queries = [];
-//    const arr = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
+   const arr = await LogQuery.find({isAnswered:false}).sort({datePosted: -1});
 //    for(let i in arr) {
 //        queries.push(arr[i].query);
 //    }
 
-    const illness = await Illness.findOne({title: "Diarrhea"});
+    // const illness = await Illness.findOne({title: "Diarrhea"});
 
-   console.log(illness);
+   console.log(arr);
 }
 
 getLogs();
