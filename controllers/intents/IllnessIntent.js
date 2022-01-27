@@ -7,6 +7,8 @@ async function _Illness(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     console.log(intent_name);
     if (intent_name == 'Illness') {
+        const a = Illness.find();
+        console.log(a);
         res.json({
             "fulfillmentMessages": [
                 {
