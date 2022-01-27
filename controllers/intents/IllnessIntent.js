@@ -83,17 +83,20 @@ async function _Illness(req, res) {
 
     }
     if (intent_name == 'Illness - more - details') {
-        Illness.find({title: "Diarrhea" }, function (err, illness) {
-            const illnesses = [];
-            for(let i in illness){
-                illnesses.push(illness[i].detail);
-            }
+            const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
+            const query = log.query;
+            const illness = await Illness.find({title: query});
+
+            // const queries = [];
+            // for(let i in arr){
+            //     queries.push(arr[i].query);
+            // }
 
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "What would you like to know about " + req.body.queryResult.queryText + "?",
+                            "title": illness.detail,
                             "quickReplies": [
                                 "Title",
                                 "Details",
@@ -115,7 +118,6 @@ async function _Illness(req, res) {
                     }
                 ]
             });
-        });
 
     }
 }
