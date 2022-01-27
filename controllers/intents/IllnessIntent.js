@@ -44,7 +44,7 @@ async function _Illness(req, res) {
         });
         await log.save();    
     }
-    if (intent_name == 'Illness - more') {
+    else if (intent_name == 'Illness - more') {
             const recentLog = await LogQuery.findOne().sort({datePosted: -1});
             console.log(recentLog);
 
@@ -82,7 +82,7 @@ async function _Illness(req, res) {
         await log.save();   
 
     }
-    if (intent_name == 'Illness - more - details') {
+    else if (intent_name == 'Illness - more - details') {
             const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
             const query = log.query;
             const illness = await Illness.find({title: query});
@@ -113,7 +113,9 @@ async function _Illness(req, res) {
                     }
                 ]
             });
-
+    }
+    else {
+        console.log("OK");
     }
 }
 
