@@ -78,8 +78,13 @@ var samp = "Location";
 // InsertLog();
 
 async function getLogs() {
+    const queries = [];
    const arr = await LogQuery.find();
-   console.log(arr);
+   for(let i in arr) {
+       queries.push(arr[i].query);
+   }
+
+   console.log(queries);
 }
 
 getLogs();
