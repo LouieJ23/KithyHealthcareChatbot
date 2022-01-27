@@ -8,6 +8,7 @@ async function _Illness(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
     console.log(intent_name);
+    
     if (intent_name == 'Illness') {
         const illness = await Illness.find();
         const illnesses = [];
@@ -15,7 +16,8 @@ async function _Illness(req, res) {
             illnesses.push(illness[i].title);
         }
 
-        console.log(illnesses);
+        const recentLog = await LogQuery.findOne().sort({datePosted: 1});
+        console.log(recentLog);
 
         res.json({
             "fulfillmentMessages": [
@@ -72,6 +74,12 @@ async function _Illness(req, res) {
                 ]
             });
         });
+
+        const log = new LogQuery({
+            query: value,
+            isAnswered: true,
+        });
+        await log.save();   
 
     }
     if (intent_name == 'Illness - more - Details') {

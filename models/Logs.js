@@ -11,7 +11,7 @@ const logQuery = mongoose.Schema({
     },
     datePosted: {
         type: Date,
-        Default: Date.now
+        default: Date.now
     }
 })
 
