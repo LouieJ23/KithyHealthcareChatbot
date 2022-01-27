@@ -88,7 +88,7 @@ async function _Illness(req, res) {
             const illness = await Illness.find({title: query});
 
             console.log(illness);
-            console.log(illness.title);
+            console.log(illness[0].title);
             console.log(illness.symptoms);
 
             res.json({
