@@ -20,7 +20,7 @@ async function _Illness(req, res) {
                 {
                     "quickReplies": {
                         "title": "What would you like to know about Illness?",
-                        "quickReplies": "illnesses"
+                        "quickReplies": ["illnesses"]
                     },
                     "platform": "FACEBOOK"
                 },
