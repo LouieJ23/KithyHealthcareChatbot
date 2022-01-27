@@ -87,7 +87,7 @@ async function _Illness(req, res) {
             const query = log.query;
             const illness = await Illness.find({title: query});
 
-            console.log(illness);
+            console.log(illness.detail);
 
             res.json({
                 "fulfillmentMessages": [
