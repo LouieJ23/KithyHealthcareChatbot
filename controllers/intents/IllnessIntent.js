@@ -52,13 +52,13 @@ async function _Illness(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "What would you like to know about " + value + "?",
+                            "title": "What would you like to know more about " + value + "?",
                             "quickReplies": [
                                 " Title",
                                 " Details",
                                 " Symptoms",
                                 " Treatment",
-                               " Prevention",
+                                " Prevention",
                                 " Go Back"
                             ]
                         },
@@ -82,7 +82,7 @@ async function _Illness(req, res) {
         await log.save();   
 
     }
-    if (intent_name == 'Illness - more - Details') {
+    if (intent_name == 'Illness - more - details') {
         Illness.find({title: "diarhhea" }, function (err, illness) {
             const illnesses = [];
             for(let i in illness){

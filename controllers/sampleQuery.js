@@ -79,7 +79,7 @@ var samp = "Location";
 
 async function getLogs() {
     const queries = [];
-   const arr = await LogQuery.findOne().sort({datePosted: -1});
+   const arr = await LogQuery.findOne({isAnswered:true, query:"illness"}).sort({datePosted: -1});
 //    for(let i in arr) {
 //        queries.push(arr[i].query);
 //    }

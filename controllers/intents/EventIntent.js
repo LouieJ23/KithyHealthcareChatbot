@@ -20,7 +20,8 @@ function _Event(req, res) {
                             "quickReplies": [
                                 "Upcoming",
                                 "Latest",
-                                "Previous"
+                                "Previous",
+                                "Go Back"
                             ]
                         },
                         "platform": "FACEBOOK"
