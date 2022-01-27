@@ -12,12 +12,13 @@ async function _Illness(req, res) {
         for(let i in illness){
             illnesses.push(illness[i].title);
         }
+        
         res.json({
             "fulfillmentMessages": [
                 {
                     "quickReplies": {
                         "title": "What would you like to know about Illness?",
-                        "quickReplies": illnesses
+                        "quickReplies": "illnesses"
                     },
                     "platform": "FACEBOOK"
                 },
