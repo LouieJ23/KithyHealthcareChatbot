@@ -87,16 +87,13 @@ async function _Illness(req, res) {
             const query = log.query;
             const illness = await Illness.find({title: query});
 
-            // const queries = [];
-            // for(let i in arr){
-            //     queries.push(arr[i].query);
-            // }
+            console.log(illness);
 
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": illness.detail,
+                            "title": "illness.detail",
                             "quickReplies": [
                                 "Title",
                                 "Details",
