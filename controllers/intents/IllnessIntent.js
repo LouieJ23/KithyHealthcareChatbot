@@ -83,7 +83,7 @@ async function _Illness(req, res) {
 
     }
     if (intent_name == 'Illness - more - details') {
-        Illness.find({title: "diarhhea" }, function (err, illness) {
+        Illness.find({title: "Diarrhea" }, function (err, illness) {
             const illnesses = [];
             for(let i in illness){
                 illnesses.push(illness[i].detail);
