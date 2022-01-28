@@ -214,6 +214,49 @@ else if (intent_name == 'Illness - more - treatment') {
     });
     await log5.save();   
 }
+else if (intent_name == 'Illness - more - prevention') {
+    const recentLog = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
+    const value = req.body.queryResult.queryText;
+    const query = recentLog.query;
+    const illness = await Illness.find({title: query});
+
+    console.log("Intent Name: " + intent_name);
+    console.log("Query Text: " + value);
+    console.log("Recent Log Query: " + query);
+
+    res.json({
+        "fulfillmentMessages": [
+            {
+                "quickReplies": {
+                    "title": illness[0].prevention,
+                    "quickReplies": [
+                        "Title",
+                        "Details",
+                        "Symptoms",
+                        "Treatment",
+                        "Prevention",
+                        "Go Back"
+                    ]
+                },
+                "platform": "FACEBOOK"
+            },
+            {
+                "text": {
+                    "text": [
+                        ""
+                        // result
+                    ]
+                }
+            }
+        ]
+    });
+    const log6 = new LogQuery({
+        query: value,
+        isAnswered: false,
+    });
+    await log6.save();   
+}
+
     
     else {
         const log = new LogQuery({
