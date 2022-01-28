@@ -42,11 +42,7 @@ async function _Event(req, res) {
                 ]
             });
         });
-        const log1 = new LogQuery({
-            query: value,
-            isAnswered: true,
-        });
-        await log1.save();  
+      
 
     }
    else if (intent_name == "Latest Event") {
@@ -1063,13 +1059,7 @@ if (intent_name == "Events - upcoming - more3 - requirements") {
     .sort({ datePosted: -1 });
 
 }
-else {
-    const log = new LogQuery({
-        query: value,
-        isAnswered: false,
-    });
-    await log.save();   
-}
+
 }
 
 module.exports = _Event;
