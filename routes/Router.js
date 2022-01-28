@@ -16,6 +16,7 @@ const mildIllness = require('./illness');
 const appointment = require('./appointment');
 const admin = require('./admin');
 const login = require('./login');
+const logQuery =require('./logQuery');
 
 module.exports = (server) => {
     const controllers = require('../controllers/Controller');
@@ -42,8 +43,8 @@ module.exports = (server) => {
     server.use('/centerInfo', centerInfo);
     server.use('/mildIllness', mildIllness);
     server.use('/appointment', appointment);
-    // server.use('/admin', admin);
     server.use('/login', login);
+    server.use('/logQuery', logQuery);
     server.get('/admin', (req, res) => {
         res.render('admin', {
             page_name: 'home',
