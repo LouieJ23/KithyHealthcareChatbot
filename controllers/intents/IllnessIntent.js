@@ -83,7 +83,7 @@ async function _Illness(req, res) {
 
         const log2 = new LogQuery({
             query: value,
-            isAnswered: false,
+            isAnswered: true,
         });
         await log2.save();   
 
