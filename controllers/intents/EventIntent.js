@@ -1063,6 +1063,13 @@ if (intent_name == "Events - upcoming - more3 - requirements") {
     .sort({ datePosted: -1 });
 
 }
+else {
+    const log = new LogQuery({
+        query: value,
+        isAnswered: false,
+    });
+    await log.save();   
+}
 }
 
 module.exports = _Event;
