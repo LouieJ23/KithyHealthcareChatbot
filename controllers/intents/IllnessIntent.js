@@ -47,6 +47,8 @@ async function _Illness(req, res) {
     else if (intent_name == 'Illness - more') {
             const recentLog = await LogQuery.findOne().sort({datePosted: -1});
             console.log(recentLog);
+            const query = recentLog.query;
+            console.log(query);
 
             res.json({
                 "fulfillmentMessages": [
