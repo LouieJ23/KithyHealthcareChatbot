@@ -10,7 +10,7 @@ async function _Illness(req, res) {
     const recentLog = await LogQuery.findOne().sort({datePosted: -1});
     console.log("Intent Name: " + intent_name);
     console.log("Query Text: " + value);
-    console.log(recentLog);
+    console.log("This is recent log " + recentLog);
 
     if (intent_name == 'Illness') {
         const illness = await Illness.find();
