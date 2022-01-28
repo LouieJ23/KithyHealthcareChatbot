@@ -7,8 +7,10 @@ const LogQuery = require('../../models/Logs');
 async function _Illness(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
+    const recentLog = await LogQuery.findOne().sort({datePosted: -1});
     console.log("Intent Name: " + intent_name);
-    console.log("Query Text: " +value);
+    console.log("Query Text: " + value);
+    console.log(recentLog);
 
     if (intent_name == 'Illness') {
         const illness = await Illness.find();
@@ -16,9 +18,6 @@ async function _Illness(req, res) {
         for(let i in illness){
             illnesses.push(illness[i].title);
         }
-
-        const recentLog = await LogQuery.findOne().sort({datePosted: -1});
-        console.log(recentLog);
 
         res.json({
             "fulfillmentMessages": [
@@ -53,7 +52,6 @@ async function _Illness(req, res) {
             console.log("Intent Name: " + intent_name);
             console.log("Query Text: " + value);
             console.log("Recent Log Query: " + query);
-            console.log("Recent Log: " + recentLog);
 
 
             res.json({
@@ -91,10 +89,14 @@ async function _Illness(req, res) {
 
     }
     else if (intent_name == 'Illness - more - details') {
-            const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
-            const query = log.query;
+            const recentLog = await LogQuery.findOne().sort({datePosted: -1});
+            const value = req.body.queryResult.queryText;
+            const query = recentLog.query;
             const illness = await Illness.find({title: query});
-            console.log(recentLog);
+
+            console.log("Intent Name: " + intent_name);
+            console.log("Query Text: " + value);
+            console.log("Recent Log Query: " + query);
 
             res.json({
                 "fulfillmentMessages": [
@@ -129,10 +131,14 @@ async function _Illness(req, res) {
             await log3.save();   
     }
     else if (intent_name == 'Illness - more - symptoms') {
-        const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
-        const query = log.query;
-        const illness = await Illness.find({title: query});
-        console.log(recentLog);
+        const recentLog = await LogQuery.findOne().sort({datePosted: -1});
+            const value = req.body.queryResult.queryText;
+            const query = recentLog.query;
+            const illness = await Illness.find({title: query});
+
+            console.log("Intent Name: " + intent_name);
+            console.log("Query Text: " + value);
+            console.log("Recent Log Query: " + query);
 
         res.json({
             "fulfillmentMessages": [
@@ -167,10 +173,14 @@ async function _Illness(req, res) {
         await log4.save();   
 }
 else if (intent_name == 'Illness - more - treatment') {
-    const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
-    const query = log.query;
+    const recentLog = await LogQuery.findOne().sort({datePosted: -1});
+    const value = req.body.queryResult.queryText;
+    const query = recentLog.query;
     const illness = await Illness.find({title: query});
-    console.log(recentLog);
+
+    console.log("Intent Name: " + intent_name);
+    console.log("Query Text: " + value);
+    console.log("Recent Log Query: " + query);
 
     res.json({
         "fulfillmentMessages": [

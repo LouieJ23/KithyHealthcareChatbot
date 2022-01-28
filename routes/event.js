@@ -27,10 +27,10 @@ router.get('/', async (req, res) => {
             events: event,
             page_name: 'event',
             next: parseInt(page) + 1,
-           prev: parseInt(page) - 1,
-           isPaginate: true
+            prev: parseInt(page) - 1,
+            isPaginate: true
         })
-        
+      
         
     }
     catch(err) {
