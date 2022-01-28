@@ -224,4 +224,4 @@ else if (intent_name == 'Illness - more - treatment') {
     }
 }
 
-module.exports = _Illness;
+module.exports = _Illness
