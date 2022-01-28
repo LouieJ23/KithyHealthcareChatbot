@@ -156,6 +156,43 @@ async function _Illness(req, res) {
         });
         await log4.save();   
 }
+else if (intent_name == 'Illness - more - treatment') {
+    const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
+    const query = log.query;
+    const illness = await Illness.find({title: query});
+
+    res.json({
+        "fulfillmentMessages": [
+            {
+                "quickReplies": {
+                    "title": illness[0].treatment,
+                    "quickReplies": [
+                        "Title",
+                        "Details",
+                        "Symptoms",
+                        "Treatment",
+                        "Prevention",
+                        "Go Back"
+                    ]
+                },
+                "platform": "FACEBOOK"
+            },
+            {
+                "text": {
+                    "text": [
+                        ""
+                        // result
+                    ]
+                }
+            }
+        ]
+    });
+    const log5 = new LogQuery({
+        query: value,
+        isAnswered: true,
+    });
+    await log5.save();   
+}
     
     else {
         const log = new LogQuery({
