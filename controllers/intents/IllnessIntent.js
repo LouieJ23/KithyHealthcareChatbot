@@ -60,7 +60,6 @@ async function _Illness(req, res) {
                         "quickReplies": {
                             "title": "What would you like to know more about " + value + "?",
                             "quickReplies": [
-                                " Title",
                                 " Details",
                                 " Symptoms",
                                 " Treatment",
@@ -104,7 +103,6 @@ async function _Illness(req, res) {
                         "quickReplies": {
                             "title": illness[0].detail,
                             "quickReplies": [
-                                "Title",
                                 "Details",
                                 "Symptoms",
                                 "Treatment",
@@ -146,7 +144,6 @@ async function _Illness(req, res) {
                     "quickReplies": {
                         "title": illness[0].symptoms,
                         "quickReplies": [
-                            "Title",
                             "Details",
                             "Symptoms",
                             "Treatment",
@@ -188,7 +185,6 @@ else if (intent_name == 'Illness - more - treatment') {
                 "quickReplies": {
                     "title": illness[0].treatment,
                     "quickReplies": [
-                        "Title",
                         "Details",
                         "Symptoms",
                         "Treatment",
@@ -230,7 +226,6 @@ else if (intent_name == 'Illness - more - prevention') {
                 "quickReplies": {
                     "title": illness[0].prevention,
                     "quickReplies": [
-                        "Title",
                         "Details",
                         "Symptoms",
                         "Treatment",
