@@ -86,6 +86,7 @@ async function _Illness(req, res) {
             const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
             const query = log.query;
             const illness = await Illness.find({title: query});
+            console.log(recentLog);
 
             res.json({
                 "fulfillmentMessages": [
@@ -123,6 +124,7 @@ async function _Illness(req, res) {
         const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
         const query = log.query;
         const illness = await Illness.find({title: query});
+        console.log(recentLog);
 
         res.json({
             "fulfillmentMessages": [
@@ -160,6 +162,7 @@ else if (intent_name == 'Illness - more - treatment') {
     const log = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
     const query = log.query;
     const illness = await Illness.find({title: query});
+    console.log(recentLog);
 
     res.json({
         "fulfillmentMessages": [
