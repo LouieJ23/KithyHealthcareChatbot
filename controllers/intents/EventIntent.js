@@ -2,12 +2,17 @@
 
 const mongoose = require('mongoose');
 const Event = require('../../models/Events');
-
+const LogQuery = require('../../models/Logs');
 
 // EVENT LATEST FUNCTION
-function _Event(req, res) {
+async function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    console.log
+    const value = req.body.queryResult.queryText;
+    const recentLog = await LogQuery.findOne().sort({datePosted: -1});
+    console.log("Intent Name: " + intent_name);
+    console.log("Query Text: " + value);
+    console.log(recentLog);
+
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
             const event = events[0];
@@ -37,9 +42,14 @@ function _Event(req, res) {
                 ]
             });
         });
+        const log1 = new LogQuery({
+            query: value,
+            isAnswered: true,
+        });
+        await log1.save();  
 
     }
-    if (intent_name == "Latest Event") {
+   else if (intent_name == "Latest Event") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;

@@ -18,13 +18,14 @@ if(req.query._method == 'PUT') {
 
 router.get('/', async (req, res) => {
     try { 
-        const {page = 1, limit = 4} = req.query;
+        
+        const {page = 1, limit = 500} = req.query;
         const log = await Log.find()
         .sort({ datePosted: -1 })
         .limit(limit * 1)
        .skip((page - 1) * limit);
-        res.render('event', {
-            events: event,
+        res.render('logQuery', {
+            logQuery: log,
             page_name: 'log',
             next: parseInt(page) + 1,
             prev: parseInt(page) - 1,
