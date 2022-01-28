@@ -7,7 +7,8 @@ const LogQuery = require('../../models/Logs');
 async function _Illness(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
-    console.log(intent_name);
+    console.log("Intent Name: " + intent_name);
+    console.log("Query Text: " +value);
 
     if (intent_name == 'Illness') {
         const illness = await Illness.find();
@@ -46,11 +47,14 @@ async function _Illness(req, res) {
     }
     else if (intent_name == 'Illness - more') {
             const recentLog = await LogQuery.findOne().sort({datePosted: -1});
-            console.log(recentLog);
+            // console.log(recentLog);
             const value = req.body.queryResult.queryText;
-            console.log(value);
             const query = recentLog.query;
-            console.log(query);
+            console.log("Intent Name: " + intent_name);
+            console.log("Query Text: " + value);
+            console.log("Recent Log Query: " + query);
+            console.log("Recent Log: " + recentLog);
+
 
             res.json({
                 "fulfillmentMessages": [
