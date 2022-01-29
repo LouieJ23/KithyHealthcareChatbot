@@ -82,12 +82,12 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log2 = new EventLogQuery ({
+        const log2 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if (intent_name == "Events - latest - more1 - name") {
+    else if ((intent_name == "Events - latest - more1 - name") || intent_name == "Latest Event - name") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events name is " + event.eventTitle;
@@ -120,13 +120,13 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log3 = new EventLogQuery ({
+        const log3 = new EventLogQuery({
             query: value,
             isAnswered: true
         })
     }
 
-    if (intent_name == "Events - latest - more1 - location") {
+    else if (intent_name == "Events - latest - more1 - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events location is " + event.eventLocation;
@@ -159,13 +159,13 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-            const log4 = new EventLogQuery({
-                query: value,
-                isAnswered: true
-            });
-        }
+        const log4 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
+    }
 
-    if (intent_name == "Events - latest - more1 - details") {
+    else if (intent_name == "Events - latest - more1 - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events details is " + event.eventDetails;
@@ -198,13 +198,13 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log5 = new EventLogQuery ({
+        const log5 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
 
-    if (intent_name == "Events - latest - more1 - requirements") {
+    else if (intent_name == "Events - latest - more1 - requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
@@ -237,13 +237,13 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log6 = new EventLogQuery ({
+        const log6 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
 
-    if (intent_name == "Events - latest - more1 - process") {
+    else if (intent_name == "Events - latest - more1 - process") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events process is " + event.eventProcess;
@@ -276,13 +276,13 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log7 = new EventLogQuery ({
+        const log7 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
 
-    if (intent_name == "Events - latest - more1 - participants") {
+    else if (intent_name == "Events - latest - more1 - participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events participants is " + event.eventParticipant;
@@ -314,7 +314,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log8 = new EventLogQuery ({
+        const log8 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
@@ -357,7 +357,7 @@ async function _Event(req, res) {
     //         isAnswered: true
     //     });
     // }
-    if ((intent_name == "Previous Event") || intent_name == "Events - previous") {
+    else if ((intent_name == "Previous Event") || intent_name == "Events - previous") {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
@@ -389,14 +389,14 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log11 = new EventLogQuery ({
+        const log11 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
 
 
-    if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")) {
+    else if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events name is " + event.eventTitle;
@@ -429,12 +429,12 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log12 = new EventLogQuery ({
+        const log12 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
+    else if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' details is" + event.eventDetails;
@@ -467,12 +467,12 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log13 = new EventLogQuery ({
+        const log13 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")) {
+    else if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' process is " + event.eventProcess;
@@ -505,12 +505,12 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log14 = new EventLogQuery ({
+        const log14 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")) {
+    else if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' participants is " + event.eventParticipant;
@@ -543,12 +543,12 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log15 = new EventLogQuery ({
+        const log15 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if ((intent_name == "Events - previous - more2 - location") || (intent_name == "Previous Event - location")) {
+    else if ((intent_name == "Events - previous - more2 - location") || (intent_name == "Previous Event - location")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' location is " + event.eventLocation;
@@ -581,12 +581,12 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log16 = new EventLogQuery ({
+        const log16 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")) {
+    else if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' requirements is " + event.eventRequire;
@@ -619,14 +619,14 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log17 = new EventLogQuery ({
+        const log17 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
 
     // EVENT UPCOMING FUNCTION
-    if (intent_name == 'Events - upcoming') {
+    else if (intent_name == 'Events - upcoming') {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -691,12 +691,12 @@ async function _Event(req, res) {
 
 
         }).sort({ datePosted: -1 });
-        const log18 = new EventLogQuery ({
+        const log18 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if (intent_name == "Events - upcoming - more3 - name") {
+    else if (intent_name == "Events - upcoming - more3 - name") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -761,12 +761,12 @@ async function _Event(req, res) {
 
 
         }).sort({ datePosted: -1 });
-        const log19 = new EventLogQuery ({
+        const log19 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
     }
-    if (intent_name == "Events - upcoming - more3 - location") {
+    else if (intent_name == "Events - upcoming - more3 - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -830,13 +830,13 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
-            const log20 = new EventLogQuery ({
-                query: value,
-                isAnswered: true
-            });
+        const log20 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
 
-    if (intent_name == "Events - upcoming - more3 - details") {
+    else if (intent_name == "Events - upcoming - more3 - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -900,13 +900,13 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
-            const log21 = new EventLogQuery ({
-                query: value,
-                isAnswered: true
-            });
+        const log21 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
 
     }
-    if (intent_name == "Events - upcoming - more3 - process") {
+    else if (intent_name == "Events - upcoming - more3 - process") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -970,12 +970,12 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
-            const log22 = new EventLogQuery ({
-                query: value,
-                isAnswered: true
-            });
+        const log22 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
-    if (intent_name == "Events - upcoming - more3 - participants") {
+    else if (intent_name == "Events - upcoming - more3 - participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -1039,13 +1039,13 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
-            const log23 = new EventLogQuery ({
-                query: value,
-                isAnswered: true
-            });
+        const log23 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
 
     }
-    if (intent_name == "Events - upcoming - more3 - requirements") {
+    else if (intent_name == "Events - upcoming - more3 - requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -1109,10 +1109,10 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
-            const log24 = new EventLogQuery ({
-                query: value,
-                isAnswered: true
-            });
+        const log24 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
 }
 
