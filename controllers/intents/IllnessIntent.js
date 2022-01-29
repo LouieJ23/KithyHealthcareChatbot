@@ -94,10 +94,6 @@ async function _Illness(req, res) {
         const query = recentLog.query;
         const illness = await Illness.find({ title: query });
 
-        console.log("Intent Name: " + intent_name);
-        console.log("Query Text: " + value);
-        console.log("Recent Log Query: " + query);
-
         res.json({
             "fulfillmentMessages": [
                 {
@@ -135,10 +131,6 @@ async function _Illness(req, res) {
         const query = recentLog.query;
         const illness = await Illness.find({ title: query });
 
-        console.log("Intent Name: " + intent_name);
-        console.log("Query Text: " + value);
-        console.log("Recent Log Query: " + query);
-
         res.json({
             "fulfillmentMessages": [
                 {
@@ -175,10 +167,6 @@ async function _Illness(req, res) {
         const value = req.body.queryResult.queryText;
         const query = recentLog.query;
         const illness = await Illness.find({ title: query });
-
-        console.log("Intent Name: " + intent_name);
-        console.log("Query Text: " + value);
-        console.log("Recent Log Query: " + query);
 
         res.json({
             "fulfillmentMessages": [
