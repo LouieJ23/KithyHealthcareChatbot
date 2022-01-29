@@ -2,17 +2,17 @@
 
 const mongoose = require('mongoose');
 const Event = require('../../models/Events');
-const EventQuery = require('../../models/Logs');
+const LogQuery = require('../../models/Logs');
 
 // EVENT LATEST FUNCTION
 async function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    // const query = req.body.queryResult.queryText;
-    // const previousLog = await EventQuery.findOne().sort({ datePosted: -1 });
-    // const queryEvent = previousLog.queryEvent;
-    // console.log("Intent Name: " + intent_name);
-    // console.log("Query Text: " + query);
-    // console.log("Recent Log Query: " + queryEvent);
+    const value = req.body.queryResult.queryText;
+    const recentLog = await LogQuery.findOne().sort({ datePosted: -1 });
+
+    console.log("The Intent Name: " + intent_name);
+    console.log("The Query Text: " + value);
+    console.log("The Recent Log: " + recentLog);
 
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
@@ -44,11 +44,11 @@ async function _Event(req, res) {
             });
         });
 
-        // const log_Event1 = new EventQuery({
-        //     queryEvent: query,
-        //     isAnswered: true,
-        // });
-        // await log_Event1.save();
+        const log1 = new LogQuery({
+            query: value,
+            isAnswered: true,
+        });
+        await log1.save();
     }
     else if (intent_name == "Latest Event") {
         Event.find({}, function (err, events) {
@@ -82,7 +82,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-       
+        const log2 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if ((intent_name == "Events - latest - more1 - name") || (intent_name == "Events - latest - more - name") || (intent_name == "Latest Event - name")) {
         Event.find({}, function (err, events) {
@@ -117,6 +120,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log3 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        })
     }
 
     if ((intent_name == "Events - latest - more1 - location") || (intent_name == "Events - latest - more - location") || (intent_name == "Latest Event - location")) {
@@ -152,7 +159,11 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-    }
+            const log4 = new LogQuery({
+                query: value,
+                isAnswered: true
+            });
+        }
 
     if ((intent_name == "Events - latest - more - details") || (intent_name == "Latest Event - details")) {
         Event.find({}, function (err, events) {
@@ -187,6 +198,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log5 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
     if ((intent_name == "Events - latest - more1 - requirements") || (intent_name == "Latest Event - requirements")) {
@@ -222,6 +237,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log6 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
     if ((intent_name == "Events - latest - more1 - process") || (intent_name == "Latest Event - process")) {
@@ -257,6 +276,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log7 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
     if ((intent_name == "Events - latest - more1 - participants") || (intent_name == "Latest Event - participants")) {
@@ -291,6 +314,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log8 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
     if (intent_name == 'Events - latest') {
@@ -325,6 +352,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log9 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
 
@@ -361,6 +392,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log10 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if (intent_name == "Previous Event") {
         Event.find({}, function (err, events) {
@@ -394,6 +429,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log11 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
 
@@ -430,6 +469,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log12 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        }),
     }
     if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
         Event.find({}, function (err, events) {
@@ -464,6 +507,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log13 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")) {
         Event.find({}, function (err, events) {
@@ -498,6 +545,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log14 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")) {
         Event.find({}, function (err, events) {
@@ -532,6 +583,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log15 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if ((intent_name == "Events - previous - more2 - location") || (intent_name == "Previous Event - location")) {
         Event.find({}, function (err, events) {
@@ -566,6 +621,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log16 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")) {
         Event.find({}, function (err, events) {
@@ -600,6 +659,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log17 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
 
     // EVENT UPCOMING FUNCTION
@@ -668,6 +731,10 @@ async function _Event(req, res) {
 
 
         }).sort({ datePosted: -1 });
+        const log18 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if (intent_name == "Events - upcoming - more3 - name") {
         Event.find({}, function (err, events) {
@@ -734,6 +801,10 @@ async function _Event(req, res) {
 
 
         }).sort({ datePosted: -1 });
+        const log19 = new LogQuery ({
+            query: value,
+            isAnswered: true
+        });
     }
     if (intent_name == "Events - upcoming - more3 - location") {
         Event.find({}, function (err, events) {
@@ -799,6 +870,10 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
+            const log20 = new LogQuery ({
+                query: value,
+                isAnswered: true
+            });
     }
 
     if (intent_name == "Events - upcoming - more3 - details") {
@@ -865,6 +940,10 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
+            const log21 = new LogQuery ({
+                query: value,
+                isAnswered: true
+            });
 
     }
     if (intent_name == "Events - upcoming - more3 - process") {
@@ -931,6 +1010,10 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
+            const log22 = new LogQuery ({
+                query: value,
+                isAnswered: true
+            });
     }
     if (intent_name == "Events - upcoming - more3 - participants") {
         Event.find({}, function (err, events) {
@@ -996,6 +1079,10 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
+            const log23 = new LogQuery ({
+                query: value,
+                isAnswered: true
+            });
 
     }
     if (intent_name == "Events - upcoming - more3 - requirements") {
@@ -1062,6 +1149,17 @@ async function _Event(req, res) {
             }
         })
             .sort({ datePosted: -1 });
+            const log24 = new LogQuery ({
+                query: value,
+                isAnswered: true
+            });
+    }
+    else {
+        const log = new LogQuery ({
+            query: value,
+            isAnswered: false,
+        })
+        await log.save();
     }
 }
 
