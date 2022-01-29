@@ -1114,13 +1114,6 @@ async function _Event(req, res) {
                 isAnswered: true
             });
     }
-    else {
-        const log = new EventLogQuery ({
-            query: value,
-            isAnswered: false,
-        })
-        await log.save();
-    }
 }
 
 module.exports = _Event;
