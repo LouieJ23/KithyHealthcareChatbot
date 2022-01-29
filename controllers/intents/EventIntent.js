@@ -204,7 +204,7 @@ async function _Event(req, res) {
         });
     }
 
-    if ((intent_name == "Events - latest - more1 - requirements") || (intent_name == "Latest Event - requirements")) {
+    if (intent_name == "Events - latest - more1 - requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
@@ -243,7 +243,7 @@ async function _Event(req, res) {
         });
     }
 
-    if ((intent_name == "Events - latest - more1 - process") || (intent_name == "Latest Event - process")) {
+    if (intent_name == "Events - latest - more1 - process") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events process is " + event.eventProcess;
@@ -282,7 +282,7 @@ async function _Event(req, res) {
         });
     }
 
-    if ((intent_name == "Events - latest - more1 - participants") || (intent_name == "Latest Event - participants")) {
+    if (intent_name == "Events - latest - more1 - participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events participants is " + event.eventParticipant;
@@ -319,46 +319,6 @@ async function _Event(req, res) {
             isAnswered: true
         });
     }
-
-    if (intent_name == 'Events - latest') {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-
-
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Event",
-                                "Health Center",
-                                "Illness",
-                                "Set Appointment",
-                                "Visit Site",
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
-        const log9 = new EventLogQuery ({
-            query: value,
-            isAnswered: true
-        });
-    }
-
-
     // EVENT PREVIOUS FUNCTION
     if (intent_name == 'Events - previous') {
         Event.find({}, function (err, events) {
