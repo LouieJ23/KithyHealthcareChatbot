@@ -7,7 +7,8 @@ const LogQuery = require('../../models/Logs');
 async function _Illness(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
-    const recentLog = await LogQuery.findOne().sort({datePosted: -1});
+
+    const recentLog = await LogQuery.findOne({isAnswered:true}).sort({datePosted: -1});
     const query = recentLog.query;
     console.log("Intent Name: " + intent_name);
     console.log("Query Text: " + value);
