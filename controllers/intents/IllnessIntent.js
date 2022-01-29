@@ -55,12 +55,6 @@ async function _Illness(req, res) {
         const recentLog = await LogQuery.findOne({ isAnswered: true }).sort({ datePosted: -1 });
         // console.log(recentLog);
         const value = req.body.queryResult.queryText;
-        const query = recentLog.query;
-        console.log("Intent Name: " + intent_name);
-        console.log("Query Text: " + value);
-        console.log("Recent Log Query: " + query);
-
-
         res.json({
             "fulfillmentMessages": [
                 {
