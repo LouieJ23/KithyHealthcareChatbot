@@ -472,7 +472,7 @@ async function _Event(req, res) {
         const log12 = new LogQuery ({
             query: value,
             isAnswered: true
-        }),
+        });
     }
     if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
         Event.find({}, function (err, events) {
