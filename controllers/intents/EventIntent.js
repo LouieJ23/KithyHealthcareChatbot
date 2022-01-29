@@ -50,7 +50,7 @@ async function _Event(req, res) {
         });
         await log1.save();
     }
-    else if ((intent_name == "Events - latest") || intent_name == "Latest Event - name") {
+    else if (intent_name == "Events - latest") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
@@ -126,7 +126,7 @@ async function _Event(req, res) {
         })
     }
 
-    if ((intent_name == "Events - latest - more1 - location") || (intent_name == "Events - latest - more - location") || (intent_name == "Latest Event - location")) {
+    if (intent_name == "Events - latest - more1 - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events location is " + event.eventLocation;
@@ -165,7 +165,7 @@ async function _Event(req, res) {
             });
         }
 
-    if ((intent_name == "Events - latest - more - details") || (intent_name == "Latest Event - details")) {
+    if (intent_name == "Events - latest - more1 - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events details is " + event.eventDetails;
