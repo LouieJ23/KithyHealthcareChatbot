@@ -11,7 +11,7 @@ async function _Illness(req, res) {
     const query = recentLog.query;
     console.log("Intent Name: " + intent_name);
     console.log("Query Text: " + value);
-    console.log("Recent Log Query " + query);
+    console.log("Recent Log Query: " + query);
 
     if (intent_name == 'Illness') {
         const illness = await Illness.find();

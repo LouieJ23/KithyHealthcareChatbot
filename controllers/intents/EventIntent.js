@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Event = require('../../models/Events');
-const LogQuery = require('../../models/Logs');
+const EventQuery = require('../../models/Logs');
 
 // EVENT LATEST FUNCTION
 async function _Event(req, res) {
@@ -12,7 +12,7 @@ async function _Event(req, res) {
     const query = recentLog.query;
     console.log("Intent Name: " + intent_name);
     console.log("Query Text: " + value);
-    console.log("Recent Log Query " + query);
+    console.log("Recent Log Query: " + query);
 
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
@@ -44,7 +44,7 @@ async function _Event(req, res) {
             });
         });
 
-        const log_Event1 = new LogQuery({
+        const log_Event1 = new EventQuery({
             query: value,
             isAnswered: true,
         });
@@ -1068,7 +1068,7 @@ async function _Event(req, res) {
             .sort({ datePosted: -1 });
     }
     else {
-        const log_Event = new LogQuery({
+        const log_Event = new EventQuery({
             query: value,
             isAnswered: true,
         });
