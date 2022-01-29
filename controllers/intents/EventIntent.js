@@ -7,12 +7,12 @@ const EventQuery = require('../../models/Logs');
 // EVENT LATEST FUNCTION
 async function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
-    const query = req.body.queryResult.queryText;
-    const previousLog = await EventQuery.findOne().sort({ datePosted: -1 });
-    const queryEvent = previousLog.queryEvent;
-    console.log("Intent Name: " + intent_name);
-    console.log("Query Text: " + query);
-    console.log("Recent Log Query: " + queryEvent);
+    // const query = req.body.queryResult.queryText;
+    // const previousLog = await EventQuery.findOne().sort({ datePosted: -1 });
+    // const queryEvent = previousLog.queryEvent;
+    // console.log("Intent Name: " + intent_name);
+    // console.log("Query Text: " + query);
+    // console.log("Recent Log Query: " + queryEvent);
 
     if (intent_name == 'Events') {
         Event.find({}, function (err, events) {
@@ -44,11 +44,11 @@ async function _Event(req, res) {
             });
         });
 
-        const log_Event1 = new EventQuery({
-            queryEvent: query,
-            isAnswered: true,
-        });
-        await log_Event1.save();
+        // const log_Event1 = new EventQuery({
+        //     queryEvent: query,
+        //     isAnswered: true,
+        // });
+        // await log_Event1.save();
     }
     else if (intent_name == "Latest Event") {
         Event.find({}, function (err, events) {
