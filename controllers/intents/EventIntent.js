@@ -8,7 +8,7 @@ const EventQuery = require('../../models/Logs');
 async function _Event(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
-    const recentLog = await LogQuery.findOne().sort({ datePosted: -1 });
+    const recentLog = await EventQuery.findOne().sort({ datePosted: -1 });
     const query = recentLog.query;
     console.log("Intent Name: " + intent_name);
     console.log("Query Text: " + value);
@@ -82,7 +82,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log_Event2 = new LogQuery({
+        const log_Event2 = new EventQuery({
             query: value,
             isAnswered: true,
         });
