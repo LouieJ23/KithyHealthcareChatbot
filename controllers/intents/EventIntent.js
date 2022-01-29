@@ -126,7 +126,7 @@ async function _Event(req, res) {
         })
     }
 
-    else if (intent_name == "Events - latest - more1 - location") {
+    else if ((intent_name == "Events - latest - more1 - location") || intent_name == "Latest Event - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events location is " + event.eventLocation;
@@ -165,7 +165,7 @@ async function _Event(req, res) {
         });
     }
 
-    else if (intent_name == "Events - latest - more1 - details") {
+    else if ((intent_name == "Events - latest - more1 - details") || intent_name == "Latest Event - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events details is " + event.eventDetails;
@@ -204,7 +204,7 @@ async function _Event(req, res) {
         });
     }
 
-    else if (intent_name == "Events - latest - more1 - requirements") {
+    else if ((intent_name == "Events - latest - more1 - requirements") || intent_name == "Latest Event - requirements"){
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
@@ -243,7 +243,7 @@ async function _Event(req, res) {
         });
     }
 
-    else if (intent_name == "Events - latest - more1 - process") {
+    else if ((intent_name == "Events - latest - more1 - process") || intent_name == "Latest Event - process"){
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events process is " + event.eventProcess;
@@ -282,7 +282,7 @@ async function _Event(req, res) {
         });
     }
 
-    else if (intent_name == "Events - latest - more1 - participants") {
+    else if ((intent_name == "Events - latest - more1 - participants") || intent_name == "Latest Event - participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events participants is " + event.eventParticipant;
