@@ -320,47 +320,47 @@ async function _Event(req, res) {
         });
     }
     // EVENT PREVIOUS FUNCTION
-    if (intent_name == 'Events - previous') {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+    // if (intent_name == 'Events - previous') {
+    //     Event.find({}, function (err, events) {
+    //         const event = events[1];
+    //         var result = "The previous event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
 
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Event",
-                                "Health Center",
-                                "Illness",
-                                "Set Appointment",
-                                "Visit Site",
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
-        const log10 = new EventLogQuery ({
-            query: value,
-            isAnswered: true
-        });
-    }
-    if (intent_name == "Previous Event") {
+    //         res.json({
+    //             "fulfillmentMessages": [
+    //                 {
+    //                     "quickReplies": {
+    //                         "title": result,
+    //                         "quickReplies": [
+    //                             "More",
+    //                             "Event",
+    //                             "Health Center",
+    //                             "Illness",
+    //                             "Set Appointment",
+    //                             "Visit Site",
+    //                         ]
+    //                     },
+    //                     "platform": "FACEBOOK"
+    //                 },
+    //                 {
+    //                     "text": {
+    //                         "text": [
+    //                             ""
+    //                         ]
+    //                     }
+    //                 }
+    //             ]
+    //         });
+    //     }).sort({ datePosted: -1 });
+    //     const log10 = new EventLogQuery ({
+    //         query: value,
+    //         isAnswered: true
+    //     });
+    // }
+    if ((intent_name == "Previous Event") || intent_name == "Events - previous") {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous event is " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
 
 
             res.json({
