@@ -120,6 +120,44 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
+        const log10 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        })
+    }
+    else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event - date & time") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            var result = "The latest events name is " + event.eventTitle;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Event",
+                                "Health Center",
+                                "Illness",
+                                "Set Appointment",
+                                "Visit Site",
+
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
         const log3 = new EventLogQuery({
             query: value,
             isAnswered: true
