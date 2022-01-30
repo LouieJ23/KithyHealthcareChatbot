@@ -128,7 +128,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event - date & time") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            var result = "The latest events name is " + event.eventTitle;
+            var result = "The latest event is starting in " + event.startDateTime + " and end in " + event.endDateTime;
 
 
             res.json({
