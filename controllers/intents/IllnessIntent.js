@@ -81,11 +81,11 @@ async function _Illness(req, res) {
             ]
         });
 
-        const log2 = new LogQuery({
-            query: value,
-            isAnswered: true,
-        });
-        await log2.save();
+        // const log2 = new LogQuery({
+        //     query: value,
+        //     isAnswered: true,
+        // });
+        // await log2.save();
 
     }
     else if (intent_name == 'Illness - more - details') {
@@ -119,11 +119,11 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        const log3 = new LogQuery({
-            query: value,
-            isAnswered: false,
-        });
-        await log3.save();
+        // const log3 = new LogQuery({
+        //     query: value,
+        //     isAnswered: false,
+        // });
+        // await log3.save();
     }
     else if (intent_name == 'Illness - more - symptoms') {
         const recentLog = await LogQuery.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -156,11 +156,11 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        const log4 = new LogQuery({
-            query: value,
-            isAnswered: false,
-        });
-        await log4.save();
+        // const log4 = new LogQuery({
+        //     query: value,
+        //     isAnswered: false,
+        // });
+        // await log4.save();
     }
     else if (intent_name == 'Illness - more - treatment') {
         const recentLog = await LogQuery.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -193,11 +193,11 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        const log5 = new LogQuery({
-            query: value,
-            isAnswered: false,
-        });
-        await log5.save();
+        // const log5 = new LogQuery({
+        //     query: value,
+        //     isAnswered: false,
+        // });
+        // await log5.save();
     }
     else if (intent_name == 'Illness - more - prevention') {
         const recentLog = await LogQuery.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -234,11 +234,11 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        const log6 = new LogQuery({
-            query: value,
-            isAnswered: false,
-        });
-        await log6.save();
+        // const log6 = new LogQuery({
+        //     query: value,
+        //     isAnswered: false,
+        // });
+        // await log6.save();
     }
 
 
