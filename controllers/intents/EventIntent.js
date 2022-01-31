@@ -203,7 +203,7 @@ async function _Event(req, res) {
         // });
     }
 
-    else if ((intent_name == "Events - latest - more - detail") || intent_name == "Latest Event - details") {
+    else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events details is " + event.eventDetails;
@@ -242,7 +242,7 @@ async function _Event(req, res) {
         // });
     }
 
-    else if ((intent_name == "Events - latest - more1 - requirements") || intent_name == "Latest Event - requirements") {
+    else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event - requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
