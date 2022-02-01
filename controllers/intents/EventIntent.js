@@ -44,11 +44,11 @@ async function _Event(req, res) {
             });
         });
 
-        // const log1 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true,
-        // });
-        // await log1.save();
+        const log1 = new EventLogQuery({
+            query: value,
+            isAnswered: true,
+        });
+        await log1.save();
     }
     else if ((intent_name == "Events - latest") || intent_name == "Latest Event") {
         Event.find({}, function (err, events) {
@@ -82,10 +82,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log2 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        const log2 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event - event title") {
         Event.find({}, function (err, events) {
@@ -120,10 +120,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log10 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // })
+        const log10 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        })
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event - date & time") {
         Event.find({}, function (err, events) {
@@ -158,10 +158,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log3 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // })
+        const log3 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        })
     }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event - location") {
@@ -197,10 +197,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log4 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        const log4 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
 
     else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event - details") {
@@ -236,10 +236,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log5 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        const log5 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
 
     else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event - requirements") {
@@ -275,10 +275,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log6 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        const log6 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
 
     else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event - process") {
@@ -314,10 +314,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log7 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        const log7 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
 
     else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event - participants") {
@@ -352,10 +352,10 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log8 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        const log8 = new EventLogQuery({
+            query: value,
+            isAnswered: true
+        });
     }
     
     //PREVIOUS EVENT FUNCTION
