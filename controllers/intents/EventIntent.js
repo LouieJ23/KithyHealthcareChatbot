@@ -82,11 +82,11 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log2 = new EventLogQuery({
-            query: value,
-            isAnswered: true
-        });
-        await log2.save();
+        // const log2 = new EventLogQuery({
+        //     query: value,
+        //     isAnswered: true
+        // });
+        // await log2.save();
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event - event title") {
         Event.find({}, function (err, events) {
