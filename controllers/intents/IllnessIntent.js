@@ -242,13 +242,13 @@ async function _Illness(req, res) {
     }
 
 
-    else {
-        const log = new LogQuery({
-            query: value,
-            isAnswered: false,
-        });
-        await log.save();
-    }
+    // else {
+    //     const log = new LogQuery({
+    //         query: value,
+    //         isAnswered: false,
+    //     });
+    //     await log.save();
+    // }
 }
 
 module.exports = _Illness
