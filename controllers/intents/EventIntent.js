@@ -120,7 +120,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log10 = new EventLogQuery({
+        const log3 = new EventLogQuery({
             query: value,
             isAnswered: true
         })
@@ -158,7 +158,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log3 = new EventLogQuery({
+        const log4 = new EventLogQuery({
             query: value,
             isAnswered: true
         })
@@ -197,7 +197,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log4 = new EventLogQuery({
+        const log5 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
@@ -236,7 +236,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log5 = new EventLogQuery({
+        const log6 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
@@ -275,7 +275,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log6 = new EventLogQuery({
+        const log7 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
@@ -314,7 +314,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log7 = new EventLogQuery({
+        const log8 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
@@ -352,7 +352,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log8 = new EventLogQuery({
+        const log9 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
