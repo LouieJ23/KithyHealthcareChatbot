@@ -81,11 +81,11 @@ async function _Illness(req, res) {
             ]
         });
 
-        const log2 = new LogQuery({
-            query: value,
-            isAnswered: true,
-        });
-        await log2.save();
+        // const log2 = new LogQuery({
+        //     query: value,
+        //     isAnswered: true,
+        // });
+        // await log2.save();
 
     }
     else if (intent_name == 'Illness - more - details') {
