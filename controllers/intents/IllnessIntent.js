@@ -51,7 +51,7 @@ async function _Illness(req, res) {
         });
         await log1.save();
     }
-    else if ((intent_name == 'Illness - more') || intent_name == Illness){
+    else if (intent_name == 'Illness - more') {
         const recentLog = await LogQuery.findOne({ isAnswered: true }).sort({ datePosted: -1 });
         // console.log(recentLog);
         const value = req.body.queryResult.queryText;
