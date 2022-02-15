@@ -44,34 +44,7 @@ module.exports = (server) => {
     server.use('/mildIllness', mildIllness);
     server.use('/appointment', appointment);
     server.use('/login', login);
+    server.use('/admin', admin);
     server.use('/logQuery', logQuery);
-    server.get('/admin', (req, res) => {
-        res.render('admin', {
-            page_name: 'home',
-            isPaginate: false
-        });
-    });
-
-    server.post('/admin', async (req, res) => {
-        let userName = req.body.username;
-        let uName = process.env.USERNAME1;
-        let uPassword = process.env.PASSWORD1;
-        let userPassword = req.body.password;
-
-        if (userName == uName && userPassword == uPassword) {
-            res.render('admin', {
-                page_name: 'home',
-                isPaginate: false
-            });
-            alert("Login Successful.")
-            return true;
-        }
-        else {
-            res.sendFile(__dirname + "/login.html");
-            alert("Login Failed.")
-            return false;   
-        }
-    });
-    
-    server.post('/', controllers.processRequests);
+     server.post('/', controllers.processRequests);
 };
