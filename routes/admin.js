@@ -6,14 +6,14 @@ const Log = require('../models/Logs');
 
 
 router.get('/', async (req, res) => {
-    try { 
-        
-        const {page = 1, limit = 5} = req.query;
+    try {
+
+        const { page = 1, limit = 5 } = req.query;
         const log = await Log.find()
-        .sort({ datePosted: -1 })
-        .limit(limit * 1)
-       .skip((page - 1) * limit);
-       console.log(log);
+            .sort({ datePosted: -1 })
+            .limit(limit * 1)
+            .skip((page - 1) * limit);
+        console.log(log);
         res.render('admin', {
             logQuery: log,
             page_name: 'home',
@@ -21,10 +21,10 @@ router.get('/', async (req, res) => {
             prev: parseInt(page) - 1,
             isPaginate: false
         });
-      
-        
+
+
     }
-    catch(err) {
+    catch (err) {
         res.json({
             message: err
         });
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
     else {
         res.sendFile(__dirname + "/login.html");
         alert("Login Failed.")
-        return false;   
+        return false;
     }
 });
 
