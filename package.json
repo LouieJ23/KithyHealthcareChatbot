@@ -26,6 +26,7 @@
     "express-ejs-layouts": "^2.5.1",
     "method-override": "^3.0.0",
     "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15",
     "open": "^8.4.0",
     "request": "^2.88.2"
   },
