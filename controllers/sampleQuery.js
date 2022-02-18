@@ -1,3 +1,4 @@
+
 'use strict';
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -77,19 +78,19 @@ var samp = "Location";
 
 // InsertLog();
 
-async function getLogs() {
-    const queries = [];
-   const arr = await LogQuery.find({isAnswered:false}).sort({datePosted: -1});
-//    for(let i in arr) {
-//        queries.push(arr[i].query);
-//    }
+// async function getLogs() {
+//     const queries = [];
+//    const arr = await LogQuery.find({isAnswered:false}).sort({datePosted: -1});
+// //    for(let i in arr) {
+// //        queries.push(arr[i].query);
+// //    }
 
-    // const illness = await Illness.findOne({title: "Diarrhea"});
+//     // const illness = await Illness.findOne({title: "Diarrhea"});
 
-   console.log(arr);
-}
+//    console.log(arr);
+// }
 
-getLogs();
+// getLogs();
 // LogQuery.findOne({}, (err, logs) => {
 //     const a = logs;
 //     LogQuery.find({}, (err, log) => {
