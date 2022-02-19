@@ -160,11 +160,11 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log4 = new EventLogQuery({
-            query: value,
-            isAnswered: true
-        });
-        await log4.save();
+        // const log4 = new EventLogQuery({
+        //     query: value,
+        //     isAnswered: true
+        // });
+        // await log4.save();
     }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event - location") {
@@ -200,11 +200,11 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        const log5 = new EventLogQuery({
-            query: value,
-            isAnswered: true
-        });
-        await log5.save();
+        // const log5 = new EventLogQuery({
+        //     query: value,
+        //     isAnswered: true
+        // });
+        // await log5.save();
     }
 
     else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event - details") {
