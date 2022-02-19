@@ -29,7 +29,7 @@
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped table-hover">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>User Query</th>
@@ -46,7 +46,7 @@
 					if(logQuery.length > 0)
 					{
 						for(var i=0; i < logQuery.length; i++) { %>
-						<tr onclick="window.location='/logQuery/<%= logQuery[i]._id %>'" style="cursor: pointer;">
+						<!-- <tr onclick="window.location='/logQuery/<%= logQuery[i]._id %>'" style="cursor: pointer;"> -->
 
 							<td>
 								<%= logQuery[i].query %>

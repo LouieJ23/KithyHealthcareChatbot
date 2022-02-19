@@ -5,6 +5,7 @@ const ejs = require('ejs');
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
+let alert = require('alert');
 
 //import routes
 const event = require('./event');
