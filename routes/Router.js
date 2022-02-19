@@ -46,5 +46,5 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/admin', admin);
     server.use('/logQuery', logQuery);
-     server.post('/', controllers.processRequests);
+    server.post('/', controllers.processRequests);
 };
