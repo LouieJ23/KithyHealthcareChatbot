@@ -16,16 +16,17 @@ async function _Hotline(req, res) {
 
     if (intent_name == 'Hotline') {
         let hotlines = Hotline.find({});
-            let results = "";
-            for (let i = 0; i < hotlines.length; i++) {
-                results += (hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n");
-            }
+        console.log(hotlines);
+            // let results = "";
+            // for (let i = 0; i < hotlines.length; i++) {
+            //     results += (hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n");
+            // }
             // const hotline = hotline[0];
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": results,
+                            "title": "results",
                             "quickReplies": [
                                 "Department",
                                 "Event",
