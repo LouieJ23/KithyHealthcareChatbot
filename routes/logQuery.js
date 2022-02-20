@@ -1,21 +1,17 @@
 const router = require('express').Router();
 const Log = require('../models/Logs');
 
-
 router.get('/', async (req, res) => {
     try {
-
-        const { page = 1, limit = 100 } = req.query;
+        
+        // const { page = 1, limit =  } = req.query;
         const log = await Log.find()
-            .sort({ datePosted: -1 })
-            .limit(limit * 1)
-            .skip((page - 1) * limit);
+            .sort({ datePosted: -1 });
         console.log(log);
         res.render('logQuery', {
             logQuery: log,
             page_name: 'Logs',
-            next: parseInt(page) + 1,
-            prev: parseInt(page) - 1,
+            
             isPaginate: false
         });
 
