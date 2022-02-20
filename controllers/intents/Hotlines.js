@@ -24,7 +24,7 @@ async function _Hotline(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "results",
+                            "title": results,
                             "quickReplies": [
                                 "Department",
                                 "Event",
