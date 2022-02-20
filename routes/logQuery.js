@@ -5,7 +5,7 @@ const Log = require('../models/Logs');
 router.get('/', async (req, res) => {
     try {
 
-        const { page = 1, limit = logQuery.length() } = req.query;
+        const { page = 1, limit = logQuery.length } = req.query;
         const log = await Log.find()
             .sort({ datePosted: -1 })
             .limit(limit * 1)
