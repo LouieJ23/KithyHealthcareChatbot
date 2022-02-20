@@ -1,0 +1,200 @@
+<div class="container-xl">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="col-sm-6">
+						<h2>Manage <b>Hotlines</b></h2>
+					</div>
+					<div class="col-sm-6">
+						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
+								class="material-icons">&#xE147;</i> <span>Add New Hotline/span></a>
+					
+						<% if(! hotlines.length > 0) {%>
+							<a href="/hotlines" class="btn btn-secondary"> <span>Back</span></a>
+						<%}
+							else {%>
+								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
+						<%	}
+						%>
+
+					</div>
+				</div>
+			</div>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Number</th>
+						<th>Email</th>
+                        <th>Facebook Page</th>
+						<th>Date Posted</th>
+						<% if(! hotlines.length > 0) {%>
+							<th>Actions</th>
+						<%} %>
+
+					</tr>
+				</thead>
+				<tbody>
+					<% 
+					if(hotlines.length > 0)
+					{
+						for(var i=0; i < hotlines.length; i++) { %>
+						<tr onclick="window.location='/hotlines/<%= hotlines[i]._id %>'" style="cursor: pointer;">
+							<td>
+								<%= hotlines[i].name %>
+							</td>
+							<td>
+								<%= hotlines[i].number %>
+							</td>
+							<td>
+								<%= hotlines[i].email %>
+							</td>
+                            <td>
+                                <%= hotlines[i].facebookPage %>
+                            </td>
+                            <td>
+                                <%= hotlines[i].datePosted%>
+                            </td>
+						</tr>
+
+						<% }}
+						else { %>
+							<tr>	
+								<td>
+									<%= hotlines.name %>
+								</td>
+								<td>
+									<%= hotlines.number %>
+								</td>
+								<td>
+									<%= hotlines.email %>
+								</td>
+                                <td>
+                                    <%= hotlines.facebookPage %>
+                                </td>
+								<td>
+									<%= hotlines.datePosted %>
+								</td>
+	
+								<td>
+									<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+										data-toggle="tooltip" title="Edit" >&#xE254;</i></a>
+                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+											class="material-icons"  title="Delete">&#xE872;</i></a>
+								</td>
+							</tr>
+						<%} %>
+							<tr>
+
+				</tbody>
+			</table>
+			
+		</div>
+	</div>
+	<!-- Add Modal HTML -->
+	<div id="addEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="/hotlines" method="post">
+					<div class="modal-header">
+						<h4 class="modal-title">Add Hotlines Information</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Number</label>
+                            <input type="text" name="number" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <textarea class="form-control" name="email"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Facebook Page</label>
+                            <textarea class="form-control" name="facebookPage"></textarea>
+                        </div>
+                    </div>
+
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-info" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    <%
+    if(! hotlines.length > 0) {
+%>
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/hotlines/<%= hotlines._id %>?_method=DELETE" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Hotline</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="row my-3">
+                    <div class="col-sm-12">
+                        <h5 class="text-center">Are You Sure?</h5>
+                        <p class="text-center text-secondary">Do you really want to delete these records? This process cannot be undone.</p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <input type="button" class="btn btn-secondary mx-2" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger mx-2" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%
+    }%>
+	<!-- Edit Modal HTML -->
+	<%
+		if(! hotlines.length > 0) { %>
+			<div id="editEmployeeModal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form action="/hotlines/<%= hotlines._id%>?_method=PUT" method="post">
+							<input type="hidden" name="_method" value="PUT">
+							<div class="modal-header">
+								<h4 class="modal-title">Edit Hotlines</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<label>Name</label>
+									<input type="text" name="name" class="form-control" value="<%=hotlines.name%>" required>
+								</div>
+								<div class="form-group">
+									<label>Number</label>
+									<input type="text" name="number" class="form-control" value="<%=hotlines.number%>" required>
+								</div>
+								<div class="form-group">
+									<label>Email</label>
+									<textarea class="form-control" name="email" value="<%=hotlines.email%"></textarea>
+								</div>
+                                <div class="form-group">
+                                    <label>Facebook Page</label>
+                                    <textarea class="form-control" name="facebookPage" value="<%=hotlines.facebookPage%"></textarea>
+                                </div>
+							</div>
+							<div class="modal-footer">
+								<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+								<input type="submit" class="btn btn-info" value="Save">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	
+	<%	}
+	%>

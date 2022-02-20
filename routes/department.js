@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Departments = require('../models/Departments');
+// const Departments = require('../models/Departments');
 const Department = require('../models/Departments');
 
 router.use((req, res, next) => {
