@@ -33,7 +33,6 @@
 				<thead>
 					<tr>
 						<th>User Query</th>
-						<th>Answered</th>
 						<th>Date</th>
 						<% if(! logQuery.length > 0) {%>
 							<th>Actions</th>
@@ -50,9 +49,6 @@
 
 							<td>
 								<%= logQuery[i].query %>
-							</td>
-							<td style="width: 50px;">
-								<%= logQuery[i].isAnswered %>
 							</td>
 							<td>
 								<%= logQuery[i].datePosted %>

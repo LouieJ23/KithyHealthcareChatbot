@@ -2,9 +2,9 @@
 const mongoose = require('mongoose');
 
 const hotlines = mongoose.Schema({
-    Name:{
-        type:String,
-        require:true
+    hotlineName: {
+        type: String,
+        require: false
     },
     number: {
         type: Number,

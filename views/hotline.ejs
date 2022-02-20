@@ -40,9 +40,9 @@
 					if(hotlines.length > 0)
 					{
 						for(var i=0; i < hotlines.length; i++) { %>
-						<tr onclick="window.location='/hotlines/<%= hotlines[i]._id %>'" style="cursor: pointer;">
+						<tr onclick="window.location='/hotline/<%= hotlines[i]._id %>'" style="cursor: pointer;">
 							<td>
-								<%= hotlines[i].name %>
+								<%= hotlines[i].hotlineName %>
 							</td>
 							<td>
 								<%= hotlines[i].number %>
@@ -62,7 +62,7 @@
 						else { %>
 							<tr>	
 								<td>
-									<%= hotlines.name %>
+									<%= hotlines.hotlineName %>
 								</td>
 								<td>
 									<%= hotlines.number %>
@@ -96,7 +96,7 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/hotlines" method="post">
+				<form action="/hotline" method="post">
 					<div class="modal-header">
 						<h4 class="modal-title">Add Hotlines Information</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -104,7 +104,7 @@
 					<div class="modal-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input type="text" name="hotlineName" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Number</label>
@@ -135,7 +135,7 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/hotlines/<%= hotlines._id %>?_method=DELETE" method="post">
+            <form action="/hotline/<%= hotlines._id %>?_method=DELETE" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Hotline</h4>
@@ -163,7 +163,7 @@
 			<div id="editEmployeeModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form action="/hotlines/<%= hotlines._id%>?_method=PUT" method="post">
+						<form action="/hotline/<%= hotlines._id %>?_method=PUT" method="post">
 							<input type="hidden" name="_method" value="PUT">
 							<div class="modal-header">
 								<h4 class="modal-title">Edit Hotlines</h4>
@@ -172,19 +172,19 @@
 							<div class="modal-body">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" name="name" class="form-control" value="<%=hotlines.name%>" required>
+									<input type="text" name="hotlineName" class="form-control" value="<%=hotlines.hotlineName %>" required>
 								</div>
 								<div class="form-group">
 									<label>Number</label>
-									<input type="text" name="number" class="form-control" value="<%=hotlines.number%>" required>
+									<input type="text" name="number" class="form-control" value="<%=hotlines.number %>" required>
 								</div>
 								<div class="form-group">
 									<label>Email</label>
-									<textarea class="form-control" name="email" value="<%=hotlines.email%"></textarea>
+									<textarea class="form-control" name="email" value="<%=hotlines.email%>"></textarea>
 								</div>
                                 <div class="form-group">
                                     <label>Facebook Page</label>
-                                    <textarea class="form-control" name="facebookPage" value="<%=hotlines.facebookPage%"></textarea>
+                                    <textarea class="form-control" name="facebookPage" value="<%=hotlines.facebookPage%>"></textarea>
                                 </div>
 							</div>
 							<div class="modal-footer">

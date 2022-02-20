@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
             .sort({ datePosted: -1 })
             .limit(limit * 1)
             .skip((page - 1) * limit);
+        console.log(hotline);
         res.render('hotline', {
             hotlines: hotline,
             page_name: 'hotline',
@@ -65,17 +66,17 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const hotline = new Hotline({
-        name: req.body.name,
+        hotlineName: req.body.hotlineName,
         number: req.body.number,
         email: req.body.email,
         facebookPage: req.body.facebookPage,
-        datePosted: req.body.datePosted
     });
+    
 
     try {
         const savedHotline = await hotline.save();
         res.redirect(301, '/hotline');
-
+        // res.json(req.body.name);
     }
     catch (err) {
         res.json({
