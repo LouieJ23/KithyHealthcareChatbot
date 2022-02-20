@@ -15,7 +15,7 @@ async function _Hotline(req, res) {
     console.log("The Recent Log: " + recentLog);
 
     if (intent_name == 'Hotline') {
-        let hotlines = Hotline.find({});
+        let hotlines = await Hotline.find({});
         console.log(hotlines);
             // let results = "";
             // for (let i = 0; i < hotlines.length; i++) {
