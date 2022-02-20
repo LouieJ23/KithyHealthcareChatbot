@@ -31,9 +31,11 @@ async function _Hotline(req, res) {
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
-                                "Hotline",
+                                "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
+
                             ]
                         },
                         "platform": "FACEBOOK"
