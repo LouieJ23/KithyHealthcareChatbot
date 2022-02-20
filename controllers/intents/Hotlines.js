@@ -18,7 +18,7 @@ async function _Hotline(req, res) {
         let hotlines = await Hotline.find({});
             let results = "";
             for (let i = 0; i < hotlines.length; i++) {
-                results += (hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n");
+                results += (hotlines[i].hotlineName + hotlines[i].number  + hotlines[i].email + hotlines[i].facebookPage + "\n");
             }
             res.json({
                 "fulfillmentMessages": [
