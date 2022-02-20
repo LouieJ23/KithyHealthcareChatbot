@@ -16,9 +16,9 @@ async function _Hotline(req, res) {
 
     if (intent_name == 'Hotline') {
         Hotline.find({}, function (err, hotline) {
-            var results= result;
+            let results = "";
             for (let i = 0; i < hotline.length; i++) {
-                var result = (hotline.name + "\n" + hotline.number + "\n" + hotline.email + "\n" + hotline.facebookPage + "\n");
+                results += (hotline.hotlineName + "\n" + hotline.number + "\n" + hotline.email + "\n" + hotline.facebookPage + "\n");
             }
             // const hotline = hotline[0];
             res.json({
