@@ -4,8 +4,8 @@ const Log = require('../models/Logs');
 
 router.get('/', async (req, res) => {
     try {
-        let logs=logQuery.length;
-        const { page = 1, limit = logs} = req.query;
+
+        const { page = 1, limit = 100 } = req.query;
         const log = await Log.find()
             .sort({ datePosted: -1 })
             .limit(limit * 1)
@@ -30,15 +30,15 @@ router.get('/', async (req, res) => {
 });
 
 router.use((req, res, next) => {
-    if(req.query._method == 'DELETE') {
+    if (req.query._method == 'DELETE') {
         req.method = 'DELETE';
         req.url = req.path
     }
 
-if(req.query._method == 'PUT') {
-    req.method = 'PUT';
-    req.url = req.path
-}
+    if (req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
     next();
 });
 
