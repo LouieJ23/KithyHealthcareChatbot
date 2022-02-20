@@ -15,10 +15,10 @@ async function _Hotline(req, res) {
     console.log("The Recent Log: " + recentLog);
 
     if (intent_name == 'Hotline') {
-        Hotline.find({}, function (err, hotline) {
+        let hotlines = Hotline.find({});
             let results = "";
-            for (let i = 0; i < hotline.length; i++) {
-                results += (hotline.hotlineName + "\n" + hotline.number + "\n" + hotline.email + "\n" + hotline.facebookPage + "\n");
+            for (let i = 0; i < hotlines.length; i++) {
+                results += (hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n");
             }
             // const hotline = hotline[0];
             res.json({
@@ -48,8 +48,6 @@ async function _Hotline(req, res) {
                     }
                 ]
             });
-        });
-
         // const log1 = new EventLogQuery({
         //     query: value,
         //     isAnswered: true,
