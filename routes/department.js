@@ -18,7 +18,7 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-       const {page = 1, limit = 2} = req.query;
+       const {page = 1, limit = 5} = req.query;
         const department = await Department.find()
         .limit(limit * 1)
        .skip((page - 1) * limit);
