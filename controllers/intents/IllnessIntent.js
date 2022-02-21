@@ -65,7 +65,8 @@ async function _Illness(req, res) {
                             " Symptoms",
                             " Treatment",
                             " Prevention",
-                            " Go Back"
+                            "[Go Back]",
+
                         ]
                     },
                     "platform": "FACEBOOK"
@@ -104,7 +105,8 @@ async function _Illness(req, res) {
                             "Symptoms",
                             "Treatment",
                             "Prevention",
-                            "Go Back"
+                            "[Go Back]",
+
                         ]
                     },
                     "platform": "FACEBOOK"
@@ -141,7 +143,8 @@ async function _Illness(req, res) {
                             "Symptoms",
                             "Treatment",
                             "Prevention",
-                            "Go Back"
+                            "[Go Back]",
+
                         ]
                     },
                     "platform": "FACEBOOK"
@@ -178,7 +181,8 @@ async function _Illness(req, res) {
                             "Symptoms",
                             "Treatment",
                             "Prevention",
-                            "Go Back"
+                            "[Go Back]",
+
                         ]
                     },
                     "platform": "FACEBOOK"
@@ -219,7 +223,8 @@ async function _Illness(req, res) {
                             "Symptoms",
                             "Treatment",
                             "Prevention",
-                            "Go Back"
+                            "[Go Back]",
+
                         ]
                     },
                     "platform": "FACEBOOK"

@@ -3,12 +3,12 @@ const router = require('express').Router();
 const Department = require('../models/Departments');
 
 router.use((req, res, next) => {
-    if(req.query._method == 'DELETE') {
+    if (req.query._method == 'DELETE') {
         req.method = 'DELETE';
         req.url = req.path
     }
 
-    if(req.query._method == 'PUT') {
+    if (req.query._method == 'PUT') {
         req.method = 'PUT';
         req.url = req.path
     }
@@ -18,8 +18,9 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-       const {page = 1, limit = 2} = req.query;
+        const { page = 1, limit = 5 } = req.query;
         const department = await Department.find()
+        .sort({ datePosted: -1 })
         .limit(limit * 1)
        .skip((page - 1) * limit);
 
@@ -31,9 +32,9 @@ router.get('/', async (req, res) => {
             isPaginate: true
         });
 
-        
+
     }
-    catch(err) {
+    catch (err) {
         res.json({
             message: err
         });

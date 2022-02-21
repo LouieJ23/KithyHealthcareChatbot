@@ -17,7 +17,7 @@ const mildIllness = require('./illness');
 const appointment = require('./appointment');
 const admin = require('./admin');
 const login = require('./login');
-const logQuery =require('./logQuery');
+const logQuery = require('./logQuery');
 const hotline = require('./hotline');
 const {processRequests, generatePdf} = require('../controllers/Controller');
 
@@ -33,13 +33,14 @@ module.exports = (server) => {
     server.set('view engine', 'ejs');
 
 
-    server.use(bodyParser.urlencoded({extended:true}));
+    server.use(bodyParser.urlencoded({ extended: true }));
     server.use(bodyParser.json());
     server.use('/event', event);
 
-    server.get('/', (req,res) => {
-        res.sendFile(__dirname+ "/homepage.html");
+    server.get('/', (req, res) => {
+        res.sendFile(__dirname + "/homepage.html");
     });
+
     server.use('/department', department);
     server.use('/staffInfo', staffInfo);
     server.use('/guidelines', guidelines);
@@ -49,8 +50,12 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/logQuery', logQuery);
     server.use('/hotline', hotline);
+<<<<<<< HEAD
     server.get('/download', generatePdf);
     
+=======
+    server.use('/department', department);
+>>>>>>> c68b1e85e873d550ffff9d6cb1544200a2bd544d
     server.get('/admin', (req, res) => {
         res.render('admin', {
             page_name: 'home',
@@ -75,9 +80,14 @@ module.exports = (server) => {
         else {
             res.sendFile(__dirname + "/login.html");
             alert("Login Failed.")
-            return false;   
+            return false;
         }
     });
+<<<<<<< HEAD
     
     server.post('/', processRequests);
+=======
+
+    server.post('/', controllers.processRequests);
+>>>>>>> c68b1e85e873d550ffff9d6cb1544200a2bd544d
 };
