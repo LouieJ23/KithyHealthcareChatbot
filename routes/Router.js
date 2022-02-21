@@ -19,9 +19,10 @@ const admin = require('./admin');
 const login = require('./login');
 const logQuery =require('./logQuery');
 const hotline = require('./hotline');
+const {processRequests, generatePdf} = require('../controllers/Controller');
+
 
 module.exports = (server) => {
-    const controllers = require('../controllers/Controller');
     const apiRoutes = express.Router();
 
     // Static Files
@@ -48,6 +49,8 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/logQuery', logQuery);
     server.use('/hotline', hotline);
+    server.get('/download', generatePdf);
+    
     server.get('/admin', (req, res) => {
         res.render('admin', {
             page_name: 'home',
@@ -76,5 +79,5 @@ module.exports = (server) => {
         }
     });
     
-    server.post('/', controllers.processRequests);
+    server.post('/', processRequests);
 };
