@@ -52,14 +52,15 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
+                                
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
                                
                             ]
                         },
@@ -86,14 +87,15 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
+                              
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
                                
                             ]
                         },
@@ -120,14 +122,15 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
+                                
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
                                
                             ]
                         },
@@ -154,15 +157,14 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
-                               
+                                "Vision",
+                                "[Go Back]",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -188,14 +190,14 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
                                
                             ]
                         },
@@ -222,14 +224,16 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
+                               
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
+
                                
                             ]
                         },
@@ -256,14 +260,16 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
+                              
                                 "Date of Founding",
                                 "Published by",
                                 "Location",
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
+
                                
                             ]
                         },

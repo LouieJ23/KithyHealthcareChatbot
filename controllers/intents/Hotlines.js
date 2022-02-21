@@ -24,16 +24,18 @@ async function _Hotline(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": results,
+                            "title": results + "\n" + "Please select what you would like to do next.",
                             "quickReplies": [
                                 "Department",
                                 "Event",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
-                                "Hotline",
+                                "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
+
                             ]
                         },
                         "platform": "FACEBOOK"
