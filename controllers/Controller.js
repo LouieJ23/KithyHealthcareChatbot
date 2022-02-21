@@ -18,12 +18,7 @@ const MildIllness = require('../models/Illness')
 const Appointment = require('../models/Appointment');
 const Admin = require('../routes/admin');
 
-<<<<<<< HEAD
 const processRequests = (req, res) => {
-=======
-
-exports.processRequests = (req, res) => {
->>>>>>> c68b1e85e873d550ffff9d6cb1544200a2bd544d
     _Event(req, res);
     _HealthCenter(req, res);
     _Illness(req, res);
