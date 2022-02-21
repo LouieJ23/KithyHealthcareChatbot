@@ -34,12 +34,12 @@ module.exports = (server) => {
 
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(bodyParser.json());
-    server.use('/event', event);
 
     server.get('/', (req, res) => {
         res.sendFile(__dirname + "/homepage.html");
     });
 
+    server.use('/event', event);
     server.use('/department', department);
     server.use('/staffInfo', staffInfo);
     server.use('/guidelines', guidelines);
