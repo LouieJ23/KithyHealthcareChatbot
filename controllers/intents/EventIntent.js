@@ -1247,7 +1247,7 @@ async function _Event(req, res) {
             .sort({ datePosted: -1 });
     }
     else if (intent_name == "Default Welcome Intent") {
-        const log = new EventLogQuery({
+        const log3 = new EventLogQuery({
             query: value,
             isAnswered: true
         });

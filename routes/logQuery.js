@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
         // const { page = 1, limit =  } = req.query;
         const log = await Log.find({isAnswered:false})
             .sort({ datePosted: -1 });
-        console.log(log);
+       
         res.render('logQuery', {
             logQuery: log,
             page_name: 'Logs',
