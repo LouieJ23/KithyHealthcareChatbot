@@ -64,7 +64,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -107,7 +107,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -152,7 +152,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -198,7 +198,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -244,7 +244,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -289,7 +289,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -334,14 +334,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
-
+                                "[Go Back]",
 
                             ]
                         },
@@ -378,13 +378,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -422,13 +423,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -465,13 +467,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -506,13 +509,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -547,13 +551,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -586,16 +591,16 @@ async function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -628,16 +633,16 @@ async function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -669,16 +674,16 @@ async function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -717,16 +722,15 @@ async function _Event(req, res) {
                                 "title": result,
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
-
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -749,16 +753,15 @@ async function _Event(req, res) {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
-
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -797,15 +800,15 @@ async function _Event(req, res) {
                                 "title": result,
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -828,15 +831,15 @@ async function _Event(req, res) {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
 
                                 ]
                             },
@@ -876,15 +879,15 @@ async function _Event(req, res) {
                                 "title": result,
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
 
                                 ]
                             },
@@ -907,17 +910,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
-
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -955,16 +957,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
-                                    "Department",
-                                    "Event",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -986,16 +988,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
-                                    "Department",
-                                    "Event",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1033,16 +1035,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
-                                    "Department",
-                                    "Event",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1064,16 +1066,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
-                                    "Department",
-                                    "Event",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1110,16 +1112,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1141,16 +1143,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1188,16 +1190,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1219,16 +1221,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
