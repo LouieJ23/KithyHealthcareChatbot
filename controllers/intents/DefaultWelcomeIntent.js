@@ -14,5 +14,12 @@ async function _DefaultWelcomeIntent(req, res) {
         });
         console.log(value);
     }
+    else {
+        const log = new DefLogQuery({
+            query: value,
+            isAnswered: false
+        });
+        await log.save();
+    }
 }
 module.exports = _DefaultWelcomeIntent; 

@@ -27,7 +27,7 @@ async function _Hotline(req, res) {
                             "title": results + "\n" + "Please select what you would like to do next.",
                             "quickReplies": [
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
