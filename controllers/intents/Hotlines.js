@@ -49,11 +49,7 @@ async function _Hotline(req, res) {
                     }
                 ]
             });
-        // const log1 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true,
-        // });
-        // await log1.save();
+      
     }
 
 }
