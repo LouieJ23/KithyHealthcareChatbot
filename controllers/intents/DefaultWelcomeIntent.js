@@ -5,7 +5,7 @@ async function _DefaultWelcomeIntent(req, res) {
     const value = req.body.queryResult.queryText;
 
      if (intent_name == "Default Welcome Intent") {
-        const log3 = new LogQuery({
+        const log3 = new EventLogQuery({
             query: value,
             isAnswered: true
         });
