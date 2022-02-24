@@ -1,7 +1,5 @@
 'use strict';
 
-const LogQuery = require('../../models/Logs');
-
 async function _DefaultWelcomeIntent(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
