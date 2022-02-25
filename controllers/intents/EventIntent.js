@@ -1248,6 +1248,14 @@ async function _Event(req, res) {
         })
             .sort({ datePosted: -1 });
     }
+    else {
+        const log = new EventLogQuery({
+            query: value,
+            isAnswered: false,
+        });
+        await log.save();
+        console.log(value);
+    }
 }
 
 module.exports = _Event;
