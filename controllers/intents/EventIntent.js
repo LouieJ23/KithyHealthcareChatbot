@@ -1248,13 +1248,6 @@ async function _Event(req, res) {
         })
             .sort({ datePosted: -1 });
     }
-    else if (intent_name == "Default Welcome Intent") {
-        const log3 = new EventLogQuery({
-            query: value,
-            isAnswered: true
-        });
-        console.log(value);
-    }
 }
 
 module.exports = _Event;
