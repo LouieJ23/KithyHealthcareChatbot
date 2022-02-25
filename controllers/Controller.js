@@ -10,7 +10,7 @@ const _HealthCenter = require('./intents/HealthCenter');
 const _Illness = require('./intents/IllnessIntent');
 const _Hotline = require('./intents/Hotlines');
 const _Department = require('./intents/Department');
-const _DefaultWelcomeIntent  = require('./intents/DefaultWelcomeIntent');
+// const _DefaultWelcomeIntent  = require('./intents/DefaultWelcomeIntent');
 
 const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
@@ -25,7 +25,7 @@ const processRequests = (req, res) => {
     _Illness(req, res);
     _Hotline(req, res);
     _Department(req, res);
-    _DefaultWelcomeIntent(req, res);
+    // _DefaultWelcomeIntent(req, res);
 };
 
 const generatePdf = async (req, res, next) => {
