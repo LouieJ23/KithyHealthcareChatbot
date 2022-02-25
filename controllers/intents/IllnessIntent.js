@@ -245,14 +245,6 @@ async function _Illness(req, res) {
         // });
         // await log6.save();
     }
-    else if (intent_name == "Default Welcome Intent") {
-        const log3 = new LogQuery({
-            query: value,
-            isAnswered: true
-        });
-        console.log(value);
-    }
-
     else {
         const log = new LogQuery({
             query: value,
