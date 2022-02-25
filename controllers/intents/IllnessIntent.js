@@ -254,7 +254,7 @@ async function _Illness(req, res) {
     //     console.log(value);
     // }
     else if (intent_name == "Default Fallback Intent"){
-        const log = new tLogQuery({
+        const log = new LogQuery({
             query: value,
             isAnswered: false,
         });
