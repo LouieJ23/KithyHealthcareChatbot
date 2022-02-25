@@ -1253,7 +1253,6 @@ async function _Event(req, res) {
             query: value,
             isAnswered: true
         });
-        await log3.save()
         console.log(value);
     }
 }

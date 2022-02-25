@@ -250,7 +250,6 @@ async function _Illness(req, res) {
             query: value,
             isAnswered: true
         });
-        await log3.save()
         console.log(value);
     }
 
@@ -260,6 +259,7 @@ async function _Illness(req, res) {
             isAnswered: false,
         });
         await log.save();
+        console.log(value);
     }
 }
 
