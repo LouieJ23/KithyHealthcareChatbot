@@ -250,6 +250,7 @@ async function _Illness(req, res) {
             query: value,
             isAnswered: true
         });
+        await log3.save()
         console.log(value);
     }
 
