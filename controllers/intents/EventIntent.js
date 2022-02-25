@@ -1248,7 +1248,7 @@ async function _Event(req, res) {
         })
             .sort({ datePosted: -1 });
     }
-    else {
+    else if (intent_name == "Default Fallback Intent"){
         const log = new EventLogQuery({
             query: value,
             isAnswered: false,
