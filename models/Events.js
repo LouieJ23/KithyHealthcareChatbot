@@ -15,11 +15,11 @@ const eventsInfo = mongoose.Schema({
         require: false
     },
     startDateTime: {
-        type: String,
+        type: Date,
         require: false
     },
     endDateTime: {
-        type: String,
+        type: Date,
         require: false
     },
     eventRequire: {
