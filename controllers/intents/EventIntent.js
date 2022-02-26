@@ -455,7 +455,7 @@ async function _Event(req, res) {
     else if ((intent_name == 'Events - previous - more - event title') || (intent_name == "Previous Event - event title")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous event title was " + event.eventTitle;
+            var result = "The previous events' title was " + event.eventTitle;
 
 
             res.json({
@@ -537,7 +537,7 @@ async function _Event(req, res) {
     else if ((intent_name == 'Events - previous - more - details') || (intent_name == "Previous Event - details")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous event details was" + event.eventDetails;
+            var result = "The previous events' details was" + event.eventDetails;
 
 
             res.json({
@@ -579,7 +579,7 @@ async function _Event(req, res) {
     else if ((intent_name == 'Events - previous - more - process') || (intent_name == "Previous Event - process")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' process is " + event.eventProcess;
+            var result = "The previous events' process was " + event.eventProcess;
 
 
             res.json({
@@ -621,7 +621,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - previous - more - participants") || (intent_name == "Previous Event - participants")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' participants is " + event.eventParticipant;
+            var result = "The previous events' participants are " + event.eventParticipant;
 
 
             res.json({
@@ -663,7 +663,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - previous - more - location") || (intent_name == "Previous Event - location")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' location is " + event.eventLocation;
+            var result = "The previous events' location was " + event.eventLocation;
 
 
             res.json({
@@ -704,7 +704,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event - requirements")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' requirements is " + event.eventRequire;
+            var result = "The previous events' requirements was " + event.eventRequire;
 
 
             res.json({
