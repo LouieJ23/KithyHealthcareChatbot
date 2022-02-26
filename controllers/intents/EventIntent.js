@@ -745,13 +745,15 @@ async function _Event(req, res) {
     }
 
     // EVENT UPCOMING FUNCTION
-    else if (intent_name == 'Events - upcoming') {
+    else if (intent_name == "Events - upcoming") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
             let dateToday = Date.now();
 
             var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+            console.log(dateToday );
+            console.log(eventDate );
 
             if (dateToday < eventDate) {
                 res.json({
@@ -784,6 +786,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -823,7 +826,7 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if (intent_name == "Events - upcoming - more3 - name") {
+    else if (intent_name == "Events - upcoming - more - event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
