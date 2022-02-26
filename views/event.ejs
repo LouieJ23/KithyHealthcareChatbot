@@ -1,4 +1,3 @@
-
 <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
@@ -10,14 +9,12 @@
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
 								class="material-icons">&#xE147;</i> <span>Add New Events</span></a>
-					
-						<% if(! events.length > 0) {%>
+
+						<% if(! events.length> 0) {%>
 							<a href="/event" class="btn btn-secondary"> <span>Back</span></a>
-						<%}
-							else {%>
+							<%} else {%>
 								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
-						<%	}
-						%>
+								<% } %>
 
 					</div>
 				</div>
@@ -34,90 +31,89 @@
 						<th>Process</th>
 						<th>Participants</th>
 						<th>Date Posted</th>
-						<% if(! events.length > 0) {%>
+						<% if(! events.length> 0) {%>
 							<th>Actions</th>
-						<%} %>
+							<%} %>
 
 					</tr>
 				</thead>
 				<tbody>
-					<% 
-					if(events.length > 0)
-					{
+					<% if(events.length> 0)
+						{
 						for(var i=0; i < events.length; i++) { %>
-						<tr onclick="window.location='/event/<%= events[i]._id %>'" style="cursor: pointer;">
+							<tr onclick="window.location='/event/<%= events[i]._id %>'" style="cursor: pointer;">
 
-							<td>
-								<%= events[i].eventTitle %>
-							</td>
-							<td>
-								<%= events[i].eventLocation %>
-							</td>
-							<td>
-								<%= events[i].eventDetails %>
-							</td>
-							<td>
-								<%= events[i].startDateTime %>
-							</td>
-							<td>
-								<%= events[i].endDateTime %>
-							</td>
-							<td>
-								<%= events[i].eventRequire %>
-							</td>
-							<td>
-								<%= events[i].eventProcess %>
-							</td>
-							<td>
-								<%= events[i].eventParticipant %>
-							</td>
-							<td>
-								<%= events[i].datePosted %>
-							</td>
-						</tr>
-
-						<% }}
-						else { %>
-							<tr>
-	
 								<td>
-									<%= events.eventTitle %>
+									<%= events[i].eventTitle %>
 								</td>
 								<td>
-									<%= events.eventLocation %>
+									<%= events[i].eventLocation %>
 								</td>
 								<td>
-									<%= events.eventDetails %>
+									<%= events[i].eventDetails %>
 								</td>
 								<td>
-									<%= events.startDateTime %>
+									<%= events[i].startDateTime %>
 								</td>
 								<td>
-									<%= events.endDateTime %>
+									<%= events[i].endDateTime %>
 								</td>
 								<td>
-									<%= events.eventRequire %>
+									<%= events[i].eventRequire %>
 								</td>
 								<td>
-									<%= events.eventProcess %>
+									<%= events[i].eventProcess %>
 								</td>
 								<td>
-									<%= events.eventParticipant %>
+									<%= events[i].eventParticipant %>
 								</td>
 								<td>
-									<%= events.datePosted %>
-								</td>
-	
-								<td>
-									<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Edit" >&#xE254;</i></a>
-										<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-											class="material-icons"  title="Delete">&#xE872;</i></a>
-									
+									<%= events[i].datePosted %>
 								</td>
 							</tr>
-						<%} %>
-							<tr>
+
+							<% }} else { %>
+								<tr>
+
+									<td>
+										<%= events.eventTitle %>
+									</td>
+									<td>
+										<%= events.eventLocation %>
+									</td>
+									<td>
+										<%= events.eventDetails %>
+									</td>
+									<td>
+										<%= events.startDateTime %>
+									</td>
+									<td>
+										<%= events.endDateTime %>
+									</td>
+									<td>
+										<%= events.eventRequire %>
+									</td>
+									<td>
+										<%= events.eventProcess %>
+									</td>
+									<td>
+										<%= events.eventParticipant %>
+									</td>
+									<td>
+										<%= events.datePosted %>
+									</td>
+
+									<td>
+										<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+												class="material-icons" data-toggle="tooltip"
+												title="Edit">&#xE254;</i></a>
+										<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+												class="material-icons" title="Delete">&#xE872;</i></a>
+
+									</td>
+								</tr>
+								<%} %>
+									<tr>
 
 				</tbody>
 			</table>
@@ -158,14 +154,37 @@
 							<label>Description</label>
 							<textarea class="form-control" name="eventDetails" required></textarea>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label>Start Date & Time</label>
 							<input type="date" name="startDateTime" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>End Date & Time</label>
 							<input type="date" name="endDateTime" class="form-control" required>
+						</div> -->
+						<div class="form-group">
+							<label>Date Start </label>
+							<input type="date" name="startDate" class="form-control" required>
 						</div>
+						<div class="form-row">
+							<div class="form-group" style="width:50%">
+								<label>Time Start</label>
+								<input type="text" name="timeStart" class="form-control" placeholder="00:00 AM/PM"
+									required>
+							</div>
+							<div class="form-group" style="width:50%">
+								<label>Time Ends</label>
+								<input type="text" name="timeEnds" class="form-control" placeholder="00:00 AM/PM"
+									required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Date Ends </label>
+							<input type="date" name="dateEnds" class="form-control" required>
+						</div>
+
+
+
 						<div class="form-group">
 							<label>Requirement/s</label>
 							<input type="text" name="eventRequire" class="form-control" required>
@@ -200,7 +219,8 @@
 					<div class="row my-3">
 						<div class="col-sm-12">
 							<h5 class="text-center">Are You Sure?</h5>
-							<p class="text-center text-secondary">Do you really want to delete these records? This process cannot be undone.</p>
+							<p class="text-center text-secondary">Do you really want to delete these records? This
+								process cannot be undone.</p>
 						</div>
 					</div>
 					<div class="modal-footer justify-content-center">
@@ -212,63 +232,70 @@
 		</div>
 	</div>
 	<!-- Edit Modal HTML -->
-	<%
-		if(! events.length > 0) { %>
-			<div id="editEmployeeModal" class="modal fade">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<form action="/event/<%= events._id%>?_method=PUT" method="post">
-							<input type="hidden" name="_method" value="PUT">
-							<div class="modal-header">
-								<h4 class="modal-title">Edit Events</h4>
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<% if(! events.length> 0) { %>
+		<div id="editEmployeeModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="/event/<%= events._id%>?_method=PUT" method="post">
+						<input type="hidden" name="_method" value="PUT">
+						<div class="modal-header">
+							<h4 class="modal-title">Edit Events</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label>Event Title</label>
+								<input type="text" name="eventTitle" class="form-control" value="<%=events.eventTitle%>"
+									required>
 							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<label>Event Title</label>
-									<input type="text" name="eventTitle" class="form-control" value="<%=events.eventTitle%>" required>
-								</div>
-								<div class="form-group">
-									<label>Location</label>
-									<input type="text" name="eventLocation" class="form-control" value="<%=events.eventLocation%>" required>
-								</div>
-								<div class="form-group">
-									<label>Description</label>
-									<textarea class="form-control" name="eventDetails" required><%=events.eventDetails%></textarea>
-								</div>
-								<div class="form-group">
-									<label>Start Date & Time</label>
-									<input type="text" class="form-control"  name="startDateTime" value="<%=events.startDateTime%>" required>
-								</div>
-								<div class="form-group">
-									<label>End Date & Time</label>
-									<input type="text" class="form-control" name="endDateTime"  value="<%=events.endDateTime%>"  required>
-								</div>
-								<div class="form-group">
-									<label>Requirements</label>
-									<input type="text" class="form-control" name="eventRequire"  value="<%=events.eventRequire%>" required>
-								</div>
-								<div class="form-group">
-									<label>Process</label>
-									<input type="text" class="form-control" name="eventProcess"  value="<%=events.eventProcess%>" required>
-								</div>
-								<div class="form-group">
-									<label>Participants</label>
-									<input type="text" class="form-control" name="eventParticipant" value="<%=events.eventParticipant%>" required>
-								</div>
-								<div class="form-group">
-									<label>Posted Date</label>
-									<input type="text" class="form-control" name="datePosted" value="<%=events.datePosted%>" required>
-								</div>
+							<div class="form-group">
+								<label>Location</label>
+								<input type="text" name="eventLocation" class="form-control"
+									value="<%=events.eventLocation%>" required>
 							</div>
-							<div class="modal-footer">
-								<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-								<input type="submit" class="btn btn-info" value="Save">
+							<div class="form-group">
+								<label>Description</label>
+								<textarea class="form-control" name="eventDetails"
+									required><%=events.eventDetails%></textarea>
 							</div>
-						</form>
-					</div>
+							<div class="form-group">
+								<label>Start Date & Time</label>
+								<input type="text" class="form-control" name="startDateTime"
+									value="<%=events.startDateTime%>" required>
+							</div>
+							<div class="form-group">
+								<label>End Date & Time</label>
+								<input type="text" class="form-control" name="endDateTime"
+									value="<%=events.endDateTime%>" required>
+							</div>
+							<div class="form-group">
+								<label>Requirements</label>
+								<input type="text" class="form-control" name="eventRequire"
+									value="<%=events.eventRequire%>" required>
+							</div>
+							<div class="form-group">
+								<label>Process</label>
+								<input type="text" class="form-control" name="eventProcess"
+									value="<%=events.eventProcess%>" required>
+							</div>
+							<div class="form-group">
+								<label>Participants</label>
+								<input type="text" class="form-control" name="eventParticipant"
+									value="<%=events.eventParticipant%>" required>
+							</div>
+							<div class="form-group">
+								<label>Posted Date</label>
+								<input type="text" class="form-control" name="datePosted" value="<%=events.datePosted%>"
+									required>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+							<input type="submit" class="btn btn-info" value="Save">
+						</div>
+					</form>
 				</div>
 			</div>
-	
-	<%	}
-	%>
+		</div>
+
+		<% } %>
