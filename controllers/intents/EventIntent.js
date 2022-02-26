@@ -409,11 +409,10 @@ async function _Event(req, res) {
     }
 
     //PREVIOUS EVENT FUNCTION
-    else if ((intent_name == "Previous Event") || intent_name == "Events - previous") {
+    else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-
 
             res.json({
                 "fulfillmentMessages": [
@@ -453,10 +452,10 @@ async function _Event(req, res) {
     }
 
 
-    else if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")) {
+    else if ((intent_name == 'Events - previous - more - event title') || (intent_name == "Previous Event - event title")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events name is " + event.eventTitle;
+            var result = "The previous event title was " + event.eventTitle;
 
 
             res.json({
@@ -495,10 +494,50 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
+    else if ((intent_name == "Events - previous - more - date & time") || intent_name == "Latest Event - date & time") {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' details is" + event.eventDetails;
+            var result = "The previous event was started at " + event.startDateTime + " and ended at " + event.endDateTime;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+
+
+
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    else if ((intent_name == 'Events - previous - more - details') || (intent_name == "Previous Event - details")) {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous event details was" + event.eventDetails;
 
 
             res.json({
@@ -537,7 +576,7 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")) {
+    else if ((intent_name == 'Events - previous - more - process') || (intent_name == "Previous Event - process")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' process is " + event.eventProcess;
@@ -579,7 +618,7 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")) {
+    else if ((intent_name == "Events - previous - more - participants") || (intent_name == "Previous Event - participants")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' participants is " + event.eventParticipant;
@@ -621,7 +660,7 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == "Events - previous - more2 - location") || (intent_name == "Previous Event - location")) {
+    else if ((intent_name == "Events - previous - more - location") || (intent_name == "Previous Event - location")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' location is " + event.eventLocation;
@@ -662,7 +701,7 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")) {
+    else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event - requirements")) {
         Event.find({}, function (err, events) {
             const event = events[1];
             var result = "The previous events' requirements is " + event.eventRequire;
