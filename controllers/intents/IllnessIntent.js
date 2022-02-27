@@ -245,15 +245,22 @@ async function _Illness(req, res) {
         // });
         // await log6.save();
     }
-
-
     // else {
     //     const log = new LogQuery({
     //         query: value,
     //         isAnswered: false,
     //     });
     //     await log.save();
+    //     console.log(value);
     // }
+    else if (intent_name == "Default Fallback Intent"){
+        const log = new LogQuery({
+            query: value,
+            isAnswered: false,
+        });
+        await log.save();
+        console.log(value);
+    }
 }
 
 module.exports = _Illness

@@ -54,7 +54,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest") || intent_name == "Latest Event") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
 
             res.json({
                 "fulfillmentMessages": [
@@ -64,7 +64,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -107,7 +107,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -152,7 +152,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -198,7 +198,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -244,7 +244,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -289,7 +289,7 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
@@ -334,14 +334,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
-
+                                "[Go Back]",
 
                             ]
                         },
@@ -378,13 +378,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -408,11 +409,10 @@ async function _Event(req, res) {
     }
 
     //PREVIOUS EVENT FUNCTION
-    else if ((intent_name == "Previous Event") || intent_name == "Events - previous") {
+    else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
-
+            var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
 
             res.json({
                 "fulfillmentMessages": [
@@ -422,13 +422,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -451,10 +452,10 @@ async function _Event(req, res) {
     }
 
 
-    else if ((intent_name == 'Events - previous - more2 - name') || (intent_name == "Previous Event - name")) {
+    else if ((intent_name == 'Events - previous - more - event title') || (intent_name == "Previous Event - event title")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events name is " + event.eventTitle;
+            var result = "The previous events' title was " + event.eventTitle;
 
 
             res.json({
@@ -465,13 +466,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -492,10 +494,10 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == 'Events - previous - more2 - details') || (intent_name == "Previous Event - details")) {
+    else if ((intent_name == "Events - previous - more - date & time") || intent_name == "Latest Event - date & time") {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' details is" + event.eventDetails;
+            var result = "The previous event was started at " + event.startDateTime + " and ended at " + event.endDateTime;
 
 
             res.json({
@@ -506,13 +508,54 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
+
+
+
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }).sort({ datePosted: -1 });
+    }
+    else if ((intent_name == 'Events - previous - more - details') || (intent_name == "Previous Event - details")) {
+        Event.find({}, function (err, events) {
+            const event = events[1];
+            var result = "The previous events' details was" + event.eventDetails;
+
+
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -533,10 +576,10 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == 'Events - previous - more2 - process') || (intent_name == "Previous Event - process")) {
+    else if ((intent_name == 'Events - previous - more - process') || (intent_name == "Previous Event - process")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' process is " + event.eventProcess;
+            var result = "The previous events' process was " + event.eventProcess;
 
 
             res.json({
@@ -547,13 +590,14 @@ async function _Event(req, res) {
                             "quickReplies": [
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -574,10 +618,10 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == "Events - previous - more2 - participants") || (intent_name == "Previous Event - participants")) {
+    else if ((intent_name == "Events - previous - more - participants") || (intent_name == "Previous Event - participants")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' participants is " + event.eventParticipant;
+            var result = "The previous events' participants are " + event.eventParticipant;
 
 
             res.json({
@@ -586,16 +630,16 @@ async function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -616,10 +660,10 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == "Events - previous - more2 - location") || (intent_name == "Previous Event - location")) {
+    else if ((intent_name == "Events - previous - more - location") || (intent_name == "Previous Event - location")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' location is " + event.eventLocation;
+            var result = "The previous events' location was " + event.eventLocation;
 
 
             res.json({
@@ -628,16 +672,16 @@ async function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -657,10 +701,10 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if ((intent_name == "Events - previous - more2 - requirements") || (intent_name == "Previous Event - requirements")) {
+    else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event - requirements")) {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous events' requirements is " + event.eventRequire;
+            var result = "The previous events' requirements was " + event.eventRequire;
 
 
             res.json({
@@ -669,16 +713,16 @@ async function _Event(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                "Go Back",
                                 "More",
                                 "Department",
-                                "Event",
+                                "Events",
                                 "Guidelines",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
+                                "[Go Back]",
 
                             ]
                         },
@@ -701,15 +745,18 @@ async function _Event(req, res) {
     }
 
     // EVENT UPCOMING FUNCTION
-    else if (intent_name == 'Events - upcoming') {
+    else if (intent_name == "Events - upcoming") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.datePosted);
             let dateToday = Date.now();
 
-            var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant;
+            var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+            console.log(dateToday );
+            console.log(eventDate );
+            console.log(dateToday > eventDate);
 
-            if (dateToday < eventDate) {
+            if (dateToday > eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -717,16 +764,15 @@ async function _Event(req, res) {
                                 "title": result,
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
-
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -741,6 +787,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -749,16 +796,15 @@ async function _Event(req, res) {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
-
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -781,7 +827,7 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if (intent_name == "Events - upcoming - more3 - name") {
+    else if (intent_name == "Events - upcoming - more - event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
             let eventDate = event.datePosted;
@@ -797,15 +843,15 @@ async function _Event(req, res) {
                                 "title": result,
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -828,15 +874,15 @@ async function _Event(req, res) {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
 
                                 ]
                             },
@@ -876,15 +922,15 @@ async function _Event(req, res) {
                                 "title": result,
                                 "quickReplies": [
                                     "More",
-                                    "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
 
                                 ]
                             },
@@ -907,17 +953,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
-
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -955,16 +1000,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -986,16 +1031,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1033,16 +1078,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1064,16 +1109,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1110,16 +1155,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1141,16 +1186,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1188,16 +1233,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": result,
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1219,16 +1264,16 @@ async function _Event(req, res) {
                             "quickReplies": {
                                 "title": "There's no upcoming event.",
                                 "quickReplies": [
-                                    "Go Back",
                                     "More",
                                     "Department",
-                                    "Event",
+                                    "Events",
                                     "Guidelines",
                                     "Hotline",
                                     "Illness",
                                     "Set Appointment",
                                     "Staff",
                                     "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1246,13 +1291,7 @@ async function _Event(req, res) {
         })
             .sort({ datePosted: -1 });
     }
-    else {
-        const log = new EventLogQuery({
-            query: value,
-            isAnswered: false
-        });
-        await log.save();
-    }
+  
 }
 
 module.exports = _Event;

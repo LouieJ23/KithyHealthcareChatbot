@@ -47,15 +47,9 @@ var samp = "Location";
 //     console.log(departments);
 // });
 
-// Event.findOne({}, function (err, event) {
-//     // const event = events[0];
-//     // var result = "The " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipants;
-//     var result1 = "Latest event was "+event.eventTitle;
-//     var result2 = "Upcoming event was "+event.eventTitle;
-//     let eventDate = event.datePosted;
-//     let dateToday = Date.now();
-//     console.log(dateToday > eventDate ? result1 : result2);
-// }).sort({ datePosted: -1 });
+Event.findOne({}, function (err, event) {
+    console.log(event);
+}).sort({ datePosted: -1 });
 
 // HCenter.findOne({}, function (err, centerInfos) {
 // console.log(centerInfos);

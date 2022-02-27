@@ -14,13 +14,29 @@ const eventsInfo = mongoose.Schema({
         type: String,
         require: false
     },
-    startDateTime: {
-        type: String,
-        require: false
+    // startDateTime: {
+    //     type: Date,
+    //     require: false
+    // },
+    // endDateTime: {
+    //     type: Date,
+    //     require: false
+    // },
+    startDate: {
+        type: Date,
+        require: true
     },
-    endDateTime: {
+    endDate: {
+        type: Date,
+        require: true
+    },
+    timeStart: {
         type: String,
-        require: false
+        require: true
+    },
+    timeEnds: {
+        type: String,
+        require: true
     },
     eventRequire: {
         type: String,
