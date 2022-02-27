@@ -752,8 +752,8 @@ async function _Event(req, res) {
             let dateToday = Date.now();
 
             var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
-            console.log(dateToday );
-            console.log(eventDate );
+            console.log(dateToday);
+            console.log(eventDate);
             console.log(dateToday > eventDate);
 
             if (dateToday > eventDate) {
@@ -835,7 +835,7 @@ async function _Event(req, res) {
 
             var result = "The upcoming event name is " + event.eventTitle;
 
-            if (dateToday < eventDate) {
+            if (dateToday > eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -866,6 +866,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -883,7 +884,6 @@ async function _Event(req, res) {
                                     "Staff",
                                     "Visit Site",
                                     "[Go Back]",
-
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -1285,7 +1285,7 @@ async function _Event(req, res) {
         })
             .sort({ datePosted: -1 });
     }
-  
+
 }
 
 module.exports = _Event;
