@@ -751,7 +751,7 @@ async function _Event(req, res) {
             let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
-            var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+            var result = "The upcoming event " + event.eventTitle + ". This event will start at " + event.startDate + " " + event.timeStart + "-" + event.timeEnds + " ant will be end at " + event.endDate + " " + event.timeStart + "-" + event.timeEnds + "." + " It will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
             console.log(dateToday);
             console.log(eventDate);
             console.log(dateToday > eventDate);
