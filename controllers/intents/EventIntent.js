@@ -830,7 +830,7 @@ async function _Event(req, res) {
     else if (intent_name == "Events - upcoming - more - event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.datePosted);
             let dateToday = Date.now();
 
             var result = "The upcoming event name is " + event.eventTitle;
@@ -898,13 +898,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
-
-
         }).sort({ datePosted: -1 });
-        // const log19 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
     }
     else if (intent_name == "Events - upcoming - more3 - location") {
         Event.find({}, function (err, events) {
