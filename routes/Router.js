@@ -54,7 +54,6 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/logQuery', logQuery);
     server.use('/hotline', hotline);
-    server.get('/download', generatePdf);
     
     server.get('/admin', (req, res) => {
         res.render('admin', {

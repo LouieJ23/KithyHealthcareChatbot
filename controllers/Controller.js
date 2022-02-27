@@ -1,9 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const fs = require('fs');
-const pdf = require('pdf-creator-node');
-const path = require('path');
 
 const _Event = require('./intents/EventIntent');
 const _HealthCenter = require('./intents/HealthCenter');
@@ -28,38 +25,6 @@ const processRequests = (req, res) => {
     _DefaultWelcomeIntent(req, res);
 };
 
-const generatePdf = async (req, res, next) => {
-    const template = fs.readFileSync(path.join(__dirname, '../views/print.html'), 'utf-8');
-    const options = {
-        format: "A4",
-        orientation: "portrait",
-        border: "10mm"
-    };
-
-    const document = {
-        html: template,
-        data: {
-            message: "Kithy Chatbot"
-        },
-        path:'./pdfs/newpdf.pdf'
-    }
-    pdf.create(document, options)
-    .then(res => {
-        console.log(res);
-    }).catch(error => {
-        console.log(error);
-    });
-
-    const filepath = './pdfs/newpdf.pdf';
-    console.log(filepath);
-
-    res.render('download', {
-        path: filepath,
-        page_name: 'download'
-    });
-}
-
 module.exports = {
     processRequests,
-    generatePdf
 }
