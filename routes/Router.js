@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const path = require('path');
 const ejs = require('ejs');
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
@@ -28,6 +29,9 @@ module.exports = (server) => {
     // Static Files
     server.use(express.static('public'));
     server.use('/css', express.static(__dirname + 'public/css'));
+    server.use('/pdfs', express.static(path.join(__dirname, '../pdfs')));
+    
+
 
     server.use(expressLayouts);
     server.set('view engine', 'ejs');
@@ -50,18 +54,15 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/logQuery', logQuery);
     server.use('/hotline', hotline);
-<<<<<<< HEAD
     server.get('/download', generatePdf);
     
-=======
-    server.use('/department', department);
->>>>>>> c68b1e85e873d550ffff9d6cb1544200a2bd544d
     server.get('/admin', (req, res) => {
         res.render('admin', {
             page_name: 'home',
             isPaginate: false
         });
     });
+
 
     server.post('/admin', async (req, res) => {
         let userName = req.body.username;
@@ -83,11 +84,6 @@ module.exports = (server) => {
             return false;
         }
     });
-<<<<<<< HEAD
     
     server.post('/', processRequests);
-=======
-
-    server.post('/', controllers.processRequests);
->>>>>>> c68b1e85e873d550ffff9d6cb1544200a2bd544d
 };
