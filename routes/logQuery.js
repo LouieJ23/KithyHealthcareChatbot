@@ -13,12 +13,13 @@ const options = {
 
 router.get('/', async (req, res) => {
     try {
+        const filename = 'KithyChatbotLogs'+Math.random()+'.pdf';
         const document = {
             html: template,
             data: {
-                message: "Kithy Chatbot"
+                message: "Kithy Chatbot Logs"
             },
-            path:'./pdfs/newpdf.pdf'
+            path:'./pdfs/'+filename
         }
         pdf.create(document, options)
         .then(res => {
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
             console.log(error);
         });
 
-        const filepath = './pdfs/newpdf.pdf';
+        const filepath = 'http://localhost:8080/pdfs/'+filename;
         const { page = 1, limit = 5 } = req.query;
         const log = await Log.find({isAnswered:false})
             .sort({ datePosted: -1 });
