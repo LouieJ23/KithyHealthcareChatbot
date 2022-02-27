@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         const document = {
             html: template,
             data: {
-                message: "Kithy Chatbot"
+                message: "Kitaotao Healthcare Chatbot Logs"
             },
             path:'./pdfs/newpdf.pdf'
         }

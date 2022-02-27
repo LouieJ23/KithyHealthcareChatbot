@@ -1125,10 +1125,10 @@ async function _Event(req, res) {
         // });
 
     }
-    else if (intent_name == "Events - upcoming - more3 - process") {
+    else if (intent_name == "Events - upcoming - more - process") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = event.startDate;
             let dateToday = Date.now();
 
             var result = "The upcoming event process is " + event.eventProcess;
@@ -1202,10 +1202,10 @@ async function _Event(req, res) {
         //     isAnswered: true
         // });
     }
-    else if (intent_name == "Events - upcoming - more3 - participants") {
+    else if (intent_name == "Events - upcoming - more - participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = event.startDate;
             let dateToday = Date.now();
 
             var result = "The upcoming event participant is " + event.eventParticipant;
@@ -1280,10 +1280,10 @@ async function _Event(req, res) {
         // });
 
     }
-    else if (intent_name == "Events - upcoming - more3 - requirements") {
+    else if (intent_name == "Events - upcoming - more - requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = event.startDate;
             let dateToday = Date.now();
 
             var result = "The upcoming event requirement is " + event.eventRequire;
