@@ -830,12 +830,12 @@ async function _Event(req, res) {
     else if (intent_name == "Events - upcoming - more - event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = Date.parse(event.datePosted);
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event name is " + event.eventTitle;
 
-            if (dateToday > eventDate) {
+            if (dateToday < eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -903,12 +903,12 @@ async function _Event(req, res) {
     else if (intent_name == "Events - upcoming - more - date & time") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = Date.parse(event.datePosted);
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event will start at " + event.startDate + " " + event.timeStart + " and will be end at " + event.endDate + " " + event.timeEnds + ".";
 
-            if (dateToday > eventDate) {
+            if (dateToday < eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -1047,10 +1047,10 @@ async function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
 
-    else if (intent_name == "Events - upcoming - more3 - details") {
+    else if (intent_name == "Events - upcoming - more - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event detail is " + event.eventDetails;
