@@ -973,15 +973,15 @@ async function _Event(req, res) {
             }
         }).sort({ datePosted: -1 });
     }
-    else if (intent_name == "Events - upcoming - more3 - location") {
+    else if (intent_name == "Events - upcoming - more - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = Date.parse(event.datePosted);
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event location is " + event.eventLocation;
 
-            if (dateToday > eventDate) {
+            if (dateToday < eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -1086,6 +1086,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -1117,8 +1118,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
-        })
-            .sort({ datePosted: -1 });
+        }).sort({ datePosted: -1 });
         // const log21 = new EventLogQuery({
         //     query: value,
         //     isAnswered: true
