@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const path = require('path');
 const ejs = require('ejs');
 const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
@@ -28,6 +29,9 @@ module.exports = (server) => {
     // Static Files
     server.use(express.static('public'));
     server.use('/css', express.static(__dirname + 'public/css'));
+    server.use('/pdfs', express.static(path.join(__dirname, '../pdfs')));
+    
+
 
     server.use(expressLayouts);
     server.set('view engine', 'ejs');
@@ -58,6 +62,7 @@ module.exports = (server) => {
             isPaginate: false
         });
     });
+
 
     server.post('/admin', async (req, res) => {
         let userName = req.body.username;
