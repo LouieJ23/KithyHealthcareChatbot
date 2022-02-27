@@ -748,15 +748,15 @@ async function _Event(req, res) {
     else if (intent_name == "Events - upcoming") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = Date.parse(event.datePosted);
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
-            var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
-            console.log(dateToday );
-            console.log(eventDate );
+            var result = "The upcoming event " + event.eventTitle + ". This event will start at " + event.startDate + " " + event.timeStart + "-" + event.timeEnds + " ant will be end at " + event.endDate + " " + event.timeStart + "-" + event.timeEnds + "." + " It will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+            console.log(dateToday);
+            console.log(eventDate);
             console.log(dateToday > eventDate);
 
-            if (dateToday > eventDate) {
+            if (dateToday < eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -830,7 +830,7 @@ async function _Event(req, res) {
     else if (intent_name == "Events - upcoming - more - event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event name is " + event.eventTitle;
@@ -866,6 +866,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -883,7 +884,47 @@ async function _Event(req, res) {
                                     "Staff",
                                     "Visit Site",
                                     "[Go Back]",
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
+        }).sort({ datePosted: -1 });
+    }
+    else if (intent_name == "Events - upcoming - more - date & time") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            let eventDate = Date.parse(event.startDate);
+            let dateToday = Date.now();
 
+            var result = "The upcoming event will start at " + event.startDate + " " + event.timeStart + " and will be end at " + event.endDate + " " + event.timeEnds + ".";
+
+            if (dateToday < eventDate) {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": result,
+                                "quickReplies": [
+                                    "More",
+                                    "Department",
+                                    "Events",
+                                    "Guidelines",
+                                    "Hotline",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Staff",
+                                    "Visit Site",
+                                    "[Go Back]",
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -899,17 +940,43 @@ async function _Event(req, res) {
                 });
             }
 
-
+            else {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "There's no upcoming event.",
+                                "quickReplies": [
+                                    "More",
+                                    "Department",
+                                    "Events",
+                                    "Guidelines",
+                                    "Hotline",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Staff",
+                                    "Visit Site",
+                                    "[Go Back]",
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
         }).sort({ datePosted: -1 });
-        // const log19 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
     }
-    else if (intent_name == "Events - upcoming - more3 - location") {
+    else if (intent_name == "Events - upcoming - more - location") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event location is " + event.eventLocation;
@@ -931,7 +998,6 @@ async function _Event(req, res) {
                                     "Staff",
                                     "Visit Site",
                                     "[Go Back]",
-
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -946,6 +1012,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -977,18 +1044,13 @@ async function _Event(req, res) {
                     ]
                 });
             }
-        })
-            .sort({ datePosted: -1 });
-        // const log20 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }).sort({ datePosted: -1 });
     }
 
-    else if (intent_name == "Events - upcoming - more3 - details") {
+    else if (intent_name == "Events - upcoming - more - details") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event detail is " + event.eventDetails;
@@ -1024,6 +1086,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -1055,8 +1118,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
-        })
-            .sort({ datePosted: -1 });
+        }).sort({ datePosted: -1 });
         // const log21 = new EventLogQuery({
         //     query: value,
         //     isAnswered: true
@@ -1291,7 +1353,7 @@ async function _Event(req, res) {
         })
             .sort({ datePosted: -1 });
     }
-  
+
 }
 
 module.exports = _Event;

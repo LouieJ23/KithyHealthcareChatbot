@@ -43,7 +43,6 @@
 						{
 						for(var i=0; i < events.length; i++) { %>
 							<tr onclick="window.location='/event/<%= events[i]._id %>'" style="cursor: pointer;">
-
 								<td>
 									<%= events[i].eventTitle %>
 								</td>
@@ -79,7 +78,6 @@
 
 							<% }} else { %>
 								<tr>
-
 									<td>
 										<%= events[i].eventTitle %>
 									</td>
@@ -93,7 +91,7 @@
 										<%= events[i].startDate %>
 									</td>
 									<td>
-										<%= events[i].EndDate %>
+										<%= events[i].endDate %>
 									</td>
 									<td>
 										<%= events[i].timeStart%> - <%= events[i].timeEnds %>
