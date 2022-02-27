@@ -900,15 +900,15 @@ async function _Event(req, res) {
             }
         }).sort({ datePosted: -1 });
     }
-    else if (intent_name == "Events - upcoming - more3 - location") {
+    else if (intent_name == "Events - upcoming - more - date & time") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = event.datePosted;
+            let eventDate = Date.parse(event.datePosted);
             let dateToday = Date.now();
 
-            var result = "The upcoming event location is " + event.eventLocation;
+            var result = "The upcoming event will start at " + event.startDate + " " + event.timeStart + " and will be end at " + event.endDate + " " + event.timeEnds + ".";
 
-            if (dateToday < eventDate) {
+            if (dateToday > eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
@@ -925,7 +925,6 @@ async function _Event(req, res) {
                                     "Staff",
                                     "Visit Site",
                                     "[Go Back]",
-
                                 ]
                             },
                             "platform": "FACEBOOK"
@@ -940,6 +939,7 @@ async function _Event(req, res) {
                     ]
                 });
             }
+
             else {
                 res.json({
                     "fulfillmentMessages": [
@@ -971,12 +971,80 @@ async function _Event(req, res) {
                     ]
                 });
             }
-        })
-            .sort({ datePosted: -1 });
-        // const log20 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }).sort({ datePosted: -1 });
+    }
+    else if (intent_name == "Events - upcoming - more3 - location") {
+        Event.find({}, function (err, events) {
+            const event = events[0];
+            let eventDate = Date.parse(event.datePosted);
+            let dateToday = Date.now();
+
+            var result = "The upcoming event location is " + event.eventLocation;
+
+            if (dateToday > eventDate) {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": result,
+                                "quickReplies": [
+                                    "More",
+                                    "Department",
+                                    "Events",
+                                    "Guidelines",
+                                    "Hotline",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Staff",
+                                    "Visit Site",
+                                    "[Go Back]",
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
+
+            else {
+                res.json({
+                    "fulfillmentMessages": [
+                        {
+                            "quickReplies": {
+                                "title": "There's no upcoming event.",
+                                "quickReplies": [
+                                    "More",
+                                    "Department",
+                                    "Events",
+                                    "Guidelines",
+                                    "Hotline",
+                                    "Illness",
+                                    "Set Appointment",
+                                    "Staff",
+                                    "Visit Site",
+                                    "[Go Back]",
+                                ]
+                            },
+                            "platform": "FACEBOOK"
+                        },
+                        {
+                            "text": {
+                                "text": [
+                                    ""
+                                ]
+                            }
+                        }
+                    ]
+                });
+            }
+        }).sort({ datePosted: -1 });
     }
 
     else if (intent_name == "Events - upcoming - more3 - details") {
