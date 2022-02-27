@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
-const options = require('../helpers/options');
+
 const _Event = require('./intents/EventIntent');
 const _HealthCenter = require('./intents/HealthCenter');
 const _Illness = require('./intents/IllnessIntent');
@@ -29,27 +29,34 @@ const processRequests = (req, res) => {
 };
 
 const generatePdf = async (req, res, next) => {
-    const html = fs.readFileSync(path.join(__dirname, '../views/print.html'), 'utf-8');
-    const filename = Math.random() + '_doc' + '.pdf';
+    const template = fs.readFileSync(path.join(__dirname, '../views/print.html'), 'utf-8');
+    const options = {
+        format: "A4",
+        orientation: "portrait",
+        border: "10mm"
+    };
 
     const document = {
-        html: html,
+        html: template,
         data: {
-            products: "obj"
+            message: "Kithy Chatbot"
         },
-        path: './docs/' + filename
+        path:'./pdfs/newpdf.pdf'
     }
     pdf.create(document, options)
-        .then(res => {
-            console.log(res);
-        }).catch(error => {
-            console.log(error);
-        });
-        const filepath = 'http://localhost:8080/docs/' + filename;
+    .then(res => {
+        console.log(res);
+    }).catch(error => {
+        console.log(error);
+    });
 
-        res.render('logQuery', {
-            path: filepath,
-        });
+    const filepath = './pdfs/newpdf.pdf';
+    console.log(filepath);
+
+    res.render('download', {
+        path: filepath,
+        page_name: 'download'
+    });
 }
 
 module.exports = {
