@@ -748,7 +748,7 @@ async function _Event(req, res) {
     else if (intent_name == "Events - upcoming") {
         Event.find({}, function (err, events) {
             const event = events[0];
-            let eventDate = Date.parse(event.datePosted);
+            let eventDate = Date.parse(event.startDate);
             let dateToday = Date.now();
 
             var result = "The upcoming event " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
@@ -756,7 +756,7 @@ async function _Event(req, res) {
             console.log(eventDate);
             console.log(dateToday > eventDate);
 
-            if (dateToday > eventDate) {
+            if (dateToday < eventDate) {
                 res.json({
                     "fulfillmentMessages": [
                         {
