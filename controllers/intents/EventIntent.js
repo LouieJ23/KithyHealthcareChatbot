@@ -22,7 +22,7 @@ async function _Event(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "What would you like to know about Event?",
+                            "title": "What would you like to know about the Event?",
                             "quickReplies": [
                                 "Upcoming",
                                 "Latest",
@@ -44,12 +44,6 @@ async function _Event(req, res) {
                 ]
             });
         });
-
-        // const log1 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true,
-        // });
-        // await log1.save();
     }
     else if (intent_name == "Events - latest") {
         Event.find({}, function (err, events) {
@@ -87,11 +81,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log2 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log2.save();
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         Event.find({}, function (err, events) {
@@ -132,11 +121,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log3 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // })
-        // await log3.save();
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
         Event.find({}, function (err, events) {
@@ -177,11 +161,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log4 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log4.save();
     }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
@@ -223,11 +202,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log5 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log5.save();
     }
 
     else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event details") {
@@ -268,11 +242,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log6 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log6.save();
     }
 
     else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event requirements") {
@@ -313,11 +282,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log7 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log7.save();
     }
 
     else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event process") {
@@ -357,11 +321,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log8 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log8.save();
     }
 
     else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event participants") {
@@ -401,11 +360,6 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log9 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-        // await log9.save();
     }
 
     //PREVIOUS EVENT FUNCTION
