@@ -708,6 +708,7 @@ async function _Event(req, res) {
 
         var result = "The upcoming event " + upcomingEvents.eventTitle + ". This event will start at " + upcomingEvents.startDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + " ant will be end at " + upcomingEvents.endDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + "." + " It will be going to held  in " + upcomingEvents.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvents.eventRequire + ". The process is to " + upcomingEvents.eventProcess + " and the participants are " + upcomingEvents.eventParticipant + ".";
         console.log(upcomingEvents);
+        console.log(intent_name);
 
         if (upcomingEvents.length > 0) {
             res.json({
