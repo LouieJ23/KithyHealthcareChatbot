@@ -706,7 +706,7 @@ async function _Event(req, res) {
 
         const upcomingEvents = await Event.findOne({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
 
-        var result = "The upcoming event " + upcomingEvents.eventTitle + ". This event will start at " + upcomingEvents.startDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + " ant will be end at " + upcomingEvents.endDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + "." + " It will be going to held  in " + upcomingEvents.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvents.eventRequire + ". The process is to " + upcomingEvents.eventProcess + " and the participants are " + upcomingEvents.eventParticipant + ".";
+        // var result = "The upcoming event " + upcomingEvents.eventTitle + ". This event will start at " + upcomingEvents.startDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + " ant will be end at " + upcomingEvents.endDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + "." + " It will be going to held  in " + upcomingEvents.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvents.eventRequire + ". The process is to " + upcomingEvents.eventProcess + " and the participants are " + upcomingEvents.eventParticipant + ".";
         console.log(upcomingEvents);
         console.log(intent_name);
 
@@ -715,7 +715,7 @@ async function _Event(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": result,
+                            "title": "result",
                             "quickReplies": [
                                 "More",
                                 "Department",
