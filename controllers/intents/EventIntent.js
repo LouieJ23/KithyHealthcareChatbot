@@ -14,7 +14,7 @@ async function _Event(req, res) {
     console.log("The Query Text: " + value);
     console.log("The Recent Log: " + recentLog);
 
-    if (intent_name == 'Events') {
+    if (intent_name == "Events") {
         Event.find({}, function (err, events) {
             const event = events[0];
             // var result = "The latest event name is " + event.eventTitle;
