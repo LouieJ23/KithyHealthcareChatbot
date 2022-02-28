@@ -85,6 +85,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
+
             var result = "The latest events title is " + event.eventTitle;
 
 
@@ -700,86 +701,77 @@ async function _Event(req, res) {
 
     // EVENT UPCOMING FUNCTION
     else if (intent_name == "Events - upcoming") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = Date.parse(event.startDate);
-            let dateToday = Date.now();
 
-            var result = "The upcoming event " + event.eventTitle + ". This event will start at " + event.startDate + " " + event.timeStart + "-" + event.timeEnds + " ant will be end at " + event.endDate + " " + event.timeStart + "-" + event.timeEnds + "." + " It will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
-            console.log(dateToday);
-            console.log(eventDate);
-            console.log(dateToday > eventDate);
+        const currentDate = new Date(Date.now());
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        const upcomingEvents = await Event.findOne({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+
+        var result = "The upcoming event " + upcomingEvents.eventTitle + ". This event will start at " + upcomingEvents.startDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + " ant will be end at " + upcomingEvents.endDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + "." + " It will be going to held  in " + upcomingEvents.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvents.eventRequire + ". The process is to " + upcomingEvents.eventProcess + " and the participants are " + upcomingEvents.eventParticipant + ".";
+        console.log(upcomingEvents);
+
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
+                    }
+                ]
+            });
+        }
 
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-
-
-        }).sort({ datePosted: -1 });
-        // const log18 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+                    }
+                ]
+            });
+        }
     }
     else if (intent_name == "Events - upcoming - more - event title") {
         Event.find({}, function (err, events) {

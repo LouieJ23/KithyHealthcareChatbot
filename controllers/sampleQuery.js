@@ -47,10 +47,14 @@ var samp = "Location";
 //     console.log(departments);
 // });
 
-Event.findOne({}, function (err, event) {
-    console.log(event);
-}).sort({ datePosted: -1 });
+ async function EventFn (){
+    const currentDate = new Date(Date.now());
+    
+    const upcomingEvents = await Event.find({startDate: {$gt:currentDate}}).sort({datePosted: -1});
+    console.log(upcomingEvents.length > 0);
+}
 
+EventFn();
 
 // HCenter.findOne({}, function (err, centerInfos) {
 // console.log(centerInfos);
