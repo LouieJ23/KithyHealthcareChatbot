@@ -51,7 +51,7 @@ async function _Event(req, res) {
         // });
         // await log1.save();
     }
-    else if ((intent_name == "Events - latest") || intent_name == "Latest Event") {
+    else if (intent_name == "Events - latest") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
@@ -93,7 +93,7 @@ async function _Event(req, res) {
         // });
         // await log2.save();
     }
-    else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event - event title") {
+    else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events title is " + event.eventTitle;
@@ -138,7 +138,7 @@ async function _Event(req, res) {
         // })
         // await log3.save();
     }
-    else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event - date & time") {
+    else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest event is starting in " + event.startDateTime + " and end in " + event.endDateTime;
@@ -184,7 +184,7 @@ async function _Event(req, res) {
         // await log4.save();
     }
 
-    else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event - location") {
+    else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events location is " + event.eventLocation;
@@ -230,7 +230,7 @@ async function _Event(req, res) {
         // await log5.save();
     }
 
-    else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event - details") {
+    else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event details") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events details is " + event.eventDetails;
@@ -275,7 +275,7 @@ async function _Event(req, res) {
         // await log6.save();
     }
 
-    else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event - requirements") {
+    else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event requirements") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events requirements is " + event.eventRequire;
@@ -320,7 +320,7 @@ async function _Event(req, res) {
         // await log7.save();
     }
 
-    else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event - process") {
+    else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event process") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events process is " + event.eventProcess;
@@ -364,7 +364,7 @@ async function _Event(req, res) {
         // await log8.save();
     }
 
-    else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event - participants") {
+    else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event participants") {
         Event.find({}, function (err, events) {
             const event = events[0];
             var result = "The latest events participants is " + event.eventParticipant;
