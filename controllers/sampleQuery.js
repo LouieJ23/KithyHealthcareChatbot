@@ -50,8 +50,8 @@ var samp = "Location";
  async function EventFn (){
     const currentDate = new Date(Date.now());
     
-    const upcomingEvents = await Event.find({startDate: {$gt:currentDate}}).sort({datePosted: -1});
-    console.log(upcomingEvents == null);
+    const upcomingEvents = await Event.findOne({startDate: {$gt:currentDate}}).sort({datePosted: -1});
+    console.log(upcomingEvents.eventTitle);
 }
 
 EventFn();

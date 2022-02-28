@@ -704,18 +704,19 @@ async function _Event(req, res) {
 
         const currentDate = new Date(Date.now());
 
-        const upcomingEvents = await Event.findOne({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-        // var result = "The upcoming event " + upcomingEvents.eventTitle + ". This event will start at " + upcomingEvents.startDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + " ant will be end at " + upcomingEvents.endDate + " " + upcomingEvents.timeStart + "-" + upcomingEvents.timeEnds + "." + " It will be going to held  in " + upcomingEvents.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvents.eventRequire + ". The process is to " + upcomingEvents.eventProcess + " and the participants are " + upcomingEvents.eventParticipant + ".";
-        console.log(upcomingEvents);
+        var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " ant will be end at " + upcomingEvent.endDate + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
+        console.log(upcomingEvent);
         console.log(intent_name);
 
-        if (upcomingEvents != null) {
+        if (upcomingEvents.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "result",
+                            "title": result,
                             "quickReplies": [
                                 "More",
                                 "Department",
