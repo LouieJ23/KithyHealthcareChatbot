@@ -701,17 +701,15 @@ async function _Event(req, res) {
 
     // EVENT UPCOMING FUNCTION
     else if (intent_name == "Events - upcoming") {
-
         const currentDate = new Date(Date.now());
-
         const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
         const upcomingEvent = upcomingEvents[0];
         const upcomingEventStartDate = new Date(upcomingEvent.startDate);
         const upcomingEventEndDate = new Date(upcomingEvent.endDate);
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", "+upcomingEventStartDate.getFullYear();
-        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", "+upcomingEventEndDate.getFullYear();
+        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", " + upcomingEventStartDate.getFullYear();
+        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", " + upcomingEventEndDate.getFullYear();
 
         var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + startDateEvent + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " ant will be end at " + endDateEvent + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
         console.log(upcomingEvent);
@@ -782,531 +780,501 @@ async function _Event(req, res) {
         }
     }
     else if (intent_name == "Events - upcoming - more - event title") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = Date.parse(event.startDate);
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event name is " + event.eventTitle;
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        var result = "The upcoming event title is " + upcomingEvent.eventTitle;
+
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
+                    }
+                ]
+            });
+        }
 
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        }).sort({ datePosted: -1 });
+                    }
+                ]
+            });
+        }
     }
+
     else if (intent_name == "Events - upcoming - more - date & time") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = Date.parse(event.startDate);
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event will start at " + event.startDate + " " + event.timeStart + " and will be end at " + event.endDate + " " + event.timeEnds + ".";
+        var result = "The upcoming event will start at " + upcomingEvent.startDate + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate + " " + upcomingEvent.timeEnds + ".";
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+                    }
+                ]
+            });
+        }
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        }).sort({ datePosted: -1 });
+                    }
+                ]
+            });
+        }
     }
     else if (intent_name == "Events - upcoming - more - location") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = Date.parse(event.startDate);
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event location is " + event.eventLocation;
+        var result = "The upcoming event location is at " + upcomingEvent.eventLocation;
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
+                    }
+                ]
+            });
+        }
 
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        }).sort({ datePosted: -1 });
+                    }
+                ]
+            });
+        }
     }
 
     else if (intent_name == "Events - upcoming - more - details") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = Date.parse(event.startDate);
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event detail is " + event.eventDetails;
-
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        var result = "The upcoming event detail is " + upcomingEvent.eventDetails;
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
+                    }
+                ]
+            });
+        }
 
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        }).sort({ datePosted: -1 });
-        // const log21 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
-
+                    }
+                ]
+            });
+        }
     }
     else if (intent_name == "Events - upcoming - more - process") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = event.startDate;
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event process is " + event.eventProcess;
+        var result = "The upcoming event process is " + upcomingEvent.eventProcess;
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+                    }
+                ]
+            });
+        }
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        })
-            .sort({ datePosted: -1 });
-        // const log22 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+                    }
+                ]
+            });
+        }
     }
     else if (intent_name == "Events - upcoming - more - participants") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = event.startDate;
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event participant is " + event.eventParticipant;
+        var result = "The upcoming event participant is " + upcomingEvent.eventParticipant;
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+                    }
+                ]
+            });
+        }
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        })
-            .sort({ datePosted: -1 });
-        // const log23 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+                    }
+                ]
+            });
+        }
 
     }
     else if (intent_name == "Events - upcoming - more - requirements") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            let eventDate = event.startDate;
-            let dateToday = Date.now();
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = upcomingEvents[0];
 
-            var result = "The upcoming event requirement is " + event.eventRequire;
+        var result = "The upcoming event requirement is " + upcomingEvent.eventRequire;
 
-            if (dateToday < eventDate) {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": result,
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+        if (upcomingEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-            else {
-                res.json({
-                    "fulfillmentMessages": [
-                        {
-                            "quickReplies": {
-                                "title": "There's no upcoming event.",
-                                "quickReplies": [
-                                    "More",
-                                    "Department",
-                                    "Events",
-                                    "Guidelines",
-                                    "Hotline",
-                                    "Illness",
-                                    "Set Appointment",
-                                    "Staff",
-                                    "Visit Site",
-                                    "[Go Back]",
-                                ]
-                            },
-                            "platform": "FACEBOOK"
+                    }
+                ]
+            });
+        }
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no upcoming event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
                         },
-                        {
-                            "text": {
-                                "text": [
-                                    ""
-                                ]
-                            }
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
                         }
-                    ]
-                });
-            }
-        })
-            .sort({ datePosted: -1 });
-    }
+                    }
+                ]
+            });
+        }
+}
 
 }
 
