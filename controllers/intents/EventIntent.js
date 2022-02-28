@@ -711,7 +711,7 @@ async function _Event(req, res) {
         const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", " + upcomingEventStartDate.getFullYear();
         const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", " + upcomingEventEndDate.getFullYear();
 
-        var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " and will be end at " + endDateEvent + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
+        var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " and will be end at " + upcomingEvent.endDate + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
         console.log(upcomingEvent);
         console.log(intent_name);
 
