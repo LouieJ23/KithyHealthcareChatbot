@@ -704,12 +704,6 @@ async function _Event(req, res) {
         const currentDate = new Date(Date.now());
         const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
         const upcomingEvent = upcomingEvents[0];
-        const upcomingEventStartDate = new Date(upcomingEvent.startDate);
-        const upcomingEventEndDate = new Date(upcomingEvent.endDate);
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", " + upcomingEventStartDate.getFullYear();
-        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", " + upcomingEventEndDate.getFullYear();
 
         var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
         console.log(upcomingEvent);
@@ -781,9 +775,8 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - event title") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
         const upcomingEvent = upcomingEvents[0];
-
 
         var result = "The upcoming event title is " + upcomingEvent.eventTitle;
 
@@ -854,17 +847,10 @@ async function _Event(req, res) {
 
     else if (intent_name == "Events - upcoming - more - date & time") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
         const upcomingEvent = upcomingEvents[0];
-        const upcomingEventStartDate = new Date(upcomingEvent.startDate);
-        const upcomingEventEndDate = new Date(upcomingEvent.endDate);
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", " + upcomingEventStartDate.getFullYear();
-        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", " + upcomingEventEndDate.getFullYear();
-
-
-        var result = "The upcoming event will start at " + startDateEvent + " " + upcomingEvent.timeStart + " and will be end at " + endDateEvent + " " + upcomingEvent.timeEnds + ".";
+        var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeEnds + ".";
 
         if (upcomingEvents.length > 0) {
             res.json({
