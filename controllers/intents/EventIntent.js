@@ -710,7 +710,7 @@ async function _Event(req, res) {
         console.log(upcomingEvents);
         console.log(intent_name);
 
-        if (upcomingEvents === null) {
+        if (upcomingEvents != null) {
             res.json({
                 "fulfillmentMessages": [
                     {
