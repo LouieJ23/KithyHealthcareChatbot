@@ -47,14 +47,35 @@ var samp = "Location";
 //     console.log(departments);
 // });
 
- async function EventFn (){
-    const currentDate = new Date(Date.now());
+//  async function EventFn (){
+//     const currentDate = new Date(Date.now());
     
-    const upcomingEvents = await Event.findOne({startDate: {$gt:currentDate}}).sort({datePosted: -1});
-    console.log(upcomingEvents.startDate.toString().slice(0,15));
+//     const upcomingEvents = await Event.find({startDate: {$gt:currentDate}}).sort({datePosted: -1});
+//     console.log(upcomingEvents);
+// }
+
+// EventFn();
+
+async function LogFn (){
+    
+    const distinctLogs = await LogQuery.distinct("query");
+
+    const sampleArr = [];
+
+    for(let i = 0; i < distinctLogs.length; i++) {
+        let log = distinctLogs[i];
+        const frequentLogs = await LogQuery.count({query: log});
+
+        sampleArr.push({
+            frequent: frequentLogs,
+            distinct: log
+        });
+    }
+
+    console.log(sampleArr.sort((a, b) => a.frequent > b.frequent ? -1 : 1));
 }
 
-EventFn();
+LogFn();
 
 // HCenter.findOne({}, function (err, centerInfos) {
 // console.log(centerInfos);
