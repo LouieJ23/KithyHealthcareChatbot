@@ -856,7 +856,6 @@ async function _Event(req, res) {
         const currentDate = new Date(Date.now());
         const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
         const upcomingEvent = upcomingEvents[0];
-        const currentDate = new Date(Date.now());
         const upcomingEventStartDate = new Date(upcomingEvent.startDate);
         const upcomingEventEndDate = new Date(upcomingEvent.endDate);
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
