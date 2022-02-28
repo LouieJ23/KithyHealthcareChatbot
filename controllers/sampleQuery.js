@@ -51,7 +51,7 @@ var samp = "Location";
     const currentDate = new Date(Date.now());
     
     const upcomingEvents = await Event.findOne({startDate: {$gt:currentDate}}).sort({datePosted: -1});
-    console.log(upcomingEvents.eventTitle);
+    console.log(upcomingEvents.startDate.toString().slice(0,15));
 }
 
 EventFn();
