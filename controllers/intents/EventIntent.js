@@ -708,8 +708,8 @@ async function _Event(req, res) {
         const upcomingEventEndDate = new Date(upcomingEvent.endDate);
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", " + upcomingEventStartDate.getFullYear();
-        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", " + upcomingEventEndDate.getFullYear();
+        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getUTCDay() + ", " + upcomingEventStartDate.getFullYear();
+        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getUTCDay() + ", " + upcomingEventEndDate.getFullYear();
 
         var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + startDateEvent + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " ant will be end at " + endDateEvent + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
         console.log(upcomingEvent);
