@@ -853,11 +853,15 @@ async function _Event(req, res) {
     }
 
     else if (intent_name == "Events - upcoming - more - date & time") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
-        const upcomingEvent = upcomingEvents[0];
+        const upcomingEventStartDate = new Date(upcomingEvent.startDate);
+        const upcomingEventEndDate = new Date(upcomingEvent.endDate);
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        var result = "The upcoming event will start at " + upcomingEvent.startDate + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate + " " + upcomingEvent.timeEnds + ".";
+        const startDateEvent = months[upcomingEventStartDate.getMonth()] + " " + upcomingEventStartDate.getDay() + ", " + upcomingEventStartDate.getFullYear();
+        const endDateEvent = months[upcomingEventEndDate.getMonth()] + " " + upcomingEventEndDate.getDay() + ", " + upcomingEventEndDate.getFullYear();
+
+
+        var result = "The upcoming event will start at " + startDateEvent + " " + upcomingEvent.timeStart + " and will be end at " + endDateEvent + " " + upcomingEvent.timeEnds + ".";
 
         if (upcomingEvents.length > 0) {
             res.json({
