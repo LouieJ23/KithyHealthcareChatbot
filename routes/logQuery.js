@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Log = require('../models/Logs');
+const Log= require('../models/Logs');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
@@ -13,12 +13,13 @@ const options = {
 
 router.get('/', async (req, res) => {
     try {
+        const filename = 'KithyChatbotLogs'+Math.random()+'.pdf';
         const document = {
             html: template,
             data: {
-                message: "Kitaotao Healthcare Chatbot Logs"
+                message: "Kithy Chatbot Logs"
             },
-            path:'./pdfs/newpdf.pdf'
+            path:'./pdfs/'+filename
         }
         pdf.create(document, options)
         .then(res => {
@@ -27,12 +28,22 @@ router.get('/', async (req, res) => {
             console.log(error);
         });
 
-        const filepath = './pdfs/newpdf.pdf';
-        const { page = 1, limit = 5 } = req.query;
-        const log = await Log.find({isAnswered:false})
-            .sort({ datePosted: -1 });
+        const filepath = 'http://localhost:8080/pdfs/'+filename;
+
+        const distinctLogs = await Log.distinct("query");
+        const countedLogs = [];
+        for(let i = 0; i < distinctLogs.length; i++) {
+            let log = distinctLogs[i];
+            const frequentLogs = await Log.count({query: log});
+
+            countedLogs.push({
+                frequent: frequentLogs,
+                distinct: log
+            });
+        }
+
         res.render('logQuery', {
-            logQuery: log,
+            logQuery: countedLogs.sort((a, b) => a.frequent > b.frequent ? -1 : 1),
             page_name: 'Logs',
             path: filepath,
             isPaginate: false

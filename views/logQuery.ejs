@@ -32,8 +32,8 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
+						<th>Frequency</th>
 						<th>User Query</th>
-						<th>Date</th>
 						<% if(! logQuery.length > 0) {%>
 							<th>Actions</th>
 						<%} %>
@@ -45,13 +45,13 @@
 					if(logQuery.length > 0)
 					{
 						for(var i=0; i < logQuery.length; i++) { %>
-						<!-- <tr onclick="window.location='/logQuery/<%= logQuery[i]._id %>'" style="cursor: pointer;"> -->
+						<tr onclick="window.location='/logQuery/<%= logQuery[i]._id %>'" style="cursor: pointer;">
 
 							<td>
-								<%= logQuery[i].query %>
+								<%= logQuery[i].frequent %>
 							</td>
 							<td>
-								<%= logQuery[i].datePosted %>
+								<%= logQuery[i].distinct %>
 							</td>
 							
 						</tr>
