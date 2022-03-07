@@ -1198,7 +1198,7 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }
+        } 
 
     }
     else if (intent_name == "Events - upcoming - more - requirements") {

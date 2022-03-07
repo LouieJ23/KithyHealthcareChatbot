@@ -8,16 +8,34 @@ const options = {
     format: "A4",
     orientation: "portrait",
     border: "10mm"
+    
 };
 
 
 router.get('/', async (req, res) => {
     try {
+        const distinctLogs = await Log.distinct("query");
+        const countedLogs = [];
+        for(let i = 0; i < distinctLogs.length; i++) {
+            let log = distinctLogs[i];
+            const frequentLogs = await Log.count({query: log});
+
+            countedLogs.push({
+                frequent: frequentLogs,
+                distinct: log
+            });
+        }
+
+        const obj = {
+            inputLogs: countedLogs
+        };
+
         const filename = 'KithyChatbotLogs'+Math.random()+'.pdf';
         const document = {
             html: template,
             data: {
-                message: "Kithy Healthcare Chatbot Logs"
+                message: "Kithy Healthcare Chatbot Logs",
+                logs: obj
             },
             path:'./pdfs/'+filename
         }
@@ -30,17 +48,7 @@ router.get('/', async (req, res) => {
 
         const filepath = 'http://localhost:8080/pdfs/'+filename;
 
-        const distinctLogs = await Log.distinct("query");
-        const countedLogs = [];
-        for(let i = 0; i < distinctLogs.length; i++) {
-            let log = distinctLogs[i];
-            const frequentLogs = await Log.count({query: log});
-
-            countedLogs.push({
-                frequent: frequentLogs,
-                distinct: log
-            });
-        }
+        
 
         res.render('logQuery', {
             logQuery: countedLogs.sort((a, b) => a.frequent > b.frequent ? -1 : 1),

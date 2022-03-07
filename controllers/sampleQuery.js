@@ -58,21 +58,27 @@ var samp = "Location";
 
 async function LogFn (){
     
-    const distinctLogs = await LogQuery.distinct("query");
+    // const distinctLogs = await LogQuery.distinct("query");
 
-    const sampleArr = [];
+    // const sampleArr = [];
 
-    for(let i = 0; i < distinctLogs.length; i++) {
-        let log = distinctLogs[i];
-        const frequentLogs = await LogQuery.count({query: log});
+    // for(let i = 0; i < distinctLogs.length; i++) {
+    //     let log = distinctLogs[i];
+    //     const frequentLogs = await LogQuery.count({query: log});
 
-        sampleArr.push({
-            frequent: frequentLogs,
-            distinct: log
-        });
-    }
+    //     sampleArr.push({
+    //         frequent: frequentLogs,
+    //         distinct: log
+    //     });
+    // }
 
-    console.log(sampleArr.sort((a, b) => a.frequent > b.frequent ? -1 : 1));
+    // console.log(sampleArr.sort((a, b) => a.frequent > b.frequent ? -1 : 1));
+    const currentDate = new Date(Date.now());
+    // const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+    // console.log(upcomingEvents.length);
+
+    const appointments = await Appointment.find({});
+    console.log(appointments.length);
 }
 
 LogFn();

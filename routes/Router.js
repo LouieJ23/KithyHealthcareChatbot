@@ -54,13 +54,15 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/logQuery', logQuery);
     server.use('/hotline', hotline);
+
+    server.use('/admin', admin);
     
-    server.get('/admin', (req, res) => {
-        res.render('admin', {
-            page_name: 'home',
-            isPaginate: false
-        });
-    });
+    // server.get('/admin', (req, res) => {
+    //     res.render('admin', {
+    //         page_name: 'home',
+    //         isPaginate: false
+    //     });
+    // });
 
 
     server.post('/admin', async (req, res) => {
