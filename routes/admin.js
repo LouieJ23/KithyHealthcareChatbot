@@ -62,10 +62,30 @@ router.post('/', async (req, res) => {
     let uPassword = process.env.PASSWORD1;
     let userPassword = req.body.password;
 
+    const distinctLogs = await Log.distinct("query");
+        const countedLogs = [];
+        for(let i = 0; i < distinctLogs.length; i++) {
+            let log = distinctLogs[i];
+            const frequentLogs = await Log.count({query: log});
+
+            countedLogs.push({
+                frequent: frequentLogs,
+                distinct: log
+            });
+        }
+
+        const currentDate = new Date(Date.now());
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+
+        const appointments = await Appointment.find({});
+
     if (userName == uName && userPassword == uPassword) {
         res.render('admin', {
             page_name: 'home',
-            isPaginate: false
+            isPaginate: false,
+            newUnAnsweredQuery: countedLogs.length,
+            numOfUpcomingEvents: upcomingEvents.length,
+            numOfAppointments: appointments.length
         });
         alert("Login Successful.")
         return true;

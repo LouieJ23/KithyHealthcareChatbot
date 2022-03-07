@@ -65,26 +65,26 @@ module.exports = (server) => {
     // });
 
 
-    server.post('/admin', async (req, res) => {
-        let userName = req.body.username;
-        let uName = process.env.USERNAME1;
-        let uPassword = process.env.PASSWORD1;
-        let userPassword = req.body.password;
+    // server.post('/admin', async (req, res) => {
+    //     let userName = req.body.username;
+    //     let uName = process.env.USERNAME1;
+    //     let uPassword = process.env.PASSWORD1;
+    //     let userPassword = req.body.password;
 
-        if (userName == uName && userPassword == uPassword) {
-            res.render('admin', {
-                page_name: 'home',
-                isPaginate: false
-            });
-            alert("Login Successful.")
-            return true;
-        }
-        else {
-            res.sendFile(__dirname + "/login.html");
-            alert("Login Failed.")
-            return false;
-        }
-    });
+    //     if (userName == uName && userPassword == uPassword) {
+    //         res.render('admin', {
+    //             page_name: 'home',
+    //             isPaginate: false
+    //         });
+    //         alert("Login Successful.")
+    //         return true;
+    //     }
+    //     else {
+    //         res.sendFile(__dirname + "/login.html");
+    //         alert("Login Failed.")
+    //         return false;
+    //     }
+    // });
     
     server.post('/', processRequests);
 };

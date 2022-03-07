@@ -17,31 +17,30 @@
 
 <body>
     <div class="main-page" style=" max-width: fit-content; max-height: fit-content; border: 1px 2A4166;">
-        <div class="header"
-            style="max-width: fit-content; height: 100px; font-size: 15px; text-align: center; background-color: #2A4166; font-family:sans-serif; color: #fff;">
-            Sample
-            <table class="table" style="width: 100%; border: 1px solid #3D5A89; margin-top:83px;">
-                <thead class="thead-dark" style="background-color: #3D5A89;">
-                    <tr>
-
-                        <th scope="col" style="text-align: center; color: #dce9f0; height: 40px;">FREQUENCY</th>
-                        <th scope="col" style="text-align: center; color: #dce9f0; height: 40px;">USER QUERY</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each logs.inputLogs}}
-                    <tr>
-                        <td style="color:black">{{this.frequent}}</td>
-                        <td style="color:black">{{this.distinct}}</td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+        <div class="header" style="max-width: fit-content; height: 100px; font-size: 15px; text-align: center; background-color: #2A4166; font-family:sans-serif; color: #fff">
         </div>
+        <table class="table" style="width: 100%; border: 1px solid #3D5A89">
+            <thead class="thead-dark" style="background-color: #3D5A89;">
+                <tr>
+                    <th scope="col" style="text-align: center; color: #dce9f0; height: 40px;">FREQUENCY</th>
+                    <th scope="col" style="text-align: center; color: #dce9f0; height: 40px;">USER QUERY</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each logs.inputLogs}}
+                <tr>
+                    <td style="color:black">{{this.frequent}}</td>
+                    <td style="color:black">{{this.distinct}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+       <img src="KITHYLOGO.jpg" alt="Kithy Chatbot" style="height: 50px; width: 50px; position: absolute">
+        
     </div>
 
 
-    </div>
+
     <script type="text/javascript">(function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
