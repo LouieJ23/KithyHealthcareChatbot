@@ -1,12 +1,7 @@
 'use strict';
 
 const express = require('express');
-const path = require('path');
-const ejs = require('ejs');
-const methodOverride = require('method-override');
-const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
-let alert = require('alert');
 
 //import routes
 const event = require('./event');
@@ -29,8 +24,6 @@ module.exports = (server) => {
     
 
 
-    server.use(expressLayouts);
-    server.set('view engine', 'ejs');
 
 
     server.use(bodyParser.urlencoded({ extended: true }));
