@@ -26,10 +26,6 @@ const {processRequests, generatePdf} = require('../controllers/Controller');
 module.exports = (server) => {
     const apiRoutes = express.Router();
 
-    // Static Files
-    server.use(express.static('public'));
-    server.use('/css', express.static(__dirname + 'public/css'));
-    server.use('/pdfs', express.static(path.join(__dirname, '../pdfs')));
     
 
 
