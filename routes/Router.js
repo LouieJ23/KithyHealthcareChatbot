@@ -11,20 +11,10 @@ const guidelines = require('./guidelines');
 const centerInfo = require('./centerInfo');
 const mildIllness = require('./illness');
 const appointment = require('./appointment');
-const admin = require('./admin');
-const login = require('./login');
-const logQuery = require('./logQuery');
-const hotline = require('./hotline');
-const {processRequests, generatePdf} = require('../controllers/Controller');
 
 
 module.exports = (server) => {
     const apiRoutes = express.Router();
-
-    
-
-
-
 
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(bodyParser.json());
