@@ -1,10 +1,6 @@
 'use strict';
 const router = require('express').Router();
 require('dotenv/config');
-let alert = require('alert');
-const Log = require('../models/Logs');
-const Event = require('../models/Events');
-const Appointment = require('../models/Appointment');
 
 
 
@@ -12,29 +8,7 @@ const Appointment = require('../models/Appointment');
 router.get('/', async (req, res) => {
     try {
 
-        const distinctLogs = await Log.distinct("query");
-        const countedLogs = [];
-        for(let i = 0; i < distinctLogs.length; i++) {
-            let log = distinctLogs[i];
-            const frequentLogs = await Log.count({query: log});
-
-            countedLogs.push({
-                frequent: frequentLogs,
-                distinct: log
-            });
-        }
-
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
-
-        const appointments = await Appointment.find({});
-
-        const { page = 1, limit = 5 } = req.query;
-        const log = await Log.find()
-            .sort({ datePosted: -1 })
-            .limit(limit * 1)
-            .skip((page - 1) * limit);
-        console.log(log);
+      
         res.render('admin', {
             logQuery: log,
             page_name: 'home',
