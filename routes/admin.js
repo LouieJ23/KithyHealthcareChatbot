@@ -1,14 +1,16 @@
 'use strict';
 const router = require('express').Router();
 require('dotenv/config');
-
+let alert = require('alert');
+const Log = require('../models/Logs');
+const Event = require('../models/Events');
+const Appointment = require('../models/Appointment');
 
 
 
 router.get('/', async (req, res) => {
     try {
 
-<<<<<<< HEAD
         const distinctLogs = await Log.distinct("query");
         const countedLogs = [];
         for (let i = 0; i < distinctLogs.length; i++) {
@@ -32,9 +34,7 @@ router.get('/', async (req, res) => {
             .sort({ datePosted: -1 })
             .limit(limit * 1)
             .skip((page - 1) * limit);
-=======
-      
->>>>>>> 45015c3b65a5dde51afaa51f526f4e9c9428cc62
+            
         res.render('admin', {
             logQuery: log,
             page_name: 'home',
