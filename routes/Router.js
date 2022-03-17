@@ -1,12 +1,7 @@
 'use strict';
 
 const express = require('express');
-const path = require('path');
-const ejs = require('ejs');
-const methodOverride = require('method-override');
-const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
-let alert = require('alert');
 
 //import routes
 const event = require('./event');
@@ -16,16 +11,12 @@ const guidelines = require('./guidelines');
 const centerInfo = require('./centerInfo');
 const mildIllness = require('./illness');
 const appointment = require('./appointment');
-const admin = require('./admin');
-const login = require('./login');
-const logQuery = require('./logQuery');
-const hotline = require('./hotline');
-const {processRequests, generatePdf} = require('../controllers/Controller');
 
 
 module.exports = (server) => {
     const apiRoutes = express.Router();
 
+<<<<<<< HEAD
     // Static Files
     server.use(express.static('public'));
     server.use(express.static('public/img'));
@@ -38,6 +29,8 @@ module.exports = (server) => {
     server.set('view engine', 'ejs');
 
 
+=======
+>>>>>>> 45015c3b65a5dde51afaa51f526f4e9c9428cc62
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(bodyParser.json());
 
@@ -56,6 +49,7 @@ module.exports = (server) => {
     server.use('/logQuery', logQuery);
     server.use('/hotline', hotline);
 
+<<<<<<< HEAD
     server.use('/admin', admin);
     
     // server.get('/admin', (req, res) => {
@@ -88,4 +82,6 @@ module.exports = (server) => {
     // });
     
     server.post('/', processRequests);
+=======
+>>>>>>> 45015c3b65a5dde51afaa51f526f4e9c9428cc62
 };

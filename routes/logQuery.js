@@ -1,53 +1,9 @@
 const router = require('express').Router();
 const Log= require('../models/Logs');
 const fs = require('fs');
-const pdf = require('pdf-creator-node');
-const path = require('path');
-const template = fs.readFileSync(path.join(__dirname, '../views/print.html'), 'utf-8');
-const options = {
-    format: "A4",
-    orientation: "portrait",
-    border: "10mm"
-    
-};
-
 
 router.get('/', async (req, res) => {
     try {
-        const distinctLogs = await Log.distinct("query");
-        const countedLogs = [];
-        for(let i = 0; i < distinctLogs.length; i++) {
-            let log = distinctLogs[i];
-            const frequentLogs = await Log.count({query: log});
-
-            countedLogs.push({
-                frequent: frequentLogs,
-                distinct: log
-            });
-        }
-
-        const obj = {
-            inputLogs: countedLogs
-        };
-
-        const filename = 'KithyChatbotLogs'+Math.random()+'.pdf';
-        const document = {
-            html: template,
-            data: {
-                message: "Kithy Healthcare Chatbot Logs",
-                logs: obj
-            },
-            path:'./pdfs/'+filename
-        }
-        pdf.create(document, options)
-        .then(res => {
-            console.log(res);
-        }).catch(error => {
-            console.log(error);
-        });
-
-        const filepath = 'http://localhost:8080/pdfs/'+filename;
-
         
 
         res.render('logQuery', {
