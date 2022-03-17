@@ -14,9 +14,9 @@ router.get('/', async (req, res) => {
 
         const distinctLogs = await Log.distinct("query");
         const countedLogs = [];
-        for(let i = 0; i < distinctLogs.length; i++) {
+        for (let i = 0; i < distinctLogs.length; i++) {
             let log = distinctLogs[i];
-            const frequentLogs = await Log.count({query: log});
+            const frequentLogs = await Log.count({ query: log });
 
             countedLogs.push({
                 frequent: frequentLogs,
@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
 
         const currentDate = new Date(Date.now());
         const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const previousEvents = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
 
         const appointments = await Appointment.find({});
 
@@ -34,7 +35,6 @@ router.get('/', async (req, res) => {
             .sort({ datePosted: -1 })
             .limit(limit * 1)
             .skip((page - 1) * limit);
-        console.log(log);
         res.render('admin', {
             logQuery: log,
             page_name: 'home',
@@ -43,7 +43,8 @@ router.get('/', async (req, res) => {
             isPaginate: false,
             newUnAnsweredQuery: countedLogs.length,
             numOfUpcomingEvents: upcomingEvents.length,
-            numOfAppointments: appointments.length
+            numOfAppointments: appointments.length,
+            eventPrevious: previousEvents.length
         });
 
 
@@ -63,21 +64,22 @@ router.post('/', async (req, res) => {
     let userPassword = req.body.password;
 
     const distinctLogs = await Log.distinct("query");
-        const countedLogs = [];
-        for(let i = 0; i < distinctLogs.length; i++) {
-            let log = distinctLogs[i];
-            const frequentLogs = await Log.count({query: log});
+    const countedLogs = [];
+    for (let i = 0; i < distinctLogs.length; i++) {
+        let log = distinctLogs[i];
+        const frequentLogs = await Log.count({ query: log });
 
-            countedLogs.push({
-                frequent: frequentLogs,
-                distinct: log
-            });
-        }
+        countedLogs.push({
+            frequent: frequentLogs,
+            distinct: log
+        });
+    }
 
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+    const currentDate = new Date(Date.now());
+    const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+    const previousEvents = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
 
-        const appointments = await Appointment.find({});
+    const appointments = await Appointment.find({});
 
     if (userName == uName && userPassword == uPassword) {
         res.render('admin', {
@@ -85,7 +87,8 @@ router.post('/', async (req, res) => {
             isPaginate: false,
             newUnAnsweredQuery: countedLogs.length,
             numOfUpcomingEvents: upcomingEvents.length,
-            numOfAppointments: appointments.length
+            numOfAppointments: appointments.length,
+            eventPrevious: previousEvents.length
         });
         alert("Login Successful.")
         return true;
