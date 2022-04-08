@@ -99,7 +99,7 @@ router.get('/:postID', async (req, res) => {
     try {
         const logQuery = await Log.findById(req.params.postID);
         res.render('logQuery', {
-            logQueries: logQuery,
+            logQuery: log,
             page_name: 'Logs',
             isPaginate: false
         });
