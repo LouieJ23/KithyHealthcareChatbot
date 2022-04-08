@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const logs = mongoose.Schema({
+const logQuery = mongoose.Schema({
     query: {
         type: String,
         require: true
@@ -15,4 +15,4 @@ const logs = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('logs', logs);
+module.exports = mongoose.model('LogQuery', logQuery);
