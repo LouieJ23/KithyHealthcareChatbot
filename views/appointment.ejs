@@ -29,7 +29,8 @@
 								<th>Category</th>
 								<th>Doctor Option</th>
 								<th>Type of Consultation</th>
-								<th>Date and Time of Consultation</th>
+								<th>Date of Consultation</th>
+								<th>Time of  Consultation</th>
 								<th>Patient Name</th>
 								<th>Sex</th>
 								<th>Address</th>
@@ -58,7 +59,10 @@
 										<%= appointments[i].consultType %>
 									</td>
 									<td>
-										<%= appointments[i].dateTime %>
+										<%= appointments[i].dateOfConsultation %>
+									</td>
+									<td>
+										<%= appointments[i].timeOfConsultation %>
 									</td>
 									<td>
 										<%= appointments[i].patientName %>
@@ -96,7 +100,10 @@
 											<%= appointments.consultType %>
 										</td>
 										<td>
-											<%= appointments.dateTime %>
+											<%= appointments.dateOfConsultation %>
+										</td>
+										<td>
+											<%= appointments.timeOfConsultation %>
 										</td>
 										<td>
 											<%= appointments.patientName %>
@@ -168,9 +175,18 @@
 							<label>Type of Consultation</label>
 							<textarea class="form-control" name="consultType" required></textarea>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label>Date and Time of Consultation</label>
 							<input type="text" name="dateTime" class="form-control" required>
+						</div> -->
+						<div class="form-group">
+							<label>Date Of Consultation </label>
+							<input type="date" name="dateOfConsultation" class="form-control" required>
+						</div>
+						<div class="form-group" style="width:50%">
+							<label>Time Of Consultation</label>
+							<input type="text" name="timeOfConsultation" class="form-control" placeholder="00:00 AM/PM"
+								required>
 						</div>
 						<div class="form-group">
 							<label>Patient Name</label>
@@ -252,8 +268,13 @@
 									<input type="text" class="form-control" name="consultType" value="<%=appointments.consultType%>" required>
 								</div>
 								<div class="form-group">
-									<label>Date and Time of Consultation</label>
-									<input type="text" class="form-control"  name="dateTime" value="<%=appointments.dateTime%>" required>
+									<label>Date Of Consultation </label>
+									<input type="date" name="dateOfConsultation" class="form-control" required>
+								</div>
+								<div class="form-group" style="width:50%">
+									<label>Time Of Consultation</label>
+									<input type="text" name="timeOfConsultation" class="form-control" placeholder="00:00 AM/PM"
+										required>
 								</div>
 								<div class="form-group">
 									<label>Patient Name</label>

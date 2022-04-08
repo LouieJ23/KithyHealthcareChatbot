@@ -16,6 +16,36 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+
+	<style>
+		.gj-textbox-md {
+			border: 1px solid #dee2e6;
+			width: 100%;
+		}
+
+		.gj-icon.clock:before {
+			content: "\e905";
+			margin-top: 5px;
+			margin-left: 42%;
+		}
+
+		.form-control6 {
+			width: 105%;
+			border-radius: 4px;
+			padding-left: 12px;
+		}
+
+		.p-2 {
+			padding: 0.5rem;
+			padding-left: 12px !important;
+			font-weight: 500px;
+			font-family: inherit !important;
+			font-size: 1rem!important;
+		}
+	</style>
+
 </head>
 
 
@@ -83,7 +113,7 @@
 			<h1 class="text-center">Appointment Form</h1>
 			<div class="row">
 				<div class="col-sm-9 mx-auto py-5">
-					<form action="/appointment" method="post" class="container">
+					<form action="#" method="get" class="container">
 						<select class="form-select my-2" aria-label="Default select" name="category">
 							<option value="" disabled selected>Choose a Consultation category</option>
 							<option value="Primary Care Consultation">Primary Care Consultation</option>
@@ -108,17 +138,27 @@
 							<option value="Others">Others</option>
 						</select>
 						<div class="form-group my-2">
-							<input id="input" class="form-control border p-2" name="time"
-								placeholder="Select Date and Time" />
+							<input id="input" class="form-control border p-2" name="dateOfConsultation"
+								placeholder="Set date of consultation" />
 							<script>
-								$('#input').datetimepicker({ footer: true, modal: true });
+								$('#input').datepicker({ footer: true, modal: true });
 							</script>
 						</div>
-						<script type="text/javascript">
+						<!-- <script type="text/javascript">
 							$(function () {
-								$('#datetimepicker1').datetimepicker();
+								$('#datepicker1').datepicker();
 							});
+						</script> -->
+						<div class="form-group my-2 " style="width: 25%;">
+							<input id="timepicker1" type="text" class="form-control6 " name="timeOfConsultation"
+								placeholder="Set time of consultation">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						</div>
+
+						<script type="text/javascript">
+							$('#timepicker1').timepicker({  use24hours: true});
 						</script>
+						
 						<div class="form-group my-2">
 							<input type="text" class="form-control" name="patientName" placeholder="Enter Your Name">
 						</div>

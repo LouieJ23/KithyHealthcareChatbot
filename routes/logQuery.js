@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Log= require('../models/Logs');
+const Log = require('../models/Logs');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
     try {
         const distinctLogs = await Log.distinct("query");
         const countedLogs = [];
-        for(let i = 0; i < distinctLogs.length; i++) {
+        for (let i = 0; i < distinctLogs.length; i++) {
             let log = distinctLogs[i];
-            const frequentLogs = await Log.count({query: log});
+            const frequentLogs = await Log.count({ query: log });
 
             countedLogs.push({
                 frequent: frequentLogs,
@@ -29,23 +29,23 @@ router.get('/', async (req, res) => {
             inputLogs: countedLogs
         };
 
-        const filename = 'KithyChatbotLogs'+Math.random()+'.pdf';
+        const filename = 'KithyChatbotLogs' + Math.random() + '.pdf';
         const document = {
             html: template,
             data: {
                 message: "Kithy Healthcare Chatbot Logs",
                 logs: obj
             },
-            path:'./pdfs/'+filename
+            path: './pdfs/' + filename
         }
         pdf.create(document, options)
-        .then(res => {
-            console.log(res);
-        }).catch(error => {
-            console.log(error);
-        });
+            .then(res => {
+                console.log(res);
+            }).catch(error => {
+                console.log(error);
+            });
 
-        const filepath = 'http://localhost:8080/pdfs/'+filename;
+        const filepath = 'http://localhost:8080/pdfs/' + filename;
 
 
         res.render('logQuery', {
@@ -75,8 +75,42 @@ router.use((req, res, next) => {
         req.method = 'PUT';
         req.url = req.path
     }
+
     next();
 });
+
+router.delete('/:postID', async (req, res) => {
+    try {
+        const removeLogs = await Log.remove({
+            _id: req.params.postID
+        });
+
+        res.redirect('/logQuery');
+        // res.json(removeEvent);
+    }
+    catch (err) {
+        res.json({
+            message: err
+        });
+    }
+});
+
+router.get('/:postID', async (req, res) => {
+    try {
+        const log = await Log.findById(req.params.postID);
+        res.render('logQuery', {
+            logQuery: log,
+            page_name: 'Logs',
+            isPaginate: false
+        });
+    }
+    catch (err) {
+        res.json({
+            message: err
+        })
+    }
+})
+
 
 
 module.exports = router;

@@ -9,10 +9,14 @@ const appointment = mongoose.Schema({
         type: String,
         require: true
     },
-    dateTime: {
-      type: String, 
+    dateOfConsultation: {
+      type: Date, 
       require: true
     },
+    timeOfConsultation: {
+        type: Number, 
+        require: true
+      },
     patientName: {
         type: String,
         require: true

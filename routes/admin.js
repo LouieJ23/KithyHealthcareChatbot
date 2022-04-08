@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
             .sort({ datePosted: -1 })
             .limit(limit * 1)
             .skip((page - 1) * limit);
-            
+
         res.render('admin', {
             logQuery: log,
             page_name: 'home',
@@ -99,7 +99,7 @@ router.post('/', async (req, res) => {
         return false;
     }
 });
-
+    
 
 
 

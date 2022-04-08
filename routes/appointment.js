@@ -16,7 +16,7 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
    try {
-       const {page = 1, limit = 2} = req.query;
+       const {page = 1, limit = 3} = req.query;
        const appointment = await Appointment.find()
        .limit(limit * 1)
        .sort({ datePosted: -1 })
@@ -79,7 +79,8 @@ router.post('/', async (req, res) => {
         category:req.body.category,
         docOption:req.body.docOption,
         consultType:req.body.consultType,
-        dateTime:req.body.dateTime,
+        dateOfConsultation:req.body.dateOfConsultation,
+        timeOfConsultation:req.body.timeOfConsultation,
         patientName:req.body.patientName,
         sex:req.body.sex,
         address:req.body.address,
@@ -129,28 +130,7 @@ router.delete('/:postID', async (req, res) => {
     }
 });
 
-// router.patch('/:postID', async (req, res) => {
-//     try {
-//         const updatedAppointment = await Appointment.updateOne(
-//             {
-//                 _id: req.params.postID,
-//             },
-//             {
-//                 $set:
-//                 {
-//                     title: req.body.title
-//                 }
-//             }
-//         );
 
-//         res.json(updatedAppointment);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
 
 router.put('/:postID', async (req, res) => {
     try {
