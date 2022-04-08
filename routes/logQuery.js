@@ -97,10 +97,10 @@ router.delete('/:postID', async (req, res) => {
 
 router.get('/:postID', async (req, res) => {
     try {
-        const logs = await Log.findById(req.params.postID);
+        const log = await Log.findById(req.params.postID);
         res.render('logQuery', {
-            logQuery: logs,
-            page_name: 'logs',
+            logs: log,
+            page_name: 'logQuery',
             isPaginate: false
         });
     }
