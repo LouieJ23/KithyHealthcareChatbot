@@ -97,10 +97,10 @@ router.delete('/:postID', async (req, res) => {
 
 router.get('/:postID', async (req, res) => {
     try {
-        const log = await Log.findById(req.params.postID);
+        const logs = await Log.findById(req.params.postID);
         res.render('logQuery', {
-            logQuery: log,
-            page_name: 'log',
+            logQuery: logs,
+            page_name: 'logs',
             isPaginate: false
         });
     }
@@ -111,6 +111,22 @@ router.get('/:postID', async (req, res) => {
     }
 })
 
+router.put('/:postID', async (req, res) => {
+    try {
+        const updateLogs = await Log.findByIdAndUpdate(req.params.postID, req.body, {
+            new: true,
+            runValidator: true
+
+        });
+
+        res.redirect('/logQuery');
+    }
+    catch (err) {
+        res.json({
+            message: err
+        });
+    }
+});
 
 
 module.exports = router;
