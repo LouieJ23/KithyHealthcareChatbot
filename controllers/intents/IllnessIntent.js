@@ -13,11 +13,6 @@ async function _Illness(req, res) {
     console.log("The Query Text: " + value);
     console.log("The Recent Log: " + recentLog);
 
-    // const recentLog = await LogQuery.findOne().sort({ datePosted: -1 });
-    // const query = recentLog.query;
-    // console.log("Intent Name: " + intent_name);
-    // console.log("Query Text: " + value);
-    // console.log("Recent Log Query: " + query);
 
     if (intent_name == 'Illness') {
         const illness = await Illness.find();
@@ -39,7 +34,7 @@ async function _Illness(req, res) {
                     "text": {
                         "text": [
                             ""
-                            // result
+                            
                         ]
                     }
                 }
@@ -121,11 +116,7 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        // const log3 = new LogQuery({
-        //     query: value,
-        //     isAnswered: false,
-        // });
-        // await log3.save();
+       
     }
     else if (intent_name == 'Illness - more - symptoms') {
         const recentLog = await queryLog.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -159,11 +150,7 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        // const log4 = new LogQuery({
-        //     query: value,
-        //     isAnswered: false,
-        // });
-        // await log4.save();
+       
     }
     else if (intent_name == 'Illness - more - treatment') {
         const recentLog = await queryLog.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -197,11 +184,7 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        // const log5 = new LogQuery({
-        //     query: value,
-        //     isAnswered: false,
-        // });
-        // await log5.save();
+     
     }
     else if (intent_name == 'Illness - more - prevention') {
         const recentLog = await queryLog.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -239,20 +222,7 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        // const log6 = new LogQuery({
-        //     query: value,
-        //     isAnswered: false,
-        // });
-        // await log6.save();
     }
-    // else {
-    //     const log = new LogQuery({
-    //         query: value,
-    //         isAnswered: false,
-    //     });
-    //     await log.save();
-    //     console.log(value);
-    // }
     else if (intent_name == "Default Fallback Intent"){
         const log = new queryLog({
             query: value,

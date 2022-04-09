@@ -654,10 +654,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log16 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        
     }
     else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event - requirements")) {
         Event.find({}, function (err, events) {
@@ -696,10 +693,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        // const log17 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+   
     }
 
     // EVENT UPCOMING FUNCTION
