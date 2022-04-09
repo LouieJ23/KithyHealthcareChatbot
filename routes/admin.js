@@ -2,7 +2,7 @@
 const router = require('express').Router();
 require('dotenv/config');
 let alert = require('alert');
-const Log = require('../models/Logs');
+const Log = require('../models/QueryLog');
 const Event = require('../models/Events');
 const Appointment = require('../models/Appointment');
 
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
             .skip((page - 1) * limit);
 
         res.render('admin', {
-            logQuery: log,
+            queryLog: log,
             page_name: 'home',
             next: parseInt(page) + 1,
             prev: parseInt(page) - 1,

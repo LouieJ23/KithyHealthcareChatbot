@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Log = require('../models/Logs');
+const Log = require('../models/QueryLog');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
@@ -48,8 +48,8 @@ router.get('/', async (req, res) => {
         const filepath = 'http://localhost:8080/pdfs/' + filename;
 
 
-        res.render('logQuery', {
-            logQuery: countedLogs.sort((a, b) => a.frequent > b.frequent ? -1 : 1),
+        res.render('queryLog', {
+            queryLog: countedLogs.sort((a, b) => a.frequent > b.frequent ? -1 : 1),
             page_name: 'Logs',
             path: filepath,
             isPaginate: false
@@ -85,7 +85,7 @@ router.delete('/:postID', async (req, res) => {
             _id: req.params.postID
         });
 
-        res.redirect('/logQuery');
+        res.redirect('/queryLog');
         // res.json(removeEvent);
     }
     catch (err) {
@@ -97,9 +97,9 @@ router.delete('/:postID', async (req, res) => {
 
 router.get('/:postID', async (req, res) => {
     try {
-        const logQuery = await Log.findById(req.params.postID);
-        res.render('logQuery', {
-            logQueries: logQuery,
+        const queryLog = await Log.findById(req.params.postID);
+        res.render('queryLog', {
+            queryLogs: queryLog,
             page_name: 'Logs',
             isPaginate: false
         });
@@ -119,7 +119,7 @@ router.put('/:postID', async (req, res) => {
 
         });
 
-        res.redirect('/logQuery');
+        res.redirect('/queryLog');
     }
     catch (err) {
         res.json({

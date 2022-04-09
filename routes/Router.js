@@ -18,7 +18,7 @@ const mildIllness = require('./illness');
 const appointment = require('./appointment');
 const admin = require('./admin');
 const login = require('./login');
-const logQuery = require('./logQuery');
+const queryLog = require('./queryLog');
 const hotline = require('./hotline');
 const {processRequests, generatePdf} = require('../controllers/Controller');
 
@@ -49,7 +49,7 @@ module.exports = (server) => {
     server.use('/mildIllness', mildIllness);
     server.use('/appointment', appointment);
     server.use('/login', login);
-    server.use('/logQuery', logQuery);
+    server.use('/queryLog', queryLog);
     server.use('/hotline', hotline);
 
     server.use('/admin', admin);
