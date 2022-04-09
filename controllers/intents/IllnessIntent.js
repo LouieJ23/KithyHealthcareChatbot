@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Illness = require('../../models/Illness');
-const LogQuery = require('../../models/LogQuery');
+const LogQuery = require('../../models/Logs');
 
 async function _Illness(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;

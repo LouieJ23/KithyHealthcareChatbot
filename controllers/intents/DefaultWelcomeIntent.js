@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const DefLogQuery = require('../../models/LogQuery');
+const DefLogQuery = require('../../models/Logs');
 
 async function _DefaultWelcomeIntent(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;

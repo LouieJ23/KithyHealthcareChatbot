@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Log = require('../models/LogQuery');
+const Log = require('../models/Logs');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');

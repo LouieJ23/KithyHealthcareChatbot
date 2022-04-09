@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Event = require('../../models/Events');
-const EventLogQuery = require('../../models/LogQuery');
+const EventLogQuery = require('../../models/Logs');
 
 // EVENT LATEST FUNCTION
 async function _Event(req, res) {
