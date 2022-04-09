@@ -2,7 +2,7 @@
 const router = require('express').Router();
 require('dotenv/config');
 let alert = require('alert');
-const Log = require('../models/Logs');
+const Log = require('../models/LogQuery');
 const Event = require('../models/Events');
 const Appointment = require('../models/Appointment');
 

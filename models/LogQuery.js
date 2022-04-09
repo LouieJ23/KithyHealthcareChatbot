@@ -15,4 +15,4 @@ const logQuery = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("Log Query", logQuery);
+module.exports = mongoose.model("LogQuery", logQuery);

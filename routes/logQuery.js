@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Log = require('../models/Logs');
+const Log = require('../models/LogQuery');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
@@ -97,9 +97,9 @@ router.delete('/:postID', async (req, res) => {
 
 router.get('/:postID', async (req, res) => {
     try {
-        const log = await Log.findById(req.params.postID);
+        const logQuery = await Log.findById(req.params.postID);
         res.render('logQuery', {
-            logQuery: log,
+            logQueries: logQuery,
             page_name: 'Logs',
             isPaginate: false
         });

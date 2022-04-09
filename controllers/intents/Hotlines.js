@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const Hotline = require('../../models/Hotline');
-const HotlineLogQuery = require('../../models/Logs');
+const HotlineLogQuery = require('../../models/LogQuery');
 
 // EVENT LATEST FUNCTION
 async function _Hotline(req, res) {
