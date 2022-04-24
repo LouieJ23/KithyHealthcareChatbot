@@ -11,6 +11,67 @@ const options = {
 
 };
 
+router.use((req, res, next) => {
+    if (req.query._method == 'DELETE') {
+        req.method = 'DELETE';
+        req.url = req.path
+    }
+
+    if (req.query._method == 'PUT') {
+        req.method = 'PUT';
+        req.url = req.path
+    }
+
+    next();
+});
+
+// router.get('/:postID', async (req, res) => {
+//     try {
+//         const queryLog = await Log.findById(req.params.postID);
+//         res.render('queryLog', {
+//             queryLogs: queryLog,
+//             page_name: 'Logs',
+//             isPaginate: false
+//         });
+//     }
+//     catch (err) {
+//         res.json({
+//             message: err
+//         })
+//     }
+// });
+
+router.get('/:postID', async (req, res) => {
+    try {
+        // const distinctLogs = await Log.distinct("query");
+        const distinctLogs = await LogQuery.find({"query": "Kent Levi A. Bonifacio"}) ;
+
+        const countedLogs = [];
+        for (let i = 0; i < distinctLogs.length; i++) {
+            let log = distinctLogs[i];
+            const queryLog = await log.findById(req.params.postID);
+      
+        countedLogs.push({
+            distinct: log
+        });
+
+        res.render('queryLog', {
+            queryLog: queryLog,
+            page_name: 'Logs',
+            isPaginate: false
+        });
+
+        }
+    }
+    catch (err) {
+        res.json({
+            message: err
+        })
+    }
+})
+
+
+
 router.get('/', async (req, res) => {
     try {
         const distinctLogs = await Log.distinct("query");
@@ -65,28 +126,14 @@ router.get('/', async (req, res) => {
 
 });
 
-router.use((req, res, next) => {
-    if (req.query._method == 'DELETE') {
-        req.method = 'DELETE';
-        req.url = req.path
-    }
 
-    if (req.query._method == 'PUT') {
-        req.method = 'PUT';
-        req.url = req.path
-    }
 
-    next();
-});
-
-router.delete('/:postID', async (req, res) => {
+router.delete('/:postQuery', async (req, res) => {
     try {
-        const removeLogs = await Log.remove({
-            _id: req.params.postID
-        });
+        await Log.deleteMany({"query": req.params.postQuery}) ;
 
         res.redirect('/queryLog');
-        // res.json(removeEvent);
+
     }
     catch (err) {
         res.json({
@@ -94,22 +141,6 @@ router.delete('/:postID', async (req, res) => {
         });
     }
 });
-
-router.get('/:postID', async (req, res) => {
-    try {
-        const queryLog = await Log.findById(req.params.postID);
-        res.render('queryLog', {
-            queryLogs: queryLog,
-            page_name: 'Logs',
-            isPaginate: false
-        });
-    }
-    catch (err) {
-        res.json({
-            message: err
-        })
-    }
-})
 
 router.put('/:postID', async (req, res) => {
     try {

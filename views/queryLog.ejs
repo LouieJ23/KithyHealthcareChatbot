@@ -10,9 +10,10 @@
 					<div class="col-sm-6">
 						
 						<% if(queryLog.length > 0) {%>
-							<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
-						<%}
-						%>	
+							<a href="/event" class="btn btn-secondary"> <span>Back</span></a>
+							<%} else {%>
+								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
+								<% } %>
 						<div class="container" id="box">
 							<div class="row well">
 								
@@ -31,9 +32,7 @@
 					<tr>
 						<th>Frequency</th>
 						<th>User Query</th>
-						<% if(! queryLog.length > 0) {%>
-							<th>Actions</th>
-						<%} %>
+						<th>Action</th>
 
 					</tr>
 				</thead>
@@ -50,29 +49,17 @@
 							<td>
 								<%= queryLog[i].distinct %>
 							</td>
-							
+							<td>
+								<a href="/queryLog/<%= queryLog[i].distinct %>?_method=DELETE" class="delete"><i
+									class="material-icons"  title="Delete">&#xE872;</i></a>
+							</td>
 						</tr>
 
-						<% }}
-						else { %>
-							<tr>
-	
-								<td>
-									<%= queryLog.query %>
-								</td>
-								<td>
-									<%= queryLog.datePosted %>
-								</td>
-								<td>
-									<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Edit" >&#xE254;</i></a>
-										<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-											class="material-icons"  title="Delete">&#xE872;</i></a>
-									
-								</td>
-							</tr>
-						<%} %>
-							<tr>
+						<% }
+					}
+						
+			    %>
+							
 
 				</tbody>
 			</table>
@@ -82,7 +69,7 @@
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/queryLog/<%= queryLog._id %>?_method=DELETE" method="post">
+				<form action="/queryLog/<%= queryLog.query %>?_method=DELETE" method="post">
 					<input type="hidden" name="_method" value="DELETE">
 					<div class="modal-header">
 						<h4 class="modal-title">Delete Log</h4>

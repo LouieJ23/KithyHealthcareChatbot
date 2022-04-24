@@ -14,7 +14,7 @@ const appointment = mongoose.Schema({
       require: true
     },
     timeOfConsultation: {
-        type: Number, 
+        type: String, 
         require: true
       },
     patientName: {
