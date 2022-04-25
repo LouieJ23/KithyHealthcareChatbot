@@ -1,6 +1,6 @@
 <div class="container-xl">
 	<div class="table-responsive">
-		<div class="table-wrapper">
+		<div class="table-wrapper" style="width: max-content;">
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
@@ -31,9 +31,10 @@
 								<th>Type of Consultation</th>
 								<th>Date of Consultation</th>
 								<th>Time of  Consultation</th>
-								<th>Patient Name</th>
+								<th>First Name</th>
+								<th>Last Name</th>
 								<th>Sex</th>
-								<th>number</th>
+								<th>Number</th>
 								<th>Address</th>
 								<th>Email</th>
 								<th>Reason of Consultation</th>
@@ -298,7 +299,7 @@
 										required>
 								</div>
 								<div class="form-group">
-									<label>Patient Name</label>
+									<label>First Name</label>
 									<input type="text" class="form-control" name="firstName"  value="<%=appointments.firstName%>"  required>
 								</div>
 								<div class="form-group">
