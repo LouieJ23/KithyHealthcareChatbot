@@ -47,6 +47,7 @@ router.get('/', async (req, res) => {
             isPaginate: false,
             newUnAnsweredQuery: countedLogs.length,
             numOfUpcomingEvents: upcomingEvents.length,
+            countOfUpcomingEvents: upcomingEvents,
             numOfAppointments: appointments.length,
             eventPrevious: previousEvents.length,
             emergencyHotlines:hotlines,
