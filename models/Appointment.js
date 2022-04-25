@@ -17,13 +17,21 @@ const appointment = mongoose.Schema({
         type: String, 
         require: true
       },
-    patientName: {
+    firstName: {
+        type: String,
+        require: true
+    },
+    lastName: {
         type: String,
         require: true
     },
     sex: {
         type: String,
         require: true
+    },
+    number: {
+        type: Number,
+        require: false
     },
     address: {
         type: String,

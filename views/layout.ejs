@@ -36,17 +36,19 @@
 	<style>
 
 		.pageHeader {
-			display: none;
+			display: none !important;
 			background-color: #435D7D;
+			z-index: 1;
 		}
-@media screen and (min-width: 320px) and (max-width: 767px) {
+		@media only screen and (min-width: 320px) and (max-width: 1023px) {
 .sidebar {
 	display:none;
 	margin-top: 0.9rem !important;
+	z-index: 1;
 }
 
 .pageHeader {
-			display: block;
+			display: block !important;
 			position: fixed;
 		}
 
@@ -423,7 +425,6 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="sidebars.css" rel="stylesheet">
 </head>
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -487,11 +488,11 @@
       
 
     <div class="container-fluid" style="padding:0">
-		<div class="row pageHeader py-3 w-100">
+		<div class="row pageHeader py-3 w-100 m-0">
 			<div class="col-sm-2 w-25 d-inline"><img src="../MENU.png" id="menu" alt="" class="img-fluid ms-3"></div>
 			<div class="col-sm-10 w-75 d-inline"><img src="../LOGO.png" style="margin-left: 25%;" alt="" class="img-fluid"></div>
 		</div>
-        <div class="row pageContent">
+        <div class="row pageContent m-0">
             <div class="col-sm-2 mx-0 px-0 sidebar">
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 213px; position: fixed;">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -577,7 +578,7 @@
                     </div>--> 
                   </div>
             </div>
-            <div class="col-sm-10" style="z-index: -1;">
+            <div class="col-sm-10">
                 <%- body %>
             </div>
         </div>

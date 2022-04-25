@@ -11956,7 +11956,9 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
-
+.ms-1-row {
+  margin-left:100px !important;
+}
 @media screen and (min-width: 320px) and (max-width: 767px) {
   
 }

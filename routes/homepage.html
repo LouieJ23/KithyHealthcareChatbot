@@ -20,6 +20,23 @@
 
 
 	<style>
+		.ms-5-female {
+			margin-left: 40px;
+		}
+		.ms-2-sex {
+			margin-left:0.7rem!important;
+		}
+		.border-left {
+			border-left: none;
+		}
+		.ms-1-row {
+			margin-left: 1px !important;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			width: 48.5%;
+
+		}
+
 		.gj-textbox-md {
 			border: 1px solid #dee2e6;
 			width: 100%;
@@ -111,111 +128,117 @@
 		</div>
 		<div class="row">
 			<h1 class="text-center">Appointment Form</h1>
-			<div class="row">
-				<div class="col-sm-9 mx-auto py-5">
-					<form action="/patientAppointment" method="post" class="container">
-						<label class="form-check-label" for="category">
-							Consultation Category
-						  </label>
-						<select class="form-select my-2" aria-label="Default select" name="category">
-							<option value="" disabled selected>Choose a Consultation category</option>
-							<option value="Primary Care Consultation">Primary Care Consultation</option>
-							<option value="Specialty Consultation">Specialty Consultation</option>
-							<option value="General Lab Tests">General Lab Tests</option>
-							<option value="COVID-19 Tests">COVID-19 Tests</option>
-							<option value="Other Diagnostic Procedures">Other Diagnostic Procedures</option>
-						</select>
-						<label class="form-check-label" for="doctor">
-							Doctor to assist
-						  </label>
-						<select class="form-select my-2" aria-label="Default select example" name="docOption">
-							<option disabled selected>Choose a Doctor to assist</option>
-							<option value="Dr.1">Dr.1</option>
-							<option value="Dr.2">Dr.2</option>
-							<option value="Dr.3">Dr.3</option>
-							<option value="Dr.4">Dr.4</option>
-						</select>
-						<label class="form-check-label" for="consultation type">
-							Type of Consultation
-						  </label>
-						<select class="form-select" aria-label="Default select example" name="consultType">
-							<option value="" disabled selected>Choose the type of Consultation</option>
-							<option value="Initial Consultation">Initial Consultation</option>
-							<option value="Follow-up Consultation">Follow-up Consultation</option>
-							<option value="Work Clearance/Medical Certificate">Work Clearance/Medical Certificate
-							</option>
-							<option value="Others">Others</option>
-						</select>
-						<div class="form-group my-2">
+
+			<div class="col-sm-9 mx-auto py-5">
+				<form action="/patientAppointment" method="post" class="container w-75">
+					<label class="form-check-label" for="category">
+						Consultation Category
+					</label>
+					<select class="form-select my-2" aria-label="Default select" name="category">
+						<option value="" disabled selected>Choose a Consultation category</option>
+						<option value="Primary Care Consultation">Primary Care Consultation</option>
+						<option value="Specialty Consultation">Specialty Consultation</option>
+						<option value="General Lab Tests">General Lab Tests</option>
+						<option value="COVID-19 Tests">COVID-19 Tests</option>
+						<option value="Other Diagnostic Procedures">Other Diagnostic Procedures</option>
+					</select>
+					<label class="form-check-label" for="doctor">
+						Doctor to assist
+					</label>
+					<select class="form-select my-2" aria-label="Default select example" name="docOption">
+						<option disabled selected>Choose a Doctor to assist</option>
+						<option value="Dr.1">Dr.1</option>
+						<option value="Dr.2">Dr.2</option>
+						<option value="Dr.3">Dr.3</option>
+						<option value="Dr.4">Dr.4</option>
+					</select>
+					<label class="form-check-label" for="consultation type">
+						Type of Consultation
+					</label>
+					<select class="form-select" aria-label="Default select example" name="consultType">
+						<option value="" disabled selected>Choose the type of Consultation</option>
+						<option value="Initial Consultation">Initial Consultation</option>
+						<option value="Follow-up Consultation">Follow-up Consultation</option>
+						<option value="Work Clearance/Medical Certificate">Work Clearance/Medical Certificate
+						</option>
+						<option value="Others">Others</option>
+					</select>
+					<div class="row">
+						<div class="col form-group my-2">
 							<label class="form-check-label" for="date">
 								Date of Consultation
-							  </label>
-							<input type="date" id="input" class="form-control border p-2" name="dateOfConsultation"
+							</label>
+							<input type="date" class="form-control border" name="dateOfConsultation"
 								placeholder="Set date of consultation" />
 
 						</div>
-						<!-- <script type="text/javascript">
-							$(function () {
-								$('#datepicker1').datepicker();
-							});
-						</script> -->
-						<div class="form-group my-2" style="width: fit-content;">
+						<div class="col form-group my-2">
 							<label class="form-check-label" for="time">
 								Time of Consultation
-							  </label>
-							<input type="text" class="form-control " name="timeOfConsultation"
+							</label>
+							<input type="time" class="form-control " name="timeOfConsultation"
 								placeholder="00:00 AM/PM">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 						</div>
-
 						<script type="text/javascript">
 							$('#timepicker1').timepicker({ use24hours: true });
 						</script>
-
-						<div class="form-group my-2">
-							<input type="text" class="form-control" name="patientName" placeholder="Enter Your Name">
+					</div>
+					<div class="row">
+						<label for="name">Name</label>
+						<div class="col form-group">
+							<input type="text" class="form-control" name="firstName" placeholder="First Name">
 						</div>
-						<div class="form-group my-2">
-							<label for="sex" class="form-label">Sex</label>
-							<div class="form-control w-25">
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="sex">
+						<div class="col form-group">
+							<input type="text" class="form-control" name="lastName" placeholder="Last Name">
+						</div>
+					</div>
+					<div class="row d-flex py-2">
+						<label for="sex">Sex</label>
+						<div class="form-control ms-2-sex col d-flex justify-content-center">
+							<div class=" form-group d-inline">
+								<input class="form-check-input" type="radio" name="sex" value="Male">
+								<label for="sex">
+									Male
+								</label>
+							</div>
+							<div class="form-group d-inline ms-5-female">
+								<input class="form-check-input" type="radio" name="sex" value="Female">
 								<label class="form-check-label" for="sex">
-								  Male
+									Female
 								</label>
-							  </div>
-							  <div class="form-check">
-								<input class="form-check-input" type="radio" name="sex">
-								<label class="form-check-label" for="flexRadioDefault2">
-								  Female
-								</label>
-							  </div>
 							</div>
 						</div>
-						<div class="form-group my-2">
-							<label class="form-check-label" for="address">
-								Address
-							  </label>
-							<input type="text" class="form-control" name="address" placeholder="Address">
-						</div>
-						<div class="form-group my-2">
-							<label class="form-check-label" for="email">
-								Email Address
-							  </label>
-							<input type="text" class="form-control" name="email" placeholder="name@example.com">
-						</div>
-						<div class="form-group my-2">
-							<label class="form-check-label" for="reason">
-								Reason of Consultation
-							  </label>
-							<input type="text" class="form-control" name="reason" placeholder="Reason of Consultation">
-						</div>
+						
+							<div class="col form-group d-inline ">
+								<input type="text" class="form-control" name="number" placeholder="Mobile Number">
+							
+							</div>
+					</div>
+					<div class="form-group my-2">
+						<label class="form-check-label" for="address">
+							Street Address
+						</label>
+						<input type="text" class="form-control" name="address" placeholder="Address">
+					</div>
+					<div class="form-group my-2">
+						<label class="form-check-label" for="email">
+							Email Address
+						</label>
+						<input type="text" class="form-control" name="email" placeholder="name@example.com">
+					</div>
+					<div class="form-group my-2">
+						<label class="form-check-label" for="reason">
+							Reason of Consultation
+						</label>
+						<input type="text" class="form-control" name="reason" placeholder="Reason of Consultation">
+					</div>
 
-						<input type="submit" class="btn btn-primary" value="Submit">
+					<input type="submit" class="btn btn-primary" value="Submit">
 
-					</form>
-				</div>
+				</form>
 			</div>
+
 		</div>
 	</div>
 

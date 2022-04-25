@@ -33,6 +33,7 @@
 								<th>Time of  Consultation</th>
 								<th>Patient Name</th>
 								<th>Sex</th>
+								<th>number</th>
 								<th>Address</th>
 								<th>Email</th>
 								<th>Reason of Consultation</th>
@@ -65,10 +66,16 @@
 										<%= appointments[i].timeOfConsultation %>
 									</td>
 									<td>
-										<%= appointments[i].patientName %>
+										<%= appointments[i].firstName %>
+									</td>
+									<td>
+										<%= appointments[i].lastName %>
 									</td>
 									<td>
 										<%= appointments[i].sex %>
+									</td>
+									<td>
+										<%= appointments[i].number %>
 									</td>
 									<td>
 										<%= appointments[i].address %>
@@ -106,10 +113,16 @@
 											<%= appointments.timeOfConsultation %>
 										</td>
 										<td>
-											<%= appointments.patientName %>
+											<%= appointments.firstName %>
+										</td>
+										<td>
+											<%= appointments.lastName %>
 										</td>
 										<td>
 											<%= appointments.sex %>
+										</td>
+										<td>
+											<%= appointments.number %>
 										</td>
 										<td>
 											<%= appointments.address %>
@@ -189,12 +202,20 @@
 								required>
 						</div>
 						<div class="form-group">
-							<label>Patient Name</label>
-							<input type="text" name="patientName" class="form-control" required>
+							<label>First Name</label>
+							<input type="text" name="firstName" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Last Name</label>
+							<input type="text" name="lastName" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Sex</label>
 							<input type="radio" name="sex" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Mobile Number</label>
+							<input type="text" name="number" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Address</label>
@@ -278,11 +299,19 @@
 								</div>
 								<div class="form-group">
 									<label>Patient Name</label>
-									<input type="text" class="form-control" name="patientName"  value="<%=appointments.patientName%>"  required>
+									<input type="text" class="form-control" name="firstName"  value="<%=appointments.firstName%>"  required>
+								</div>
+								<div class="form-group">
+									<label>Last Name</label>
+									<input type="text" class="form-control" name="lastName"  value="<%=appointments.lastName%>"  required>
 								</div>
 								<div class="form-group">
 									<label>Sex</label>
 									<input type="text" class="form-control" name="sex"  value="<%=appointments.sex%>" required>
+								</div>
+								<div class="form-group">
+									<label>Mobile Number</label>
+									<input type="text" class="form-control" name="number"  value="<%=appointments.number%>" required>
 								</div>
 								<div class="form-group">
 									<label>Address</label>
