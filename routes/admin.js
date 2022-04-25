@@ -5,6 +5,8 @@ let alert = require('alert');
 const Log = require('../models/QueryLog');
 const Event = require('../models/Events');
 const Appointment = require('../models/Appointment');
+const Hotline = require('../models/Hotline');
+const Staff = require('../models/Staffs');
 
 
 
@@ -28,6 +30,8 @@ router.get('/', async (req, res) => {
         const previousEvents = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
 
         const appointments = await Appointment.find({});
+        const hotlines = await Hotline.find({});
+        const staffs = await Staff.find({});
 
         const { page = 1, limit = 5 } = req.query;
         const log = await Log.find()
@@ -44,7 +48,9 @@ router.get('/', async (req, res) => {
             newUnAnsweredQuery: countedLogs.length,
             numOfUpcomingEvents: upcomingEvents.length,
             numOfAppointments: appointments.length,
-            eventPrevious: previousEvents.length
+            eventPrevious: previousEvents.length,
+            emergencyHotlines:hotlines,
+            staffsInfo:staffs,
         });
 
 

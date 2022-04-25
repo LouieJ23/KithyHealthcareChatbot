@@ -23,13 +23,14 @@ router.get('/', async (req, res) => {
             .sort({ datePosted: -1 })
             .limit(limit * 1)
             .skip((page - 1) * limit);
+
         console.log(hotline);
         res.render('hotline', {
             hotlines: hotline,
             page_name: 'hotline',
             next: parseInt(page) + 1,
             prev: parseInt(page) - 1,
-            isPaginate: true
+            isPaginate: true,
         })
 
 
@@ -40,29 +41,7 @@ router.get('/', async (req, res) => {
         });
     }
 
-    // try {
-    //     const events = await Event.find();
-    //     res.json(events);
-    // }
-    // catch(err) {
-    //     res.json({
-    //         message: err
-    //     })
-    // }
 });
-
-// router.get('/:postID', async (req, res) => {
-//     try {
-//         const post = await Event.findById(req.params.postID);
-//         res.json(post);
-//     }
-//     catch (err) {
-//         res.json({
-//             message: err
-//         });
-//     }
-// });
-
 
 router.post('/', async (req, res) => {
     const hotline = new Hotline({
