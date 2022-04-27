@@ -18,20 +18,16 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const { page = 1, limit = 4 } = req.query;
+       
         const currentDate = new Date(Date.now());
-        const comingEvent = await Event.find({ startDate: { $lte: currentDate } }).sort({ datePosted: -1 });
-        const previousEvent = await Event.find()
-            .sort({ datePosted: -1 })
-            .limit(limit * 1)
-            .skip((page - 1) * limit);
+        const comingEvent = await Event.find({ startDate: { $lte: currentDate } }).sort({ startDate: -1 });
+        const previousEvent = await Event.find().sort({ datePosted: -1 })
+           
         res.render('previousEvent', {
             previousEvents: previousEvent,
             eventComing: comingEvent,
             page_name: 'previousEvent',
-            next: parseInt(page) + 1,
-            prev: parseInt(page) - 1,
-            isPaginate: true
+            isPaginate: false
         })
 
 

@@ -772,7 +772,7 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - event title") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1   });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event title is " + upcomingEvent.eventTitle;
@@ -844,7 +844,7 @@ async function _Event(req, res) {
 
     else if (intent_name == "Events - upcoming - more - date & time") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1    });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeEnds + ".";
@@ -914,7 +914,7 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - location") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event location is at " + upcomingEvent.eventLocation;
@@ -986,7 +986,7 @@ async function _Event(req, res) {
 
     else if (intent_name == "Events - upcoming - more - details") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event detail is " + upcomingEvent.eventDetails;
@@ -1056,7 +1056,7 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - process") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event process is " + upcomingEvent.eventProcess;
@@ -1126,7 +1126,7 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - participants") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event participant is " + upcomingEvent.eventParticipant;
@@ -1197,7 +1197,7 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - requirements") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event requirement is " + upcomingEvent.eventRequire;
