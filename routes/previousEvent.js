@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     try {
        
         const currentDate = new Date(Date.now());
-        const comingEvent = await Event.find({ startDate: { $lte: currentDate } }).sort({ startDate: -1 });
+        const comingEvent = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: -1 });
         const previousEvent = await Event.find().sort({ datePosted: -1 })
            
         res.render('previousEvent', {
