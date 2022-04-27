@@ -19,7 +19,7 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
     try {
         const currentDate = new Date(Date.now());
-        const comingEvent = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
+        const comingEvent = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: -1 });
         const upcomingEvent = await Event.find()
             .sort({ datePosted: -1 })
       
