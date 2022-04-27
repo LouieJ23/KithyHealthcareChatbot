@@ -4,17 +4,15 @@
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Manage <b>Event</b></h2>
+						<h2>Manage <b>Upcoming Events</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
 								class="material-icons">&#xE147;</i> <span>Add New Events</span></a>
 
-						<% if(! events.length > 0) {%>
+						<% if(! upcomingEvents.length > 0) {%>
 							<a href="/event" class="btn btn-secondary"> <span>Back</span></a>
 							<%} else {%>
-								<a href="/upcomingEvent" class="btn btn-info"> <span>Upcoming</span></a>
-								<a href="/previousEvent" class="btn btn-info"> <span>Previous</span></a>
 								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
 
 								<% } %>
@@ -35,83 +33,82 @@
 						<th>Process</th>
 						<th>Participants</th>
 						<th>Date Posted</th>
-						<% if(! events.length> 0) {%>
+						<% if(! upcomingEvents.length> 0) {%>
 							<th>Actions</th>
 							<%} %>
 
 					</tr>
 				</thead>
-				<tbody>
-					<% if(events.length> 0)
+				<tbody>  
+					<% if(upcomingEvents.length> 0)
 						{
-						for(var i=0; i < events.length; i++) { %>
-							<tr onclick="window.location='/event/<%= events[i]._id %>'" style="cursor: pointer;">
+						for(var i=0; i < eventComing.length; i++) { %>
+							<tr onclick="window.location='/upcomingEvent/<%= eventComing[i]._id %>'" style="cursor: pointer;">
 								<td>
-									<%= events[i].eventTitle %>
+									<%= eventComing[i].eventTitle %>
 								</td>
 								<td>
-									<%= events[i].eventLocation %>
+									<%= eventComing[i].eventLocation %>
 								</td>
 								<td>
-									<%= events[i].eventDetails %>
+									<%= eventComing[i].eventDetails %>
 								</td>
 								<td>
-									<%= events[i].startDate %>
+									<%= eventComing[i].startDate %>
 								</td>
 								<td>
-									<%= events[i].endDate %>
+									<%= eventComing[i].endDate %>
 								</td>
 								<td>
-									<%= events[i].timeStart%> - <%= events[i].timeEnds %>
+									<%= eventComing[i].timeStart%> - <%= eventComing[i].timeEnds %>
 								</td>
 								
 								<td>
-									<%= events[i].eventRequire %>
+									<%= eventComing[i].eventRequire %>
 								</td>
 								<td>
-									<%= events[i].eventProcess %>
+									<%= eventComing[i].eventProcess %>
 								</td>
 								<td>
-									<%= events[i].eventParticipant %>
+									<%= eventComing[i].eventParticipant %>
 								</td>
 								<td>
-									<%= events[i].datePosted %>
+									<%= eventComing[i].datePosted %>
 								</td>
 							</tr>
 							<% }} 
-
-							else { %>
+                            else { %>
 								<tr>
 									<td>
-										<%= events.eventTitle %>
+										<%= upcomingEvents.eventTitle %>
 									</td>
 									<td>
-										<%= events.eventLocation %>
+										<%= upcomingEvents.eventLocation %>
 									</td>
 									<td>
-										<%= events.eventDetails %>
+										<%= upcomingEvents.eventDetails %>
 									</td>
 									<td>
-										<%= events.startDate %>
+										<%= upcomingEvents.startDate %>
 									</td>
 									<td>
-										<%= events.endDate %>
+										<%= upcomingEvents.endDate %>
 									</td>
 									<td>
-										<%= events.timeStart%> - <%= events.timeEnds %>
+										<%= upcomingEvents.timeStart%> - <%= upcomingEvents.timeEnds %>
 									</td>
 									
 									<td>
-										<%= events.eventRequire %>
+										<%= upcomingEvents.eventRequire %>
 									</td>
 									<td>
-										<%= events.eventProcess %>
+										<%= upcomingEvents.eventProcess %>
 									</td>
 									<td>
-										<%= events.eventParticipant %>
+										<%= upcomingEvents.eventParticipant %>
 									</td>
 									<td>
-										<%= events.datePosted %>
+										<%= upcomingEvents.datePosted %>
 									</td>
 									<td>
 										<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
@@ -146,7 +143,7 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/event" method="post">
+				<form action="/upcomingEvent" method="post">
 					<div class="modal-header">
 						<h4 class="modal-title">Add Event</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -217,7 +214,7 @@
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="/event/<%= events._id %>?_method=DELETE" method="post">
+				<form action="/upcomingEvent/<%= upcomingEvents._id %>?_method=DELETE" method="post">
 					<input type="hidden" name="_method" value="DELETE">
 					<div class="modal-header">
 						<h4 class="modal-title">Delete Event</h4>
@@ -239,11 +236,11 @@
 		</div>
 	</div>
 	<!-- Edit Modal HTML -->
-	<% if(! events.length> 0) { %>
+	<% if(! upcomingEvents.length> 0) { %>
 		<div id="editEmployeeModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="/event/<%= events._id%>?_method=PUT" method="post">
+					<form action="/upcomingEvent/<%= upcomingEvents._id%>?_method=PUT" method="post">
 						<input type="hidden" name="_method" value="PUT">
 						<div class="modal-header">
 							<h4 class="modal-title">Edit Events</h4>
@@ -252,55 +249,55 @@
 						<div class="modal-body">
 							<div class="form-group">
 								<label>Event Title</label>
-								<input type="text" name="eventTitle" class="form-control" value="<%=events.eventTitle%>"
-									required>
+								<input type="text" name="eventTitle" class="form-control" value="<%=upcomingEvents.eventTitle%>">
+								
 							</div>
 							<div class="form-group">
 								<label>Location</label>
 								<input type="text" name="eventLocation" class="form-control"
-									value="<%=events.eventLocation%>" required>
+									value="<%=upcomingEvents.eventLocation%>" required>
 							</div>
 							<div class="form-group">
 								<label>Description</label>
 								<textarea class="form-control" name="eventDetails"
-									required><%=events.eventDetails%></textarea>
+									required><%=upcomingEvents.eventDetails%></textarea>
 							</div>
 							<div class="form-group">
 								<label>Date Start </label>
-								<input type="date" name="startDate" class="form-control" value="<%=events.startDate%>" required>
+								<input type="date" name="startDate" class="form-control" value="<%=upcomingEvents.startDate%>" required>
 							</div>
 							<div class="form-row">
 								<div class="form-group" style="width:50%">
 									<label>Time Start</label>
-									<input type="text" name="timeStart" class="form-control" value="<%=events.timeStart%>" placeholder="00:00 AM/PM"
-										required>
+									<input type="text" name="timeStart" class="form-control" placeholder="00:00 AM/PM"
+										value="<%=upcomingEvents.timeStart%>">
 								</div>
 								<div class="form-group" style="width:50%">
 									<label>Time Ends</label>
-									<input type="text" name="timeEnds" class="form-control" value="<%=events.timeEnds%>" placeholder="00:00 AM/PM"
-										required>
+									<input type="text" name="timeEnds" class="form-control" placeholder="00:00 AM/PM"
+                                    value="<%=upcomingEvents.timeEnds%>">
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Date Ends </label>
-								<input type="date" name="endDate" class="form-control" value="<%=events.endDate%>" required>
+								<input type="date" name="endDate" class="form-control" value="<%=upcomingEvents.endDate%>" required>
 							</div>
 							<div class="form-group">
 								<label>Requirements</label>
 								<input type="text" class="form-control" name="eventRequire"
-									value="<%=events.eventRequire%>" required>
+									value="<%=upcomingEvents.eventRequire%>">
 							</div>
 							<div class="form-group">
 								<label>Process</label>
 								<input type="text" class="form-control" name="eventProcess"
-									value="<%=events.eventProcess%>" required>
+									value="<%=upcomingEvents.eventProcess%>">
 							</div>
 							<div class="form-group">
 								<label>Participants</label>
 								<input type="text" class="form-control" name="eventParticipant"
-									value="<%=events.eventParticipant%>" required>
+									value="<%=upcomingEvents.eventParticipant%>">
 							</div>
-						
+							
 						</div>
 						<div class="modal-footer">
 							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

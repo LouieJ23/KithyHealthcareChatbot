@@ -20,6 +20,8 @@ const admin = require('./admin');
 const login = require('./login');
 const queryLog = require('./queryLog');
 const hotline = require('./hotline');
+const upcomingEvent = require('./upcomingEvent');
+const previousEvent = require('./previousEvent');
 const patientAppointment = require ('./patientAppointment');
 const {processRequests, generatePdf} = require('../controllers/Controller');
 
@@ -52,7 +54,9 @@ module.exports = (server) => {
     server.use('/login', login);
     server.use('/queryLog', queryLog);
     server.use('/hotline', hotline);
-    server.use('/patientAppointment', patientAppointment )
+    server.use('/upcomingEvent', upcomingEvent);
+    server.use('/patientAppointment', patientAppointment );
+    server.use('/previousEvent', previousEvent);
 
     server.use('/admin', admin);
     server.post('/', processRequests);

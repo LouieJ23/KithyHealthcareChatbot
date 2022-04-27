@@ -7,6 +7,7 @@ const Event = require('../models/Events');
 const Appointment = require('../models/Appointment');
 const Hotline = require('../models/Hotline');
 const Staff = require('../models/Staffs');
+const Illness = require('../models/Illness');
 
 
 
@@ -32,6 +33,8 @@ router.get('/', async (req, res) => {
         const appointments = await Appointment.find({});
         const hotlines = await Hotline.find({});
         const staffs = await Staff.find({});
+        const event = await Event.find({});
+        const mildIllness = await Illness.find({});
 
         const { page = 1, limit = 5 } = req.query;
         const log = await Log.find()
@@ -52,6 +55,9 @@ router.get('/', async (req, res) => {
             eventPrevious: previousEvents.length,
             emergencyHotlines:hotlines,
             staffsInfo:staffs,
+            dateStarted:event,
+            overAllEvent:event,
+            illness:mildIllness
         });
 
 

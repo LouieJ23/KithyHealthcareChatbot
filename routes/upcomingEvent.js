@@ -18,12 +18,16 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        const event = await Event.find()
+        const currentDate = new Date(Date.now());
+        const comingEvent = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
+        const upcomingEvent = await Event.find()
             .sort({ datePosted: -1 })
-        res.render('event', {
-            events: event,
-            page_name: 'event',
-            isPaginate: false
+      
+        res.render('upcomingEvent', {
+            upcomingEvents: upcomingEvent,
+            eventComing: comingEvent,
+            page_name: 'upcomingEvent',
+            isPaginate: true
         })
 
 
@@ -33,13 +37,10 @@ router.get('/', async (req, res) => {
             message: err
         });
     }
-
 });
 
- 
-
 router.post('/', async (req, res) => {
-    const event = new Event({
+    const upcomingEvent = new Event({
         eventTitle: req.body.eventTitle,
         eventLocation: req.body.eventLocation,
         eventDetails: req.body.eventDetails,
@@ -54,8 +55,13 @@ router.post('/', async (req, res) => {
     });
 
     try {
-        const savedEvent = await event.save();
-        res.redirect(301, '/event');
+        const currentDate = new Date(Date.now());
+        const comingEvent = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const savedEvent = await upcomingEvent.save();
+        res.redirect(301, '/upcomingEvent',{
+            upcomingEvents: savedEvent,
+            eventComing: comingEvent,
+        });
 
     }
     catch (err) {
@@ -68,10 +74,13 @@ router.post('/', async (req, res) => {
 
 router.get('/:postID', async (req, res) => {
     try {
-        const event = await Event.findById(req.params.postID);
-        res.render('event', {
-            events: event,
-            page_name: 'event',
+        const currentDate = new Date(Date.now());
+        const comingEvent = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
+        const upcomingEvent = await Event.findById(req.params.postID);
+        res.render('upcomingEvent', {
+            upcomingEvents: upcomingEvent,
+            eventComing: comingEvent,
+            page_name: 'upcomingEvent',
             isPaginate: false
         });
     }
@@ -84,16 +93,16 @@ router.get('/:postID', async (req, res) => {
 
 router.delete('/:postID', async (req, res) => {
     try {
-        const removeEvent = await Event.remove({
+        const removeEvent = await Event.findByIdAndDelete ({
             _id: req.params.postID
         });
 
-        res.redirect('/event');
+        res.redirect('/upcomingEvent');
         // res.json(removeEvent);
     }
     catch (err) {
         res.json({
-            message: err 
+            message: err
         });
     }
 });
@@ -106,7 +115,7 @@ router.put('/:postID', async (req, res) => {
 
         });
 
-        res.redirect('/event');
+        res.redirect('/upcomingEvent');
     }
     catch (err) {
         res.json({

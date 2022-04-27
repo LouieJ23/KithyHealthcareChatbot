@@ -17,38 +17,11 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-       const {page = 1, limit = 4} = req.query;
-       
         const illness = await Illness.find()
-        .limit(limit * 1)
-       .skip((page - 1) * limit);
-
-       const nextPage = await Illness.find()
-        .limit(limit * 1)
-       .skip((page) * limit);
-
-       const page1 = await Illness.find()
-        .limit(limit * 1)
-       .skip((1 - 1) * limit);
-
-       const page2 = await Illness.find()
-        .limit(limit * 1)
-       .skip((2 - 1) * limit);
-
-       const page3 = await Illness.find()
-        .limit(limit * 1)
-       .skip((3 - 1) * limit);
-
         res.render('illness', {
             illnesses: illness,
             page_name: 'mildIllness',
-            next: parseInt(page) + 1,
-            prev: parseInt(page) - 1,
-            next_Page: nextPage,
-            page_1: page1, 
-            page_2: page2,
-            page_3: page3,
-            isPaginate: true
+            isPaginate: false
         });
     }
     catch(err) {
