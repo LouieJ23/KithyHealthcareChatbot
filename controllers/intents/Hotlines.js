@@ -18,13 +18,13 @@ async function _Hotline(req, res) {
         let hotlines = await Hotline.find({});
             let results = "";
             for (let i = 0; i < hotlines.length; i++) {
-                results += ("This are the Energency Hotlines :" + "\n" + hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n" + "\n");
+                results += ("\n" + hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n");
             }
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": results + "\n" + "Please select what you would like to do next.",
+                            "title": "This are the Emergency Hotlines: "+ results + "\n",
                             "quickReplies": [
                                 "Department",
                                 "Events",
@@ -43,7 +43,7 @@ async function _Hotline(req, res) {
                     {
                         "text": {
                             "text": [
-                                ""
+                                "Please select what you would like to do next."
                             ]
                         }
                     }
