@@ -8,6 +8,7 @@ const Appointment = require('../models/Appointment');
 const Hotline = require('../models/Hotline');
 const Staff = require('../models/Staffs');
 const Illness = require('../models/Illness');
+const Guidelines = require('../models/Guidelines');
 
 
 
@@ -29,12 +30,12 @@ router.get('/', async (req, res) => {
         const currentDate = new Date(Date.now());
         const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
         const previousEvents = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
-
         const appointments = await Appointment.find({});
         const hotlines = await Hotline.find({});
         const staffs = await Staff.find({});
         const event = await Event.find({});
         const mildIllness = await Illness.find({});
+        const guidelines = await Guidelines.find({});
 
         const { page = 1, limit = 5 } = req.query;
         const log = await Log.find()
@@ -48,16 +49,18 @@ router.get('/', async (req, res) => {
             next: parseInt(page) + 1,
             prev: parseInt(page) - 1,
             isPaginate: false,
-            newUnAnsweredQuery: countedLogs.length,
-            numOfUpcomingEvents: upcomingEvents.length,
-            countOfUpcomingEvents: upcomingEvents,
-            numOfAppointments: appointments.length,
+            newUnAnsweredQuery:countedLogs.length,
+            numOfUpcomingEvents:upcomingEvents.length,
+            countOfUpcomingEvents:upcomingEvents,
+            numOfAppointments:appointments.length,
             eventPrevious: previousEvents.length,
             emergencyHotlines:hotlines,
             staffsInfo:staffs,
+            overallStaffs:staffs.length,
             dateStarted:event,
             overAllEvent:event,
-            illness:mildIllness
+            illness:mildIllness,
+            overallGuidelines:guidelines
         });
 
 
@@ -91,6 +94,13 @@ router.post('/', async (req, res) => {
     const currentDate = new Date(Date.now());
     const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: -1 });
     const previousEvents = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
+    const hotlines = await Hotline.find({});
+    const staffs = await Staff.find({});
+    const event = await Event.find({});
+    const mildIllness = await Illness.find({});
+    const guidelines = await Guidelines.find({});
+
+
 
     const appointments = await Appointment.find({});
 
@@ -101,7 +111,14 @@ router.post('/', async (req, res) => {
             newUnAnsweredQuery: countedLogs.length,
             numOfUpcomingEvents: upcomingEvents.length,
             numOfAppointments: appointments.length,
-            eventPrevious: previousEvents.length
+            eventPrevious: previousEvents.length,
+            emergencyHotlines:hotlines,
+            staffsInfo:staffs,
+            overallStaffs:staffs.length,
+            dateStarted:event,
+            overAllEvent:event,
+            illness:mildIllness,
+            overallGuidelines:guidelines
         });
         alert("Login Successful.")
         return true;

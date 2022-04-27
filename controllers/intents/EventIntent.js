@@ -126,7 +126,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
         // Event.find({}, function (err, events) {
             // const event = events[0];
-        const currentDate = Date.now();
+        const currentDate = new Date(Date.now());
         const currentEvents = await Event.find({ startDate: {$eq: currentDate }} ).sort({ datePosted: 1 });
         const currentEvent = currentEvents[0];
 
