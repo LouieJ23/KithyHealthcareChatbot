@@ -112,12 +112,13 @@
                             <input type="text" name="depName" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Detail</label>
-                            <input type="text" name="depDetail" class="form-control" required>
-                        </div>
-                        <div class="form-group">
                             <label>Schedule</label>
-                            <textarea class="form-control" name="depSched" required></textarea>
+                            <input type="text" name="depSched" class="form-control" required>
+
+                        </div>
+						<div class="form-group">
+                            <label>Detail</label>
+							<textarea class="form-control" name="depDetail" required></textarea>
                         </div>
                     </div>
 
@@ -175,14 +176,27 @@
                                     <label>Department Name</label>
                                     <input type="text" name="depName" class="form-control" value="<%= departments.depName %>" required>
                                 </div>
+								<div class="form-group">
+                                    <label>Schedule</label>
+                                    <input type="text" class="form-control" name="depSched" value="<%= departments.depSched %>" required>
+                                </div>
+								<div class="form-row">
+									<div class="form-group" style="width:50%">
+										<label>Time Start</label>
+										<input type="text" name="timeStart" class="form-control" placeholder="00:00 AM/PM"
+											required>
+									</div>
+									<div class="form-group" style="width:50%">
+										<label>Time Ends</label>
+										<input type="text" name="timeEnds" class="form-control" placeholder="00:00 AM/PM"
+											required>
+									</div>
+								</div>
                                 <div class="form-group">
                                     <label>Detail</label>
-                                    <input type="text" name="depDetail" class="form-control" value="<%= departments.depDetail %>" required>
+                                    <input type="text" class="form-control" name="depDetail"  value="<%= departments.depDetail %>" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Schedule</label>
-                                    <textarea class="form-control" name="depSched" required><%= departments.depSched %></textarea>
-                                </div>
+                                
                             </div>
 							<div class="modal-footer">
 								<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

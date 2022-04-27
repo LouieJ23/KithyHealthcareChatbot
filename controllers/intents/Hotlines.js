@@ -43,7 +43,7 @@ async function _Hotline(req, res) {
                     {
                         "text": {
                             "text": [
-                                "Please select what you would like to do next."
+                                ""
                             ]
                         }
                     }

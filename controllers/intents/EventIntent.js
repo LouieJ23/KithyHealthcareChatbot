@@ -124,48 +124,122 @@ async function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
+        // Event.find({}, function (err, events) {
+            // const event = events[0];
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const currentEvents = await Event.find({ startDate: {$eq: currentDate }} ).sort({ datePosted: 1 });
+        const currentEvent = currentEvents[0];
 
-        var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeEnds + ".";
+       var result = "The current event will start at " + currentEvent.startDate.toString().slice(0,15) + " " + currentEvent.timeStart + " and will be end at " + currentEvent.endDate.toString().slice(0,15) + " " + currentEvent.timeEnds + ".";
 
-            var result = "The latest event is starting in " + event.startDateTime + " and end in " + event.endDateTime;
-
-
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
-
-
-
-                            ]
-                        },
-                        "platform": "FACEBOOK"
+       if (currentEvents.length > 0) {
+        res.json({
+            "fulfillmentMessages": [
+                {
+                    "quickReplies": {
+                        "title": result,
+                        "quickReplies": [
+                            "More",
+                            "Department",
+                            "Events",
+                            "Guidelines",
+                            "Hotline",
+                            "Illness",
+                            "Set Appointment",
+                            "Staff",
+                            "Visit Site",
+                            "[Go Back]",
+                        ]
                     },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
+                    "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                        "text": [
+                            ""
+                        ]
                     }
-                ]
-            });
+                }
+            ]
+        });
     }
+
+    else {
+        res.json({
+            "fulfillmentMessages": [
+                {
+                    "quickReplies": {
+                        "title": "There's no current event.",
+                        "quickReplies": [
+                            "More",
+                            "Department",
+                            "Events",
+                            "Guidelines",
+                            "Hotline",
+                            "Illness",
+                            "Set Appointment",
+                            "Staff",
+                            "Visit Site",
+                            "[Go Back]",
+                        ]
+                    },
+                    "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                        "text": [
+                            ""
+                        ]
+                    }
+                }
+            ]
+        });
+    }
+        // })
+    }
+    // else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
+    //     const currentDate = new Date(Date.now());
+    //     const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
+    //     const upcomingEvent = upcomingEvents[0];
+
+    //     var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeEnds + ".";
+
+    //         var result = "The latest event is starting in " + event.startDateTime + " and end in " + event.endDateTime;
+
+
+    //         res.json({
+    //             "fulfillmentMessages": [
+    //                 {
+    //                     "quickReplies": {
+    //                         "title": result,
+    //                         "quickReplies": [
+    //                             "More",
+    //                             "Department",
+    //                             "Events",
+    //                             "Guidelines",
+    //                             "Hotline",
+    //                             "Illness",
+    //                             "Set Appointment",
+    //                             "Staff",
+    //                             "Visit Site",
+    //                             "[Go Back]",
+
+
+
+    //                         ]
+    //                     },
+    //                     "platform": "FACEBOOK"
+    //                 },
+    //                 {
+    //                     "text": {
+    //                         "text": [
+    //                             ""
+    //                         ]
+    //                     }
+    //                 }
+    //             ]
+    //         });
+    // }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
         Event.find({}, function (err, events) {
