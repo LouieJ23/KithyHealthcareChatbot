@@ -126,75 +126,85 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
         // Event.find({}, function (err, events) {
             // const event = events[0];
-        const currentDate = new Date(Date.now());
-        const currentEvents = await Event.find({ startDate: {$eq: currentDate }} ).sort({ datePosted: 1 });
-        const currentEvent = currentEvents[0];
+          
+                const currentDate = new Date(Date.now().toString().slice(0,15));
+                const eventDate = await Event.find({startDate: {$eq: currentDate}}).sort({startDate: 1}) ;
+                const latest = eventDate[0];
+                console.log(eventDate);
 
-       var result = "The current event will start at " + currentEvent.startDate.toString().slice(0,15) + " " + currentEvent.timeStart + " and will be end at " + currentEvent.endDate.toString().slice(0,15) + " " + currentEvent.timeEnds + ".";
+                var result = "The current event will start at " + currentEvent.startDate.toString().slice(0,10) + " " + currentEvent.timeStart + " and will be end at " + currentEvent.endDate.toString().slice(0,10) + " " + currentEvent.timeEnds + ".";
 
-       if (currentEvents.length > 0) {
-        res.json({
-            "fulfillmentMessages": [
-                {
-                    "quickReplies": {
-                        "title": result,
-                        "quickReplies": [
-                            "More",
-                            "Department",
-                            "Events",
-                            "Guidelines",
-                            "Hotline",
-                            "Illness",
-                            "Set Appointment",
-                            "Staff",
-                            "Visit Site",
-                            "[Go Back]",
-                        ]
-                    },
-                    "platform": "FACEBOOK"
-                },
-                {
-                    "text": {
-                        "text": [
-                            ""
-                        ]
-                    }
-                }
-            ]
-        });
-    }
+                if (currentEvents.length > 0) {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": result,
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+         
+             else {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": "There's no current event.",
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+            
 
-    else {
-        res.json({
-            "fulfillmentMessages": [
-                {
-                    "quickReplies": {
-                        "title": "There's no current event.",
-                        "quickReplies": [
-                            "More",
-                            "Department",
-                            "Events",
-                            "Guidelines",
-                            "Hotline",
-                            "Illness",
-                            "Set Appointment",
-                            "Staff",
-                            "Visit Site",
-                            "[Go Back]",
-                        ]
-                    },
-                    "platform": "FACEBOOK"
-                },
-                {
-                    "text": {
-                        "text": [
-                            ""
-                        ]
-                    }
-                }
-            ]
-        });
-    }
+ 
+        
+        // const currentEvents = await Event.find({ startDate: {$eq: currentDate }} ).sort({ datePosted: 1 });
+        // const currentEvent = currentEvents[0];
+
+      
         // })
     }
     // else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {

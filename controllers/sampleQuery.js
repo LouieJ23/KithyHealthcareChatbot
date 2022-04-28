@@ -21,9 +21,28 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 //     console.log(event);
 // }).sort({ datePosted: -1 });
 
+// const currentDate = new Date(Date.now());
+// console.log (currentDate.toString().slice(0,10));
 
-const logs=async()=> {
-const distinctLogs = await LogQuery.deleteMany({"query": value}) ;
-console.log(distinctLogs);
-}
-logs();
+// const currentDate = new Date(Date.now().toString().slice(0,10));
+// // const currentEvents = await Event.find({ startDate: {$eq: currentDate }} ).sort({ datePosted: 1 });
+// const currentEvent = currentEvents[0];
+
+// var result = "The current event will start at " + currentEvent.startDate.toString().slice(0,10) + " " + currentEvent.timeStart + " and will be end at " + currentEvent.endDate.toString().slice(0,10) + " " + currentEvent.timeEnds + ".";
+
+
+// const logs=async()=> {
+// const distinctLogs = await LogQuery.deleteMany({"query": value}) ;
+// console.log(distinctLogs);
+// }
+// logs();
+
+const events=async()=> {
+    const eventDate = await Event.find({}) ;
+    const startDate = eventDate[0].startDate.toString().slice(0,15)
+    const currentDate = new Date(Date.now()).toString().slice(0, 15);
+    console.log(startDate === currentDate);
+    console.log(currentDate);
+    console.log(startDate);
+    }
+    events();
