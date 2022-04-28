@@ -132,9 +132,9 @@ async function _Event(req, res) {
                 const latest = eventDate[0];
                 console.log(eventDate);
 
-                var result = "The current event will start at " + currentEvent.startDate.toString().slice(0,10) + " " + currentEvent.timeStart + " and will be end at " + currentEvent.endDate.toString().slice(0,10) + " " + currentEvent.timeEnds + ".";
+                var result = "The current event will start at " + latest.startDate.toString().slice(0,15) + " " + latest.timeStart + " and will be end at " + latest.endDate.toString().slice(0,15) + " " + latest.timeEnds + ".";
 
-                if (currentEvents.length > 0) {
+                if (eventDate.length > 0) {
                  res.json({
                      "fulfillmentMessages": [
                          {
