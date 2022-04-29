@@ -8,7 +8,8 @@ const _Illness = require('./intents/IllnessIntent');
 const _Hotline = require('./intents/Hotlines');
 const _Department = require('./intents/Department');
 const _DefaultWelcomeIntent  = require('./intents/DefaultWelcomeIntent');
-const _Guideline = require('./intents/Guidelines')
+const _Guideline = require('./intents/Guidelines');
+const _Staff = require('./intents/StaffIntent');
 
 const StaffInfo = require('../models/Staffs');
 const Guidelines = require('../models/Guidelines');
@@ -25,6 +26,7 @@ const processRequests = (req, res) => {
     _Department(req, res);
     _DefaultWelcomeIntent(req, res);
     _Guideline(req, res);
+    _Staff(req, res);
 };
 
 module.exports = {
