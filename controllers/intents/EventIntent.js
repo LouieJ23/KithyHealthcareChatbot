@@ -100,12 +100,27 @@ async function _Event(req, res) {
             });
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
+        // Event.find({}, function (err, events) {
+        //     const event = events[0];
 
-            var result = "The latest events title is " + event.eventTitle;
+        //     var result = "The latest events title is " + event.eventTitle;
 
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
+        console.log(latestEvents);
+        var result = "The current events title is " + latestEvents[0].eventTitle;
+        if (latestEvents.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -122,9 +137,6 @@ async function _Event(req, res) {
                                 "Staff",
                                 "Visit Site",
                                 "[Go Back]",
-
-
-
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -138,7 +150,39 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
+        }
+    
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
           
@@ -283,202 +327,488 @@ async function _Event(req, res) {
     // }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest events location is " + event.eventLocation;
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
+        console.log(latestEvents);
+        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
+    
+        // for (let i = 0; i < events.length; i++) {
+        
+        //     const startDate = events[i].startDate.toString().slice(0,15);
+            
+        //     if(startDate === currentDate) {
+        //         latestEvents.push(events[i]);
+        //     }
+        // }
 
+                var result = "The current event will be held at " + latestEvents[0].eventLocation + ".";
 
-
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
+                if (latestEvents.length > 0) {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": result,
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+         
+             else {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": "There's no current event.",
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
     }
 
     else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event details") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest events details is " + event.eventDetails;
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
+        console.log(latestEvents);
+        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
+    
+        // for (let i = 0; i < events.length; i++) {
+        
+        //     const startDate = events[i].startDate.toString().slice(0,15);
+            
+        //     if(startDate === currentDate) {
+        //         latestEvents.push(events[i]);
+        //     }
+        // }
 
+                var result = "The current event details is " + latestEvents[0].eventDetails + ".";
 
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
+                if (latestEvents.length > 0) {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": result,
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+         
+             else {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": "There's no current event.",
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
     }
 
     else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event requirements") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest events requirements is " + event.eventRequire;
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
+        console.log(latestEvents);
+        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
+    
+        // for (let i = 0; i < events.length; i++) {
+        
+        //     const startDate = events[i].startDate.toString().slice(0,15);
+            
+        //     if(startDate === currentDate) {
+        //         latestEvents.push(events[i]);
+        //     }
+        // }
 
+                var result = "In order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ".";
 
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
+                if (latestEvents.length > 0) {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": result,
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+         
+             else {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": "There's no current event.",
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
     }
 
     else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event process") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest events process is " + event.eventProcess;
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
+        console.log(latestEvents);
+        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
+    
+        // for (let i = 0; i < events.length; i++) {
+        
+        //     const startDate = events[i].startDate.toString().slice(0,15);
+            
+        //     if(startDate === currentDate) {
+        //         latestEvents.push(events[i]);
+        //     }
+        // }
 
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
+                var result = "The current event process is " + latestEvents[0].eventProcess + ".";
+
+                if (latestEvents.length > 0) {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": result,
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+         
+             else {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": "There's no current event.",
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
     }
 
     else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event participants") {
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest events participants is " + event.eventParticipant;
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
+        console.log(latestEvents);
+        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
+    
+        // for (let i = 0; i < events.length; i++) {
+        
+        //     const startDate = events[i].startDate.toString().slice(0,15);
+            
+        //     if(startDate === currentDate) {
+        //         latestEvents.push(events[i]);
+        //     }
+        // }
 
-                            ]
-                        },
-                        "platform": "FACEBOOK"
-                    },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
-                    }
-                ]
-            });
-        }).sort({ datePosted: -1 });
+                var result = "The current event participant is " + latestEvents[0].eventParticipant + ".";
+
+                if (latestEvents.length > 0) {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": result,
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
+         
+             else {
+                 res.json({
+                     "fulfillmentMessages": [
+                         {
+                             "quickReplies": {
+                                 "title": "There's no current event.",
+                                 "quickReplies": [
+                                     "More",
+                                     "Department",
+                                     "Events",
+                                     "Guidelines",
+                                     "Hotline",
+                                     "Illness",
+                                     "Set Appointment",
+                                     "Staff",
+                                     "Visit Site",
+                                     "[Go Back]",
+                                 ]
+                             },
+                             "platform": "FACEBOOK"
+                         },
+                         {
+                             "text": {
+                                 "text": [
+                                     ""
+                                 ]
+                             }
+                         }
+                     ]
+                 });
+             }
     }
 
     //PREVIOUS EVENT FUNCTION
