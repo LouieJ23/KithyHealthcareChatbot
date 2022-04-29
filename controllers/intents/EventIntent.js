@@ -47,15 +47,30 @@ async function _Event(req, res) {
         });
     }
     else if ((intent_name == "Events - latest") || intent_name == "Latest Event"){
-        Event.find({}, function (err, events) {
-            const event = events[0];
-            var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+        
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
+
+        console.log(latestEvents);
+
+
+            // var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
 
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": result,
+                            "title": "result",
                             "quickReplies": [
                                 "More",
                                 "Department",
@@ -81,7 +96,6 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         Event.find({}, function (err, events) {
@@ -125,27 +139,27 @@ async function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
-        const events = await Event.find({});
-        const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
     
-        for (let i = 0; i < events.length; i++) {
+        // for (let i = 0; i < events.length; i++) {
         
-            const startDate = events[i].startDate.toString().slice(0,15);
+        //     const startDate = events[i].startDate.toString().slice(0,15);
             
-            if(startDate === currentDate) {
-                latestEvents.push(events[i]);
-            }
-        }
+        //     if(startDate === currentDate) {
+        //         latestEvents.push(events[i]);
+        //     }
+        // }
 
-                var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
+                // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
 
                 if (eventDate.length > 0) {
                  res.json({
                      "fulfillmentMessages": [
                          {
                              "quickReplies": {
-                                 "title": result,
+                                 "title": "result",
                                  "quickReplies": [
                                      "More",
                                      "Department",
