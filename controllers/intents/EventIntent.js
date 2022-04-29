@@ -62,10 +62,11 @@ async function _Event(req, res) {
         }
 
         console.log(latestEvents);
+        var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+
 
         // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
 
-        var result = "The latest events " + latestEvents[0].eventTitle + " will be to held  in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + "" + latestEvents[0].timeStart + " " + "and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
 
             res.json({
                 "fulfillmentMessages": [
@@ -140,6 +141,23 @@ async function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
+          
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
+
+        console.log(latestEvents);
+        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
@@ -153,9 +171,9 @@ async function _Event(req, res) {
         //     }
         // }
 
-                // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
+                var result = "The current event will start on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
 
-                if (eventDate.length > 0) {
+                if (latestEvents.length > 0) {
                  res.json({
                      "fulfillmentMessages": [
                          {
