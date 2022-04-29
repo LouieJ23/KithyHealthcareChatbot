@@ -78,10 +78,7 @@ async function _Event(req, res) {
         console.log(latestEvents);
         var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + " starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + "." + " " + latestEvents[0].eventDetails + "." + "\n";
 
-
-        // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
-
-
+        if (latestEvents.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -98,7 +95,6 @@ async function _Event(req, res) {
                                 "Staff",
                                 "Visit Site",
                                 "[Go Back]",
-
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -112,6 +108,39 @@ async function _Event(req, res) {
                     }
                 ]
             });
+        }
+    
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         // Event.find({}, function (err, events) {
