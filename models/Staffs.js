@@ -21,7 +21,7 @@ const staffInfo = mongoose.Schema({
         type: String,
         require: true
     },
-    contactInfo: {
+    
     cellNumber: {
         type: String,
         require: true
@@ -29,21 +29,21 @@ const staffInfo = mongoose.Schema({
     email: {
         type: String,
         require: true
-    }
-},
-    schedule: {
-        Day: {
+    },
+
+
+        day: {
             type: String,
             require: true
         },
-        Time: {
+        time: {
             type: String,
             require: true
-        }
-},
+        },
+
     datePosted: {
-    type: Date,
-    default: Date
+        type: Date,
+        default: Date.now
 }
 
 })

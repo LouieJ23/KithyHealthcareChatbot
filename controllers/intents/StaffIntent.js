@@ -24,7 +24,7 @@ async function _Staff(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "This are the Emergency Hotlines: "+ results + "\n",
+                            "title": "This are the Health Center's Staff "+ results + "\n",
                             "quickReplies": [
                                 "Department",
                                 "Events",
