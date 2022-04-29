@@ -50,19 +50,18 @@ async function _Event(req, res) {
         
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        var result = "";
     
         for (let i = 0; i < events.length; i++) {
         
             const startDate = events[i].startDate.toString().slice(0,15);
             
             if(startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + " starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ". "+ events[0].eventDetails + "." + "\n";
             }
         }
 
         console.log(latestEvents);
-        var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ". "+ latestEvents[0].eventDetails + "." + "\n";
 
 
         // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
