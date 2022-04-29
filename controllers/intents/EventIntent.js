@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const { events } = require('../../models/Events');
 const Event = require('../../models/Events');
 const EventLogQuery = require('../../models/QueryLog');
 
@@ -124,15 +125,20 @@ async function _Event(req, res) {
         }).sort({ datePosted: -1 });
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
-        // Event.find({}, function (err, events) {
-            // const event = events[0];
-          
-                const currentDate = new Date(Date.now().toString().slice(0,15));
-                const eventDate = await Event.find({startDate: {$eq: currentDate}}).sort({startDate: 1}) ;
-                const latest = eventDate[0];
-                console.log(eventDate);
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const latestEvents = [];
+    
+        for (let i = 0; i < events.length; i++) {
+        
+            const startDate = events[i].startDate.toString().slice(0,15);
+            
+            if(startDate === currentDate) {
+                latestEvents.push(events[i]);
+            }
+        }
 
-                var result = "The current event will start at " + latest.startDate.toString().slice(0,15) + " " + latest.timeStart + " and will be end at " + latest.endDate.toString().slice(0,15) + " " + latest.timeEnds + ".";
+                var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
 
                 if (eventDate.length > 0) {
                  res.json({
@@ -197,15 +203,7 @@ async function _Event(req, res) {
                      ]
                  });
              }
-            
-
- 
         
-        // const currentEvents = await Event.find({ startDate: {$eq: currentDate }} ).sort({ datePosted: 1 });
-        // const currentEvent = currentEvents[0];
-
-      
-        // })
     }
     // else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
     //     const currentDate = new Date(Date.now());

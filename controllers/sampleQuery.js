@@ -36,13 +36,29 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 // console.log(distinctLogs);
 // }
 // logs();
-
+// .sort({startDate: 1})
+// const events=async()=> {
+//     const eventDate = await Event.find({});
+//     const startDate = eventDate[0].startDate.toString().slice(0,15);
+//     const currentDate = new Date(Date.now()).toString().slice(0, 15);
+//     console.log(startDate === currentDate);
+//     console.log(currentDate);
+//     console.log(startDate);
+//     }
+//     events();
 const events=async()=> {
-    const eventDate = await Event.find({}) ;
-    const startDate = eventDate[0].startDate.toString().slice(0,15)
+    const events = await Event.find({});
     const currentDate = new Date(Date.now()).toString().slice(0, 15);
-    console.log(startDate === currentDate);
-    console.log(currentDate);
-    console.log(startDate);
+    const latestEvents = [];
+
+for (let i = 0; i < events.length; i++) {
+  
+    const startDate = events[i].startDate.toString().slice(0,15);
+    
+    if(startDate === currentDate) {
+        latestEvents.push(events[i]);
     }
-    events();
+}
+
+}
+events();
