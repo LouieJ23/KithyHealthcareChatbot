@@ -63,6 +63,7 @@ async function _Event(req, res) {
 
         console.log(latestEvents);
 
+        var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
 
             // var result = "The latest events " + event.eventTitle + " will be going to held  in " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
 
@@ -70,7 +71,7 @@ async function _Event(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "result",
+                            "title": result,
                             "quickReplies": [
                                 "More",
                                 "Department",
