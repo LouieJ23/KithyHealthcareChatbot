@@ -62,7 +62,7 @@ async function _Event(req, res) {
         }
 
         console.log(latestEvents);
-        var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + "."+ latestEvents[0].eventDetails + "." + "\n";
+        var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ". "+ latestEvents[0].eventDetails + "." + "\n";
 
 
         // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
@@ -550,7 +550,7 @@ async function _Event(req, res) {
         //     }
         // }
 
-                var result = "In order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ".";
+                var result = "In order to participate to the event, you are required to " + latestEvents[0].eventRequire + ".";
 
                 if (latestEvents.length > 0) {
                  res.json({
@@ -815,7 +815,7 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
         Event.find({}, function (err, events) {
             const event = events[1];
-            var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to bring " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+            var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
 
             res.json({
                 "fulfillmentMessages": [
