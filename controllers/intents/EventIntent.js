@@ -76,7 +76,7 @@ async function _Event(req, res) {
 
         // console.log(latestEvents);
         console.log(latestEvents);
-        var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + " starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ". "+ latestEvents[0].eventDetails + "." + "\n";
+        var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + " starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + "." + " " + latestEvents[0].eventDetails + "." + "\n";
 
 
         // var result = "The current event will start at " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will be end at " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
