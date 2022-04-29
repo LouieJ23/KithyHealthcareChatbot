@@ -18,7 +18,7 @@ async function _Guideline(req, res) {
         let guidelines = await Guideline.find({});
             let results = "";
             for (let i = 0; i < guidelines.length; i++) {
-                results += ("\n" + guidelines[i].actNo + "\n" + guidelines[i].title + "\n" + guidelines[i].detail + "\n");
+                results += ("\n" + "Act Number: " + guidelines[i].actNo + "\n" + "Title: "+ guidelines[i].title + "\n" + "Detail: " + guidelines[i].detail + "\n");
             }
             res.json({
                 "fulfillmentMessages": [
