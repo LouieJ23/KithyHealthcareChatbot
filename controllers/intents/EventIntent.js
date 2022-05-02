@@ -296,49 +296,6 @@ async function _Event(req, res) {
              }
         
     }
-    // else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
-    //     const currentDate = new Date(Date.now());
-    //     const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ datePosted: 1 });
-    //     const upcomingEvent = upcomingEvents[0];
-
-    //     var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeEnds + ".";
-
-    //         var result = "The latest event is starting in " + event.startDateTime + " and end in " + event.endDateTime;
-
-
-    //         res.json({
-    //             "fulfillmentMessages": [
-    //                 {
-    //                     "quickReplies": {
-    //                         "title": result,
-    //                         "quickReplies": [
-    //                             "More",
-    //                             "Department",
-    //                             "Events",
-    //                             "Guidelines",
-    //                             "Hotline",
-    //                             "Illness",
-    //                             "Set Appointment",
-    //                             "Staff",
-    //                             "Visit Site",
-    //                             "[Go Back]",
-
-
-
-    //                         ]
-    //                     },
-    //                     "platform": "FACEBOOK"
-    //                 },
-    //                 {
-    //                     "text": {
-    //                         "text": [
-    //                             ""
-    //                         ]
-    //                     }
-    //                 }
-    //             ]
-    //         });
-    // }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
         const events = await Event.find({});
