@@ -18,7 +18,6 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-       
         const currentDate = new Date(Date.now());
         const comingEvent = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: -1 });
         const previousEvent = await Event.find().sort({ datePosted: -1 })
@@ -29,8 +28,6 @@ router.get('/', async (req, res) => {
             page_name: 'previousEvent',
             isPaginate: false
         })
-
-
     }
     catch (err) {
         res.json({
@@ -56,7 +53,7 @@ router.post('/', async (req, res) => {
 
     try {
         const currentDate = new Date(Date.now());
-        const comingEvent = await Event.find({ startDate: { $lte: currentDate } }).sort({ datePosted: -1 });
+        const comingEvent = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
         const savedEvent = await previousEvent.save();
         res.redirect(301, '/previousEvent',{
             previousEvents: savedEvent,
@@ -75,7 +72,7 @@ router.post('/', async (req, res) => {
 router.get('/:postID', async (req, res) => {
     try {
         const currentDate = new Date(Date.now());
-        const comingEvent = await Event.find({ startDate: { $lte: currentDate } }).sort({ datePosted: -1 });
+        const comingEvent = await Event.find({ startDate: { $lt: currentDate } }).sort({ datePosted: -1 });
         const previousEvent = await Event.findById(req.params.postID);
         res.render('previousEvent', {
             previousEvents: previousEvent,
