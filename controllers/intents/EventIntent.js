@@ -54,7 +54,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             const startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + events[i].eventRequire + ". And you must follow this following process: " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
+                result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
                 count++;
             }
         }
@@ -209,39 +209,24 @@ async function _Event(req, res) {
         }
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
-
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "The current event began at " + events[i].timeStart  + " on " + events[i].startDate + " and finished at " + events.timeEnds[i] + " on " + events.endDate + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+        // console.log(result);
+        // console.log(count);
 
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
-
-        // for (let i = 0; i < events.length; i++) {
-
-        //     const startDate = events[i].startDate.toString().slice(0,15);
-
-        //     if(startDate === currentDate) {
-        //         latestEvents.push(events[i]);
-        //     }
-        // }
-
-        var result = "The current event will start on " + latestEvents[0].startDate.toString().slice(0, 15) + " " + latestEvents[0].timeStart + " and will going to end on " + latestEvents[0].endDate.toString().slice(0, 15) + " " + latestEvents[0].timeEnds + ".";
-
-        if (latestEvents.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -304,42 +289,27 @@ async function _Event(req, res) {
                 ]
             });
         }
-
     }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "The current event will take place at " + events.eventLocation + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+        // console.log(result);
+        // console.log(count);
 
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
-
-        // for (let i = 0; i < events.length; i++) {
-
-        //     const startDate = events[i].startDate.toString().slice(0,15);
-
-        //     if(startDate === currentDate) {
-        //         latestEvents.push(events[i]);
-        //     }
-        // }
-
-        var result = "The current event will be held at " + latestEvents[0].eventLocation + ".";
-
-        if (latestEvents.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -407,36 +377,22 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event details") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += events[i].eventDetails + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+        // console.log(result);
+        // console.log(count);
 
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
-
-        // for (let i = 0; i < events.length; i++) {
-
-        //     const startDate = events[i].startDate.toString().slice(0,15);
-
-        //     if(startDate === currentDate) {
-        //         latestEvents.push(events[i]);
-        //     }
-        // }
-
-        var result = "The current event details is " + latestEvents[0].eventDetails + ".";
-
-        if (latestEvents.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -504,36 +460,22 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event requirements") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "To partcipate to this event you must comply this following requirements: " + events[i].eventRequire  + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+        // console.log(result);
+        // console.log(count);
 
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
-
-        // for (let i = 0; i < events.length; i++) {
-
-        //     const startDate = events[i].startDate.toString().slice(0,15);
-
-        //     if(startDate === currentDate) {
-        //         latestEvents.push(events[i]);
-        //     }
-        // }
-
-        var result = "In order to participate to the event, you are required to " + latestEvents[0].eventRequire + ".";
-
-        if (latestEvents.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -601,36 +543,22 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event process") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "To take part in this event, you must complete the steps below: " + events[i].eventProcess + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+        // console.log(result);
+        // console.log(count);
 
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
-
-        // for (let i = 0; i < events.length; i++) {
-
-        //     const startDate = events[i].startDate.toString().slice(0,15);
-
-        //     if(startDate === currentDate) {
-        //         latestEvents.push(events[i]);
-        //     }
-        // }
-
-        var result = "The current event process is " + latestEvents[0].eventProcess + ".";
-
-        if (latestEvents.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -698,36 +626,22 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event participants") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "The participants of this event are: " + events[i].eventParticipant + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        // var result = "The latest events " + latestEvents[0].eventTitle + " will be held in " + latestEvents[0].eventLocation + "starting on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " " + "and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ". So in order to participate to the event, you are required to bring " + latestEvents[0].eventRequire + ". The process is to " + latestEvents[0].eventProcess + " and the participants are " + latestEvents[0].eventParticipant + ".";
+        // console.log(result);
+        // console.log(count);
 
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
-
-        // for (let i = 0; i < events.length; i++) {
-
-        //     const startDate = events[i].startDate.toString().slice(0,15);
-
-        //     if(startDate === currentDate) {
-        //         latestEvents.push(events[i]);
-        //     }
-        // }
-
-        var result = "The current event participant is " + latestEvents[0].eventParticipant + ".";
-
-        if (latestEvents.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
