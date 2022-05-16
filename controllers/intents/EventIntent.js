@@ -218,7 +218,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             const startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "The current event began at " + events[i].timeStart  + " on " + events[i].startDate + " and finished at " + events.timeEnds[i] + " on " + events.endDate + ".\n" + "\n";
+                result += "The current event began at " + events[i].timeStart  + " on " + events[i].startDate.toString().slice(0,15) + " and finished at " + events.timeEnds[i] + " on " + events.endDate.toString().slice(0,15) + ".\n" + "\n";
                 count++;
             }
         }
