@@ -44,53 +44,53 @@ async function _Event(req, res) {
             });
         });
     }
-    else if ((intent_name == "Events - latest") || intent_name == "Latest Event"){
+    else if ((intent_name == "Events - latest") || intent_name == "Latest Event") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDates = events[i].startDate.toString().slice(0, 15);
+
+            if (startDates === currentDate) {
                 latestEvents.push(events[i]);
             }
-        } 
+        }
 
         console.log(latestEvents);
-     
+        var result = "The current event is " + latestEvents[i].eventTitle + ". " + latestEvents[i].eventDetails + ". This event is going to held at " + latestEvents[i].eventLocation + ", starting on  " + latestEvents[i].startDate.toString().slice(0,15) + " at " + latestEvents[i].timeStart + " and will be going to end on " + latestEvents[i].endDate.toString().slice(0,15) + " at " + latestEvents[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + latestEvents[i].eventRequire + ". And you must follow this following process: " + latestEvents[i].eventProcess + ". The participants for this event are " + latestEvents[i].eventParticipant + "."
 
-            res.json({
-                "fulfillmentMessages": [
-                    {
-                        "quickReplies": {
-                            "title": result,
-                            "quickReplies": [
-                                "More",
-                                "Department",
-                                "Events",
-                                "Guidelines",
-                                "Hotline",
-                                "Illness",
-                                "Set Appointment",
-                                "Staff",
-                                "Visit Site",
-                                "[Go Back]",
+        res.json({
+            "fulfillmentMessages": [
+                {
+                    "quickReplies": {
+                        "title": result,
+                        "quickReplies": [
+                            "More",
+                            "Department",
+                            "Events",
+                            "Guidelines",
+                            "Hotline",
+                            "Illness",
+                            "Set Appointment",
+                            "Staff",
+                            "Visit Site",
+                            "[Go Back]",
 
-                            ]
-                        },
-                        "platform": "FACEBOOK"
+                        ]
                     },
-                    {
-                        "text": {
-                            "text": [
-                                ""
-                            ]
-                        }
+                    "platform": "FACEBOOK"
+                },
+                {
+                    "text": {
+                        "text": [
+                            ""
+                        ]
                     }
-                ]
-            });
+                }
+            ]
+        });
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         // Event.find({}, function (err, events) {
@@ -101,12 +101,12 @@ async function _Event(req, res) {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -144,7 +144,7 @@ async function _Event(req, res) {
                 ]
             });
         }
-    
+
         else {
             res.json({
                 "fulfillmentMessages": [
@@ -178,16 +178,16 @@ async function _Event(req, res) {
         }
     }
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
-          
+
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -198,94 +198,94 @@ async function _Event(req, res) {
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
-    
+
         // for (let i = 0; i < events.length; i++) {
-        
+
         //     const startDate = events[i].startDate.toString().slice(0,15);
-            
+
         //     if(startDate === currentDate) {
         //         latestEvents.push(events[i]);
         //     }
         // }
 
-                var result = "The current event will start on " + latestEvents[0].startDate.toString().slice(0,15) + " " + latestEvents[0].timeStart + " and will going to end on " + latestEvents[0].endDate.toString().slice(0,15) + " " + latestEvents[0].timeEnds + ".";
+        var result = "The current event will start on " + latestEvents[0].startDate.toString().slice(0, 15) + " " + latestEvents[0].timeStart + " and will going to end on " + latestEvents[0].endDate.toString().slice(0, 15) + " " + latestEvents[0].timeEnds + ".";
 
-                if (latestEvents.length > 0) {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": result,
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-         
-             else {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": "There's no current event.",
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-        
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
     }
 
     else if ((intent_name == "Events - latest - more - @location") || intent_name == "Latest Event location") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -296,93 +296,93 @@ async function _Event(req, res) {
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
-    
+
         // for (let i = 0; i < events.length; i++) {
-        
+
         //     const startDate = events[i].startDate.toString().slice(0,15);
-            
+
         //     if(startDate === currentDate) {
         //         latestEvents.push(events[i]);
         //     }
         // }
 
-                var result = "The current event will be held at " + latestEvents[0].eventLocation + ".";
+        var result = "The current event will be held at " + latestEvents[0].eventLocation + ".";
 
-                if (latestEvents.length > 0) {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": result,
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-         
-             else {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": "There's no current event.",
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
 
     else if ((intent_name == "Events - latest - more - @details") || intent_name == "Latest Event details") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -393,93 +393,93 @@ async function _Event(req, res) {
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
-    
+
         // for (let i = 0; i < events.length; i++) {
-        
+
         //     const startDate = events[i].startDate.toString().slice(0,15);
-            
+
         //     if(startDate === currentDate) {
         //         latestEvents.push(events[i]);
         //     }
         // }
 
-                var result = "The current event details is " + latestEvents[0].eventDetails + ".";
+        var result = "The current event details is " + latestEvents[0].eventDetails + ".";
 
-                if (latestEvents.length > 0) {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": result,
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-         
-             else {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": "There's no current event.",
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
 
     else if ((intent_name == "Events - latest - more - @requirements") || intent_name == "Latest Event requirements") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -490,93 +490,93 @@ async function _Event(req, res) {
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
-    
+
         // for (let i = 0; i < events.length; i++) {
-        
+
         //     const startDate = events[i].startDate.toString().slice(0,15);
-            
+
         //     if(startDate === currentDate) {
         //         latestEvents.push(events[i]);
         //     }
         // }
 
-                var result = "In order to participate to the event, you are required to " + latestEvents[0].eventRequire + ".";
+        var result = "In order to participate to the event, you are required to " + latestEvents[0].eventRequire + ".";
 
-                if (latestEvents.length > 0) {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": result,
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-         
-             else {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": "There's no current event.",
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
 
     else if ((intent_name == "Events - latest - more - @process") || intent_name == "Latest Event process") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -587,93 +587,93 @@ async function _Event(req, res) {
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
-    
+
         // for (let i = 0; i < events.length; i++) {
-        
+
         //     const startDate = events[i].startDate.toString().slice(0,15);
-            
+
         //     if(startDate === currentDate) {
         //         latestEvents.push(events[i]);
         //     }
         // }
 
-                var result = "The current event process is " + latestEvents[0].eventProcess + ".";
+        var result = "The current event process is " + latestEvents[0].eventProcess + ".";
 
-                if (latestEvents.length > 0) {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": result,
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-         
-             else {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": "There's no current event.",
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
 
     else if ((intent_name == "Events - latest - more - @participants") || intent_name == "Latest Event participants") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
-    
+
         for (let i = 0; i < events.length; i++) {
-        
-            const startDate = events[i].startDate.toString().slice(0,15);
-            
-            if(startDate === currentDate) {
+
+            const startDate = events[i].startDate.toString().slice(0, 15);
+
+            if (startDate === currentDate) {
                 latestEvents.push(events[i]);
             }
         }
@@ -684,81 +684,81 @@ async function _Event(req, res) {
         // const events = await Event.find({});
         // const currentDate = new Date(Date.now()).toString().slice(0, 15);
         // const latestEvents = [];
-    
+
         // for (let i = 0; i < events.length; i++) {
-        
+
         //     const startDate = events[i].startDate.toString().slice(0,15);
-            
+
         //     if(startDate === currentDate) {
         //         latestEvents.push(events[i]);
         //     }
         // }
 
-                var result = "The current event participant is " + latestEvents[0].eventParticipant + ".";
+        var result = "The current event participant is " + latestEvents[0].eventParticipant + ".";
 
-                if (latestEvents.length > 0) {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": result,
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
-         
-             else {
-                 res.json({
-                     "fulfillmentMessages": [
-                         {
-                             "quickReplies": {
-                                 "title": "There's no current event.",
-                                 "quickReplies": [
-                                     "More",
-                                     "Department",
-                                     "Events",
-                                     "Guidelines",
-                                     "Hotline",
-                                     "Illness",
-                                     "Set Appointment",
-                                     "Staff",
-                                     "Visit Site",
-                                     "[Go Back]",
-                                 ]
-                             },
-                             "platform": "FACEBOOK"
-                         },
-                         {
-                             "text": {
-                                 "text": [
-                                     ""
-                                 ]
-                             }
-                         }
-                     ]
-                 });
-             }
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
 
     //PREVIOUS EVENT FUNCTION
@@ -1015,7 +1015,7 @@ async function _Event(req, res) {
     }
     else if ((intent_name == "Events - previous - more - location") || (intent_name == "Previous Event Location")) {
         Event.find({}, function (err, events) {
-            const event = events[1];        
+            const event = events[1];
             var result = "The previous events' location was " + event.eventLocation;
 
 
@@ -1049,7 +1049,7 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-        
+
     }
     else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event Requirements")) {
         Event.find({}, function (err, events) {
@@ -1088,16 +1088,16 @@ async function _Event(req, res) {
                 ]
             });
         }).sort({ datePosted: -1 });
-   
+
     }
 
     // EVENT UPCOMING FUNCTION
-    else if ((intent_name == "Events - upcoming") || intent_name=="Upcoming Event") {
+    else if ((intent_name == "Events - upcoming") || intent_name == "Upcoming Event") {
         const currentDate = new Date(Date.now());
         const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
-        var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
+        var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate.toString().slice(0, 15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " and will be end at " + upcomingEvent.endDate.toString().slice(0, 15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
         console.log(upcomingEvent);
         console.log(intent_name);
 
@@ -1165,9 +1165,9 @@ async function _Event(req, res) {
             });
         }
     }
-    else if ((intent_name == "Events - upcoming - more - event title") || intent_name=="Upcomint Event Title"){
+    else if ((intent_name == "Events - upcoming - more - event title") || intent_name == "Upcomint Event Title") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1   });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event title is " + upcomingEvent.eventTitle;
@@ -1237,12 +1237,12 @@ async function _Event(req, res) {
         }
     }
 
-    else if ((intent_name == "Events - upcoming - more - date & time") || intent_name=="Upcoming Event Date & Time"){
+    else if ((intent_name == "Events - upcoming - more - date & time") || intent_name == "Upcoming Event Date & Time") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1    });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
-        var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0,15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0,15) + " " + upcomingEvent.timeEnds + ".";
+        var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0, 15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0, 15) + " " + upcomingEvent.timeEnds + ".";
 
         if (upcomingEvents.length > 0) {
             res.json({
@@ -1309,7 +1309,7 @@ async function _Event(req, res) {
     }
     else if (intent_name == "Events - upcoming - more - location") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event location is at " + upcomingEvent.eventLocation;
@@ -1379,9 +1379,9 @@ async function _Event(req, res) {
         }
     }
 
-    else if ((intent_name == "Events - upcoming - more - details") || intent_name=="Upcoming Event Details") {
+    else if ((intent_name == "Events - upcoming - more - details") || intent_name == "Upcoming Event Details") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event detail is " + upcomingEvent.eventDetails;
@@ -1449,9 +1449,9 @@ async function _Event(req, res) {
             });
         }
     }
-    else if ((intent_name == "Events - upcoming - more - process") || intent_name=="Upcoming Event Process"){
+    else if ((intent_name == "Events - upcoming - more - process") || intent_name == "Upcoming Event Process") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event process is " + upcomingEvent.eventProcess;
@@ -1519,9 +1519,9 @@ async function _Event(req, res) {
             });
         }
     }
-    else if ((intent_name == "Events - upcoming - more - participants") || intent_name=="Upcoming Event Participants") {
+    else if ((intent_name == "Events - upcoming - more - participants") || intent_name == "Upcoming Event Participants") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event participant is " + upcomingEvent.eventParticipant;
@@ -1587,12 +1587,12 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        } 
+        }
 
     }
-    else if ((intent_name == "Events - upcoming - more - requirements") || intent_name=="Upcoming Event Requirements") {
+    else if ((intent_name == "Events - upcoming - more - requirements") || intent_name == "Upcoming Event Requirements") {
         const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1  });
+        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
         const upcomingEvent = upcomingEvents[0];
 
         var result = "The upcoming event requirement is " + upcomingEvent.eventRequire;
@@ -1659,7 +1659,7 @@ async function _Event(req, res) {
                 ]
             });
         }
-}
+    }
 
 }
 
