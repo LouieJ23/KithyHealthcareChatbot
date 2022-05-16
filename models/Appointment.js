@@ -9,6 +9,10 @@ const appointment = mongoose.Schema({
         type: String,
         require: true
     },
+    consultType: {
+        type: String,
+        require: true
+    },
     dateOfConsultation: {
       type: Date, 
       require: true
@@ -45,10 +49,7 @@ const appointment = mongoose.Schema({
         type: String,
         require: true
     },
-    consultType: {
-        type: String,
-        require: true
-    },
+   
     datePosted: {
         type: Date,
         default: Date.now

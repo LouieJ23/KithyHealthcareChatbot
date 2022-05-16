@@ -58,7 +58,7 @@
 											<%= appointments[i].consultType %>
 										</td>
 										<td>
-											<%= appointments[i].dateOfConsultation %>
+											<%= appointments[i].dateOfConsultation.toString().slice(0,15) %>
 										</td>
 										<td>
 											<%= appointments[i].timeOfConsultation %>
@@ -88,7 +88,6 @@
 											<%= appointments[i].datePosted.toString().slice(0,15) %>
 										</td>
 
-										</td>
 									</tr>
 
 									<% }} else { %>
@@ -104,7 +103,7 @@
 												<%= appointments.consultType %>
 											</td>
 											<td>
-												<%= appointments.dateOfConsultation %>
+												<%= appointments.dateOfConsultation.toString().slice(0,15) %>
 											</td>
 											<td>
 												<%= appointments.timeOfConsultation %>
@@ -131,7 +130,7 @@
 												<%= appointments.reason %>
 											</td>
 											<td>
-												<%= appointments.datePosted %>
+												<%= appointments.datePosted.toString().slice(0,15) %>
 											</td>
 
 											<td>

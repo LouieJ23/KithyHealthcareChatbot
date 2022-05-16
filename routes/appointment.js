@@ -17,7 +17,9 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
    try {
        const appointment = await Appointment.find()
-       .sort({ datePosted: -1 })
+       .sort({ datePosted: -1 });
+
+    //    console.log();
        res.render('appointment', {
            appointments:appointment,
            page_name: 'appointment',
