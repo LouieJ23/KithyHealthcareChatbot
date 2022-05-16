@@ -93,7 +93,7 @@ async function _Event(req, res) {
         //     ]
         // });
 
-        if (count.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
