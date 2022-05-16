@@ -60,7 +60,7 @@ async function _Event(req, res) {
         }
 
         console.log(result);
-        console.Consolelog(count);
+        console.log(count);
 
         // res.json({
         //     "fulfillmentMessages": [
