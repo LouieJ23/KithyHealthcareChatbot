@@ -61,36 +61,100 @@ async function _Event(req, res) {
         console.log(latestEvents);
         var result = "The current event is " + latestEvents[i].eventTitle + ". " + latestEvents[i].eventDetails + ". This event is going to held at " + latestEvents[i].eventLocation + ", starting on  " + latestEvents[i].startDate.toString().slice(0,15) + " at " + latestEvents[i].timeStart + " and will be going to end on " + latestEvents[i].endDate.toString().slice(0,15) + " at " + latestEvents[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + latestEvents[i].eventRequire + ". And you must follow this following process: " + latestEvents[i].eventProcess + ". The participants for this event are " + latestEvents[i].eventParticipant + "."
 
-        res.json({
-            "fulfillmentMessages": [
-                {
-                    "quickReplies": {
-                        "title": result,
-                        "quickReplies": [
-                            "More",
-                            "Department",
-                            "Events",
-                            "Guidelines",
-                            "Hotline",
-                            "Illness",
-                            "Set Appointment",
-                            "Staff",
-                            "Visit Site",
-                            "[Go Back]",
+        // res.json({
+        //     "fulfillmentMessages": [
+        //         {
+        //             "quickReplies": {
+        //                 "title": result,
+        //                 "quickReplies": [
+        //                     "More",
+        //                     "Department",
+        //                     "Events",
+        //                     "Guidelines",
+        //                     "Hotline",
+        //                     "Illness",
+        //                     "Set Appointment",
+        //                     "Staff",
+        //                     "Visit Site",
+        //                     "[Go Back]",
 
-                        ]
+        //                 ]
+        //             },
+        //             "platform": "FACEBOOK"
+        //         },
+        //         {
+        //             "text": {
+        //                 "text": [
+        //                     ""
+        //                 ]
+        //             }
+        //         }
+        //     ]
+        // });
+
+        if (latestEvents.length > 0) {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": result,
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
                     },
-                    "platform": "FACEBOOK"
-                },
-                {
-                    "text": {
-                        "text": [
-                            ""
-                        ]
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
                     }
-                }
-            ]
-        });
+                ]
+            });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
         // Event.find({}, function (err, events) {
