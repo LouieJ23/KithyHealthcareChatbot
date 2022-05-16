@@ -218,7 +218,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             const startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "The current event began at " + events[i].timeStart  + " on " + events[i].startDate.toString().slice(0,15) + " and finished at " + events.timeEnds[i] + " on " + events.endDate.toString().slice(0,15) + ".\n" + "\n";
+                result += "The current event began at " + events[i].timeStart  + " on " + events[i].startDate.toString().slice(0,15) + " and finished at " + events[i].timeEnds + " on " + events[i].endDate.toString().slice(0,15) + ".\n" + "\n";
                 count++;
             }
         }
@@ -301,7 +301,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             const startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "The current event will take place at " + events.eventLocation + ".\n" + "\n";
+                result += "The current event will take place at " + events[i].eventLocation + ".\n" + "\n";
                 count++;
             }
         }
