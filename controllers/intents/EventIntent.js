@@ -48,18 +48,18 @@ async function _Event(req, res) {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
         const latestEvents = [];
+        var result = "";
 
         for (let i = 0; i < events.length; i++) {
 
-            const startDates = events[i].startDate.toString().slice(0, 15);
+            const startDate = events[i].startDate.toString().slice(0, 15);
 
-            if (startDates === currentDate) {
-                latestEvents.push(events[i]);
+            if (startDate === currentDate) {
+                result += "The current event is " + latestEvents[i].eventTitle + ". " + latestEvents[i].eventDetails + ". This event is going to held at " + latestEvents[i].eventLocation + ", starting on  " + latestEvents[i].startDate.toString().slice(0,15) + " at " + latestEvents[i].timeStart + " and will be going to end on " + latestEvents[i].endDate.toString().slice(0,15) + " at " + latestEvents[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + latestEvents[i].eventRequire + ". And you must follow this following process: " + latestEvents[i].eventProcess + ". The participants for this event are " + latestEvents[i].eventParticipant + ".\n";
             }
         }
 
         console.log(latestEvents);
-        var result = "The current event is " + latestEvents[i].eventTitle + ". " + latestEvents[i].eventDetails + ". This event is going to held at " + latestEvents[i].eventLocation + ", starting on  " + latestEvents[i].startDate.toString().slice(0,15) + " at " + latestEvents[i].timeStart + " and will be going to end on " + latestEvents[i].endDate.toString().slice(0,15) + " at " + latestEvents[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + latestEvents[i].eventRequire + ". And you must follow this following process: " + latestEvents[i].eventProcess + ". The participants for this event are " + latestEvents[i].eventParticipant + "."
 
         // res.json({
         //     "fulfillmentMessages": [
