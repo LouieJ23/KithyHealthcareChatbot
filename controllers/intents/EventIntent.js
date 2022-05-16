@@ -54,44 +54,13 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             const startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + events[i].eventRequire + ". And you must follow this following process: " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + ".\n";
+                result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To participate in this event, you'll need to comply this following requirements: " + events[i].eventRequire + ". And you must follow this following process: " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
                 count++;
             }
         }
 
-        console.log(result);
-        console.log(count);
-
-        // res.json({
-        //     "fulfillmentMessages": [
-        //         {
-        //             "quickReplies": {
-        //                 "title": result,
-        //                 "quickReplies": [
-        //                     "More",
-        //                     "Department",
-        //                     "Events",
-        //                     "Guidelines",
-        //                     "Hotline",
-        //                     "Illness",
-        //                     "Set Appointment",
-        //                     "Staff",
-        //                     "Visit Site",
-        //                     "[Go Back]",
-
-        //                 ]
-        //             },
-        //             "platform": "FACEBOOK"
-        //         },
-        //         {
-        //             "text": {
-        //                 "text": [
-        //                     ""
-        //                 ]
-        //             }
-        //         }
-        //     ]
-        // });
+        // console.log(result);
+        // console.log(count);
 
         if (count > 0) {
             res.json({
@@ -158,27 +127,24 @@ async function _Event(req, res) {
         }
     }
     else if ((intent_name == "Events - latest - more - event title") || intent_name == "Latest Event title") {
-        // Event.find({}, function (err, events) {
-        //     const event = events[0];
-
-        //     var result = "The latest events title is " + event.eventTitle;
-
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        const latestEvents = [];
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-
             const startDate = events[i].startDate.toString().slice(0, 15);
-
             if (startDate === currentDate) {
-                latestEvents.push(events[i]);
+                result += "The current event title is " + events[i].eventTitle  + ".\n" + "\n";
+                count++;
             }
         }
 
-        console.log(latestEvents);
-        var result = "The current events title is " + latestEvents[0].eventTitle;
-        if (latestEvents.length > 0) {
+        // console.log(result);
+        // console.log(count);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
