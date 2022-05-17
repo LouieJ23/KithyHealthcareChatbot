@@ -11,40 +11,23 @@
     <title>Login Form</title>
 
     <style>
-        #login img {
+        /* #login img {
             margin: 10px 0;
             margin-left: 23px;
+        } */
+
+        #login img {
+            width: 74%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
         }
-
-        /* #login .center {
-            text-align: center;
-            position: absolute;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            top: -70px;
-            width: 95px;
-            height: 95px;
-            border-radius: 50%;
-            z-index: 9;
-            background: #60c7c1;
-            padding: 15px;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-        } */
-
-        /* #login .text-Admin {
-            text-align: center;
-            font-size: 26px;
-            margin: 30px 0 -15px;
-            margin-bottom: -57px;
-            margin-top: 69px;
-        } */
-
-
         #login .login {
             max-width: 300px;
             margin: 35px auto;
             /* margin-top: 27%; */
+            
         }
 
         #login .login-form {
@@ -58,10 +41,10 @@
     <div id="login" class="container">
         <div class="row-fluid">
             <div class="span12">
-                <div class="login well well-small ">
+                <div class="login well well-small">
                     <!-- <h4 class="text-Admin">Admin Login</h4> -->
                     <div class="center">
-                        <img src="../public/img/KITHY_Official_Logo.png" alt="logo">
+                        <img src="../KITHY_Official_Logo.png" alt="logo">
                     </div>
                     <form action="/admin" class="login-form" id="UserLoginForm" method="post" accept-charset="utf-8">
                         <div class="control-group">

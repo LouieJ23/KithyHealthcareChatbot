@@ -88,7 +88,6 @@ hr {
   margin: 1rem 0;
   color: inherit;
   background-color: currentColor;
-  border: 0;
   opacity: 0.25;
 }
 
@@ -1066,7 +1065,7 @@ progress {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
-    width: 83.33333%;
+    
   }
   .col-sm-11 {
     -webkit-box-flex: 0;
