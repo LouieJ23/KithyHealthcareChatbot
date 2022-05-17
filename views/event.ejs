@@ -1,20 +1,20 @@
 <div class="container-xl">
 	<div class="table-responsive">
 		<div class="table-wrapper" style="width: max-content;">
-			<div class="table-title" style="height: 4.5rem;">
+			<div class="table-title title-head" style="height: 4.5rem;">
 				<div class="row" style="position: fixed; width: 70%;">
 					<div class="col-sm-6">
 						<h2>Manage <b>Event</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-								class="material-icons">&#xE147;</i> <span>Add New Events</span></a>
+								class="material-icons">&#xE147;</i> <span>Add Event</span></a>
 
 						<% if(! events.length> 0) {%>
 							<a href="/event" class="btn btn-secondary"> <span>Back</span></a>
 							<%} else {%>
-								<a href="/upcomingEvent" class="btn btn-info"> <span>Upcoming</span></a>
-								<a href="/previousEvent" class="btn btn-info"> <span>Previous</span></a>
+								<!-- <a href="/upcomingEvent" class="btn btn-info"> <span>Upcoming</span></a> -->
+								<!-- <a href="/previousEvent" class="btn btn-info"> <span>Previous</span></a> -->
 								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
 
 								<% } %>

@@ -11959,7 +11959,9 @@ fieldset:disabled .btn {
   margin-left:100px !important;
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  
+@media (min-width: 425px){
+  .col-sm-6.title-head {
+    margin-left: 65px !important;
+}
 }
 /*# sourceMappingURL=style.css.map */
