@@ -1,18 +1,18 @@
 
 <div class="container-xl">
 	<div class="table-responsive">
-		<div class="table-wrapper">
-			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-6">
+		<div class="table-wrapper" style="width: max-content;">
+			<div class="table-title title-head" style="height: 4.5rem;">
+				<div class="row row-head"  style="position: fixed; width: 65%;">
+					<div class="col-sm-6 my-auto">
 						<h2>Manage <b>Logs</b></h2>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6  my-auto">
 						
 						<% if(queryLog.length > 0) {%>
 							<a href="/event" class="btn btn-secondary"> <span>Back</span></a>
 							<%} else {%>
-								<a href="/admin" class="btn btn-primary"> <span>Home</span></a>
+								<a href="/admin" class="btn btn-primary add-btn"> <span>Home</span></a>
 								<% } %>
 						<div class="container" id="box">
 							<div class="row well">

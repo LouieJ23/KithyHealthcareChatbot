@@ -71,6 +71,25 @@
 				justify-content: center;
 				margin-top: 0.2rem;
 			}
+
+			img.img-fluid {
+				margin-left: -13px;
+			}
+
+			.hr-nav {
+				margin-top: -1rem;
+				border: 1px solid lightgray !important;
+			}
+			.table-title h2 {
+				font-size: 24px;
+			}
+			
+			.row-head {
+				width: 79% !important;
+			}
+			.add-btn {
+				margin-left: -3px !important;
+			}
 		}
 
 
@@ -119,7 +138,7 @@
 
 		.table-title h2 {
 			margin: 5px 0 0;
-			font-size: 24px;
+			/* font-size: 24px; */
 		}
 
 		.table-title .btn-group {
@@ -552,14 +571,14 @@
 		<div class="row pageContent m-0">
 			<div class="col-sm-2 mx-0 px-0 sidebar ">
 				<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-					style="width: 213px; position: fixed; height:100%;">
+					style="width: 190px; position: fixed; height:100%;">
 					<a href="/"
 						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 						<div class="col-sm-7 d-inline"><img src="../KITHY_Official_Logo.png" alt="" class="img-fluid">
 						</div>
 						<span style="font-size:20px; margin-left: -12px;" class="fw-bold">KITHY</span>
 					</a>
-					<hr style="border: 0px solid lightgray;">
+					<hr style="border: 0px solid lightgray;" class="hr-nav">
 					<ul class="nav nav-pills flex-column mb-auto">
 						<li class="nav-item">
 							<a href="/admin" class="nav-link <%= (page_name == 'home') ? 'active' : 'text-white' %>"
