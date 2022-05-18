@@ -52,7 +52,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
                 count++;
@@ -134,7 +134,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The current event title is " + events[i].eventTitle  + ".\n" + "\n";
                 count++;
@@ -216,7 +216,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The current event began at " + events[i].timeStart  + " on " + events[i].startDate.toString().slice(0,15) + " and finished at " + events[i].timeEnds + " on " + events[i].endDate.toString().slice(0,15) + ".\n" + "\n";
                 count++;
@@ -299,7 +299,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The current event will take place at " + events[i].eventLocation + ".\n" + "\n";
                 count++;
@@ -382,7 +382,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += events[i].eventDetails + ".\n" + "\n";
                 count++;
@@ -465,7 +465,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "To partcipate to this event you must comply this following requirements: " + events[i].eventRequire  + ".\n" + "\n";
                 count++;
@@ -548,7 +548,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "To take part in this event, you must complete the steps below: " + events[i].eventProcess + ".\n" + "\n";
                 count++;
@@ -631,7 +631,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The participants of this event are: " + events[i].eventParticipant + ".\n" + "\n";
                 count++;
@@ -721,7 +721,7 @@ async function _Event(req, res) {
                 count++;
             }
         }
-console.log(result);
+        console.log(result);
         if (count > 0) {
             res.json({
                 "fulfillmentMessages": [

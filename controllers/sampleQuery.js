@@ -56,7 +56,7 @@ for (let i = 0; i < events.length; i++) {
   
     var startDate = events[i].startDate.toString().slice(0,15);
     
-    if(startDate < currentDate) {
+    if(startDate === currentDate) {
         // latestEvents.push(events[i]);
         result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
         count++;
