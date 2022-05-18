@@ -52,7 +52,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            var startDate = events[i].startDate.toString().slice(0, 15);
+            const startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
                 count++;

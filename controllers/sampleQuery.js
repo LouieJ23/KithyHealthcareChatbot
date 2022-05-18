@@ -54,7 +54,7 @@ const events=async()=> {
     var count = 0;
   
 for (let i = 0; i < events.length; i++) {
-    var startDate = events[i].startDate.toString().slice(0,15);
+    const startDate = events[i].startDate.toString().slice(0,15);
 
 if(startDate === currentDate) {
     // latestEvents.push(events[i]);
@@ -62,6 +62,7 @@ if(startDate === currentDate) {
     count++;
     console.log(Boolean(startDate === currentDate));
     console.log(startDate + " " + currentDate);
+    console.log(count);
     
     
 }
