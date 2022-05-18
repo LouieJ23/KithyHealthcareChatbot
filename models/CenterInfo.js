@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const centerInfo = mongoose.Schema({
     dateOfFounding: {
-        type: String,
+        type: Date,
         require: true
     },
     publishedBy: {

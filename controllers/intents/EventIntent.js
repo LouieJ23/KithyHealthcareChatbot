@@ -708,10 +708,21 @@ async function _Event(req, res) {
 
     //PREVIOUS EVENT FUNCTION
     else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous event was " + event.eventTitle + "  and to held  at " + event.eventLocation + ". So in order to participate to the event, you are required to " + event.eventRequire + ". The process is to " + event.eventProcess + " and the participants are " + event.eventParticipant + ".";
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        // const latestEvents = [];
+        var result = "";
+        var count = 0;
 
+        for (let i = 0; i < events.length; i++) {
+            const startDate = events[i].startDate.toString().slice(0, 15);
+            if (startDate < currentDate) {
+                result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
+                count++;
+            }
+        }
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -728,7 +739,6 @@ async function _Event(req, res) {
                                 "Staff",
                                 "Visit Site",
                                 "[Go Back]",
-
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -742,11 +752,39 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
-        // const log11 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }
+
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no current event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
     }
 
 

@@ -24,6 +24,9 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
+						<th>
+							#
+						</th>
 						<th>Date of Founding</th>
 						<th>Constructed By</th>
 						<th>Location</th>
@@ -44,10 +47,13 @@
 						for(var i=0; i < centerInfos.length; i++) { %>
 						<tr onclick="window.location='/centerInfo/<%= centerInfos[i]._id %>'" style="cursor: pointer;">
 							<td>
-								<%= centerInfos[i].dateOfFounding %>
+								<%= i + 1  %>
 							</td>
 							<td>
-								<%= centerInfos[i].constructedBy %>
+								<%= centerInfos[i].dateOfFounding.toString().slice(0,15) %>
+							</td>
+							<td>
+								<%= centerInfos[i].publishedBy %>
 							</td>
 							<td>
 								<%= centerInfos[i].location %>
@@ -65,7 +71,7 @@
 								<%= centerInfos[i].vision %>
 							</td>
 							<td>
-								<%= centerInfos[i].datePosted %>
+								<%= centerInfos[i].datePosted.toString().slice(0,15) %>
 							</td>
 						</tr>
 
@@ -73,7 +79,10 @@
 						else { %>
 							<tr>	
 								<td>
-									<%= centerInfos.dateOfFounding %>
+									
+								</td>
+								<td>
+									<%= centerInfos.dateOfFounding.toString().slice(0,15) %>
 								</td>
 								<td>
 									<%= centerInfos.constructedBy %>
@@ -94,7 +103,7 @@
 									<%= centerInfos.vision %>
 								</td>
 								<td>
-									<%= centerInfos.datePosted %>
+									<%= centerInfos.datePosted.toString().slice(0,15) %>
 								</td>
 	
 								<td>
@@ -137,7 +146,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label>Date of Founding</label>
-							<input type="text" name="dateOfFounding" class="form-control" required>
+							<input type="Date" name="dateOfFounding" class="form-control" required>
 							
 						</div>
 						<div class="form-group">
@@ -212,7 +221,7 @@
 							<div class="modal-body">
 								<div class="form-group">
 									<label>Date of Founding</label>
-									<input type="text" name="dateOfFounding" class="form-control" value="<%=centerInfos.dateOfFounding%>" required>
+									<input type="Date" name="dateOfFounding" class="form-control" value="<%=centerInfos.dateOfFounding%>" required>
 								</div>
 								<div class="form-group">
 									<label>Published By</label>
@@ -238,10 +247,7 @@
 									<label>Vision</label>
 									<input type="text" class="form-control" name="vision"  value="<%=centerInfos.vision%>" required>
 								</div>
-								<div class="form-group">
-									<label>Date Posted</label>
-									<input type="text" class="form-control" name="datePosted" value="<%=centerInfos.datePosted%>" required>
-								</div>
+							
 							</div>
 							<div class="modal-footer">
 								<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
