@@ -49,16 +49,20 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 const events=async()=> {
     const events = await Event.find({});
     const currentDate = new Date(Date.now()).toString().slice(0, 15);
-    const latestEvents = [];
-
+    // const latestEvents = [];
+    var result = "";
+    var count = 0;
 for (let i = 0; i < events.length; i++) {
   
-    const startDate = events[i].startDate.toString().slice(0,15);
+    var startDate = events[i].startDate.toString().slice(0,15);
     
-    if(startDate === currentDate) {
-        latestEvents.push(events[i]);
+    if(startDate < currentDate) {
+        // latestEvents.push(events[i]);
+        result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
+        count++;
     }
 }
+console.log(result);
 
 }
 events();
