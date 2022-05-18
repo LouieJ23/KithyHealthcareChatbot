@@ -708,28 +708,28 @@ async function _Event(req, res) {
 
     //PREVIOUS EVENT FUNCTION
     else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
-        const eventss = await Event.find({});
-        const currentDatee = new Date(Date.now()).getTime();
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).getTime();
         // const latestEvents = [];
-        var resultt = "";
-        var countt = 0;
+        var result = "";
+        var count = 0;
 
-        for (let i = 0; i < eventss.length; i++) {
-            var startDatee = eventss[i].startDate.getTime();
-            if (startDatee < currentDatee) {
-                result += "The previous event is " + eventss[i].eventTitle + ". " + eventss[i].eventDetails + ". This event took place in " + eventss[i].eventLocation + ", started on " + eventss[i].startDate.toString().slice(0,15) + " at " + eventss[i].timeStart + " until " + eventss[i].endDate.toString().slice(0,15) + " at " + eventss[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + eventss[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + eventss[i].eventProcess + ". The participants for this event were " + eventss[i].eventParticipant + ".\n" + "\n";
+        for (let i = 0; i < events.length; i++) {
+            var startDate = events[i].startDate.getTime();
+            if (startDate < currentDate) {
+                result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
                 // result += "The previous event date are " + events[i].startDate + "\n";
-                countt++;
+                count++;
             }
         }
-        console.log(resultt);
+        console.log(result);
        
         if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": resultt,
+                            "title": result,
                             "quickReplies": [
                                 "More",
                                 "Department",
