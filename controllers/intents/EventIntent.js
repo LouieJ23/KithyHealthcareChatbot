@@ -59,7 +59,7 @@ async function _Event(req, res) {
             }
         }
 
-        // console.log(result);
+        console.log(result);
         // console.log(count);
 
         if (count > 0) {
