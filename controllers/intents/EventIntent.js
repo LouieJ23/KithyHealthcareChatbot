@@ -46,7 +46,7 @@ async function _Event(req, res) {
     }
     else if ((intent_name == "Events - latest") || intent_name == "Latest Event") {
         const events = await Event.find({});
-        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+        const currentDate = new Date(Date.now()).toString().slice(0,15);
         // const latestEvents = [];
         var result = "";
         var count = 0;
