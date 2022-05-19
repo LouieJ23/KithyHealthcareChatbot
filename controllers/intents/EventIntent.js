@@ -1109,6 +1109,7 @@ async function _Event(req, res) {
             count++;
         }
     }
+    console.log(result);
 
         if (count.length > 0) {
             res.json({
