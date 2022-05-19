@@ -118,10 +118,7 @@ const events = async () => {
 
     const events = await Event.find({});
     let currentDate = getFullDate(new Date());
-    // var compareDates = eventDate > currentDate ? true : false;
-    // console.log(currentDate + "" + eventDate);
-    // console.log(eventDate);
-    // console.log(compareDates);
+   
     var result = "";
     var count = 0;
     for (let i = 0; i < events.length; i++) {

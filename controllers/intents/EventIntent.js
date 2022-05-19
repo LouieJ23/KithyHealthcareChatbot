@@ -136,7 +136,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "The current event title is " + events[i].eventTitle  + ".\n" + "\n";
+                result += "The current event title is " + events[i].eventTitle  + ".\n";
                 count++;
             }
         }
@@ -211,7 +211,6 @@ async function _Event(req, res) {
     else if ((intent_name == "Events - latest - more - Date & Time") || intent_name == "Latest Event date & time") {
         const events = await Event.find({});
         const currentDate = new Date(Date.now()).toString().slice(0, 15);
-        // const latestEvents = [];
         var result = "";
         var count = 0;
 
@@ -222,9 +221,6 @@ async function _Event(req, res) {
                 count++;
             }
         }
-
-        // console.log(result);
-        // console.log(count);
 
         if (count > 0) {
             res.json({
@@ -467,7 +463,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
-                result += "To partcipate to this event you must comply this following requirements: " + events[i].eventRequire  + ".\n" + "\n";
+                result += "To partcipate in this event you must comply this following requirements: " + events[i].eventRequire  + ".\n" + "\n";
                 count++;
             }
         }
@@ -708,20 +704,6 @@ async function _Event(req, res) {
 
     //PREVIOUS EVENT FUNCTION
     else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
-        // const events = await Event.find({});
-        // const currentDate = new Date(Date.now()).toString().slice(0,15);
-        // // const latestEvents = [];
-        // var result = "";
-        // var count = 0;
-
-        // for (let i = 0; i < events.length; i++) {
-        //     var startDate = events[i].startDate.toString().slice(0,15);
-        //     if (startDate < currentDate) {
-        //         result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
-        //         // result += "The previous event date are " + events[i].startDate + "\n";
-        //         count++;
-        //     }
-        // }
         const currentDate = new Date(Date.now());
         const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
         const previousEvent = events[0];
@@ -797,9 +779,12 @@ async function _Event(req, res) {
 
 
     else if ((intent_name == 'Events - previous - more - event title') || (intent_name == "Previous Event Title")) {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous events' title was " + event.eventTitle;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
+
+        if (events.length > 0) {
+            var result = "The recent event title was: " + previousEvent.eventTitle + "\n";
 
 
             res.json({
@@ -832,19 +817,16 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        })
-        // .sort({ datePosted: -1 });
-        // const log12 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }
     }
     else if ((intent_name == "Events - previous - more - date & time") || intent_name == "Previous Event Date & Time") {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous event was started at " + event.startDateTime + " and ended at " + event.endDateTime;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
 
-
+        var result = "The recent event was started on " + previousEvent.startDateTime.toString().slice(0,15) + " at " + previousEvent.timeStart + " and ended on " +  previousEvent.endDateTime + " at " + previousEvent.timeEnds;
+    
+        if (events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -877,14 +859,16 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
+        }
     }
     else if ((intent_name == 'Events - previous - more - details') || (intent_name == "Previous Event Details")) {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous events' details was" + event.eventDetails;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
 
-
+        var result = "Detail: " + previousEvent.eventDetails;
+    
+        if (events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -915,18 +899,16 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
-        // const log13 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }
     }
     else if ((intent_name == 'Events - previous - more - process') || (intent_name == "Previous Event Process")) {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous events' process was " + event.eventProcess;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
 
-
+        var result = "By taking part of this event, you were required to: " + previousEvent.eventProcess;
+    
+        if (events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -957,18 +939,16 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
-        // const log14 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }
     }
     else if ((intent_name == "Events - previous - more - participants") || (intent_name == "Previous Event Participants")) {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous events' participants are " + event.eventParticipant;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
 
-
+        var result = "Participants in this event are: " + previousEvent.eventParticipant;
+    
+        if(events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -999,18 +979,16 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
-        // const log15 = new EventLogQuery({
-        //     query: value,
-        //     isAnswered: true
-        // });
+        }
     }
     else if ((intent_name == "Events - previous - more - location") || (intent_name == "Previous Event Location")) {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous events' location was " + event.eventLocation;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
 
-
+        var result = "The recent event was held at: " + previousEvent.eventLocation;
+    
+        if (events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1040,15 +1018,17 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
+        }
 
     }
     else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event Requirements")) {
-        Event.find({}, function (err, events) {
-            const event = events[1];
-            var result = "The previous events' requirements was " + event.eventRequire;
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
 
-
+        var result = "To participate in this event you were required to comply the following requirements: " + previousEvent.eventRequire;
+    
+        if (events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1079,7 +1059,7 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
+        }
 
     }
 
