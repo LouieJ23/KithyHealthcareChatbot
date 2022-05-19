@@ -10,10 +10,6 @@ async function _Hotline(req, res) {
     const value = req.body.queryResult.queryText;
     const recentLog = await HotlineLogQuery.findOne().sort({ datePosted: -1 });
 
-    console.log("The Intent Name: " + intent_name);
-    console.log("The Query Text: " + value);
-    console.log("The Recent Log: " + recentLog);
-
     if (intent_name == 'Hotline') {
         let hotlines = await Hotline.find({});
             let results = "";
@@ -24,7 +20,7 @@ async function _Hotline(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "This are the Emergency Hotlines: "+ results + "\n",
+                            "title": "If you require assistance, the following hotlines are accessible: "+ results + "\n",
                             "quickReplies": [
                                 "Department",
                                 "Events",
