@@ -1106,12 +1106,14 @@ async function _Event(req, res) {
         if (eventDate > currentDate) {
             // result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
             result += "The upcoming event is " + events[i].eventTitle + ". " + events[i].eventDetails + " ." + "This event is going to held at " + events[i].eventLocation + ", and it will begin at " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
+         
+         
             count++;
         }
     }
     console.log(result);
 
-        if (count.length > 0) {
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
