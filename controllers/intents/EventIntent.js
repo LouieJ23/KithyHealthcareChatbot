@@ -708,23 +708,30 @@ async function _Event(req, res) {
 
     //PREVIOUS EVENT FUNCTION
     else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
-        const events = await Event.find({});
-        const currentDate = new Date(Date.now()).toString().slice(0,15);
-        // const latestEvents = [];
-        var result = "";
-        var count = 0;
+        // const events = await Event.find({});
+        // const currentDate = new Date(Date.now()).toString().slice(0,15);
+        // // const latestEvents = [];
+        // var result = "";
+        // var count = 0;
 
-        for (let i = 0; i < events.length; i++) {
-            var startDate = events[i].startDate.toString().slice(0,15);
-            if (startDate < currentDate) {
-                result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
-                // result += "The previous event date are " + events[i].startDate + "\n";
-                count++;
-            }
-        }
+        // for (let i = 0; i < events.length; i++) {
+        //     var startDate = events[i].startDate.toString().slice(0,15);
+        //     if (startDate < currentDate) {
+        //         result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
+        //         // result += "The previous event date are " + events[i].startDate + "\n";
+        //         count++;
+        //     }
+        // }
+        const currentDate = new Date(Date.now());
+        const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
+        const previousEvent = events[0];
+
+        result += "The previous event is " + previousEvent.eventTitle + ". " + previousEvent.eventDetails + ". This event took place in " + previousEvent.eventLocation + ", started on " + previousEvent.startDate.toString().slice(0,15) + " at " + previousEvent.timeStart + " until " + previousEvent.endDate.toString().slice(0,15) + " at " + previousEvent.timeEnds + ". To take part in this event, you were required to meet the following requirements: " + previousEvent.eventRequire + ". To take part in this event, you must complete the steps below:  " + previousEvent.eventProcess + ". The participants for this event were " + previousEvent.eventParticipant + ".\n" + "\n";
+        
+
         console.log(result);
        
-        if (count > 0) {
+        if (events.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -826,7 +833,8 @@ async function _Event(req, res) {
                     }
                 ]
             });
-        }).sort({ datePosted: -1 });
+        })
+        // .sort({ datePosted: -1 });
         // const log12 = new EventLogQuery({
         //     query: value,
         //     isAnswered: true
