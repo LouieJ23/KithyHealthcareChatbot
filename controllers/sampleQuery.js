@@ -12,7 +12,7 @@ const LogQuery = require('../models/QueryLog');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB", () =>{
+mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB", () => {
     console.log("Connected to DB!");
 });
 
@@ -54,7 +54,7 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 //     // const latestEvents = [];
 //     var result = "";
 //     var count = 0;
-  
+
 // for (let i = 0; i < events.length; i++) {
 //     const startDate = events[i].startDate.toString().slice(0,15);
 
@@ -65,10 +65,10 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 //     console.log(Boolean(startDate === currentDate));
 //     console.log(startDate + " " + currentDate);
 //     console.log(count);
-    
-    
+
+
 // }
-    
+
 // }
 // console.log(result);
 
@@ -76,29 +76,63 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 // events();
 
 // ====================previous event====================
-const events=async()=> {
+// const events=async()=> {
+//     const events = await Event.find({});
+//     const currentDate = new Date(Date.now()).toString().slice(0,15);
+//     // const latestEvents = [];
+//     var result = "";
+//     var count = 0;
+
+// for (let i = 0; i < events.length; i++) {
+//     const startDate = events[i].startDate.toString().slice(0,15);
+
+// if(startDate < currentDate) {
+//     // latestEvents.push(events[i]);
+//     result += "The previous event date are " + events[i].startDate + "\n";
+//     count++;
+//     console.log(Boolean(startDate < currentDate));
+//     console.log(startDate + " " + currentDate);
+//     console.log(count);
+
+
+// }
+
+// }
+// console.log(result);
+
+// }
+// events();
+const events = async () => {
+
+
+    const getFullDate = (date) => {
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        if (month < 10) month = "0" + month;
+        var day = date.getDate();
+        if (day < 10) day = "0" + day;
+        date = year + "-" + month + "-" + day;
+
+        return date;
+    }
+
     const events = await Event.find({});
-    const currentDate = new Date(Date.now()).toString().slice(0,15);
-    // const latestEvents = [];
+    let currentDate = getFullDate(new Date());
+    // var compareDates = eventDate > currentDate ? true : false;
+    // console.log(currentDate + "" + eventDate);
+    // console.log(eventDate);
+    // console.log(compareDates);
     var result = "";
     var count = 0;
-  
-for (let i = 0; i < events.length; i++) {
-    const startDate = events[i].startDate.toString().slice(0,15);
+    for (let i = 0; i < events.length; i++) {
+        let eventDate = getFullDate(events[i].startDate);
+        if (eventDate > currentDate) {
+            result += "The upcoming event is " + events[i].eventTitle + ". " + events[i].startDate.toString().slice(0, 15) + "\n";
+            count++;
+        }
+    }
 
-if(startDate < currentDate) {
-    // latestEvents.push(events[i]);
-    result += "The previous event date are " + events[i].startDate + "\n";
-    count++;
-    console.log(Boolean(startDate < currentDate));
-    console.log(startDate + " " + currentDate);
-    console.log(count);
-    
-    
-}
-    
-}
 console.log(result);
-
 }
+
 events();

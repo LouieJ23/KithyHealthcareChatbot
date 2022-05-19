@@ -726,9 +726,8 @@ async function _Event(req, res) {
         const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
         const previousEvent = events[0];
 
-        result += "The previous event is " + previousEvent.eventTitle + ". " + previousEvent.eventDetails + ". This event took place in " + previousEvent.eventLocation + ", started on " + previousEvent.startDate.toString().slice(0,15) + " at " + previousEvent.timeStart + " until " + previousEvent.endDate.toString().slice(0,15) + " at " + previousEvent.timeEnds + ". To take part in this event, you were required to meet the following requirements: " + previousEvent.eventRequire + ". To take part in this event, you must complete the steps below:  " + previousEvent.eventProcess + ". The participants for this event were " + previousEvent.eventParticipant + ".\n" + "\n";
+        result = "The previous event is " + previousEvent.eventTitle + ". " + previousEvent.eventDetails + ". This event took place in " + previousEvent.eventLocation + ", started on " + previousEvent.startDate.toString().slice(0,15) + " at " + previousEvent.timeStart + " until " + previousEvent.endDate.toString().slice(0,15) + " at " + previousEvent.timeEnds + ". To take part in this event, you were required to meet the following requirements: " + previousEvent.eventRequire + ". To take part in this event, you must complete the steps below:  " + previousEvent.eventProcess + ". The participants for this event were " + previousEvent.eventParticipant + ".\n" + "\n";
         
-
         console.log(result);
        
         if (events.length > 0) {
@@ -1086,15 +1085,32 @@ async function _Event(req, res) {
 
     // EVENT UPCOMING FUNCTION
     else if ((intent_name == "Events - upcoming") || intent_name == "Upcoming Event") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+       
+    const getFullDate = (date) => {
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        if (month < 10) month = "0" + month;
+        var day = date.getDate();
+        if (day < 10) day = "0" + day;
+        date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event " + upcomingEvent.eventTitle + ". This event will start at " + upcomingEvent.startDate.toString().slice(0, 15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + " and will be end at " + upcomingEvent.endDate.toString().slice(0, 15) + " " + upcomingEvent.timeStart + "-" + upcomingEvent.timeEnds + "." + " It will be going to held  in " + upcomingEvent.eventLocation + ". So in order to participate to the event, you are required to bring " + upcomingEvent.eventRequire + ". The process is to " + upcomingEvent.eventProcess + " and the participants are " + upcomingEvent.eventParticipant + ".";
-        console.log(upcomingEvent);
-        console.log(intent_name);
+        return date;
+    }
+    const events = await Event.find({});
+    let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+    var result = "";
+    var count = 0;
+    for (let i = 0; i < events.length; i++) {
+        let eventDate = getFullDate(events[i].startDate);
+        if (eventDate > currentDate) {
+            // result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
+            result += "The upcoming event is " + events[i].eventTitle + ". " + events[i].eventDetails + " ." + "This event is going to held at " + events[i].eventLocation + ", and it will begin at " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
+            count++;
+        }
+    }
+
+        if (count.length > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
