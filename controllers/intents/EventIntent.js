@@ -52,7 +52,7 @@ async function _Event(req, res) {
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            const startDate = events[i].startDate.toString().slice(0, 15);
+            var startDate = events[i].startDate.toString().slice(0, 15);
             if (startDate === currentDate) {
                 result += "The current event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event is going to held at " + events[i].eventLocation + ", starting on  " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
                 count++;
@@ -709,13 +709,13 @@ async function _Event(req, res) {
     //PREVIOUS EVENT FUNCTION
     else if ((intent_name == "Events - previous") || intent_name == "Previous Event") {
         const events = await Event.find({});
-        const currentDate = new Date(Date.now()).getTime();
+        const currentDate = new Date(Date.now()).toString().slice(0,15);
         // const latestEvents = [];
         var result = "";
         var count = 0;
 
         for (let i = 0; i < events.length; i++) {
-            var startDate = events[i].startDate.getTime();
+            var startDate = events[i].startDate.toString().slice(0,15);
             if (startDate < currentDate) {
                 result += "The previous event is " + events[i].eventTitle + ". " + events[i].eventDetails + ". This event took place in " + events[i].eventLocation + ", started on " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " until " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you were required to meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event were " + events[i].eventParticipant + ".\n" + "\n";
                 // result += "The previous event date are " + events[i].startDate + "\n";

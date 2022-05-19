@@ -46,6 +46,36 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 //     console.log(startDate);
 //     }
 //     events();
+
+// ===============current event==================
+// const events=async()=> {
+//     const events = await Event.find({});
+//     const currentDate = new Date(Date.now()).toString().slice(0,15);
+//     // const latestEvents = [];
+//     var result = "";
+//     var count = 0;
+  
+// for (let i = 0; i < events.length; i++) {
+//     const startDate = events[i].startDate.toString().slice(0,15);
+
+// if(startDate === currentDate) {
+//     // latestEvents.push(events[i]);
+//     result += "The previous event date are " + events[i].startDate + "\n";
+//     count++;
+//     console.log(Boolean(startDate === currentDate));
+//     console.log(startDate + " " + currentDate);
+//     console.log(count);
+    
+    
+// }
+    
+// }
+// console.log(result);
+
+// }
+// events();
+
+// ====================previous event====================
 const events=async()=> {
     const events = await Event.find({});
     const currentDate = new Date(Date.now()).toString().slice(0,15);
@@ -56,11 +86,11 @@ const events=async()=> {
 for (let i = 0; i < events.length; i++) {
     const startDate = events[i].startDate.toString().slice(0,15);
 
-if(startDate === currentDate) {
+if(startDate < currentDate) {
     // latestEvents.push(events[i]);
     result += "The previous event date are " + events[i].startDate + "\n";
     count++;
-    console.log(Boolean(startDate === currentDate));
+    console.log(Boolean(startDate < currentDate));
     console.log(startDate + " " + currentDate);
     console.log(count);
     
@@ -72,4 +102,3 @@ console.log(result);
 
 }
 events();
-
