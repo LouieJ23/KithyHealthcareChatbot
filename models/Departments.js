@@ -9,7 +9,11 @@ const departmentInfo = mongoose.Schema({
         type: String,
         require: true
     },
-    depSched: {
+    timeStart: {
+        type: String,
+        require: true
+    },
+    timeEnd: {
         type: String,
         require: true
     },

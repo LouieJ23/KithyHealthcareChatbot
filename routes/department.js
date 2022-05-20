@@ -61,6 +61,8 @@ router.get('/:departmentID', async (req, res) => {
 router.post('/', async (req, res) => {
     const department = new Department({
         depName: req.body.depName,
+        timeStart: req.body.timeStart,
+        timeEnd: req.body.timeEnd,
         depDetail: req.body.depDetail,
         depSched: req.body.depSched
     });

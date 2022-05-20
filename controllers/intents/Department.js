@@ -10,7 +10,7 @@ async function _Department(req, res) {
         let departments = await Department.find({});
         let results = "";
         for (let i = 0; i < departments.length; i++) {
-            results += (departments[i].depName + "\n" + departments[i].depSched + "\n" + departments[i].depDetail + "\n" + "\n");
+            results += (departments[i].depName + "\n" + "Time Open: "+departments[i].timeStart + " - " + "Time Close: "+ departments[i].timeEnd + "\n" + "Detail: " + departments[i].depDetail + "\n" + "\n");
         }
         res.json({
             "fulfillmentMessages": [
@@ -19,7 +19,7 @@ async function _Department(req, res) {
                         "title": results,
                         "quickReplies": [
                             "Department",
-                            "Event",
+                            "Events",
                             "Guidelines",
                             "Hotline",
                             "Illness",
