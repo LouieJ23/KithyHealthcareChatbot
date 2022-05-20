@@ -43,7 +43,7 @@ function _HealthCenter(req, res) {
    
     if (intent_name == "Health Center - date of founding") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao was founded on  " + centerInfo.dateOfFounding;
+            var result = "The health center of Kitaotao was founded on  " + centerInfo.dateOfFounding.toString().slice(0,15);
             
 
             res.json({
