@@ -10,7 +10,7 @@ router.use((req, res, next) => {
     if(req.query._method == 'PUT') {
         req.method = 'PUT';
         req.url = req.path
-    }
+    }   
 
     next();
 });

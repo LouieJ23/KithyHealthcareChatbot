@@ -1,6 +1,6 @@
 <div class="container-xl">
 	<div class="table-responsive">
-		<div class="table-wrapper">
+		<div class="table-wrapper" style="width: max-content;">
 			<!-- <div class="table-wrapper" style="width: max-content;">
 				<div class="table-title title-head" style="height: 4.5rem;">
 					<div class="row row-head"  style="position: fixed; width: 65%;"> -->
@@ -66,10 +66,10 @@
 											<%= events[i].eventDetails %>
 										</td>
 										<td>
-											<%= events[i].startDate.toString().slice(0,15) %>
+											<%= events[i].startDate.toString().slice(0,15)%>
 										</td>
 										<td>
-											<%= events[i].endDate.toString().slice(0,15) %>
+											<%= events[i].endDate.toString().slice(0,15)%>
 										</td>
 										<td>
 											<%= events[i].timeStart%> - <%= events[i].timeEnds %>
@@ -106,7 +106,7 @@
 												<%= events.startDate.toString().slice(0,15) %>
 											</td>
 											<td>
-												<%= events.endDate.toString().slice(0,15) %>
+												<%= events.endDate.toString().slice(0,15)%>
 											</td>
 											<td>
 												<%= events.timeStart%> - <%= events.timeEnds %>
@@ -287,7 +287,7 @@
 							</div>
 							<div class="form-group">
 								<label>Date Ends </label>
-								<input type="date" name="endDate" class="form-control" value="<%=events.endDate.toString().slice(0,15)%>" required>
+								<input type="date" name="endDate" class="form-control" value="<%=events.endDate%>" required>
 									
 							</div>
 							<div class="form-group">

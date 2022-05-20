@@ -23,7 +23,7 @@ const mildIllness = mongoose.Schema({
     },
     datePosted:{
         type: Date,
-        defaiult: Date.now
+        default: Date.now
     }
 })
 module.exports = mongoose.model('IllnessInfo', mildIllness)
