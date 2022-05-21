@@ -8,7 +8,9 @@ function _HealthCenter(req, res) {
 
     if (intent_name == "Health Center") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao is founded on  " + centerInfo.dateOfFounding;
+            var result = "The health center of Kitaotao was founded by  " + centerInfo.publishedBy + " on " + centerInfo.dateOfFounding.toString().slice(0,15) + ", the facility can be located at " + centerInfo.location
+            ".  Having a Mission: " + centerInfo.mission + ". And the Vision: " + centerInfo.vision + ". The health center can be reach through this contact number: " + centerInfo.phoneNumber + 
+            " and through this email address: " + centerInfo.email + ". \n";
             
             res.json({
                 "fulfillmentMessages": [
@@ -22,7 +24,8 @@ function _HealthCenter(req, res) {
                                 "Contact Number",
                                 "Email Address",
                                 "Mission",
-                                "Vision"
+                                "Vision",
+                                "[Go Back]",
                                
                             ]
                         },

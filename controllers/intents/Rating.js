@@ -1,0 +1,57 @@
+'use strict';
+
+const mongoose = require('mongoose');
+const Rating = require('../../models/Rating');
+const RatingLogQuery = require('../../models/QueryLog');
+
+// EVENT LATEST FUNCTION
+async function _Rating(req, res) {
+    let intent_name = req.body.queryResult.intent.displayName;
+    const value = req.body.queryResult.queryText;
+    const recentLog = await RatingLogQuery.findOne().sort({ datePosted: -1 });
+
+    if (intent_name == 'Rating - yes - custom - yes') {
+        // let ratings = await Rating.find({});
+            // let results = "";
+            // for (let i = 0; i < hotlines.length; i++) {
+            //     results += ("\n" + hotlines[i].hotlineName + "\n" + hotlines[i].number + "\n" + hotlines[i].email + "\n" + hotlines[i].facebookPage + "\n");
+            // }
+            let results="This is from RATINGS"
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "If you require assistance, the following hotlines are accessible: "+ results + "\n",
+                            "quickReplies": [
+                                "Department",
+                                "Events",
+                                "Guidelines",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+            const rating = new RatingLogQuery({
+                feedback: value,
+                // isAnswered: true,
+            });
+            await rating.save();
+    }
+}
+
+module.exports = _Rating;

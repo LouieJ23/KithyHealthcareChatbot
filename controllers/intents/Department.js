@@ -21,6 +21,7 @@ async function _Department(req, res) {
                             "Department",
                             "Events",
                             "Guidelines",
+                            "Health Center",
                             "Hotline",
                             "Illness",
                             "Set Appointment",

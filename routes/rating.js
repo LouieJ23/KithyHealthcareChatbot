@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const Log = require('../models/QueryLog');
+const rating = require('../models/Rating');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
-const template = fs.readFileSync(path.join(__dirname, '../views/print.html'), 'utf-8');
+const template = fs.readFileSync(path.join(__dirname, '../views/rating.html'), 'utf-8');
 const options = {
     format: "A4",
     orientation: "portrait",

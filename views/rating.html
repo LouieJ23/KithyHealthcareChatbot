@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head itemscope="" itemtype="http://schema.org/WebSite">
+    <style type="text/css"></style>
+    <script type="text/javascript"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        tr:nth-child(even) {
+            background-color: #f1f8ff;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="main-page" style=" max-width: fit-content; max-height: fit-content; border: 1px 2A4166;">
+        <div class="header" style="max-width: fit-content; height: 170px; padding-top:1px; background-color: #2A4166; font-family:sans-serif">
+            <div class="circle-logo" style="width:80px; height:80px; background:#ffdc88; border-radius:50%; margin-left:30px;">
+               <p style="color:#b4791d; padding-top:15px; font-weight: bolder; font-size: 40px; text-align: center;">K</p> 
+            </div>
+            <div style="text-align: left; color: white; display:inline-block; max-height: max-content; margin-left: 15%; width: fit-content; margin-top: -40%;">
+                <h3>KITHY HEALTHCARE CHATBOT SYSTEM</h3>
+                <H5 style="margin-top: -20px;">Poblacion, Kitaotao, Bukidnon</H5>
+                <h5 style="margin-top: -20px;">FB Page: KITHY Healthcare Chatbot for Kitaotao Health Center</h5>
+                <h5 style="margin-top: -20px;">Website: healthcarechatbotkithy.herokuapp.com</h5>
+                <h5 style="margin-top: -20px;">Contact Number: 0000-000-0000</h5>
+            </div>
+            <div style="color: white; float: right; padding-right: 20px; width: max-content; height: max-content; margin-top:-80px; margin-left: -20%;">
+                <h5 style="margin-left: -153%">Prepared by:</h5>
+                <h5 style="margin-top:-18px; margin-left: -50px">NAME</h5>
+                <hr style="width: 120px; color: white; margin-left: -90px; margin-top: -23%;">
+                <h5 style="margin-top:-3px; margin-left: -80px">ADMINISTRATOR</h5>
+            </div>
+            <!-- <div id="current_date" style="text-align: center; height: 30%; margin-top:-38px; float: right; color: white; font-size: small; font-weight:bolder; padding-right: 20px;">
+                    <script>
+                         document.getElementById("current_date").innerHTML = Date();
+                    </script>
+            </div> -->
+            <div style="text-align: center; height: 30%; margin-top:-100px; float: right; color: rgb(255, 255, 255); font-size: small; font-weight:bolder; padding-right: 20px;">
+                <script>
+                date = new Date().toLocaleDateString();
+                document.write(date);
+                </script>
+                </div>
+        </div>
+        <table class="table" style="width: 100%; border: 1px solid #3D5A89;">
+            <thead class="thead-dark" style="background-color: #3D5A89;">
+                <tr>
+                    <th scope="col" style="text-align: center; color: #ffffff; height: 40px; font-family: sans-serif; margin-right: -30px;"><strong>RATING</strong></th>
+                    <th scope="col" style="text-align: center; color: #ffffff; height: 40px; font-family: sans-serif;"><strong>USER FEEDBACK</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each logs.inputLogs}}
+                <tr>
+                    <td style="color:black; text-align: center; font-family: sans-serif">{{this.frequent}}</td>
+                    <td style="color:black; text-align: center; font-family: sans-serif">{{this.distinct}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>        
+    </div>
+
+
+
+    <script type="text/javascript">(function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-49755460-1', 'auto', { 'allowLinker': true });
+        ga('require', 'linker');
+        ga('linker:autoLink', ['bootdey.com', 'www.bootdey.com', 'demos.bootdey.com']);
+        ga('send', 'pageview');</script>
+</body>
+
+</html>
