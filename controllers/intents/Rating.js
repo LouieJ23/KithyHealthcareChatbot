@@ -10,7 +10,7 @@ async function _Rating(req, res) {
     const value = req.body.queryResult.queryText;
     const recentLog = await RatingLogQuery.findOne().sort({ datePosted: -1 });
 
-    if (intent_name == 'Rating - yes - custom - yes') {
+    if (intent_name == 'Rating - yes - custom') {
         // let ratings = await Rating.find({});
             // let results = "";
             // for (let i = 0; i < hotlines.length; i++) {
@@ -47,7 +47,7 @@ async function _Rating(req, res) {
                 ]
             });
             const rating = new RatingLogQuery({
-                feedback: value,
+                rate: value,
                 // isAnswered: true,
             });
             await rating.save();
