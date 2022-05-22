@@ -766,7 +766,7 @@ async function _Event(req, res) {
                 "fulfillmentMessages": [
                     {
                         "quickReplies": {
-                            "title": "There's no current event.",
+                            "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
                                 "Department",
@@ -804,7 +804,6 @@ async function _Event(req, res) {
         if (events.length > 0) {
             var result = "The recent event title was: " + previousEvent.eventTitle + "\n";
 
-
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -822,7 +821,39 @@ async function _Event(req, res) {
                                 "Visit Site",
                                 "[Go Back]",
                                 "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
 
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -863,9 +894,39 @@ async function _Event(req, res) {
                                 "Visit Site",
                                 "[Go Back]",
                                 "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
 
-
-
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -886,7 +947,7 @@ async function _Event(req, res) {
         const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
         const previousEvent = events[0];
 
-        var result = "Detail: " + previousEvent.eventDetails;
+        var result = previousEvent.eventTitle + ": Detail: " + previousEvent.eventDetails;
 
         if (events.length > 0) {
             res.json({
@@ -906,7 +967,39 @@ async function _Event(req, res) {
                                 "Visit Site",
                                 "[Go Back]",
                                 "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
 
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -947,7 +1040,39 @@ async function _Event(req, res) {
                                 "Visit Site",
                                 "[Go Back]",
                                 "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
 
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -988,7 +1113,39 @@ async function _Event(req, res) {
                                 "Visit Site",
                                 "[Go Back]",
                                 "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
 
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
                             ]
                         },
                         "platform": "FACEBOOK"
@@ -1044,6 +1201,39 @@ async function _Event(req, res) {
             });
         }
 
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
+
     }
     else if ((intent_name == "Events - previous - more - requirements") || (intent_name == "Previous Event Requirements")) {
         const currentDate = new Date(Date.now());
@@ -1070,7 +1260,39 @@ async function _Event(req, res) {
                                 "Visit Site",
                                 "[Go Back]",
                                 "☑️Share Feedback",
+                            ]
+                        },
+                        "platform": "FACEBOOK"
+                    },
+                    {
+                        "text": {
+                            "text": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            });
+        }
 
+        else {
+            res.json({
+                "fulfillmentMessages": [
+                    {
+                        "quickReplies": {
+                            "title": "There's no previous event.",
+                            "quickReplies": [
+                                "More",
+                                "Department",
+                                "Events",
+                                "Health Center",
+                                "Hotline",
+                                "Illness",
+                                "Set Appointment",
+                                "Staff",
+                                "Visit Site",
+                                "[Go Back]",
+                                "☑️Share Feedback",
                             ]
                         },
                         "platform": "FACEBOOK"
