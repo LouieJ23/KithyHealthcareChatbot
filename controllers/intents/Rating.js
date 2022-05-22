@@ -31,7 +31,7 @@ async function _Rating(req, res) {
                                 "Set Appointment",
                                 "Staff",
                                 "Visit Site",
-                                "[Go Back]",
+                                "☑️Share Feedback",
 
                             ]
                         },
