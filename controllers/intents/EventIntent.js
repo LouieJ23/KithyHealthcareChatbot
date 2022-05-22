@@ -1185,13 +1185,32 @@ async function _Event(req, res) {
         }
     }
     else if ((intent_name == "Events - upcoming - more - event title") || intent_name == "Upcomint Event Title") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event title is " + upcomingEvent.eventTitle;
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+                // result += "The upcoming event will begin at " + events[i].timeStart + " on " + events[i].startDate + ", and will end at " + events[i].timeEnds + " on " + events[i].timeStart + ". \n";
+                result += "The upcoming event is " + event[i].eventTitle + ".\n" + "\n";;
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1257,15 +1276,35 @@ async function _Event(req, res) {
             });
         }
     }
+
 
     else if ((intent_name == "Events - upcoming - more - date & time") || intent_name == "Upcoming Event Date & Time") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event will start at " + upcomingEvent.startDate.toString().slice(0, 15) + " " + upcomingEvent.timeStart + " and will be end at " + upcomingEvent.endDate.toString().slice(0, 15) + " " + upcomingEvent.timeEnds + ".";
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+                result += "The upcoming event will begin at " + events[i].timeStart + " on " + events[i].startDate + ", and will end at " + events[i].timeEnds + " on " + events[i].timeStart + ".\n" + "\n";
+               
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1297,6 +1336,7 @@ async function _Event(req, res) {
                 ]
             });
         }
+
         else {
             res.json({
                 "fulfillmentMessages": [
@@ -1330,14 +1370,34 @@ async function _Event(req, res) {
             });
         }
     }
+
     else if (intent_name == "Events - upcoming - more - location") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event location is at " + upcomingEvent.eventLocation;
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+                // result += "The upcoming event will begin at " + events[i].timeStart + " on " + events[i].startDate + ", and will end at " + events[i].timeEnds + " on " + events[i].timeStart + ".\n" + "\n";
+               result="The upcoming event will be held at " + events[i].eventLocation + ". \n" + "\n";
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1403,14 +1463,32 @@ async function _Event(req, res) {
             });
         }
     }
-
     else if ((intent_name == "Events - upcoming - more - details") || intent_name == "Upcoming Event Details") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event detail is " + upcomingEvent.eventDetails;
-        if (upcomingEvents.length > 0) {
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
+
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+               result= events[i].eventTitle + ": " + events[i].eventDetails +". \n" + "\n";
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1477,13 +1555,31 @@ async function _Event(req, res) {
         }
     }
     else if ((intent_name == "Events - upcoming - more - process") || intent_name == "Upcoming Event Process") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event process is " + upcomingEvent.eventProcess;
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+                result += "To take part in this event, you must follow the steps below: " + events[i].eventProcess + ".\n" + "\n";
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1515,6 +1611,7 @@ async function _Event(req, res) {
                 ]
             });
         }
+
         else {
             res.json({
                 "fulfillmentMessages": [
@@ -1549,13 +1646,31 @@ async function _Event(req, res) {
         }
     }
     else if ((intent_name == "Events - upcoming - more - participants") || intent_name == "Upcoming Event Participants") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event participant is " + upcomingEvent.eventParticipant;
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+                result += "The participants of this event are: " + events[i].eventParticipant + ".\n" + "\n";
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1587,6 +1702,7 @@ async function _Event(req, res) {
                 ]
             });
         }
+
         else {
             res.json({
                 "fulfillmentMessages": [
@@ -1619,16 +1735,33 @@ async function _Event(req, res) {
                 ]
             });
         }
-
     }
     else if ((intent_name == "Events - upcoming - more - requirements") || intent_name == "Upcoming Event Requirements") {
-        const currentDate = new Date(Date.now());
-        const upcomingEvents = await Event.find({ startDate: { $gt: currentDate } }).sort({ startDate: 1 });
-        const upcomingEvent = upcomingEvents[0];
+        const getFullDate = (date) => {
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            if (month < 10) month = "0" + month;
+            var day = date.getDate();
+            if (day < 10) day = "0" + day;
+            date = year + "-" + month + "-" + day;
 
-        var result = "The upcoming event requirement is " + upcomingEvent.eventRequire;
+            return date;
+        }
+        const events = await Event.find({});
+        let currentDate = getFullDate(new Date());
 
-        if (upcomingEvents.length > 0) {
+        var result = "";
+        var count = 0;
+        for (let i = 0; i < events.length; i++) {
+            let eventDate = getFullDate(events[i].startDate);
+            if (eventDate > currentDate) {
+                result += "To partcipate in this event you must comply this following requirements: " + events[i].eventRequire + ".\n" + "\n";
+                count++;
+            }
+        }
+        console.log(result);
+
+        if (count > 0) {
             res.json({
                 "fulfillmentMessages": [
                     {
@@ -1660,6 +1793,7 @@ async function _Event(req, res) {
                 ]
             });
         }
+
         else {
             res.json({
                 "fulfillmentMessages": [
