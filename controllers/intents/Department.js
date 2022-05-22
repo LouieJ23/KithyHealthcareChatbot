@@ -20,7 +20,6 @@ async function _Department(req, res) {
                         "quickReplies": [
                             "Department",
                             "Events",
-                            "Guidelines",
                             "Health Center",
                             "Hotline",
                             "Illness",
