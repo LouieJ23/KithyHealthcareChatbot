@@ -24,7 +24,7 @@ async function _Hotline(req, res) {
                             "quickReplies": [
                                 "Department",
                                 "Events",
-                                "Guidelines",
+                                "Health Center",
                                 "Hotline",
                                 "Illness",
                                 "Set Appointment",
