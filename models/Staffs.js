@@ -22,24 +22,10 @@ const staffInfo = mongoose.Schema({
         require: true
     },
     
-    cellNumber: {
-        type: String,
-        require: true
-    },
     email: {
         type: String,
         require: true
     },
-
-
-        // day: {
-        //     type: String,
-        //     require: true
-        // },
-        // time: {
-        //     type: String,
-        //     require: true
-        // },
 
     datePosted: {
         type: Date,

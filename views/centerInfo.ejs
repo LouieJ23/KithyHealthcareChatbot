@@ -28,7 +28,7 @@
 							#
 						</th>
 						<th>Date of Founding</th>
-						<th>Constructed By</th>
+						<th>Founded By</th>
 						<th>Location</th>
 						<th>Phone Number</th>
 						<th>Email</th>
@@ -85,7 +85,7 @@
 									<%= centerInfos.dateOfFounding.toString().slice(0,15) %>
 								</td>
 								<td>
-									<%= centerInfos.constructedBy %>
+									<%= centerInfos.publishedBy %>
 								</td>
 								<td>
 									<%= centerInfos.location %>
@@ -212,7 +212,7 @@
 									<input type="Date" name="dateOfFounding" class="form-control" value="<%=centerInfos.dateOfFounding%>" required>
 								</div>
 								<div class="form-group">
-									<label>Published By</label>
+									<label>Founded By</label>
 									<input type="text" name="publishedBy" class="form-control" value="<%=centerInfos.publishedBy%>" required>
 								</div>
 								<div class="form-group">

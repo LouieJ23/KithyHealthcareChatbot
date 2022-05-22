@@ -17,17 +17,17 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-       const {page = 1, limit = 2} = req.query;
+    //    const {page = 1, limit = 2} = req.query;
         const staff = await Staff.find()
-        .limit(limit * 1)
-       .skip((page - 1) * limit);
+        // .limit(limit * 1)
+    //    .skip((page - 1) * limit);
 
         res.render('staff', {
             staffs: staff,
             page_name: 'staffInfo',
-            next: parseInt(page) + 1,
-           prev: parseInt(page) - 1,
-           isPaginate: true
+        //     next: parseInt(page) + 1,
+        //    prev: parseInt(page) - 1,
+           isPaginate: false
         });
 
         
@@ -63,6 +63,7 @@ router.post('/', async (req, res) => {
         career:req.body.career,
         specialization:req.body.specialization,
         department:req.body.department,
+        email:req.body.email,
         datePosted: req.body.datePosted
     });
 
