@@ -7,13 +7,13 @@ async function _DefaultWelcomeIntent(req, res) {
     let intent_name = req.body.queryResult.intent.displayName;
     const value = req.body.queryResult.queryText;
 
-    if (value == "Default Welcome Intent") {
+    if (intent_name == "Default Welcome Intent") {
         
         const log = new DefLogQuery({
             query: value,
             isAnswered: true
         });
-        console.log(value);
+        console.log("value");
     }
    
 }
