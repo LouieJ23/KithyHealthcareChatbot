@@ -47,7 +47,7 @@ function _HealthCenter(req, res) {
    
     if (intent_name == "Health Center - date of founding") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao was founded on  " + centerInfo.dateOfFounding.toString().slice(0,15);
+            var result = "The health center of Kitaotao was founded on  " + centerInfo.dateOfFounding.toString().slice(0,15)+".";
             
 
             res.json({
@@ -83,7 +83,7 @@ function _HealthCenter(req, res) {
     }
     if (intent_name == "Health Center - founded by") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao was published by " + centerInfo.publishedBy;
+            var result = "The health center of Kitaotao was published by " + centerInfo.publishedBy+".";
             
             res.json({
                 "fulfillmentMessages": [
@@ -118,7 +118,7 @@ function _HealthCenter(req, res) {
     }
     if ((intent_name == "Health Center - location") || (intent_name == "Health Center - location")){
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao is located at " + centerInfo.location;
+            var result = "The health center of Kitaotao is located at " + centerInfo.location+".";
             
             res.json({
                 "fulfillmentMessages": [
@@ -153,7 +153,7 @@ function _HealthCenter(req, res) {
     }
     if (intent_name == "Health Center - contact number") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao can be reached through this number: " + centerInfo.phoneNumber;
+            var result = "The health center of Kitaotao can be reached through this number: " + centerInfo.phoneNumber+".";
             
             res.json({
                 "fulfillmentMessages": [
@@ -186,7 +186,7 @@ function _HealthCenter(req, res) {
     }
     if (intent_name == "Health Center - email address") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The health center of Kitaotao can be reached through this email address: " + centerInfo.email;
+            var result = "The health center of Kitaotao can be reached through this email address: " + centerInfo.email+".";
             
             res.json({
                 "fulfillmentMessages": [
@@ -220,7 +220,7 @@ function _HealthCenter(req, res) {
     }
     if (intent_name == "Health Center - mission") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The mission of Kitaotao Health Center is. " + centerInfo.mission;
+            var result = "The mission of Kitaotao Health Center is. " + centerInfo.mission+".";
             
             res.json({
                 "fulfillmentMessages": [
@@ -256,7 +256,7 @@ function _HealthCenter(req, res) {
     }
     if (intent_name == "Health Center - vision") {
         hCenter.findOne({}, function (err, centerInfo) {
-            var result = "The vision of Kitaotao Health Center is. " + centerInfo.vision;
+            var result = "The vision of Kitaotao Health Center is. " + centerInfo.vision+".";
             
             res.json({
                 "fulfillmentMessages": [
