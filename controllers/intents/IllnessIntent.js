@@ -94,7 +94,7 @@ async function _Illness(req, res) {
             "fulfillmentMessages": [
                 {
                     "quickReplies": {
-                        "title": illness[0].detail,
+                        "title": illness[0].detail+".",
                         "quickReplies": [
                             "Details",
                             "Symptoms",
@@ -128,7 +128,7 @@ async function _Illness(req, res) {
             "fulfillmentMessages": [
                 {
                     "quickReplies": {
-                        "title": illness[0].symptoms,
+                        "title": illness[0].symptoms+".",
                         "quickReplies": [
                             "Details",
                             "Symptoms",
@@ -162,7 +162,7 @@ async function _Illness(req, res) {
             "fulfillmentMessages": [
                 {
                     "quickReplies": {
-                        "title": illness[0].treatment,
+                        "title": illness[0].treatment+".",
                         "quickReplies": [
                             "Details",
                             "Symptoms",
@@ -200,7 +200,7 @@ async function _Illness(req, res) {
             "fulfillmentMessages": [
                 {
                     "quickReplies": {
-                        "title": illness[0].prevention,
+                        "title": illness[0].prevention+".",
                         "quickReplies": [
                             "Details",
                             "Symptoms",
