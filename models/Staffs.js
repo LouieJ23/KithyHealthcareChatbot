@@ -13,10 +13,10 @@ const staffInfo = mongoose.Schema({
         type: String,
         require: true
     },
-    specialization: {
-        type: String,
-        require: true
-    },
+    // specialization: {
+    //     type: String,
+    //     require: true
+    // },
     department:{
         type: String,
         require: true

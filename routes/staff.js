@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
         name:req.body.name,
         sex:req.body.sex,
         career:req.body.career,
-        specialization:req.body.specialization,
+        // specialization:req.body.specialization,
         department:req.body.department,
         email:req.body.email,
         datePosted: req.body.datePosted
