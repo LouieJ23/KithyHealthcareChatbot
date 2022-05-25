@@ -91,8 +91,9 @@ router.get('/', async (req, res) => {
                 console.log(error);
             });
 
-        const filepath = 'http://localhost:8080/pdfs/' + filename;
-
+        const filepath = 'http://'+req.headers.host+'/pdfs/' + filename;
+            console.log(filepath);
+            console.log(req.headers.host);
 
         res.render('queryLog', {
             queryLog: countedLogs.sort((a, b) => a.frequent > b.frequent ? -1 : 1),
