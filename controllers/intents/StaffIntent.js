@@ -18,7 +18,7 @@ async function _Staff(req, res) {
         let staffs = await Staff.find({});
             let results = "";
             for (let i = 0; i < staffs.length; i++) {
-                results += ("\n" + "Name: " + staffs[i].name + "\n"+ "Sex: " + staffs[i].sex + "\n"+ "Career: " + staffs[i].career + "\n" + "Department: "+ staffs[i].department + "\n" + "Cell Number: " + staffs[i].cellNumber + "\n" + "Email: "+ staffs[i].email + "\n" + "Schedule: "+ staffs[i].day + ", " + staffs[i].time + "\n");
+                results += ("\n" + "Name: " + staffs[i].name + "\n"+ "Sex: " + staffs[i].sex + "\n"+ "Career: " + staffs[i].career + "\n" + "Department: "+ staffs[i].department + "\n" + "Email: "+ staffs[i].email + "\n" + "Schedule: "+ staffs[i].day + ", " + staffs[i].time + "\n");
             }
             res.json({
                 "fulfillmentMessages": [
