@@ -33,6 +33,7 @@ module.exports = (server) => {
     server.use(express.static('public/img'));
     server.use('/css', express.static(__dirname + 'public/css'));
     server.use('/pdfs', express.static(path.join(__dirname, '../pdfs')));
+    console.log(path.join(__dirname, '../pdfs'));
     
     server.use(expressLayouts);
     server.set('view engine', 'ejs');

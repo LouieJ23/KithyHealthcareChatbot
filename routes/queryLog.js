@@ -3,6 +3,7 @@ const Log = require('../models/QueryLog');
 const fs = require('fs');
 const pdf = require('pdf-creator-node');
 const path = require('path');
+const express = require('express');
 const template = fs.readFileSync(path.join(__dirname, '../views/print.html'), 'utf-8');
 const options = {
     format: "A4",
@@ -59,6 +60,7 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
+        console.log(path.join(__dirname, '../pdfs'));
         const distinctLogs = await Log.distinct("query");
         const countedLogs = [];
         for (let i = 0; i < distinctLogs.length; i++) {
