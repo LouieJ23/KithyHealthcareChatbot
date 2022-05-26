@@ -1,5 +1,5 @@
 
-<div class="container-xl">
+<div class="container-xl" id="logQuery">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title title-head" style="height: 4.5rem;">
@@ -18,7 +18,7 @@
 							<div class="row well">
 								
 								 <center>
-									<a href="<%= path %>" class="btn btn-danger" download>Print</a>
+									<a href="#" class="btn btn-danger" onclick="printInfo()">Print</a>
 								</center>
 								
 							</div>
@@ -90,3 +90,14 @@
 		</div>
 	</div>
 
+	<script>
+		function printInfo() {
+			var prtContent = document.getElementById("logQuery");
+			var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+			WinPrint.document.write(prtContent.innerHTML);
+			WinPrint.document.close();
+			WinPrint.focus();
+			WinPrint.print();
+			WinPrint.close();
+		}
+	</script>
