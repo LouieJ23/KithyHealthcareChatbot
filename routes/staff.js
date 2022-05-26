@@ -22,6 +22,8 @@ router.get('/', async (req, res) => {
         // .limit(limit * 1)
     //    .skip((page - 1) * limit);
 
+        console.log(staff.length);
+
         res.render('staff', {
             staffs: staff,
             page_name: 'staffInfo',
@@ -42,6 +44,7 @@ router.get('/', async (req, res) => {
 router.get('/:staffID', async (req, res) => {
     try {
         const staff = await Staff.findById(req.params.staffID);
+        console.log(staff.length == undefined);
         res.render('staff', {
             staffs: staff,
             page_name: 'staffInfo',
@@ -63,7 +66,7 @@ router.post('/', async (req, res) => {
         career:req.body.career,
         // specialization:req.body.specialization,
         department:req.body.department,
-        email:req.body.email,
+        // email:req.body.email,
         datePosted: req.body.datePosted
     });
 

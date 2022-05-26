@@ -30,7 +30,7 @@
 						<th>Career</th>
 						<!-- <th>Specialization</th> -->
 						<th>Department</th>
-						<th>Email</th>
+						<!-- <th>Email</th> -->
 						<th>Date Posted</th>
 						<% if(! staffs.length > 0) {%>
 							<th>Actions</th>
@@ -40,7 +40,7 @@
 				</thead>
 				<tbody>
 					<% 
-					if(staffs.length > 0)
+					if(staffs.length > 1)
 					{
 						for(var i=0; i < staffs.length; i++) { %>
 						<tr onclick="window.location='/staffInfo/<%= staffs[i]._id %>'" style="cursor: pointer;">
@@ -62,16 +62,19 @@
 							<td>
 								<%= staffs[i].department %>
 							</td>
-							<td>
+							<!-- <td>
 								<%= staffs[i].email%>
-							</td>
+							</td> -->
                             <td>
                                 <%= staffs[i].datePosted.toString().slice(0,15) %>
                             </td>
 						</tr>
 
-						<% }}
-						else { %>
+						<% }
+					}
+						else {
+							if(staffs.length == undefined) {
+							%>
 							<tr>
 								<td>
 									
@@ -91,9 +94,9 @@
 								<td>
 									<%= staffs.department %>
 								</td>
-								<td>
+								<!-- <td>
 									<%= staffs.email %>
-								</td>
+								</td> -->
 								<td>
 									<%= staffs.datePosted.toString().slice(0,15)%>
 								</td>
@@ -105,7 +108,8 @@
 											class="material-icons"  title="Delete">&#xE872;</i></a>
 								</td>
 							</tr>
-						<%} %>
+						<%}
+						} %>
 							<tr>
 
 				</tbody>
@@ -142,10 +146,10 @@
 							<label>Department</label>
 							<input type="text" name="department" class="form-control" required>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label>Email</label>
 							<input type="text" name="email" class="form-control" required>
-						</div>
+						</div> -->
                     </div>
 
 					<div class="modal-footer">
@@ -189,11 +193,11 @@
 									<label>Department</label>
 									<input type="text" class="form-control" name="department"  value="<%=staffs.department%>"  required>
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label>Email</label>
 									<input type="text" class="form-control" name="email"  value="<%=staffs.email%>"  required>
 								</div>
-								
+								 -->
 							<div class="modal-footer">
 								<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 								<input type="submit" class="btn btn-info" value="Save">

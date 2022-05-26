@@ -42,7 +42,7 @@ async function _Illness(req, res) {
         });
         const log1 = new queryLog({
             query: value,
-            isAnswered: true,
+            isAnswered: false,
         });
         await log1.save();
     }
@@ -79,7 +79,7 @@ async function _Illness(req, res) {
 
         const log2 = new queryLog({
             query: value,
-            isAnswered: true,
+            isAnswered: false,
         });
         await log2.save();
 
