@@ -60,7 +60,6 @@ router.use((req, res, next) => {
 
 router.get('/', async (req, res) => {
     try {
-        console.log(path.join(__dirname, '../pdfs'));
         const distinctLogs = await Log.distinct("query");
         const countedLogs = [];
         for (let i = 0; i < distinctLogs.length; i++) {
@@ -72,6 +71,8 @@ router.get('/', async (req, res) => {
                 distinct: log
             });
         }
+
+        countedLogs.sort();
 
         const obj = {
             inputLogs: countedLogs
