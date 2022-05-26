@@ -21,6 +21,7 @@ const appointment = require('./appointment');
 const admin = require('./admin');
 const login = require('./login');
 const queryLog = require('./queryLog');
+const print = require('./print');
 const hotline = require('./hotline');
 const upcomingEvent = require('./upcomingEvent');
 const previousEvent = require('./previousEvent');
@@ -68,6 +69,7 @@ module.exports = (server) => {
     server.use('/appointment', appointment);
     server.use('/login', login);
     server.use('/queryLog', queryLog);
+    server.use('/print', print);
     server.use('/hotline', hotline);
     server.use('/upcomingEvent', upcomingEvent);
     server.use('/patientAppointment', patientAppointment );
