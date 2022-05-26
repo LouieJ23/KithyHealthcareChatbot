@@ -126,11 +126,17 @@
 								<input type="time" name="timeStart" class="form-control" placeholder="00:00 AM/PM"
 									required>
 							</div>
+							<script type="text/javascript">
+								$('#timepicker1').timepicker({ use24hours: true });
+							</script>
 							<div class="form-group" style="width:50%">
 								<label>Time Ends</label>
 								<input type="time" name="timeEnd" class="form-control" placeholder="00:00 AM/PM"
 									required>
 							</div>
+							<script type="text/javascript">
+								$('#timepicker1').timepicker({ use24hours: true });
+							</script>
 						</div>
 						<div class="form-group">
                             <label>Detail</label>
@@ -199,11 +205,17 @@
 										<input type="time" name="timeStart" class="form-control" value="<%= departments.timeStart%>" placeholder="00:00 AM/PM"
 											required>
 									</div>
+									<script type="text/javascript">
+										$('#timepicker1').timepicker({ use24hours: true });
+									</script>
 									<div class="form-group" style="width:50%">
 										<label>Time Ends</label>
-										<input type="time" name="timeEnds" class="form-control" value="<%= departments.timeEnd%>"placeholder="00:00 AM/PM"
+										<input type="time" name="timeEnd" class="form-control" value="<%= departments.timeEnd%>"placeholder="00:00 AM/PM"
 											required>
 									</div>
+									<script type="text/javascript">
+										$('#timepicker1').timepicker({ use24hours: true });
+									</script>
 								</div>
                                 <div class="form-group">
                                     <label>Detail</label>

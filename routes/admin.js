@@ -9,6 +9,7 @@ const Hotline = require('../models/Hotline');
 const Staff = require('../models/Staffs');
 const Illness = require('../models/Illness');
 const Guidelines = require('../models/Guidelines');
+const Department = require('../models/Departments');
 
 
 
@@ -36,6 +37,7 @@ router.get('/', async (req, res) => {
         const event = await Event.find({});
         const mildIllness = await Illness.find({});
         const guidelines = await Guidelines.find({});
+        const departments = await Department.find({});
 
         const { page = 1, limit = 5 } = req.query;
         const log = await Log.find()
@@ -60,7 +62,8 @@ router.get('/', async (req, res) => {
             dateStarted:event,
             overAllEvent:event,
             illness:mildIllness,
-            overallGuidelines:guidelines
+            overallGuidelines:guidelines,
+            overallDepartments:departments,
         });
 
 
@@ -99,6 +102,8 @@ router.post('/', async (req, res) => {
     const event = await Event.find({});
     const mildIllness = await Illness.find({});
     const guidelines = await Guidelines.find({});
+    const departments = await Department.find({});
+
 
 
 
@@ -118,7 +123,9 @@ router.post('/', async (req, res) => {
             dateStarted:event,
             overAllEvent:event,
             illness:mildIllness,
-            overallGuidelines:guidelines
+            overallGuidelines:guidelines,
+            overallDepartments:departments,
+
         });
         alert("Login Successful.")
         return true;

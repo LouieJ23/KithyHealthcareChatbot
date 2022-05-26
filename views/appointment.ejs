@@ -170,15 +170,38 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label>Category</label>
-							<input type="text" name="category" class="form-control" required>
+							<!-- <input type="text" name="category" class="form-control" required> -->
+							<select class="form-select my-2" aria-label="Default select" name="category" required>
+								<option value="" disabled selected></option>
+								<option value="Primary Care Consultation">Primary Care Consultation</option>
+								<option value="Specialty Consultation">Specialty Consultation</option>
+								<option value="General Lab Tests">General Lab Tests</option>
+								<option value="COVID-19 Tests">COVID-19 Tests</option>
+								<option value="Other Diagnostic Procedures">Other Diagnostic Procedures</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label>Doctor Options</label>
-							<input type="text" name="docOption" class="form-control" required>
+							<!-- <input type="text" name="docOption" class="form-control" required> -->
+							<select class="form-select my-2" aria-label="Default select example" name="docOption" required>
+								<option disabled selected></option>
+								<option value="Dr.1">Dr.1</option>
+								<option value="Dr.2">Dr.2</option>
+								<option value="Dr.3">Dr.3</option>
+								<option value="Dr.4">Dr.4</option>
+							</select>
 						</div>
 						<div class="form-group">
 							<label>Type of Consultation</label>
-							<textarea class="form-control" name="consultType" required></textarea>
+							<!-- <textarea class="form-control" name="consultType" required></textarea> -->
+							<select class="form-select" aria-label="Default select example" name="consultType" required>
+								<option value="" disabled selected></option>
+								<option value="Initial Consultation">Initial Consultation</option>
+								<option value="Follow-up Consultation">Follow-up Consultation</option>
+								<option value="Work Clearance/Medical Certificate">Work Clearance/Medical Certificate
+								</option>
+								<option value="Others">Others</option>
+							</select>
 						</div>
 						
 								<div class="form-group">
