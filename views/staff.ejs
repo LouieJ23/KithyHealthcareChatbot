@@ -40,7 +40,7 @@
 				</thead>
 				<tbody>
 					<% 
-					if(staffs.length > 1)
+					if(staffs.length > 0)
 					{
 						for(var i=0; i < staffs.length; i++) { %>
 						<tr onclick="window.location='/staffInfo/<%= staffs[i]._id %>'" style="cursor: pointer;">

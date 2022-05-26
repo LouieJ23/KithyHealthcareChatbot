@@ -40,7 +40,9 @@
                                 </div>
 								
                             <% }}
-                            else { %>
+                            else {
+								if(illnesses.length == undefined) {
+								%>
                                 <div class="col-sm-12">
                                     <h2><b>Title: </b><%= illnesses.title %></h2>
                                     <p><b>Detail: </b><br><%= illnesses.detail %></p>
