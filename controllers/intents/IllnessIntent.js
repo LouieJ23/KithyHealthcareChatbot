@@ -40,7 +40,11 @@ async function _Illness(req, res) {
                 }
             ]
         });
-        
+        const log1 = new queryLog({
+            query: value,
+            isAnswered: true,
+        });
+        await log1.save();
     }
     else if (intent_name == 'Illness - more') {
         const recentLog = await queryLog.findOne({ isAnswered: true }).sort({ datePosted: -1 });
@@ -72,6 +76,12 @@ async function _Illness(req, res) {
                 }
             ]
         });
+
+        const log2 = new queryLog({
+            query: value,
+            isAnswered: true,
+        });
+        await log2.save();
 
     }
     else if (intent_name == 'Illness - more - details') {

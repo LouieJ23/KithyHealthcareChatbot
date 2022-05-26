@@ -8,13 +8,21 @@ const Illness = require('../models/Illness');
 const Guidelines = require('../models/Guidelines');
 const Departments = require('../models/Departments');
 const HCenter = require('../models/CenterInfo');
-const LogQuery = require('../models/QueryLog');
+const Log = require('../models/QueryLog');
 
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB", () => {
     console.log("Connected to DB!");
 });
+
+
+const distingLogs = async () => {
+    const distinctLogs = await Log.distinct("query", {isAnswered: false});
+    console.log(distinctLogs);
+}
+
+distingLogs();
 
 // var samp = "Location";
 // Event.findOne({}, function (err, event) {
@@ -102,34 +110,34 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 
 // }
 // events();
-const events = async () => {
+// const events = async () => {
 
 
-    const getFullDate = (date) => {
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        if (month < 10) month = "0" + month;
-        var day = date.getDate();
-        if (day < 10) day = "0" + day;
-        date = year + "-" + month + "-" + day;
+//     const getFullDate = (date) => {
+//         let year = date.getFullYear();
+//         let month = date.getMonth() + 1;
+//         if (month < 10) month = "0" + month;
+//         var day = date.getDate();
+//         if (day < 10) day = "0" + day;
+//         date = year + "-" + month + "-" + day;
 
-        return date;
-    }
+//         return date;
+//     }
 
-    const events = await Event.find({});
-    let currentDate = getFullDate(new Date());
+//     const events = await Event.find({});
+//     let currentDate = getFullDate(new Date());
    
-    var result = "";
-    var count = 0;
-    for (let i = 0; i < events.length; i++) {
-        let eventDate = getFullDate(events[i].startDate);
-        if (eventDate > currentDate) {
-            result += "The upcoming event is " + events[i].eventTitle + ". " + events[i].eventDetails + " ." + "This event is going to held at " + events[i].eventLocation + ", and it will begin at " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
-            count++;
-        }
-    }
+//     var result = "";
+//     var count = 0;
+//     for (let i = 0; i < events.length; i++) {
+//         let eventDate = getFullDate(events[i].startDate);
+//         if (eventDate > currentDate) {
+//             result += "The upcoming event is " + events[i].eventTitle + ". " + events[i].eventDetails + " ." + "This event is going to held at " + events[i].eventLocation + ", and it will begin at " + events[i].startDate.toString().slice(0,15) + " at " + events[i].timeStart + " and will be going to end on " + events[i].endDate.toString().slice(0,15) + " at " + events[i].timeEnds + ". To take part in this event, you must meet the following requirements: " + events[i].eventRequire + ". To take part in this event, you must complete the steps below:  " + events[i].eventProcess + ". The participants for this event are " + events[i].eventParticipant + ".\n" + "\n";
+//             count++;
+//         }
+//     }
 
-console.log(result);
-}
+// console.log(result);
+// }
 
-events();
+// events();

@@ -64,6 +64,7 @@ router.get('/', async (req, res) => {
 
     try {
         const distinctLogs = await Log.distinct("query");
+        console.log(distinctLogs);
         const countedLogs = [];
         for (let i = 0; i < distinctLogs.length; i++) {
             let log = distinctLogs[i];
