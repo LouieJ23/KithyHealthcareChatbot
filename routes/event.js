@@ -19,7 +19,9 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
     try {
         const event = await Event.find()
-            .sort({ datePosted: -1 })
+            .sort({ datePosted: -1 });
+
+            console.log(event.length);
         res.render('event', {
             events: event,
             page_name: 'event',

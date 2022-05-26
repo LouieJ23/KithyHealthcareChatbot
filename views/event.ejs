@@ -88,8 +88,11 @@
 											<%= events[i].datePosted.toString().slice(0,15) %>
 										</td>
 									</tr>
-									else {
-										if(events.length == undefined) {
+									<% }} 
+									else
+									 { 
+										if(events.length == undefined)
+										{
 										%>
 										<tr>
 											<td>
@@ -135,7 +138,8 @@
 
 											</td>
 										</tr>
-										<%} %>
+										<%}
+									 } %>
 											<tr>
 						</tbody>
 					</table>
