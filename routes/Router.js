@@ -7,6 +7,8 @@ const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 let alert = require('alert');
+const fs = require('fs');
+
 
 //import routes
 const event = require('./event');
@@ -28,6 +30,17 @@ const {processRequests, generatePdf} = require('../controllers/Controller');
 
 
 module.exports = (server) => {
+
+    const folderName = path.join(__dirname, '../pdfs');
+
+    try {
+        if (!fs.existsSync(folderName)) {
+          fs.mkdirSync(folderName);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+
     const apiRoutes = express.Router();
     server.use(express.static('public'));
     server.use(express.static('public/img'));
@@ -36,6 +49,8 @@ module.exports = (server) => {
     
     server.use(expressLayouts);
     server.set('view engine', 'ejs');
+
+
 
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(bodyParser.json());

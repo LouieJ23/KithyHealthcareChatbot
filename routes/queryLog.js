@@ -59,6 +59,9 @@ router.use((req, res, next) => {
 
 
 router.get('/', async (req, res) => {
+
+    
+
     try {
         const distinctLogs = await Log.distinct("query");
         const countedLogs = [];
@@ -87,6 +90,8 @@ router.get('/', async (req, res) => {
             },
             path: './pdfs/' + filename
         }
+
+
         pdf.create(document, options)
             .then(res => {
                 console.log(res);
@@ -95,8 +100,6 @@ router.get('/', async (req, res) => {
             });
 
         const filepath = 'http://'+req.headers.host+'/pdfs/' + filename;
-            console.log(filepath);
-            console.log(req.headers.host);
 
         res.render('queryLog', {
             queryLog: countedLogs.sort((a, b) => a.frequent > b.frequent ? -1 : 1),
