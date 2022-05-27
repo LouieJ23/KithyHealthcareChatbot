@@ -874,7 +874,7 @@ async function _Event(req, res) {
         const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
         const previousEvent = events[0];
 
-        var result = "The recent event was started at " + previousEvent.timeStart + " on " + previousEvent.startDate.toString().slice(0, 15) + " and ended at " + previousEvent.endDate + " on " + previousEvent.timeEnds;
+        var result = "The recent event was started at " + previousEvent.timeStart + " on " + previousEvent.startDate.toString().slice(0,15) + " and ended at " + previousEvent.timeEnds +  " on " + previousEvent.endDate  + ". \n";
 
         if (events.length > 0) {
             res.json({
