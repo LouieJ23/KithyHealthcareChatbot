@@ -874,7 +874,7 @@ async function _Event(req, res) {
         const events = await Event.find({ startDate: { $lt: currentDate } }).sort({ startDate: 1 });
         const previousEvent = events[0];
 
-        var result = "The recent event was started at " + previousEvent.timeStart + " on " + previousEvent.startDateTime.toString().slice(0, 15) + " and ended at " + previousEvent.endDateTime + " on " + previousEvent.timeEnds;
+        var result = "The recent event was started at " + previousEvent.timeStart + " on " + previousEvent.startDate.toString().slice(0, 15) + " and ended at " + previousEvent.endDate + " on " + previousEvent.timeEnds;
 
         if (events.length > 0) {
             res.json({
@@ -1406,7 +1406,7 @@ async function _Event(req, res) {
             });
         }
     }
-    else if ((intent_name == "Events - upcoming - more - event title") || intent_name == "Upcomint Event Title") {
+    else if ((intent_name == "Events - upcoming - more - event title") || intent_name == "Upcoming Event Title") {
         const getFullDate = (date) => {
             let year = date.getFullYear();
             let month = date.getMonth() + 1;
@@ -1519,7 +1519,7 @@ async function _Event(req, res) {
         for (let i = 0; i < events.length; i++) {
             let eventDate = getFullDate(events[i].startDate);
             if (eventDate > currentDate) {
-                result += "The upcoming event will begin at " + events[i].timeStart + " on " + events[i].startDate + ", and will end at " + events[i].timeEnds + " on " + events[i].timeStart + ".\n" + "\n";
+                result += "The upcoming event will begin at " + events[i].timeStart + " on " + events[i].startDate.toString().slice(0,15) + ", and will end at " + events[i].timeEnds + " on " + events[i].endDate.toString().slice(0,15) + ".\n" + "\n";
                
                 count++;
             }
