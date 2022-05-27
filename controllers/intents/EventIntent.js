@@ -1426,7 +1426,7 @@ async function _Event(req, res) {
             let eventDate = getFullDate(events[i].startDate);
             if (eventDate > currentDate) {
                 // result += "The upcoming event will begin at " + events[i].timeStart + " on " + events[i].startDate + ", and will end at " + events[i].timeEnds + " on " + events[i].timeStart + ". \n";
-                result += "The upcoming event is " + event[i].eventTitle + ".\n" + "\n";;
+                result += "The upcoming event is " + events[i].eventTitle + ".\n" + "\n";;
                 count++;
             }
         }
