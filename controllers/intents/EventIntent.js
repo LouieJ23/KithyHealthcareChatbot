@@ -24,7 +24,7 @@ async function _Event(req, res) {
                             "title": "What would you like to know about the Event?",
                             "quickReplies": [
                                 "Upcoming",
-                                "Current",
+                                "Latest",
                                 "Previous",
                                 "[Go Back]",
 
