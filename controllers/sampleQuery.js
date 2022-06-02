@@ -9,6 +9,7 @@ const Guidelines = require('../models/Guidelines');
 const Departments = require('../models/Departments');
 const HCenter = require('../models/CenterInfo');
 const Log = require('../models/QueryLog');
+const res = require('express/lib/response');
 
 
 mongoose.Promise = global.Promise;
@@ -17,12 +18,12 @@ mongoose.connect("mongodb+srv://admin:user1@cluster0.a4dgc.mongodb.net/KithyDB",
 });
 
 
-const distingLogs = async () => {
-    const distinctLogs = await Log.distinct("query", {isAnswered: false});
-    console.log(distinctLogs);
-}
+// const distingLogs = async () => {
+//     const distinctLogs = await Log.distinct("query", {isAnswered: false});
+//     console.log(distinctLogs);
+// }
 
-distingLogs();
+// distingLogs();
 
 // var samp = "Location";
 // Event.findOne({}, function (err, event) {
@@ -54,6 +55,29 @@ distingLogs();
 //     console.log(startDate);
 //     }
 //     events();
+
+const events=async()=> {
+        // const eventDate = await Event.find({});
+        // const startDate = eventDate[0].startDate.toString().slice(0,15);
+        var result = "";
+        var count = 0;
+        const events = await Event.find({});
+        const currentDate = new Date(Date.now()).toString().slice(0, 15);
+
+        for (let i = 0; i < events.length; i++) {
+            var startDate = events[i].startDate.toString().slice(0, 15);
+            if (startDate === currentDate) {
+                result += "The current event will take place at " + events[i].eventLocation + ".\n" + "\n";
+                count++;
+            }
+            // console.log(startDate + "" + currentDate);
+            // console.log(Boolean(startDate===currentDate));
+            console.log(result);
+            console.log(Boolean(startDate===currentDate));
+            // console.log(currentDate);
+        }
+        }
+        events();
 
 // ===============current event==================
 // const events=async()=> {
