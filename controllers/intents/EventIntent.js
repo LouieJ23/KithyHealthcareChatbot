@@ -70,6 +70,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -103,6 +104,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -154,6 +156,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -187,6 +190,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -234,6 +238,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -267,6 +272,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -319,6 +325,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -352,6 +359,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -404,6 +412,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -437,6 +446,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -489,6 +499,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -522,6 +533,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -574,6 +586,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -607,6 +620,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -659,6 +673,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -692,6 +707,7 @@ async function _Event(req, res) {
                             "title": "There's no current event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -736,6 +752,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -769,6 +786,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -811,6 +829,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -844,6 +863,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                 "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -884,6 +904,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -917,6 +938,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -957,6 +979,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -990,6 +1013,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1030,6 +1054,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1063,6 +1088,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1103,6 +1129,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1136,6 +1163,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1176,6 +1204,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1209,6 +1238,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1250,6 +1280,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1283,6 +1314,7 @@ async function _Event(req, res) {
                             "title": "There's no previous event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1348,6 +1380,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1381,6 +1414,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1440,6 +1474,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1473,6 +1508,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1534,6 +1570,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1567,6 +1604,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1627,6 +1665,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1660,6 +1699,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1718,6 +1758,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1751,6 +1792,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1809,6 +1851,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1842,6 +1885,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1900,6 +1944,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1933,6 +1978,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -1991,6 +2037,7 @@ async function _Event(req, res) {
                             "title": result,
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",
@@ -2024,6 +2071,7 @@ async function _Event(req, res) {
                             "title": "There's no upcoming event.",
                             "quickReplies": [
                                 "More",
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",

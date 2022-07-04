@@ -1,23 +1,19 @@
 'use strict';
 
+// connection to mongoDB
 const mongoose = require('mongoose');
 
+// declaring variable for the functions for every intents
 const _Event = require('./intents/EventIntent');
 const _HealthCenter = require('./intents/HealthCenter');
 const _Illness = require('./intents/IllnessIntent');
 const _Hotline = require('./intents/Hotlines');
 const _Department = require('./intents/Department');
-const _DefaultWelcomeIntent  = require('./intents/DefaultWelcomeIntent');
+const _DefaultWelcomeIntent = require('./intents/DefaultWelcomeIntent');
 const _Guideline = require('./intents/Guidelines');
 const _Staff = require('./intents/StaffIntent');
 
-const StaffInfo = require('../models/Staffs');
-const Guidelines = require('../models/Guidelines');
-const CenterInfo = require('../models/CenterInfo');
-const MildIllness = require('../models/Illness')
-const Appointment = require('../models/Appointment');
-const Admin = require('../routes/admin');
-
+// calling each functions
 const processRequests = (req, res) => {
     _Event(req, res);
     _HealthCenter(req, res);

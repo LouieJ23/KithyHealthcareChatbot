@@ -26,6 +26,7 @@ async function _Staff(req, res) {
                         "quickReplies": {
                             "title": "This are the Health Center's Staff "+ results + "\n",
                             "quickReplies": [
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",

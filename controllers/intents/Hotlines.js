@@ -22,6 +22,7 @@ async function _Hotline(req, res) {
                         "quickReplies": {
                             "title": "If you require assistance, the following hotlines are accessible: "+ results + "\n",
                             "quickReplies": [
+                                "About",
                                 "Department",
                                 "Events",
                                 "Health Center",

@@ -56,7 +56,6 @@ function _HealthCenter(req, res) {
                         "quickReplies": {
                             "title": result,
                             "quickReplies": [
-                                
                                 "Date of Founding",
                                 "Founded by",
                                 "Location",
@@ -90,8 +89,7 @@ function _HealthCenter(req, res) {
                     {
                         "quickReplies": {
                             "title": result,
-                            "quickReplies": [
-                              
+                            "quickReplies": [   
                                 "Date of Founding",
                                 "Founded by",
                                 "Location",
@@ -125,8 +123,7 @@ function _HealthCenter(req, res) {
                     {
                         "quickReplies": {
                             "title": result,
-                            "quickReplies": [
-                                
+                            "quickReplies": [  
                                 "Date of Founding",
                                 "Published by",
                                 "Location",

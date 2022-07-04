@@ -5,7 +5,7 @@
 			<div class="table-title title-head" style="height: 4.5rem;">
 				<div class="row row-head">
 					<div class="col-sm-6 my-auto">
-						<h2>Manage <b>Logs</b></h2>
+						<h2>Unanswered Query <b>Logs</b></h2>
 					</div>
 					<div class="col-sm-6  my-auto">
 						
@@ -43,7 +43,7 @@
 						for(var i=0; i < queryLog.length; i++) { %>
 						<tr onclick="window.location='/queryLog/<%= queryLog[i]._id %>'" style="cursor: pointer;">
 
-							<td>
+							<td style="text-align:center;">
 								<%= queryLog[i].frequent %>
 							</td>
 							<td>

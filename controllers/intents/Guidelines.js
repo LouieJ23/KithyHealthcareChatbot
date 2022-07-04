@@ -26,6 +26,7 @@ async function _Guideline(req, res) {
                         "quickReplies": {
                             "title": "This are the Health Center Guidelines: "+ results + "\n",
                             "quickReplies": [
+                                "About",
                                 "Department",
                                 "Events",
                                 "Guidelines",

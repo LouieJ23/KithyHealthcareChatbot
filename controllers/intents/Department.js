@@ -18,6 +18,7 @@ async function _Department(req, res) {
                     "quickReplies": {
                         "title": results,
                         "quickReplies": [
+                            "About",
                             "Department",
                             "Events",
                             "Health Center",
